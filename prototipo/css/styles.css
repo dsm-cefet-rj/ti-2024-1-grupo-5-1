@@ -1,0 +1,103 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+/* secao do header */
+
+#header {
+    background-color: orange;
+    height: 70px;
+    border: 2px black;
+    position: relative;
+}
+
+#imgHeader {
+    text-align: left;
+    padding-top: 5px;
+}
+
+#textHeader {
+    text-align: center;
+    color: black;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 10; /* remove margem padrão do h1 */
+}
+
+/* secao da main */
+
+main {
+    color: white;
+}
+p {
+    text-align:center;
+}
+
+div#tabela {
+  margin-left: auto;
+  margin-right: auto;
+}
+table#tabela {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    color: black;
+  }
+
+div#button {
+    margin: auto;
+    justify-content: center;
+    display: flex;
+}
+
+button#confirmar {
+    background-color: orange;
+    color: white;
+}
+
+/* padrao para todo o html */
+
+/*footer */
+
+footer {
+    position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+}
+
+div#rodape {
+    background-color: orange;
+}
+
+div#imagemRodape {
+    text-align: right;
+}
+
+ul.rodape{
+    width: 300px;
+    padding-bottom: 0px;
+    height: 0px;
+    padding-top: 20px;
+}
+
+span#titulo {
+    display: block;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    border: 2px black;
+    font-family: Lora, sans-serif;
+    background-color: darkred;
+}
+
+#caixaTexto {
+    display: none;
+}
+
+@font-face {
+    font-family: Lora;
+    src: url('static/Lora-Regular.ttf')
+}
