@@ -1,0 +1,192 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    height: 75px;
+    background-color: #fea500;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    background-color: #fea500;
+    background-color: #fea500;
+    color: #000000;
+    text-align: center;
+    padding: 0;
+    bottom: 0;
+
+}
+
+header div {
+    display: flex;
+}
+
+svg {
+    height: 35px;
+    width: 35px;
+    color: #000000;
+    cursor: pointer;
+}
+
+.icon {
+    display: block;
+    margin: auto 0;
+}
+
+.title {
+    margin: auto 10px;
+}
+
+main {
+    min-height: calc(100% - 100px);
+    background-color: #8b0101;
+}
+
+main #produtos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.produto {
+    display: flex;
+    flex-grow: 4;
+    flex-direction: column;
+    margin: 5px;
+    max-width: 300px;
+}
+
+.produto-img {
+    position: relative;
+    display: inline-block;
+}
+
+.produto-img img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.price {
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    color: #000000;
+    border: #000000 solid 1px;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.produto-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.produto-buttons button {
+    padding: 5px 15px;
+    font-weight: bold;
+    border-radius: 15px;
+    background-color: #ffffff;
+    /* Green */
+    border: #000000 solid 1px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin-left: 2px;
+    margin-right: 2px;
+    cursor: pointer;
+}
+
+.produto-buttons span {
+    width: 20%;
+    text-align: center;
+    background-color: white;
+    border-radius: 20px;
+    border: #000000 solid 1px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#confirmar {
+    position: fixed;
+    bottom: 25px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border: #000000 solid 1px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 25px;
+}
+
+#confirmar svg {
+    height: 100%;
+    width: 100%;
+    color: #be1712;
+}
+
+nav {
+    background-color: #fea500;
+    color: #000000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 20px;
+}
+
+nav ul li:first-child {
+    margin-left: 0;
+}
+
+nav a {
+    color: #000000;
+    text-decoration: none;
+}
+
+nav .logo {
+    display: flex;
+    align-items: center;
+}
+
+nav .logo a {
+    display: flex;
+}
+
+nav .logo h1 {
+    padding: 2px 0;
+}
+
+nav .logo img {
+    max-height: 75px;
+    margin-right: 10px;
+}
