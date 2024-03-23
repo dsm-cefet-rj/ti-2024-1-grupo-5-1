@@ -4,7 +4,7 @@ import './footer.css';
 function Footer() {
   return (
     <>
-      <footer className="d-flex flex-wrap justify-content-center align-items-center pt-2 fixed-bottom">
+      <footer className="footer mt-auto py-3 d-flex flex-wrap justify-content-center align-items-center">
         <p className="text-center text-body-secondary">Feito com ❤️ por Chapa Quente</p>
       </footer>
     </>
