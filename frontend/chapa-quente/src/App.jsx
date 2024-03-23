@@ -1,7 +1,6 @@
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Produtos from './components/Produtos'
-import Login from './components/Login'
 
 import "./App.css"
 
@@ -10,6 +9,7 @@ const App = () => {
         <>
             <div className='App'>
                 <Header />
+                <Produtos />
                 <Footer />
             </div>
         </>
