@@ -1,5 +1,6 @@
 import style from "./Card.module.css"
-import hamburguer_img from "../../../assets/img/hamburguer.png"
+import "bootstrap-icons/font/bootstrap-icons.css";
+
 
 const Card = ({ item }) => {
     return (
@@ -10,8 +11,10 @@ const Card = ({ item }) => {
                     <h5 className={`card-title ${style.cardSize}`}>{item.nome}</h5>
                     <p className={`card-text ${style.cropText}`}>{item.desc}</p>
                 </div>
-                <div className="card-footer">
-                    <a href="#" className="btn btn-primary">Add</a>
+                <div className="card-footer d-flex justify-content-around">
+                    <button className="btn btn-primary">-</button>
+                    <button className="btn btn-primary">+</button>
+                    <div className="btn btn-primary">{`R$ ${item.price}`}</div>
                 </div>
             </div>
         </>
