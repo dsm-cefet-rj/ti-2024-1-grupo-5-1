@@ -6,7 +6,7 @@ import ActionButton from './ActionButton';
 import { hamburguersData } from './hamburguersData';
 
 
-const Produtos = () => {
+const Produtos = ({quantity, handleAddCarrinho, handleRemoveCarrinho }) => {
     const [produtos, setProdutos] = useState(hamburguersData)
 
     return (
@@ -16,12 +16,16 @@ const Produtos = () => {
                 <div className='row row-cols-auto justify-content-center'>
                     {
                         produtos.map(produto => (
-                            <div key={produto.id} className='col mb-3'><Card item={produto}/></div>
+                            <div key={produto.id} className='col mb-3'>
+                                <Card item={produto} 
+                                handleAddCarrinho={handleAddCarrinho}
+                                handleRemoveCarrinho={handleRemoveCarrinho}/>
+                            </div>
                         ))
                     }
                 </div>
             </div>
-            <ActionButton />
+            <ActionButton quantity={quantity}/>
         </>
     )
 }

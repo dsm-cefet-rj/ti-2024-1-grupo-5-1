@@ -2,7 +2,7 @@ import style from "./Card.module.css"
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 
-const Card = ({ item }) => {
+const Card = ({ item , handleAddCarrinho, handleRemoveCarrinho}) => {
     return (
         <>
             <div className={`card h-100 ${style.cardSize}`}>
@@ -12,8 +12,8 @@ const Card = ({ item }) => {
                     <p className={`card-text ${style.cropText}`}>{item.desc}</p>
                 </div>
                 <div className="card-footer d-flex justify-content-around">
-                    <button className="btn btn-primary">-</button>
-                    <button className="btn btn-primary">+</button>
+                    <button className="btn btn-primary" onClick={() => handleRemoveCarrinho(item)}>-</button>
+                    <button className="btn btn-primary" onClick={() => handleAddCarrinho(item)}>+</button>
                     <div className="btn btn-primary">{`R$ ${item.price}`}</div>
                 </div>
             </div>
