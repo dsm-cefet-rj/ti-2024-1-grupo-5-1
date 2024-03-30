@@ -1,7 +1,7 @@
 import Header from './components/Header'
 import Footer from './components/Footer'
-import Produtos from './components/Produtos'
-import React, {useState} from 'react'
+import Router from './components/Router'
+
 import "./App.css"
 
 const App = () => {
@@ -28,7 +28,7 @@ const App = () => {
         <>
             <div className='App'>
                 <Header />
-                <Produtos quantity={quantity} handleAddCarrinho = {handleAddCarrinho} handleRemoveCarrinho = {handleRemoveCarrinho}/>
+                <Router/>
                 <Footer />
             </div>
         </>
