@@ -1,0 +1,34 @@
+.cardSize {
+    width: 18rem;
+}
+
+.cardImgSize {
+    height: 200px;
+    max-height: 200px;
+}
+
+.cropText {
+    -webkit-line-clamp: 3;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+
+.buttonTextSize {
+    font-size: 20px;
+    vertical-align: "center"
+}
+
+.priceTextSize {
+    font-size: 15px;
+}
+
+.flexColumnGap{
+    column-gap: 5px;
+}
+
+button {
+    height: 100%;
+    width: 20%;
+}
