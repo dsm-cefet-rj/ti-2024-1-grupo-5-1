@@ -1,9 +1,8 @@
 import style from "./Card.module.css"
 import "bootstrap-icons/font/bootstrap-icons.css";
 
-import { addItem, removeItem } from "../../../redux/carrinhoSlice";
+import { addItem, removeItem } from "../../../redux/reducers/carrinhoSlice";
 import { useDispatch } from "react-redux";
-
 
 const Card = ({ item }) => {
     const dispatch = useDispatch()

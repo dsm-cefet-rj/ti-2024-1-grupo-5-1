@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
+import React from 'react';
+import { useSelector } from "react-redux";
 
-import style from "./Produtos.module.css"
 import Card from "./Card"
 import ActionButton from './ActionButton';
-import { hamburguersData } from './hamburguersData';
 
+import 'bootstrap/dist/css/bootstrap.css';
+import style from "./Produtos.module.css"
+
+import { fetchProdutos } from '../../redux/reducers/produtosSlice';
+import store from '../../redux/store';
+
+store.dispatch(fetchProdutos())
 
 const Produtos = () => {
-    const [produtos, setProdutos] = useState(hamburguersData)
-
+    const produtos = useSelector(state => state.produtos.itens)
     return (
         <>
             <div className={`container ${style.topSpace}`}>
