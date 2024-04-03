@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
+
 import style from "./Produtos.module.css"
 import Card from "./Card"
 import ActionButton from './ActionButton';
 import { hamburguersData } from './hamburguersData';
 
 
-const Produtos = ({quantity, handleAddCarrinho, handleRemoveCarrinho }) => {
+const Produtos = () => {
     const [produtos, setProdutos] = useState(hamburguersData)
 
     return (
@@ -17,15 +18,13 @@ const Produtos = ({quantity, handleAddCarrinho, handleRemoveCarrinho }) => {
                     {
                         produtos.map(produto => (
                             <div key={produto.id} className='col mb-3'>
-                                <Card item={produto} 
-                                handleAddCarrinho={handleAddCarrinho}
-                                handleRemoveCarrinho={handleRemoveCarrinho}/>
+                                <Card item={produto}/>
                             </div>
                         ))
                     }
                 </div>
             </div>
-            <ActionButton quantity={quantity}/>
+            <ActionButton/>
         </>
     )
 }
