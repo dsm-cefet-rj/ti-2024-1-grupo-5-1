@@ -8,11 +8,9 @@ import "./App.css"
 const App = () => {
     return (
         <>
-            <div className='App'>
-                <Header />
-                <Router/>
-                <Footer />
-            </div>
+            <Header />
+            <Router/>
+            <Footer />
         </>
     )
 }
