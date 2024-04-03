@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client'
-import Header from './components/Header'
-import Footer from './components/Footer'
-import Login from './components/Login'
-import Pedido from './components/Pedido'
-import Produtos from './components/Produtos'
-import Router from './components/Router';
+import App from './App'
+
+import { Provider } from 'react-redux'
+import store from './redux/store'
+
+
 import './index.css'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Header />
-    <Router />
-    <Footer />
-  </React.StrictMode>
+	<React.StrictMode>
+		<Provider store={store}>
+			<App />
+		</Provider>
+	</React.StrictMode>
 )

@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
-import style from "./Produtos.module.css"
+import React from 'react';
+import { useSelector } from "react-redux";
+
 import Card from "./Card"
 import ActionButton from './ActionButton';
-import { hamburguersData } from './hamburguersData';
 
+import 'bootstrap/dist/css/bootstrap.css';
+import style from "./Produtos.module.css"
 
-const Produtos = ({quantity, handleAddCarrinho, handleRemoveCarrinho }) => {
-    const [produtos, setProdutos] = useState(hamburguersData)
+import { fetchProdutos } from '../../redux/reducers/produtosSlice';
+import store from '../../redux/store';
 
+store.dispatch(fetchProdutos())
+
+const Produtos = () => {
+    const produtos = useSelector(state => state.produtos.itens)
     return (
         <>
             <div className={`container ${style.topSpace}`}>
@@ -17,15 +22,13 @@ const Produtos = ({quantity, handleAddCarrinho, handleRemoveCarrinho }) => {
                     {
                         produtos.map(produto => (
                             <div key={produto.id} className='col mb-3'>
-                                <Card item={produto} 
-                                handleAddCarrinho={handleAddCarrinho}
-                                handleRemoveCarrinho={handleRemoveCarrinho}/>
+                                <Card item={produto}/>
                             </div>
                         ))
                     }
                 </div>
             </div>
-            <ActionButton quantity={quantity}/>
+            <ActionButton/>
         </>
     )
 }
