@@ -8,10 +8,14 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link } from 'react-router-dom/';
+import { useSelector } from "react-redux";
 
-const TabelaPedidos = ({ pedidos }) => {
 
-    const [exibirCaixaDeTexto, setExibirCaixaDeTexto] = useState(false);
+const Pedidos = () => {
+
+  const pedidos = useSelector(state => state.carrinho.itens)
+
+  const [exibirCaixaDeTexto, setExibirCaixaDeTexto] = useState(false);
   const [quantidadeTroco, setQuantidadeTroco] = useState('');
   const [quantidades, setQuantidades] = useState({});
 
@@ -73,7 +77,7 @@ const handleRemoveQuantity = (id) => {
   return (
     <div>
     <p>Checkout de Pedidos</p>
-    <Table striped bordered hover className='tabela'>
+    <Table striped bordered hover variant='dark' className='tabela'>
       <thead>
         <tr>
           <th>ID Produto</th>
@@ -107,9 +111,9 @@ const handleRemoveQuantity = (id) => {
                     ))}
       </tbody>
     </Table>
-            <p>Total: R$ {calcularPrecoTotal()}</p>
+            <p className='precoTotal'>Total: R$ {calcularPrecoTotal()}</p>
     <div className='formaPagamento'>
-    <h2>Forma de Pagamento</h2>
+    <h2 className='textoPagamento'>Forma de Pagamento</h2>
             <form action="#"/>
                 <label for="opcao1"/>
                 <input type="radio" id="opcao1" name="formaDePagamento" value="Pix" onChange={handleChangeFormaPagamento}/>
@@ -149,4 +153,4 @@ const handleRemoveQuantity = (id) => {
   );
 }
 
-export default TabelaPedidos;
+export default Pedidos;
