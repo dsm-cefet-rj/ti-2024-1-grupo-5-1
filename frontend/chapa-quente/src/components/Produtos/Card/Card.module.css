@@ -27,8 +27,3 @@
 .flexColumnGap{
     column-gap: 5px;
 }
-
-button {
-    height: 100%;
-    width: 20%;
-}
