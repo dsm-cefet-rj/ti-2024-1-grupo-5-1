@@ -1,0 +1,15 @@
+    article {
+        background-color: orange;
+        width: 50%;
+        height: 40%;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 3% 0 3%;
+    }
+    
+    label {
+        font-weight: bold;
+    }
+    
