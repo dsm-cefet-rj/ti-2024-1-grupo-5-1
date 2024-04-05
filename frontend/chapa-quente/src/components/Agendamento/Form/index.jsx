@@ -7,7 +7,7 @@ function Form() {
     
 <form>
   <div>
-    <label for="exampleInputEmail1" >Email:</label>
+    <label for="exampleInputEmail1" >Nome:</label>
     <input type="email" class="form-control" id="exampleInputEmail1" />
   </div>
 
