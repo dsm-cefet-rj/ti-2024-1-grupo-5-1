@@ -5,7 +5,7 @@ import './header.css'
 function Header() {
     return (
         <>
-            <nav className="navbar navbar-expand-lg fixed-top">
+            <nav className="navbar navbar-expand-lg sticky-top">
                 <div className="container-fluid">
                     <a class="navbar-brand" href="#">
                         <img src={logo} alt="Logo" width="30" height="30" class="d-inline-block align-text-top"></img>
