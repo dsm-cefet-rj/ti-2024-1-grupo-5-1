@@ -70,5 +70,19 @@
       "desc": "Hamburguer de quinoa com abobrinha grelhada, tomate seco e maionese de ervas",
       "price": "10.00"
     }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "email": "adm@c.q",
+      "password": "1234",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "email": "user@c.q",
+      "password": "1234",
+      "role": "usuario"
+    }
   ]
 }

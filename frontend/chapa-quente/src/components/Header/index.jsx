@@ -1,11 +1,18 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import logo from '/src/assets/img/icon.png'
+import { logout } from '../../redux/reducers/authSlice';
 import './header.css'
 
 function Header() {
+
+    function handleLogout() {
+        logout();
+        window.location.pathname = '/login';
+    }
+
     return (
         <>
-            <nav className="navbar navbar-expand-lg fixed-top">
+            <nav className="navbar navbar-expand-lg sticky-top">
                 <div className="container-fluid">
                     <a class="navbar-brand" href="#">
                         <img src={logo} alt="Logo" width="30" height="30" class="d-inline-block align-text-top"></img>
@@ -19,6 +26,7 @@ function Header() {
                         <a className="nav-link active" aria-current="page" href="#">Página Inicial</a>
                         <a className="nav-link" href="#">Sobre</a>
                         <a className="nav-link" href="#">Contato</a>
+                        <a className="nav-link" href="#" onClick={handleLogout}>Log Out</a>
                     </div>
                     </div>
                 </div>
