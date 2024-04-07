@@ -1,20 +1,22 @@
-import 'bootstrap/dist/css/bootstrap.css';
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import logo from '/src/assets/img/icon.png'
-import { logout } from '../../redux/reducers/authSlice';
 import './header.css'
 
 function Header() {
 
-    function handleLogout() {
-        logout();
-        window.location.pathname = '/login';
-    }
+    const [state, setState] = useState(false);
+
+    const authState = useSelector((state) => state.auth);
+    useEffect(() => {
+        setState(authState.isLoggedIn);
+    }, [authState.isLoggedIn]);
 
     return (
         <>
             <nav className="navbar navbar-expand-lg sticky-top">
                 <div className="container-fluid">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="/">
                         <img src={logo} alt="Logo" width="30" height="30" class="d-inline-block align-text-top"></img>
                         Chapa Quente
                     </a>
@@ -23,10 +25,21 @@ function Header() {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav ">
-                        <a className="nav-link active" aria-current="page" href="#">Página Inicial</a>
-                        <a className="nav-link" href="#">Sobre</a>
-                        <a className="nav-link" href="#">Contato</a>
-                        <a className="nav-link" href="#" onClick={handleLogout}>Log Out</a>
+                        <a className="nav-link active" aria-current="page" href="/">Página Inicial</a>
+                        {state ?
+                            (
+                                <>
+                                    <a className="nav-link" href="/produtos">Menu</a>
+                                    <a className="nav-link" href="/pedidos">Pedidos</a>
+                                    <a className="nav-link" href="/logout">Logout</a>
+                                </>
+                            ):(
+                                <>
+                                    <a className="nav-link" href="/login">Login</a>
+                                    <a className="nav-link" href="/cadastro">Cadastro</a>
+                                </>
+                            )
+                        }
                     </div>
                     </div>
                 </div>

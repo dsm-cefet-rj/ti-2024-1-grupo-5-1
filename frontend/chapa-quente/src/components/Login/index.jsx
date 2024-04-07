@@ -1,89 +1,87 @@
-import 'bootstrap/dist/css/bootstrap.css';
-import './login.css';
-import { useEffect, useState } from 'react';
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
-import { login, reset } from '../../redux/reducers/authSlice';
-import { Alert } from 'react-bootstrap';
+import { login } from '../../redux/reducers/authSlice';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { Button, Form, Alert } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [showPassword, setShowPassword] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('');
-
-    const handlePasswordToggle = (e) => {
-        e.preventDefault();
-        setShowPassword((state) => !state);
-    }
+    const [displayPassword, setDisplayPassword] = useState(false);
+    const [error, setError] = useState({ type: '', message: ''});
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const { user, status } = useSelector(state => state.auth);
-    console.log(user, status);
-
-    useEffect(() => {
-        if(status === 'success') {
-            navigate('/produtos');
-        }
-
-        if(status === 'failed') {
-            setErrorMessage('Usuário ou senha incorretos.');
-        }
-
-        dispatch(reset())
-    }, [user, status, navigate, dispatch]);
-
-    const onSubmit = async(e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
         
         try {
-            await dispatch(login( { email, password } ));
+            dispatch(login({ email, password }));
         } catch (error) {
-            console.log('Erro ao efetuar login: ', error.message);
+            console.error(error);
         }
-    }
+    };
 
-        return (
+    const { isLoggedIn, status } = useSelector((state) => state.auth);
+
+    useEffect(() => {
+        if (isLoggedIn) {
+            navigate('/produtos');
+        }
+
+        if (status === 'failed') {
+            setError({ type: 'danger', message: 'Usuário ou senha inválidos!'})
+            setTimeout(() => {
+                setError({ type: '', message: ''});
+            }, 5000);
+        }
+    }, [isLoggedIn, navigate, status]);
+
+    return (
         <>
             <div className="login-form d-flex justify-content-center align-items-center">
-                <form className="p-4 p-md-5 border rounded-3 bg-body-tertiary" onSubmit={onSubmit}>
-                    {errorMessage && <Alert key="danger" variant="danger">{errorMessage}</Alert>}
-                    <div className="mb-3">
-                        <label htmlFor="input-email" className="form-label">E-mail</label>
-                        <input 
+                <Form className="p-4 p-md-5 border rounded-3 bg-body-tertiary" onSubmit={handleSubmit}>
+                <legend>Login</legend>
+                {error && <Alert key={error.type} variant={error.type}> {error.message} </Alert>}
+                    <Form.Group className="mb-3" controlId="email">
+                        <Form.Label>E-mail</Form.Label>
+                        <Form.Control
                             type="email"
-                            className="form-control"
-                            id="email"
                             value={email}
-                            onChange={e => setEmail(e.target.value)}>    
-                        </input>
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="input-password" className="form-label">Senha</label>
-                        <input
-                            type={showPassword ? 'text' : 'password'}
-                            className="form-control"
-                            id="password"
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder='Digite seu e-mail'
+                        />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="password">
+                        <Form.Label>Senha</Form.Label>
+                        <Form.Control
+                            type={displayPassword ? 'text' : 'password'}
                             value={password}
-                            onChange={e => setPassword(e.target.value)}>
-                        </input>
-                    </div>
-                    <div className="mb-3 form-check">
-                        <input
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder='Digite sua senha'
+                        />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3 form-check">
+                        <Form.Check
                             type="checkbox"
-                            className="form-check-input"
                             id="show-password"
-                            onChange={handlePasswordToggle}>                            
-                        </input>
-                        <label className="form-check-label" htmlFor="exampleCheck1">Mostrar senha</label>
-                    </div>
-                    <button type="submit" className="btn btn-primary">Acessar</button>
-                </form>
+                            label="Mostrar senha"
+                            checked={displayPassword}
+                            onChange={(e) => setDisplayPassword(e.target.checked)}
+                        />
+                    </Form.Group>
+
+                    <Button variant="primary" type="submit">
+                        Acessar
+                    </Button>
+                </Form>
             </div>
         </>
-    )
-}
+    );
+};
 
 export default Login;

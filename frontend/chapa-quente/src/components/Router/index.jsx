@@ -1,9 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import React, { useState } from 'react';
+
 import Cadastro from '../Cadastro'
-import Login from '../Login'
 import Produtos from '../Produtos'
 import Pedidos from '../Pedido'
+import Logout from '../Logout'
+import Login from '../Login'
+import Home from '../Home'
 
 const Router = () => {
     return (
@@ -11,10 +13,12 @@ const Router = () => {
             <BrowserRouter>
                 <Routes>
                     {/* Adicione aqui as rotas Ex: <Route path='produtos' element={<Produtos/>} />*/}
-                    <Route path='/cadastro' element={<Cadastro/>} />
+                    <Route path='/' element={<Home/>} />
                     <Route path='/login' element={<Login/>} />
-                    <Route path='/produtos' element={<Produtos/>} />
+                    <Route path='/logout' element={<Logout/>} />
                     <Route path='/pedidos' element={<Pedidos/>} />
+                    <Route path='/cadastro' element={<Cadastro/>} />
+                    <Route path='/produtos' element={<Produtos/>} />
                 </Routes>
             </BrowserRouter>
         </>

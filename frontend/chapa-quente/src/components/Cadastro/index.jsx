@@ -1,57 +1,89 @@
-import 'bootstrap/dist/css/bootstrap.css';
-import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Button, Form, Alert } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
+import { register } from '../../redux/reducers/authSlice';
 
 function Cadastro() {
     const [email, setEmail] = useState('');
-    const [senha, setSenha] = useState('');
+    const [password, setPassword] = useState('');
+    const [displayPassword, setDisplayPassword] = useState(false);
+    const [error, setError] = useState({ type: '', message: '' });
 
-    const [mostarSenha, setMostrarSenha] = useState(false);
-    
-    function handleSubmit(event) {
-        event.preventDefault();
-        console.log(email, senha);
-    }
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const handleSubmit = async(e) => {
+        e.preventDefault();
+
+        try {
+            dispatch(register({ email, password }));
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const { isLoggedIn, status } = useSelector((state) => state.auth);
+
+    useEffect(() => {
+        if (isLoggedIn) {
+            navigate('/landing');
+        }
+
+        if (status === 'success' && isLoggedIn === false) {
+            setError({ type: 'success', message: 'Usuário registrado com sucesso! Redirecionando a página de login...' })
+            setTimeout(() => {
+                navigate('/login');
+            }, 7000);
+        }
+
+        if (status === 'failed') {
+            setError({ type: 'danger', message: 'Erro ao registrar usuário!' });
+        }
+    }, [isLoggedIn, navigate, status]);
 
     return (
         <>
             <div className="login-form d-flex justify-content-center align-items-center">
-                <form className="p-4 p-md-5 border rounded-3 bg-body-tertiary" onSubmit={handleSubmit}>
-                    <div className="mb-3">
-                        <label htmlFor="input-email" className="form-label">E-mail</label>
-                        <input 
+                <Form className="p-4 p-md-5 border rounded-3 bg-body-tertiary" onSubmit={handleSubmit}>
+                <legend>Cadastro</legend>
+                {error && <Alert key={error.type} variant={error.type}> {error.message} </Alert>}
+                    <Form.Group className="mb-3" controlId="email">
+                        <Form.Label>E-mail</Form.Label>
+                        <Form.Control
                             type="email"
-                            className="form-control"
-                            id="input-email"
-                            aria-describedby="emailHelp"
                             value={email}
-                            onChange={e => setEmail(e.target.value)}>    
-                        </input>
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="input-password" className="form-label">Senha</label>
-                        <input
-                            type={mostarSenha ? 'text' : 'password'}
-                            className="form-control"
-                            id="input-password"
-                            value={senha}
-                            onChange={e => setSenha(e.target.value)}>
-                        </input>
-                    </div>
-                    <div className="mb-3 form-check">
-                        <input
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="password">
+                        <Form.Label>Senha</Form.Label>
+                        <Form.Control
+                            type={displayPassword ? 'text' : 'password'}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3 form-check">
+                        <Form.Check
                             type="checkbox"
-                            className="form-check-input"
-                            id="exampleCheck1"
-                            onChange={() => setMostrarSenha(!mostarSenha)}>                            
-                        </input>
-                        <label className="form-check-label" htmlFor="exampleCheck1">Mostrar senha</label>
-                    </div>
-                    <button type="submit" className="btn btn-primary">Fazer Cadastro</button>
-                </form>
+                            id="show-password"
+                            label="Mostrar senha"
+                            checked={displayPassword}
+                            onChange={(e) => setDisplayPassword(e.target.checked)}
+                        />
+                    </Form.Group>
+
+                    <Button variant="primary" type="submit">
+                        Acessar
+                    </Button>
+                </Form>
             </div>
         </>
-    )
-}
+    );
+};
 
 export default Cadastro;
