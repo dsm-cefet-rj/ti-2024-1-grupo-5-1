@@ -1,7 +1,7 @@
     article {
         background-color: orange;
-        width: 50%;
-        height: 40%;
+        width: 400px;
+        height: 420px;
         border-radius: 15px;
         display: flex;
         flex-direction: column;
