@@ -7,19 +7,28 @@ export const slice = createSlice({
     },
     reducers: {
         addItem: (state, action) => {
-            state.itens = [...state.itens, action.payload]
+            const { id } = action.payload;
+            const itemExistente = state.itens.find(item => item.id === id);
+            if (itemExistente) {
+                itemExistente.quantity += 1;
+            } else {
+                state.itens.push({ ...action.payload, quantity: 1 });
+            }
         },
         removeItem: (state, action) => {
-            if (state.itens.length > 0) {
-                var newCarrinho = state.itens
-                const indexs = state.itens.map((itemCarrinho) => itemCarrinho.id)
-                const indexToRemove = indexs.lastIndexOf(action.payload.id)
-                newCarrinho.splice(indexToRemove, 1)
-                state.itens = newCarrinho
+            const { id } = action.payload;
+            const index = state.itens.findIndex(item => item.id === id);
+            if (index !== -1) {
+                if (state.itens[index].quantity > 1) {
+                    state.itens[index].quantity -= 1;
+                } else {
+                    state.itens.splice(index, 1);
+                }
             }
+           
         }
     }
-})
+});
 
-export const { addItem, removeItem } = slice.actions
-export default slice.reducer
+export const { addItem, removeItem } = slice.actions;
+export default slice.reducer;

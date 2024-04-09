@@ -9,6 +9,7 @@ const Router = () => {
             <BrowserRouter>
                 <Routes>
                     {/* Adicione aqui as rotas Ex: <Route path='produtos' element={<Produtos/>} />*/}
+                    {/* <Route path='/agendamento' element={<Agendamento/>} /> */}
                     <Route path='/produtos' element={<Produtos/>} />
                     <Route path='/pedidos' element={<Pedidos/>} />
                 </Routes>
