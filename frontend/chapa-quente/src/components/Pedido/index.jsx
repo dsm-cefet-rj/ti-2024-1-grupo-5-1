@@ -115,18 +115,18 @@ const handleRemoveQuantity = (id) => {
     <div className='formaPagamento'>
     <h2 className='textoPagamento'>Forma de Pagamento</h2>
             <form action="#"/>
-                <label for="opcao1"/>
+                <label htmlFor="opcao1"/>
                 <input type="radio" id="opcao1" name="formaDePagamento" value="Pix" onChange={handleChangeFormaPagamento}/>
                 <Icon.UpcScan width={35} height={25}/> Pix
                 <br/>
                 
-                <label for="opcao2"/>
+                <label htmlFor="opcao2"/>
                 <input type="radio" id="opcao2" name="formaDePagamento" value="Cartao" onChange={handleChangeFormaPagamento}/>
                 <Icon.CreditCard width={35} height={25}/> Cartão (crédito ou débito)
                 <br/>
                 
 
-                <label for="opcao3"/>
+                <label htmlFor="opcao3"/>
                 <input type="radio" id="opcao3" name="formaDePagamento" value="Dinheiro" onChange={handleChangeFormaPagamento}/>
                 <Icon.CashCoin width={35} height={25}/> Dinheiro
                 <br/>
