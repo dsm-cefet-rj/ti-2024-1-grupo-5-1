@@ -7,8 +7,7 @@ import ActionButton from './ActionButton';
 import 'bootstrap/dist/css/bootstrap.css';
 import style from "./Produtos.module.css"
 
-import { fetchProdutos } from '../../redux/reducers/produtosSlice';
-import { selectAllProdutos } from '../../redux/reducers/produtosSlice';
+import { selectAllProdutos , fetchProdutos , selectProduto } from '../../redux/reducers/produtosSlice';
 
 const Produtos = () => {
     const dispatch = useDispatch()
@@ -20,6 +19,8 @@ const Produtos = () => {
             dispatch(fetchProdutos())
         }
     }, [produtosStatus, dispatch])
+
+    // console.log(useSelector(((state) => selectProduto(state, 1))))
 
     return (
         <>

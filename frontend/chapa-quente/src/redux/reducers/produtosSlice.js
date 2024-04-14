@@ -21,6 +21,16 @@ export const addProduto = createAsyncThunk('produtos/addProduto', async (produto
     }
 });
 
+export const removeProduto = createAsyncThunk('produtos/removeProduto', async (produtoId) => {
+    try {
+        const response = await axios.delete(`http://localhost:3001/produtos/${produtoId}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error deleting produto:', error);
+        throw error;
+    }
+})
+
 const produtosAdapter = createEntityAdapter();
 
 export const slice = createSlice({
