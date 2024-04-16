@@ -1,52 +1,58 @@
-import { useState, useEffect } from 'react';
+import { Nav, Navbar, NavDropdown, Container, Button } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
-import logo from '/src/assets/img/icon.png'
-import './header.css'
+
+import icon from '../../assets/img/icon.png';
+import { useEffect, useState } from 'react';
 
 function Header() {
-
-    const [state, setState] = useState(false);
-
-    const authState = useSelector((state) => state.auth);
+    const [user, setUser] = useState({});
+    const { isLoggedIn } = useSelector((state) => state.auth);
     useEffect(() => {
-        setState(authState.isLoggedIn);
-    }, [authState.isLoggedIn]);
+        const user = localStorage.getItem('user');
+        if (user && isLoggedIn) {
+            setUser(JSON.parse(user));
+        }
+    });
 
-    return (
-        <>
-            <nav className="navbar navbar-expand-lg sticky-top">
-                <div className="container-fluid">
-                    <a class="navbar-brand" href="/">
-                        <img src={logo} alt="Logo" width="30" height="30" class="d-inline-block align-text-top"></img>
-                        Chapa Quente
-                    </a>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div className="navbar-nav ">
-                        <a className="nav-link active" aria-current="page" href="/">Página Inicial</a>
-                        {state ?
-                            (
-                                <>
-                                    <a className="nav-link" href="/produtos">Menu</a>
-                                    <a className="nav-link" href="/pedidos">Pedidos</a>
-                                    <a className="nav-link" href="/logout">Logout</a>
-                                </>
-                            ):(
-                                <>
-                                    <a className="nav-link" href="/login">Login</a>
-                                    <a className="nav-link" href="/cadastro">Cadastro</a>
-                                </>
-                            )
-                        }
-                    </div>
-                    </div>
-                </div>
-            </nav>
-        </>
-    )
+
+  return (
+    <>
+      <Navbar className="bg-body-tertiary" bg="primary" data-bs-theme="dark">
+        <Container>
+            <Navbar.Brand href="/">
+                <img src={icon} alt="Chapa Quente" width="30" height="30" className="d-inline-block align-top" />
+                <span className="ms-2">Chapa Quente</span>
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto">
+                <Nav.Link href="/produtos">Cardápio</Nav.Link>
+                <Nav.Link href="/contato">Contato</Nav.Link>
+            </Nav>
+            {isLoggedIn ? (
+                <>
+                    <Nav>
+                        <NavDropdown title={`Olá, ${user.name}!`} id="basic-nav-dropdown">
+                            <NavDropdown.Item href="/pedidos">Pedidos</NavDropdown.Item>
+                            <NavDropdown.Item href="/enderecos">Agendamentos</NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item href="/logout">Sair</NavDropdown.Item>
+                        </NavDropdown>
+                    </Nav>
+                </>
+            ):(
+                <>
+                    <Nav>
+                        <Nav.Link href="/cadastro">Cadastro</Nav.Link>
+                        <Button href="/login" variant="outline-light" className="me-2">Login</Button>
+                    </Nav>
+                </> 
+            )}
+            </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </>
+  );
 }
-
 
 export default Header;

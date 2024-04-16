@@ -1,11 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import Inicio from '../Inicio'
+
 import Cadastro from '../Cadastro'
 import Produtos from '../Produtos'
 import Pedidos from '../Pedido'
 import Logout from '../Logout'
 import Login from '../Login'
-import Home from '../Home'
 
 const Router = () => {
     return (
@@ -13,7 +14,7 @@ const Router = () => {
             <BrowserRouter>
                 <Routes>
                     {/* Adicione aqui as rotas Ex: <Route path='produtos' element={<Produtos/>} />*/}
-                    <Route path='/' element={<Home/>} />
+                    <Route path='/' element={<Inicio/>} />
                     <Route path='/login' element={<Login/>} />
                     <Route path='/logout' element={<Logout/>} />
                     <Route path='/pedidos' element={<Pedidos/>} />

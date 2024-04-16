@@ -73,33 +73,32 @@
   ],
   "users": [
     {
-      "email": "a@c.q",
-      "password": "1234",
-      "role": "admin",
-      "id": "9510"
+      "id": "1",
+      "name": "Admin",
+      "email": "admin@example.com",
+      "password": "password",
+      "role": "admin"
     },
     {
-      "email": "u@c.q",
-      "password": "1234",
-      "role": "usuario",
-      "id": "d936"
-    },
-    {
-      "id": "c8cc",
-      "email": "adm@c.g",
-      "password": "adm@c.g",
+      "id": "2",
+      "name": "User",
+      "email": "user@example.com",
+      "password": "password",
       "role": "user"
     },
     {
-      "id": "d8a7",
-      "email": "adm@c.g",
-      "password": "adm@c.g",
-      "role": "user"
-    },
-    {
-      "id": "284c",
+      "id": "e45b",
+      "name": "Juan",
       "email": "a@b.c",
-      "password": "a@b.c",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "88f8",
+      "name": "Thomas",
+      "surname": "Turbando",
+      "email": "thomas@turbando.com",
+      "password": "!NS8}v;d~huB^>V",
       "role": "user"
     }
   ]

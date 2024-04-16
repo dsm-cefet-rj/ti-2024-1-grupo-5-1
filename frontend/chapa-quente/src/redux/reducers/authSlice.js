@@ -10,30 +10,30 @@ const initialState = userAdapter.getInitialState({
     status: null,
 });
 
-export const register = createAsyncThunk('auth/register', async ({ email, password }) => {
+export const register = createAsyncThunk('auth/register', async ({ email, password }, { rejectWithValue }) => {
         try {
             const response = await AuthService.register(email, password);
             return response.data;
         } catch (error) {
             const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
-            return thunkAPI.rejectWithValue({ message });
+            return rejectWithValue({ message });
         }
     }
 );
 
-export const login = createAsyncThunk('auth/login', async ({ email, password }) => {
-        try {
-            const response = await AuthService.login(email, password);
-            return { user: response.data };
-        } catch (error) {
-            const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
-            return thunkAPI.rejectWithValue({ message });
-        }
+export const login = createAsyncThunk('auth/login', async ({ email, password }, { rejectWithValue }) => {
+    try {
+        const response = await AuthService.login(email, password);
+        return { user: response.data };
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+        return rejectWithValue({ message });
     }
+}
 );
 
 export const logout = createAsyncThunk('auth/logout', async () => {
-         await AuthService.logout();
+        AuthService.logout();
     }
 );
 

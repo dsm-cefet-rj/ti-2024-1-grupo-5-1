@@ -1,21 +1,30 @@
-import { login } from '../../redux/reducers/authSlice';
+import { Form, FloatingLabel, Button } from 'react-bootstrap';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { Button, Form, Alert } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
+
+import { login } from '../../redux/reducers/authSlice';
+
 
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [displayPassword, setDisplayPassword] = useState(false);
-    const [error, setError] = useState({ type: '', message: ''});
+    const [validated, setValidated] = useState(false);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const handleSubmit = async(e) => {
         e.preventDefault();
+
+       const form = e.currentTarget;
+       if (form.checkValidity() === false) {
+            e.stopPropagation();
+            setValidated(true);
+            return;
+       }
         
         try {
             dispatch(login({ email, password }));
@@ -30,54 +39,37 @@ function Login() {
         if (isLoggedIn) {
             navigate('/produtos');
         }
-
         if (status === 'failed') {
-            setError({ type: 'danger', message: 'Usuário ou senha inválidos!'})
-            setTimeout(() => {
-                setError({ type: '', message: ''});
-            }, 5000);
+            toast('Usuário ou senha incorretos!', { type: 'error' });
+        } else if (status === 'success') {
+            toast('Login realizado com sucesso!', { type: 'success' });
         }
     }, [isLoggedIn, navigate, status]);
 
     return (
         <>
-            <div className="login-form d-flex justify-content-center align-items-center">
-                <Form className="p-4 p-md-5 border rounded-3 bg-body-tertiary" onSubmit={handleSubmit}>
-                <legend>Login</legend>
-                {error && <Alert key={error.type} variant={error.type}> {error.message} </Alert>}
-                    <Form.Group className="mb-3" controlId="email">
-                        <Form.Label>E-mail</Form.Label>
-                        <Form.Control
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder='Digite seu e-mail'
-                        />
+            <div style={{ maxWidth: '400px', margin: '0 auto', marginTop: '90px' }}>
+                <h2 className="text-center mb-4" style={{ marginBottom: '20px' }}>Bem-vindo ao sabor que vai fazer o seu dia!</h2>
+                <Form onSubmit={handleSubmit} noValidate validated={validated}>
+
+                    <Form.Group className="mb-4" controlId="formEmail">
+                        <FloatingLabel controlId="floatingInput" label="E-mail" className="mb-3">
+                            <Form.Control type="email" placeholder="Insira seu e-mail" value={email} onChange={(e) => setEmail(e.target.value)} required/>
+                            <Form.Control.Feedback type="invalid">Insira um e-mail válido.</Form.Control.Feedback>
+                        </FloatingLabel>
                     </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="password">
-                        <Form.Label>Senha</Form.Label>
-                        <Form.Control
-                            type={displayPassword ? 'text' : 'password'}
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            placeholder='Digite sua senha'
-                        />
+                    <Form.Group className="mb-4" controlId="formPassword">
+                        <FloatingLabel controlId="floatingInput" label="Senha" className="mb-3">
+                            <Form.Control type="password" placeholder="Insira sua senha" value={password} onChange={(e) => setPassword(e.target.value)} required/>
+                            <Form.Control.Feedback type="invalid">Insira uma senha.</Form.Control.Feedback>
+                        </FloatingLabel>
                     </Form.Group>
 
-                    <Form.Group className="mb-3 form-check">
-                        <Form.Check
-                            type="checkbox"
-                            id="show-password"
-                            label="Mostrar senha"
-                            checked={displayPassword}
-                            onChange={(e) => setDisplayPassword(e.target.checked)}
-                        />
-                    </Form.Group>
-
-                    <Button variant="primary" type="submit">
-                        Acessar
-                    </Button>
+                    <div className="text-center">
+                        <Button variant="primary" type="submit" className="btn-block mb-4">Acessar</Button>
+                        <p>Não possui conta? <a href="/register">Cadastre-se</a>!</p>
+                    </div>
                 </Form>
             </div>
         </>
