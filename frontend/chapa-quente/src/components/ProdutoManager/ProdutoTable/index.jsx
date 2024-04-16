@@ -1,11 +1,13 @@
 import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button'
+import Stack from 'react-bootstrap/Stack'
 
 import { useNavigate } from 'react-router-dom';
 import { removeProduto } from '../../../redux/reducers/produtosSlice';
 import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
- 
-const ProdutoTable = ({produtos}) => {
+
+const ProdutoTable = ({ produtos }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch()
     const handleEdit = (id) => {
@@ -13,7 +15,7 @@ const ProdutoTable = ({produtos}) => {
     }
 
     const handleDelete = (id) => {
-        toast(`Deletando produto ${id}`, {type: 'info'})
+        toast(`Deletando produto ${id}`, { type: 'info' })
         dispatch(removeProduto(id)).then(() => {
             toast(`Produto ${id} deletado`, { type: 'success' });
         }).catch(error => {
@@ -23,29 +25,31 @@ const ProdutoTable = ({produtos}) => {
 
     return (
         <Table>
-                <thead>
-                    <tr>
-                        <th>id</th>
-                        <th>nome</th>
-                        <th>desc</th>
-                        <th>price</th>
-                        <th></th>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>nome</th>
+                    <th>desc</th>
+                    <th>price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {produtos && produtos.map(produto => (
+                    <tr key={produto.id}>
+                        <td>{produto.id}</td>
+                        <td>{produto.nome}</td>
+                        <td>{produto.desc}</td>
+                        <td>{produto.price}</td>
+                        <td>
+                            <Stack gap={2} direction='horizontal'>
+                                <Button onClick={() => handleEdit(produto.id)}>Editar</Button>
+                                <Button onClick={() => handleDelete(produto.id)}>Deletar</Button>
+                            </Stack>
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    {produtos && produtos.map(produto => (
-                        <tr key={produto.id}>
-                            <td>{produto.id}</td>
-                            <td>{produto.nome}</td>
-                            <td>{produto.desc}</td>
-                            <td>{produto.price}</td>
-                            <td>
-                                <button onClick={() => handleEdit(produto.id)}>Editar</button>
-                                <button onClick={() => handleDelete(produto.id)}>Deletar</button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
+                ))}
+            </tbody>
         </Table>
     )
 }
