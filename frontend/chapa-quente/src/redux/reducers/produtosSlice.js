@@ -11,13 +11,12 @@ export const fetchProdutos = createAsyncThunk('produtos/fetchProdutos', async ()
     }
 })
 
-export const fetchProduto = createAsyncThunk('produtos/fetchProduto', async (id) => {
+export const fetchProduto = createAsyncThunk('produtos/fetchProduto', async (id, { rejectWithValue }) => {
     try {
         const response = await axios.get(`http://localhost:3001/produtos/${id}`);
         return response.data;
     } catch (error) {
-        console.error(`Error fetching produto ${id}:`, error);
-        throw error;
+        return rejectWithValue("Produto não existe na base")
     }
 })
 
@@ -31,7 +30,6 @@ export const addProduto = createAsyncThunk('produtos/addProduto', async (produto
     }
 });
 
-//AQUI
 export const removeProduto = createAsyncThunk('produtos/removeProduto', async (produtoId, { rejectWithValue }) => {
     try {
         const response = await axios.delete(`http://localhost:3001/produtos/${produtoId}`);
@@ -81,6 +79,9 @@ export const slice = createSlice({
             console.log("Produto pronto")
             state.status = 'succeeded'
             produtosAdapter.addOne(state, actions.payload);
+        }).addCase(fetchProduto.rejected, (state, action) => {
+            state.status = 'failed';
+            throw action.payload;
         }).addCase(alteraProduto.pending, (state, actions) => {
             console.log("Altera Produto pendente")
             state.status = 'loading'

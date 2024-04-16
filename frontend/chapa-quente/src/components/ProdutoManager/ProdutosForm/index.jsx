@@ -35,7 +35,11 @@ const ProdutosForm = ({ isEditing }) => {
         }
 
         if (!produto) {
-            dispatch(fetchProduto(id));
+            dispatch(fetchProduto(id)).then(() => {
+                toast(`Produto ${id} Carregado`, { type: 'success' });
+            }).catch(error => {
+                toast(`Erro ao carregar produto ${id}: ${error}`, { type: 'error' });
+            });
         } else {
             setFormData({
                 id: produto.id,
@@ -46,7 +50,7 @@ const ProdutosForm = ({ isEditing }) => {
             });
         }
 
-    }, [dispatch, id, isEditing, produto, produtosStatus]);
+    }, [produto]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
