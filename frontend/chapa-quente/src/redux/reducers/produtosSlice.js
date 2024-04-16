@@ -11,6 +11,16 @@ export const fetchProdutos = createAsyncThunk('produtos/fetchProdutos', async ()
     }
 })
 
+export const fetchProduto = createAsyncThunk('produtos/fetchProduto', async (id) => {
+    try {
+        const response = await axios.get(`http://localhost:3001/produtos/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error(`Error fetching produto ${id}:`, error);
+        throw error;
+    }
+})
+
 export const addProduto = createAsyncThunk('produtos/addProduto', async (produtoData) => {
     try {
         const response = await axios.post('http://localhost:3001/produtos', produtoData);
@@ -21,12 +31,22 @@ export const addProduto = createAsyncThunk('produtos/addProduto', async (produto
     }
 });
 
-export const removeProduto = createAsyncThunk('produtos/removeProduto', async (produtoId) => {
+//AQUI
+export const removeProduto = createAsyncThunk('produtos/removeProduto', async (produtoId, { rejectWithValue }) => {
     try {
         const response = await axios.delete(`http://localhost:3001/produtos/${produtoId}`);
+        return produtoId;
+    } catch (error) {
+        return rejectWithValue("Produto não existe na base");
+    }
+})
+
+export const alteraProduto = createAsyncThunk('produtos/alteraProduto', async (produtoData) => {
+    try {
+        const response = await axios.patch(`http://localhost:3001/produtos/${produtoData.id}`, produtoData);
         return response.data;
     } catch (error) {
-        console.error('Error deleting produto:', error);
+        console.error('Error altering produto:', error);
         throw error;
     }
 })
@@ -52,8 +72,33 @@ export const slice = createSlice({
             produtosAdapter.setAll(state, actions.payload)
         }).addCase(addProduto.fulfilled, (state, actions) => {
             console.log("Adicionando produto")
-            state.status = 'changed'
+            state.status = 'succeeded'
             produtosAdapter.addOne(state, actions.payload)
+        }).addCase(fetchProduto.pending, (state, actions) => {
+            console.log("Produto pendente")
+            state.status = 'loading'
+        }).addCase(fetchProduto.fulfilled, (state, actions) => {
+            console.log("Produto pronto")
+            state.status = 'succeeded'
+            produtosAdapter.addOne(state, actions.payload);
+        }).addCase(alteraProduto.pending, (state, actions) => {
+            console.log("Altera Produto pendente")
+            state.status = 'loading'
+        }).addCase(alteraProduto.fulfilled, (state, actions) => {
+            console.log("Altera Produto pronto")
+            state.status = 'succeeded'
+            produtosAdapter.upsertOne(state, actions.payload);
+        }).addCase(removeProduto.pending, (state, actions) => {
+            console.log("Removendo produto")
+            state.status = 'loading'
+        }).addCase(removeProduto.fulfilled, (state, actions) => {
+            console.log("Produto removido")
+            state.status = 'succeeded'
+            produtosAdapter.removeOne(state, actions.payload)
+        }).addCase(removeProduto.rejected, (state, action) => {
+            console.log("Erro ao remover produto:", action.payload);
+            state.status = 'failed';
+            throw action.payload;
         })
     }
 })

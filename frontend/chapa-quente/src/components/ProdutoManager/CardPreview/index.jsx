@@ -3,9 +3,7 @@ import { useSelector } from 'react-redux';
 
 import style from "./CardPreview.module.css"
 
-const CardPreview = () => {
-
-    const formData = useSelector((state) => state.manager.data);
+const CardPreview = ({formData}) => {
 
     return (
         <>

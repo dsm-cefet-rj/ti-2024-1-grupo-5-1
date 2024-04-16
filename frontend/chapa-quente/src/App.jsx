@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import 'react-toastify/dist/ReactToastify.css';
+
+import {ToastContainer} from 'react-toastify'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Router from './components/Router'
@@ -10,6 +12,7 @@ const App = () => {
         <>
             <Header />
             <Router/>
+            <ToastContainer/>
             <Footer />
         </>
     )
