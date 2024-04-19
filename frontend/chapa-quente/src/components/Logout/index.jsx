@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useEffect } from 'react';
 
-function Logout() {
+const Logout = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 

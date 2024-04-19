@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from "react-redux";
 
 import Card from "./Card"
-import ActionButton from './ActionButton';
+import OffscreenCart from './OffscreenCart';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import style from "./Produtos.module.css"
@@ -28,7 +28,7 @@ const Produtos = () => {
                     }
                 </div>
             </div>
-            <ActionButton/>
+            <OffscreenCart/>
         </>
     )
 }

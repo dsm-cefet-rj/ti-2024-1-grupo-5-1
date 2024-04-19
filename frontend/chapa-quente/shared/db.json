@@ -1,105 +1,726 @@
 {
+  "users": [
+    {
+      "nome": "Teste",
+      "sobrenome": "da Silva",
+      "email": "teste@teste.com",
+      "senha": "senha123",
+      "telefone": "1234567890",
+      "logradouro": "Logradouro",
+      "numero": "123",
+      "complemento": "Complemento",
+      "bairro": "Bairro",
+      "cidade": "Cidade",
+      "cep": "12345678",
+      "role": "admin",
+      "id": "1",
+      "date": 1513417130
+    },
+    {
+      "nome": "Marcus",
+      "sobrenome": "Jeeves",
+      "email": "teste2@teste.com",
+      "senha": "senha456",
+      "telefone": "1234567890",
+      "logradouro": "Logradouro",
+      "numero": "123",
+      "complemento": "Complemento",
+      "bairro": "Bairro",
+      "cidade": "Cidade",
+      "cep": "12345678",
+      "role": "user",
+      "id": "2",
+      "date": 1413417130
+    },
+    {
+      "nome": "Rogerio",
+      "sobrenome": "Malaquias",
+      "email": "teste3@teste.com",
+      "senha": "senha123",
+      "telefone": "1234567890",
+      "logradouro": "Logradouro",
+      "numero": "123",
+      "complemento": "Complemento",
+      "bairro": "Bairro",
+      "cidade": "Cidade",
+      "cep": "12345678",
+      "role": "user",
+      "id": "3",
+      "date": 1513417140
+    },
+    {
+      "nome": "Teste",
+      "sobrenome": "da Silva",
+      "email": "teste4@teste.com",
+      "senha": "senha123",
+      "telefone": "1234567890",
+      "logradouro": "Logradouro",
+      "numero": "123",
+      "complemento": "Complemento",
+      "bairro": "Bairro",
+      "cidade": "Cidade",
+      "cep": "12345678",
+      "role": "user",
+      "id": "4",
+      "date": 1513417130
+    }
+  ],
   "produtos": [
     {
       "id": "1",
-      "nome": "Hamburguers",
-      "src": "src/assets/img/hamburguer.png",
-      "desc": "2 hamburgueres alface queijo molho especial",
-      "price": 88.88
+      "nome": "Big Mac",
+      "src": "https://cache-backend-mcd.mcdonaldscupones.com/media/image/product$kzXCTbnv/200/200/original?country=br",
+      "desc": "Dois hambúrgueres (100% carne bovina), alface americana, queijo processado sabor cheddar, molho especial, cebola, picles e pão com gergelim.",
+      "price": "29.90"
     },
     {
       "id": "2",
-      "nome": "Hamburguers",
-      "src": "src/assets/img/hamburguer2.png",
-      "desc": "Hamburguer duplo com bacon, queijo cheddar e molho barbecue",
-      "price": "14.00"
+      "nome": "Big Tasty",
+      "src": "https://cache-backend-mcd.mcdonaldscupones.com/media/image/product$kJX39JjK/200/200/original?country=br",
+      "desc": "Um hambúrguer (carne 100% bovina), queijo processado sabor emental, tomate, alface americana, cebola, icônico molho Tasty e pão com gergelim.",
+      "price": "19.90"
     },
     {
       "id": "3",
-      "nome": "Hamburguers",
-      "src": "src/assets/img/hamburguer3.png",
-      "desc": "Hamburguer vegetariano com hambúrguer de feijão preto, alface, tomate e maionese vegana",
-      "price": "24.00"
+      "nome": "Mc Chicken",
+      "src": "https://cache-backend-mcd.mcdonaldscupones.com/media/image/product$kKXGzDAK/200/200/original?country=br",
+      "desc": "Filé de frango empanado, alface americana, maionese e pão com gergelim.",
+      "price": "15.90"
     },
     {
       "id": "4",
-      "nome": "Hamburguers",
-      "src": "src/assets/img/hamburguer4.png",
-      "desc": "Hamburguer de frango grelhado com abacaxi, queijo suíço e maionese de alho",
-      "price": "28.00"
-    },
-    {
-      "id": "5",
-      "nome": "Hamburguers",
-      "src": "src/assets/img/hamburguer5.png",
-      "desc": "Hamburguer de cordeiro com molho de hortelã, rúcula e queijo feta",
-      "price": "12.00"
-    },
-    {
-      "id": "6",
-      "nome": "Hamburguers",
-      "src": "src/assets/img/hamburguer6.png",
-      "desc": "Hamburguer de salmão grelhado com abacate, molho de limão e rúcula",
-      "price": "20.00"
-    },
-    {
-      "id": "7",
-      "nome": "Hamburguers",
-      "src": "src/assets/img/hamburguer7.png",
-      "desc": "Hamburguer de carne com pimentões grelhados, cebola caramelizada e queijo provolone",
-      "price": "16.00"
-    },
-    {
-      "id": "8",
-      "nome": "Hamburguers",
-      "src": "src/assets/img/hamburguer8.png",
-      "desc": "Hamburguer de peru com abacaxi grelhado, cebola roxa e molho de manga",
-      "price": "18.00"
-    },
-    {
-      "id": "9",
-      "nome": "Hamburguers",
-      "src": "src/assets/img/hamburguer9.png",
-      "desc": "Hamburguer de cogumelos com queijo gorgonzola e cebolas crocantes",
-      "price": "30.00"
-    },
-    {
-      "id": "10",
-      "nome": "Hamburguers",
-      "src": "src/assets/img/hamburguer10.png",
-      "desc": "Hamburguer de quinoa com abobrinha grelhada, tomate seco e maionese de ervas",
-      "price": "10.00"
+      "nome": "Cheddar McMelt",
+      "src": "https://cache-backend-mcd.mcdonaldscupones.com/media/image/product$zKXGzDAK/200/200/original?country=br",
+      "desc": "Um hambúrguer (100% carne bovina), molho lácteo cremoso sabor cheddar, cebola ao molho shoyu e pão escuro com gergelim.",
+      "price": "17.90"
     }
   ],
-  "users": [
+  "pedidos": [
     {
       "id": "1",
-      "name": "Admin",
-      "email": "admin@example.com",
-      "password": "password",
-      "role": "admin"
+      "user_id": "1",
+      "produtos": [
+        {
+          "id": "1",
+          "qtd": "1",
+          "price": "29.90"
+        },
+        {
+          "id": "2",
+          "qtd": "1",
+          "price": "19.90"
+        }
+      ],
+      "total": "49.80",
+      "status": "Entregue",
+      "motivo_cancelamento" : "",
+      "detalhes": "Retirar o picles, por favor!",
+      "pagamento": "PIX",
+      "date": 1413417130
     },
     {
       "id": "2",
-      "name": "User",
-      "email": "user@example.com",
-      "password": "password",
-      "role": "user"
+      "user_id": "2",
+      "produtos": [
+        {
+          "id": "2",
+          "qtd": "1",
+          "price": "19.90"
+        }
+      ],
+      "total": "19.90",
+      "status": "Entregue",
+      "detalhes": "Sem cebola, por favor!",
+      "motivo_cancelamento" : "",
+      "pagamento": "Dinheiro",
+      "date": 1513417130
     },
     {
-      "id": "e45b",
-      "name": "Juan",
-      "email": "a@b.c",
-      "password": "123",
-      "role": "user"
+      "id": "3",
+      "user_id": "1",
+      "produtos": [
+        {
+          "id": "3",
+          "qtd": "1",
+          "price": "15.90"
+        }
+      ],
+      "total": "15.90",
+      "status": "Cancelado",
+      "motivo_cancelamento" : "Cliente desistiu da compra.",
+      "detalhes": "Sem maionese, por favor!",
+      "pagamento": "Cartão de crédito",
+      "date": 1613417130
     },
     {
-      "id": "88f8",
-      "name": "Thomas",
-      "surname": "Turbando",
-      "email": "thomas@turbando.com",
-      "password": "!NS8}v;d~huB^>V",
-      "role": "user"
+      "id": "4",
+      "user_id": "2",
+      "produtos": [
+        {
+          "id": "4",
+          "qtd": "1",
+          "price": "17.90"
+        }
+      ],
+      "total": "17.90",
+      "status": "Entregue",
+      "motivo_cancelamento" : "",
+      "detalhes": "Sem molho shoyu, por favor!",
+      "pagamento": "PIX",
+      "date": 1713417130
+    },
+    {
+      "id": "5",
+      "user_id": "1",
+      "produtos": [
+        {
+          "id": "1",
+          "qtd": "1",
+          "price": "29.90"
+        }
+      ],
+      "total": "29.90",
+      "status": "Entregue",
+      "motivo_cancelamento" : "",
+      "detalhes": "Retirar o picles, por favor!",
+      "pagamento": "PIX",
+      "date": 1413417130
+    },
+    {
+      "id": "6",
+      "user_id": "2",
+      "produtos": [
+        {
+          "id": "2",
+          "qtd": "1",
+          "price": "19.90"
+        }
+      ],
+      "total": "19.90",
+      "status": "Entregue",
+      "detalhes": "Sem cebola, por favor!",
+      "motivo_cancelamento" : "",
+      "pagamento": "Dinheiro",
+      "date": 1513417130
+    },
+    {
+      "id": "7",
+      "user_id": "1",
+      "produtos": [
+        {
+          "id": "3",
+          "qtd": "1",
+          "price": "15.90"
+        }
+      ],
+      "total": "15.90",
+      "status": "Cancelado",
+      "motivo_cancelamento" : "Cliente desistiu da compra.",
+      "detalhes": "Sem maionese, por favor!",
+      "pagamento": "Cartão de crédito",
+      "date": 1613417130
+    },
+    {
+      "id": "8",
+      "user_id": "2",
+      "produtos": [
+        {
+          "id": "4",
+          "qtd": "1",
+          "price": "17.90"
+        }
+      ],
+      "total": "17.90",
+      "status": "Cancelado",
+      "motivo_cancelamento" : "",
+      "detalhes": "Tempo limite de pagamento excedido.",
+      "pagamento": "PIX",
+      "date": 1713417130
+    },
+    {
+      "id": "9",
+      "user_id": "1",
+      "produtos": [
+        {
+          "id": "1",
+          "qtd": "1",
+          "price": "29.90"
+        }
+      ],
+      "total": "29.90",
+      "status": "Em andamento",
+      "motivo_cancelamento" : "",
+      "detalhes": "Retirar o picles, por favor!",
+      "pagamento": "PIX",
+      "date": 1413417130
+    },
+    {
+      "id": "10",
+      "user_id": "2",
+      "produtos": [
+        {
+          "id": "2",
+          "qtd": "1",
+          "price": "19.90"
+        }
+      ],
+      "total": "19.90",
+      "status": "Entregue",
+      "detalhes": "Sem cebola, por favor!",
+      "motivo_cancelamento" : "",
+      "pagamento": "Dinheiro",
+      "date": 1513417130
+    },
+    {
+      "id": "11",
+      "user_id": "1",
+      "produtos": [
+        {
+          "id": "3",
+          "qtd": "1",
+          "price": "15.90"
+        }
+      ],
+      "total": "15.90",
+      "status": "Cancelado",
+      "motivo_cancelamento" : "Cliente desistiu da compra.",
+      "detalhes": "Sem maionese, por favor!",
+      "pagamento": "Cartão de crédito",
+      "date": 1613417130
+    },
+    {
+      "id": "12",
+      "user_id": "2",
+      "produtos": [
+        {
+          "id": "4",
+          "qtd": "1",
+          "price": "17.90"
+        }
+      ],
+      "total": "17.90",
+      "status": "Em andamento",
+      "motivo_cancelamento" : "",
+      "detalhes": "Sem molho shoyu, por favor!",
+      "pagamento": "PIX",
+      "date": 1713417130
+    },
+    {
+      "id": "13",
+      "user_id": "1",
+      "produtos": [
+        {
+          "id": "1",
+          "qtd": "1",
+          "price": "29.90"
+        }
+      ],
+      "total": "29.90",
+      "status": "Cancelado",
+      "motivo_cancelamento" : "",
+      "detalhes": "Retirar o picles, por favor!",
+      "pagamento": "PIX",
+      "date": 1413417130
+    },
+    {
+      "id": "14",
+      "user_id": "2",
+      "produtos": [
+        {
+          "id": "2",
+          "qtd": "1",
+          "price": "19.90"
+        }
+      ],
+      "total": "19.90",
+      "status": "Cancelado",
+      "detalhes": "Sem cebola, por favor!",
+      "motivo_cancelamento" : "",
+      "pagamento": "Dinheiro",
+      "date": 1513417130
+    },
+    {
+      "id": "15",
+      "user_id": "1",
+      "produtos": [
+        {
+          "id": "3",
+          "qtd": "1",
+          "price": "15.90"
+        }
+      ],
+      "total": "15.90",
+      "status": "Cancelado",
+      "motivo_cancelamento" : "Cliente desistiu da compra.",
+      "detalhes": "Sem maionese, por favor!",
+      "pagamento": "Cartão de crédito",
+      "date": 1613417130
+    },
+    {
+      "id": "16",
+      "user_id": "2",
+      "produtos": [
+        {
+          "id": "4",
+          "qtd": "1",
+          "price": "17.90"
+        }
+      ],
+      "total": "17.90",
+      "status": "Cancelado",
+      "motivo_cancelamento" : "",
+      "detalhes": "Sem molho shoyu, por favor!",
+      "pagamento": "PIX",
+      "date": 1713417130
+    },
+    {
+      "id": "17",
+      "user_id": "1",
+      "produtos": [
+        {
+          "id": "1",
+          "qtd": "1",
+          "price": "29.90"
+        }
+      ],
+      "total": "29.90",
+      "status": "Entregue",
+      "motivo_cancelamento" : "",
+      "detalhes": "Retirar o picles, por favor!",
+      "pagamento": "PIX",
+      "date": 1413417130
+    },
+    {
+      "id": "18",
+      "user_id": "2",
+      "produtos": [
+        {
+          "id": "2",
+          "qtd": "1",
+          "price": "19.90"
+        }
+      ],
+      "total": "19.90",
+      "status": "Entregue",
+      "detalhes": "Sem cebola, por favor!",
+      "motivo_cancelamento" : "",
+      "pagamento": "Dinheiro",
+      "date": 1513417130
+    },
+    {
+      "id": "19",
+      "user_id": "1",
+      "produtos": [
+        {
+          "id": "3",
+          "qtd": "1",
+          "price": "15.90"
+        }
+      ],
+      "total": "15.90",
+      "status": "Cancelado",
+      "motivo_cancelamento" : "Cliente desistiu da compra.",
+      "detalhes": "Sem maionese, por favor!",
+      "pagamento": "Cartão de crédito",
+      "date": 1613417130
+    },
+    {
+      "id": "20",
+      "user_id": "2",
+      "produtos": [
+        {
+          "id": "4",
+          "qtd": "1",
+          "price": "17.90"
+        }
+      ],
+      "total": "17.90",
+      "status": "Entregue",
+      "motivo_cancelamento" : "",
+      "detalhes": "Sem molho shoyu, por favor!",
+      "pagamento": "PIX",
+      "date": 1713417130
+    }
+  ],
+  "rating": [
+    {
+      "id": "1",
+      "order_id": "1",
+      "overall_rating": "4.75",
+      "produtos": [
+        {
+          "id": "1",
+          "rating": "5.0"
+        },
+        {
+          "id": "2",
+          "rating": "4.5"
+        }
+      ],
+      "date": 1413417130
+    },
+    {
+      "id": "2",
+      "order_id": "2",
+      "overall_rating": "4.0",
+      "produtos": [
+        {
+          "id": "1",
+          "rating": "4.0"
+        },
+        {
+          "id": "2",
+          "rating": "4.0"
+        }
+      ],
+      "date": 1513417130
+    },
+    {
+      "id": "3",
+      "order_id": "3",
+      "overall_rating": "3.0",
+      "produtos": [
+        {
+          "id": "3",
+          "rating": "3.0"
+        }
+      ],
+      "date": 1613417130
+    },
+    {
+      "id": "4",
+      "order_id": "4",
+      "overall_rating": "4.0",
+      "produtos": [
+        {
+          "id": "4",
+          "rating": "4.0"
+        }
+      ],
+      "date": 1713417130
+    },
+    {
+      "id": "5",
+      "order_id": "1",
+      "overall_rating": "4.75",
+      "produtos": [
+        {
+          "id": "1",
+          "rating": "5.0"
+        },
+        {
+          "id": "2",
+          "rating": "4.5"
+        }
+      ],
+      "date": 1413417130
+    },
+    {
+      "id": "6",
+      "order_id": "2",
+      "overall_rating": "4.0",
+      "produtos": [
+        {
+          "id": "1",
+          "rating": "4.0"
+        },
+        {
+          "id": "2",
+          "rating": "4.0"
+        }
+      ],
+      "date": 1513417130
+    },
+    {
+      "id": "7",
+      "order_id": "3",
+      "overall_rating": "3.0",
+      "produtos": [
+        {
+          "id": "3",
+          "rating": "3.0"
+        }
+      ],
+      "date": 1613417130
+    },
+    {
+      "id": "8",
+      "order_id": "4",
+      "overall_rating": "4.0",
+      "produtos": [
+        {
+          "id": "4",
+          "rating": "4.0"
+        }
+      ],
+      "date": 1713417130
+    },
+    {
+      "id": "9",
+      "order_id": "1",
+      "overall_rating": "4.75",
+      "produtos": [
+        {
+          "id": "1",
+          "rating": "5.0"
+        },
+        {
+          "id": "2",
+          "rating": "4.5"
+        }
+      ],
+      "date": 1413417130
+    },
+    {
+      "id": "10",
+      "order_id": "2",
+      "overall_rating": "4.0",
+      "produtos": [
+        {
+          "id": "1",
+          "rating": "4.0"
+        },
+        {
+          "id": "2",
+          "rating": "4.0"
+        }
+      ],
+      "date": 1513417130
+    },
+    {
+      "id": "11",
+      "order_id": "3",
+      "overall_rating": "3.0",
+      "produtos": [
+        {
+          "id": "3",
+          "rating": "3.0"
+        }
+      ],
+      "date": 1613417130
+    },
+    {
+      "id": "12",
+      "order_id": "4",
+      "overall_rating": "4.0",
+      "produtos": [
+        {
+          "id": "4",
+          "rating": "4.0"
+        }
+      ],
+      "date": 1713417130
+    }
+  ],
+  "agendamentos": [
+    {
+      "id": "1",
+      "user_id": "1",
+      "produtos": [
+        {
+          "id": "1",
+          "qtd": "1"
+        }
+      ],
+      "total": "29.90",
+      "detalhes": "Comprar para o jantar de hoje!",
+      "pagamento": "PIX",
+      "date_pedido": 1413417130,
+      "date_agendada": 1513417130
+    },
+    {
+      "id": "2",
+      "user_id": "2",
+      "produtos": [
+        {
+          "id": "2",
+          "qtd": "1"
+        }
+      ],
+      "total": "19.90",
+      "detalhes": "Comprar para o almoço de amanhã!",
+      "pagamento": "Dinheiro",
+      "date_pedido": 1513417130,
+      "date_agendada": 1613417130
+    },
+    {
+      "id": "3",
+      "user_id": "1",
+      "produtos": [
+        {
+          "id": "3",
+          "qtd": "1"
+        }
+      ],
+      "total": "15.90",
+      "detalhes": "Comprar para o lanche da tarde!",
+      "pagamento": "Cartão de crédito",
+      "date_pedido": 1613417130,
+      "date_agendada": 1713417130
+    },
+    {
+      "id": "4",
+      "user_id": "2",
+      "produtos": [
+        {
+          "id": "4",
+          "qtd": "1"
+        }
+      ],
+      "total": "17.90",
+      "detalhes": "Comprar para o jantar de hoje!",
+      "pagamento": "PIX",
+      "date_pedido": 1713417130,
+      "date_agendada": 1813417130
+    },
+    {
+      "id": "5",
+      "user_id": "1",
+      "produtos": [
+        {
+          "id": "1",
+          "qtd": "1"
+        }
+      ],
+      "total": "29.90",
+      "detalhes": "Comprar para o jantar de hoje!",
+      "pagamento": "PIX",
+      "date_pedido": 1413417130,
+      "date_agendada": 1513417130
+    },
+    {
+      "id": "6",
+      "user_id": "2",
+      "produtos": [
+        {
+          "id": "2",
+          "qtd": "1"
+        }
+      ],
+      "total": "19.90",
+      "detalhes": "Comprar para o almoço de amanhã!",
+      "pagamento": "Dinheiro",
+      "date_pedido": 1513417130,
+      "date_agendada": 1613417130
+    },
+    {
+      "id": "7",
+      "user_id": "1",
+      "produtos": [
+        {
+          "id": "3",
+          "qtd": "1"
+        },
+        {
+          "id": "4",
+          "qtd": "1"
+        }
+      ],
+      "total": "15.90",
+      "detalhes": "Comprar para o lanche da tarde!",
+      "pagamento": "Cartão de crédito",
+      "date_pedido": 1613417130,
+      "date_agendada": 1713417130
     }
   ]
 }

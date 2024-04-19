@@ -17,9 +17,12 @@ export const slice = createSlice({
                 newCarrinho.splice(indexToRemove, 1)
                 state.itens = newCarrinho
             }
+        },
+        clearCart: (state) => {
+            state.itens = []
         }
     }
 })
 
-export const { addItem, removeItem } = slice.actions
+export const { addItem, removeItem, clearCart } = slice.actions
 export default slice.reducer

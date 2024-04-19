@@ -4,47 +4,46 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 
-import { formSchemaC } from '../../utils/userFormValidation';
-import { register } from '../../redux/reducers/authSlice';
+import { getDateFromUnix } from '../../utils/unixDateConversion';
+import { formSchemaU } from '../../utils/userFormValidation';
+import { update } from '../../redux/reducers/authSlice';
 
-const Cadastro = () => {
+const Conta = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const { user, isLoggedIn, status } = useSelector((state) => state.auth);
+
     const [formData, setFormData] = useState({
-        nome: '',
-        sobrenome: '',
-        email: '',
-        senha: '',
-        telefone: '',
-        logradouro: '',
-        numero: '',
-        complemento: '',
-        bairro: '',
-        cidade: '',
-        cep: '',
-        role: 'user',
-        termos: false
+        nome: user.nome,
+        sobrenome: user.sobrenome,
+        email: user.email,
+        senha: user.senha,
+        telefone: user.telefone,
+        logradouro: user.logradouro,
+        numero: user.numero,
+        complemento: user.complemento,
+        bairro: user.bairro,
+        cidade: user.cidade,
+        cep: user.cep,
+        id: user.id,
+        date: user.date
     });
 
     const [formErrors, setFormErrors] = useState({});
 
     const handleChange = (e) => {
-        const { type, name, value, checked } = e.currentTarget;
-        const newValue = type === 'checkbox' ? checked : value;
-        setFormData({ ...formData, [name]: newValue });
+        const { name, value } = e.currentTarget;
+        setFormData({ ...formData, [name]: value });
         setFormErrors({ ...formErrors, [name]: null });
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await formSchemaC.validate(formData, { abortEarly: false });
-            const { termos, ...data } = formData;
-            data.date = Math.floor(Date.now() / 1000);
-            console.log(data);
-            dispatch(register(data));
+            await formSchemaU.validate(formData, { abortEarly: false });
+            dispatch(update(formData));
         } catch (error) {
             if (error.inner) {
                 const errors = error.inner.reduce((acc, current) => {
@@ -58,24 +57,21 @@ const Cadastro = () => {
         }
     }
 
-    const { isLoggedIn, status } = useSelector((state) => state.auth);
-
     useEffect(() => {
-        if (isLoggedIn) {
-            navigate('/produtos');
-            toast('Você já está logado em nosso sistema.', { type: 'info'});
+        if (!isLoggedIn) {
+            navigate('/login');
+            toast('Você precisa estar logado para acessar essa página.', { type: 'error' });
         }
 
         if (status === 'success') {
-            navigate('/login');
-            toast('Usuário cadastrado com sucesso!', { type: 'success' });
+            toast('Cadastro atualizado com sucesso!', { type: 'success' });
         }
     }, [isLoggedIn, navigate, status]);
 
     return (
         <>
             <div style={{ maxWidth: '450px', margin: '0 auto', marginTop: '55px' }}>
-                <h2 className="text-center mb-4" style={{ marginBottom: '20px' }}>Preparado para uma explosão de sabor?</h2>
+                <h2 className="text-center mb-4" style={{ marginBottom: '20px' }}>Mantenha seu cadastro em dia!</h2>
                 <Form noValidate onSubmit={handleSubmit}>
 
                     <div className="mb-2 d-flex">
@@ -155,14 +151,12 @@ const Cadastro = () => {
                         </div>
                     </div>
 
-                    <Form.Group className="mb-4 d-flex justify-content-center" controlId="formTerms">
-                        <Form.Check type="checkbox" name="termos" label="Eu li e concordo com os Termos de Serviço." id="checkTerms" checked={formData.termos}  isInvalid={!!formErrors.termos} onChange={handleChange} required/>
-                        <Form.Control.Feedback type="invalid">{formErrors.termos}</Form.Control.Feedback>
-                    </Form.Group>
+                    <div>
+                        <p className="text-center mb-4">Data de Cadastro: {getDateFromUnix(formData.data)}</p>
+                    </div>
 
                     <div className="text-center">
-                        <Button variant="primary" type="submit" className="btn-block mb-4">Cadastrar</Button>
-                        <p>Já possui uma conta? <a href="/login">Faça login</a>!</p>
+                        <Button variant="success" type="submit" className="btn-block mb-4">Alterar</Button>
                     </div>
                 </Form>
             </div>
@@ -170,4 +164,4 @@ const Cadastro = () => {
     );
 };
 
-export default Cadastro;
+export default Conta;
