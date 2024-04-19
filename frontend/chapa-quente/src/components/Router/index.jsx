@@ -5,6 +5,7 @@ import Inicio from '../Inicio'
 import Cadastro from '../Cadastro'
 import Produtos from '../Produtos'
 import Pedidos from '../Pedido'
+import Agendamento from '../Agendamento'
 import Logout from '../Logout'
 import Login from '../Login'
 import ProdutoManager from '../ProdutoManager'
@@ -22,6 +23,7 @@ const Router = () => {
                     <Route path='/pedidos' element={<Pedidos/>} />
                     <Route path='/cadastro' element={<Cadastro/>} />
                     <Route path='/produtos' element={<Produtos/>} />
+                    <Route path='/agendamento' element={<Agendamento/>} />
                     <Route path='/produtosmanager' element={<ProdutoManager/>}/>
                     <Route path='/produtosmanager/edit/:id' element={<ProdutosForm isEditing={true}/>}/>
                     <Route path='/produtosmanager/new' element={<ProdutosForm isEditing={false}/>}/>

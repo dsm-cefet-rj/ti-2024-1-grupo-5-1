@@ -1,8 +1,8 @@
     article {
-        background-color: orange;
-        width: 400px;
+        
+        width: 550px;
         height: 480px;
-        border-radius: 15px;
+        border-radius: 7px;
         display: flex;
         flex-direction: column;
         justify-content: center;
