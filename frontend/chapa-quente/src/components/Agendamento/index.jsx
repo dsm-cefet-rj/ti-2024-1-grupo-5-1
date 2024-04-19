@@ -8,14 +8,16 @@ import { register } from "../../redux/reducers/authSlice";
 
 function Register() {
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [surname, setSurname] = useState("");
   const [today, setToday] = useState(false);
   const [tomorrow, setTomorrow] = useState(false);
-  const [afterTomorrow, setAfterTomorrow] = useState(false);
   const [hour, setHour] = useState("");
-  const [surname, setSurname] = useState("");
   const [password, setPassword] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [local, setLocal] = useState("");
+  const [cep, setCep] = useState("");
+  const [bairro, setBairro] = useState("");
+  const [complemento, setComplemento] = useState("");
 
   const [validated, setValidated] = useState(false);
 
@@ -61,6 +63,8 @@ function Register() {
       );
     }
   }, [isLoggedIn, navigate, status]);
+
+ 
 
   const dia = new Date();
   const data1 = dia.getDate() + 1;
@@ -124,8 +128,8 @@ function Register() {
                 <Form.Control
                   type="text"
                   placeholder="Logradouro"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  value={local}
+                  onChange={(e) => setLocal(e.target.value)}
                   required
                 />
                 <Form.Control.Feedback type="invalid">
@@ -144,8 +148,8 @@ function Register() {
                     type="number"
                     min={1}
                     placeholder="Informe o número da sua casa"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
                     required
                   />
                   <Form.Control.Feedback type="invalid">
@@ -160,10 +164,11 @@ function Register() {
               >
                 <Form.Control
                   type="number"
-                  min={1}
+                  maxLength={8}
+                  id="cep"
                   placeholder="Informe o CEP"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={cep}
+                  onChange={(e) => setCep(e.target.value)}
                   required
                 />
                 <Form.Control.Feedback type="invalid">
@@ -180,8 +185,8 @@ function Register() {
                 <Form.Control
                   type="text"
                   placeholder="Bairro"
-                  value={surname}
-                  onChange={(e) => setSurname(e.target.value)}
+                  value={bairro}
+                  onChange={(e) => setBairro(e.target.value)}
                   required
                 />
                 <Form.Control.Feedback type="invalid">
@@ -197,8 +202,8 @@ function Register() {
                   <Form.Control
                     type="text"
                     placeholder="Complemento"
-                    value={surname}
-                    onChange={(e) => setSurname(e.target.value)}
+                    value={complemento}
+                    onChange={(e) => setComplemento(e.target.value)}
                   />
                 </FloatingLabel>
               </div>
@@ -266,7 +271,11 @@ function Register() {
           )}
 
           <div className="text-center">
-            <Button variant="primary" type="submit" className="btn-block mb-4">
+            <Button
+              variant="primary"
+              type="submit"
+              className="btn-block mb-4"
+            >
               Concluir
             </Button>
           </div>
