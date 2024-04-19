@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector } from "react-redux";
+import React, { useEffect } from 'react';
+import { useSelector,  useDispatch } from "react-redux";
 
 import Card from "./Card"
 import ActionButton from './ActionButton';
@@ -7,13 +7,21 @@ import ActionButton from './ActionButton';
 import 'bootstrap/dist/css/bootstrap.css';
 import style from "./Produtos.module.css"
 
-import { fetchProdutos } from '../../redux/reducers/produtosSlice';
-import store from '../../redux/store';
-
-store.dispatch(fetchProdutos())
+import { selectAllProdutos , fetchProdutos , selectProduto } from '../../redux/reducers/produtosSlice';
 
 const Produtos = () => {
-    const produtos = useSelector(state => state.produtos.itens)
+    const dispatch = useDispatch()
+    const produtos = useSelector(selectAllProdutos)
+    const produtosStatus = useSelector(state => state.produtos.status)
+
+    useEffect(() => {
+        if (produtosStatus === 'idle'){
+            dispatch(fetchProdutos())
+        }
+    }, [produtosStatus, dispatch])
+
+    // console.log(useSelector(((state) => selectProduto(state, 1))))
+
     return (
         <>
             <div className={`container ${style.topSpace}`}>

@@ -1,58 +1,79 @@
-import 'bootstrap/dist/css/bootstrap.css';
-import './login.css';
-import { useEffect, useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { Form, FloatingLabel, Button } from 'react-bootstrap';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
+
+import { login } from '../../redux/reducers/authSlice';
+
 
 function Login() {
     const [email, setEmail] = useState('');
-    const [senha, setSenha] = useState('');
-
-    const [mostrarSenha, setMostrarSenha] = useState(false);
-
-
-
-    function handleSubmit(event) {
-        event.preventDefault();
-        console.log(email, senha);
-    }
+    const [password, setPassword] = useState('');
+    const [validated, setValidated] = useState(false);
 
     const navigate = useNavigate();
-    useEffect(() => {
-        if (isError) {
-            <Alert key="danger" variant="danger">
-                Usuário ou senha incorretos!
-            </Alert>
-        }
+    const dispatch = useDispatch();
 
-        if (isSuccess || user) {
+    const handleSubmit = async(e) => {
+        e.preventDefault();
+
+       const form = e.currentTarget;
+       if (form.checkValidity() === false) {
+            e.stopPropagation();
+            setValidated(true);
+            return;
+       }
+        
+        try {
+            dispatch(login({ email, password }));
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const { isLoggedIn, status } = useSelector((state) => state.auth);
+
+    useEffect(() => {
+        if (isLoggedIn) {
             navigate('/produtos');
-        } 
-    }, [isError, isSuccess, user, navigate]);
-    
-    
+        }
+        if (status === 'failed') {
+            toast('Usuário ou senha incorretos!', { type: 'error' });
+        } else if (status === 'success') {
+            toast('Login realizado com sucesso!', { type: 'success' });
+        }
+    }, [isLoggedIn, navigate, status]);
+
     return (
         <>
-            <div className="login-form d-flex justify-content-center align-items-center">
-                <form className="p-4 p-md-5 border rounded-3 bg-body-tertiary" onSubmit={handleSubmit}>
-                    <div className="mb-3">
-                        <label htmlFor="exampleInputEmail1" className="form-label">E-mail</label>
-                        <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={e => setEmail(e.target.value)}></input>
-                        <div id="emailHelp" className="form-text">Nunca compartilharemos seu e-mail com mais ninguém.</div>
+            <div style={{ maxWidth: '400px', margin: '0 auto', marginTop: '90px' }}>
+                <h2 className="text-center mb-4" style={{ marginBottom: '20px' }}>Bem-vindo ao sabor que vai fazer o seu dia!</h2>
+                <Form onSubmit={handleSubmit} noValidate validated={validated}>
+
+                    <Form.Group className="mb-4" controlId="formEmail">
+                        <FloatingLabel controlId="floatingInput" label="E-mail" className="mb-3">
+                            <Form.Control type="email" placeholder="Insira seu e-mail" value={email} onChange={(e) => setEmail(e.target.value)} required/>
+                            <Form.Control.Feedback type="invalid">Insira um e-mail válido.</Form.Control.Feedback>
+                        </FloatingLabel>
+                    </Form.Group>
+
+                    <Form.Group className="mb-4" controlId="formPassword">
+                        <FloatingLabel controlId="floatingInput" label="Senha" className="mb-3">
+                            <Form.Control type="password" placeholder="Insira sua senha" value={password} onChange={(e) => setPassword(e.target.value)} required/>
+                            <Form.Control.Feedback type="invalid">Insira uma senha.</Form.Control.Feedback>
+                        </FloatingLabel>
+                    </Form.Group>
+
+                    <div className="text-center">
+                        <Button variant="primary" type="submit" className="btn-block mb-4">Acessar</Button>
+                        <p>Não possui conta? <a href="/register">Cadastre-se</a>!</p>
                     </div>
-                    <div className="mb-3">
-                        <label htmlFor="exampleInputPassword1" className="form-label">Senha</label>
-                        <input type="password" className="form-control" id="exampleInputPassword1" value={senha} onChange={e => setSenha(e.target.value)}></input>
-                    </div>
-                    <div className="mb-3 form-check">
-                        <input type="checkbox" className="form-check-input" id="exampleCheck1" onChange={() => setMostrarSenha(!mostrarSenha)}></input>
-                        <label className="form-check-label" htmlFor="exampleCheck1">Mostrar senha</label>
-                    </div>
-                    <button type="submit" className="btn btn-primary">Entrar</button>
-                </form>
+                </Form>
             </div>
-        
-        </>    
-    )
-}
+        </>
+    );
+};
 
 export default Login;
