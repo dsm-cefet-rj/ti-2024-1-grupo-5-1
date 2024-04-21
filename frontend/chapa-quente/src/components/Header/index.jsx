@@ -4,16 +4,15 @@ import { useSelector } from 'react-redux';
 import icon from '../../assets/img/icon.png';
 import { useEffect, useState } from 'react';
 
-function Header() {
-    const [user, setUser] = useState({});
-    const { isLoggedIn } = useSelector((state) => state.auth);
-    useEffect(() => {
-        const user = localStorage.getItem('user');
-        if (user && isLoggedIn) {
-            setUser(JSON.parse(user));
-        }
-    });
+const Header = () => {
+    const [userData, setUserData] = useState({});
+    const [state, setState] = useState(false);
+    const { user, isLoggedIn } = useSelector((state) => state.auth);
 
+    useEffect(() => {
+        setState(isLoggedIn);
+        setUserData(user);
+    }, [isLoggedIn]);
 
   return (
     <>
@@ -29,12 +28,21 @@ function Header() {
                 <Nav.Link href="/produtos">Cardápio</Nav.Link>
                 <Nav.Link href="/contato">Contato</Nav.Link>
             </Nav>
-            {isLoggedIn ? (
+            {state ? (
                 <>
                     <Nav>
-                        <NavDropdown title={`Olá, ${user.name}!`} id="basic-nav-dropdown">
+                        <NavDropdown title={`Olá, ${userData.nome}!`} id="basic-nav-dropdown">
+                            <NavDropdown.Item href="/agendamentos">Agendamentos</NavDropdown.Item>
                             <NavDropdown.Item href="/pedidos">Pedidos</NavDropdown.Item>
-                            <NavDropdown.Item href="/enderecos">Agendamentos</NavDropdown.Item>
+                            <NavDropdown.Item href="/conta">Conta</NavDropdown.Item>{
+                                userData.role === 'admin' ? (
+                                    <>
+                                        <NavDropdown.Divider />
+                                        <NavDropdown.Item href="/ativos">Pedidos Ativos</NavDropdown.Item>
+                                        <NavDropdown.Item href="/relatorios">Relatórios</NavDropdown.Item>
+                                    </>
+                                ) : null
+                            }
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="/logout">Sair</NavDropdown.Item>
                         </NavDropdown>
