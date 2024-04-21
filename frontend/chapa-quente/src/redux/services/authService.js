@@ -30,12 +30,17 @@ const update = async(user) => {
     });
 };
 
-const fetch = async(userId) => {
+const fetchOne = async(userId) => {
     console.log(userId)
     const response = await axios.get(`${API_URL}/users/${userId}`);
     console.log(response.data)
     return response.data;
 };
+
+const fetchMany = async() => {
+    const response = await axios.get(`${API_URL}/users`);
+    return response.data;
+}
 
 const logout = () => {
     localStorage.removeItem("user");
@@ -44,7 +49,8 @@ const logout = () => {
 const authService = {
     register,
     update,
-    fetch,
+    fetchOne,
+    fetchMany,
     login,
     logout
 };

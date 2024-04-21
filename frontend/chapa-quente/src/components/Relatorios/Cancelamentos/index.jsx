@@ -25,7 +25,7 @@ const Cancelamentos = () => {
 
     const handleShowModal = async (item) => {
         try {
-            const user_info = await AuthService.fetch(item.user_id);
+            const user_info = await AuthService.fetchOne(item.user_id);
             setSelectedOrder({ order_info: item, user_info: user_info});
             setShowModal(true);
         } catch (error) {
@@ -110,6 +110,12 @@ const Cancelamentos = () => {
 
     // Configuração da tabela
 
+    const sortData = (data) => {
+        return data.sort((a, b) => {
+            return new Date(b.date) - new Date(a.date);
+        });
+    }
+
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
 
@@ -132,6 +138,9 @@ const Cancelamentos = () => {
             <div style={{ maxWidth: '1000px', maxHeight: '800px', overflow: 'auto', margin: '0 auto' }}>
                 <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px'}}>
                     <Bar data={barData} options={barOptions} width={250} height={300} />
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px'}}>
+                    <p><strong>Total de Cancelamentos:</strong> {cancelados.length}</p>
                 </div>
                 <div>
                     <Table style={{ width: '100%', tableLayout: 'fixed' }}>

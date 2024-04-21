@@ -9,7 +9,6 @@ import Pedidos from '../Pedido'
 import Logout from '../Logout'
 import Conta from '../Conta'
 import Login from '../Login'
-
 const Router = () => {
     return (
         <>
@@ -22,7 +21,7 @@ const Router = () => {
                     <Route path='/logout' element={<Logout/>} />
                     <Route path='/pedidos' element={<Pedidos/>} />
                     <Route path='/cadastro' element={<Cadastro/>} />
-                    <Route path='/produtos' element={<Produtos/>} />
+                    <Route path='/produtos' element={<Produtos/>} />,
                     <Route path='/relatorios' element={<Relatorios/>} />
                 </Routes>
             </BrowserRouter>

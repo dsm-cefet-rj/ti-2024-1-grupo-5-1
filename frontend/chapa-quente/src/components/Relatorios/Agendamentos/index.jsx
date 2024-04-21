@@ -27,7 +27,7 @@ const Agendamentos = () => {
 
     const handleShowModal = async (item) => {
         try {
-            const user_info = await AuthService.fetch(item.user_id);
+            const user_info = await AuthService.fetchOne(item.user_id);
             setSelectedOrder({ schedule_info: item, user_info: user_info});
             setShowModal(true);
         } catch (error) {
@@ -47,6 +47,9 @@ const Agendamentos = () => {
     return (
         <>
             <div style={{ maxWidth: '1000px', maxHeight: '800px', overflow: 'auto', margin: '0 auto' }}>
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px'}}>
+                <p><strong>Total de Agendamentos:</strong> {data.length}</p>
+                </div>
                 <Table style={{ width: '100%', tableLayout: 'fixed' }}>
                     <thead>
                         <tr>

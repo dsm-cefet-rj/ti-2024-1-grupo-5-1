@@ -24,9 +24,10 @@ const Avaliacoes = () => {
     data.forEach((item) => {
         item.produtos.forEach((produto) => {
             if (itemAverage[produto.id]) {
-                itemAverage[produto.id].push(Number(produto.rating));
+                itemAverage[produto.id].push(Number(item.rating));
+                console.log(itemAverage[produto.id]);
             } else {
-                itemAverage[produto.id] = [Number(produto.rating)];
+                itemAverage[produto.id] = [Number(item.rating)];
             }
             totalOverallRating += Number(produto.rating);
             totalItems++;
@@ -37,6 +38,9 @@ const Avaliacoes = () => {
         const averageRating = ratings.reduce((acc, current) => acc + current, 0) / ratings.length;
         itemAverage[key] = averageRating.toFixed(2);
     }
+
+    console.log(data);
+    console.log(itemAverage);
 
     // Configuração do gráfico
 

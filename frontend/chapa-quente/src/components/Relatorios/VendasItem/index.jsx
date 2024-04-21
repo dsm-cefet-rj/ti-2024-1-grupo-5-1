@@ -35,19 +35,6 @@ const VendasItem = () => {
     for (const key in itemFrequency) {
         totalItems += itemFrequency[key];
     }
-    
-    /*
-    pedidos.forEach(pedido => {
-        pedido.products.forEach(produto => {
-            produtos[produto.product_id] = produtos[produto.product_id] ? produtos[produto.product_id] + produto.quantity : produto.quantity;
-        });
-    });
-
-    const produtosArray = Object.keys(produtos).map(productId => ({
-        product_id: productId,
-        quantity: produtos[productId]
-    }));
-    */
 
     // Configuração do gráfico
 
@@ -144,7 +131,7 @@ const VendasItem = () => {
               <Line data={chartData} options={chartOptions} width={400} height={300} />
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px'}}>
-              <p><strong>Total:</strong> {totalItems}</p>
+              <p><strong>Total de Itens Vendidos:</strong> {totalItems}</p>
             </div>
             <div>
              <Table style={{ width: '100%', tableLayout: 'fixed' }}>
