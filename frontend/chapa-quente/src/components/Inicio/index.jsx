@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import logo from '../../assets/img/logo.png';
 
-function Inicio() {
+const Inicio = () => {
     const [state, setState] = useState(false);
 
     const authState = useSelector((state) => state.auth);
