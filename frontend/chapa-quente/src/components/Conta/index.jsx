@@ -152,7 +152,7 @@ const Conta = () => {
                     </div>
 
                     <div>
-                        <p className="text-center mb-4">Data de Cadastro: {getDateFromUnix(formData.data)}</p>
+                        <p className="text-center mb-4">Data de Cadastro: {getDateFromUnix(formData.date)}</p>
                     </div>
 
                     <div className="text-center">
