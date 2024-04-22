@@ -6,23 +6,32 @@ export const slice = createSlice({
         itens: []
     },
     reducers: {
-        addItem: (state, action) => {
-            state.itens = [...state.itens, action.payload]
-        },
-        removeItem: (state, action) => {
-            if (state.itens.length > 0) {
-                var newCarrinho = state.itens
-                const indexs = state.itens.map((itemCarrinho) => itemCarrinho.id)
-                const indexToRemove = indexs.lastIndexOf(action.payload.id)
-                newCarrinho.splice(indexToRemove, 1)
-                state.itens = newCarrinho
+        addItem(state, action) {
+            console.log('Adicionando item ao carrinho.')
+            const existingItem = state.itens.findIndex(item => item.id === action.payload.id);
+            if (existingItem >= 0) {
+                state.itens[existingItem].quantity++;
+            } else {
+                state.itens.push({ ...action.payload, quantity: 1 });
             }
         },
-        clearCart: (state) => {
-            state.itens = []
+        removeItem(state, action) {
+            console.log('Removendo item do carrinho.');
+            const existingItem = state.itens.findIndex(item => item.id === action.payload.id);
+            if (existingItem >= 0) {
+                if (state.itens[existingItem].quantity === 1) {
+                    state.itens = state.itens.filter(item => item.id !== action.payload.id);
+                } else {
+                    state.itens[existingItem].quantity--;
+                }
+            }
+        },
+        clearCart(state) {
+            console.log('Carrinho esvaziado.')
+            state.itens = [];
         }
     }
-})
+});
 
 export const { addItem, removeItem, clearCart } = slice.actions
 export default slice.reducer
