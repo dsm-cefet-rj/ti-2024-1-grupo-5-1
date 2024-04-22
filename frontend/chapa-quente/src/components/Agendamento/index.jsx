@@ -2,9 +2,10 @@ import { Form, Button, FloatingLabel } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { toast } from "react-toastify";
+ import { toast } from "react-toastify";
+ import { register } from "../../redux/reducers/authSlice";
+ import axios from "axios";
 
-import { register } from "../../redux/reducers/authSlice";
 
 function Register() {
   const [name, setName] = useState("");
@@ -12,13 +13,21 @@ function Register() {
   const [today, setToday] = useState(false);
   const [tomorrow, setTomorrow] = useState(false);
   const [hour, setHour] = useState("");
-  const [password, setPassword] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [houseNumber, setNumber] = useState("");
   const [local, setLocal] = useState("");
   const [cep, setCep] = useState("");
   const [bairro, setBairro] = useState("");
   const [complemento, setComplemento] = useState("");
+  const [data, setDate] = useState("");
 
+
+  const [formErrors, setFormErrors] = useState({});
+
+    const handleChange = (e) => {
+        const { name, value } = e.currentTarget;
+        setFormData({ ...formData, [name]: value });
+        setFormErrors({ ...formErrors, [name]: null });
+    };
   const [validated, setValidated] = useState(false);
 
   const navigate = useNavigate();
@@ -35,42 +44,79 @@ function Register() {
     }
 
     try {
-      dispatch(register({ name, surname, email, password, phoneNumber }));
+      dispatch(
+        register({
+          name,
+          surname,
+          houseNumber,
+          local,
+          bairro,
+          cep,
+          complemento,
+          hour,
+        })
+      );
     } catch (error) {
       console.error(error);
     }
+    
+    function gerarIdNumerico(minimo, maximo) {
+      return Math.floor(Math.random() * (maximo - minimo + 1)) + minimo;
+    }
+
+    const minimo = 1000000; 
+    const maximo = 9999999; 
+
+    const idAgendamento = gerarIdNumerico(minimo,maximo);
+      const novoAgendamento = {
+      id: idAgendamento,  
+      nome: name,
+      sobrenome: surname,
+      local_entrega: local,
+      numero: houseNumber,
+      cep: cep,
+      bairro: bairro,
+      complemento: complemento,
+      hora: hour,
+      data_entrega: data,
+
+
+    };
+
+    axios.post('http://localhost:4000/agendamento', novoAgendamento) 
+    .then(response => {
+      console.log('Agendamento confirmado:', response.data);  
+      setShowConfirmationToast(true);
+    })
+    .catch(error => {
+      console.error('Erro ao confirmar o endereço:', error);  
+    });
+
+    
+    
   };
-
-  const { isLoggedIn, status } = useSelector((state) => state.auth);
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate("/produtos");
-    }
-
-    if (status === "success" && isLoggedIn === false) {
-      toast("Usuário registrado com sucesso! Redirecionando para o Login...", {
-        type: "success",
-      });
-      setTimeout(() => {
-        navigate("/login");
-      }, 2000);
-    }
-
-    if (status === "failed") {
-      toast(
-        "Ocorreu um erro ao tentar registrar o usuário. Verifique suas credenciais e tente novamente."
-      );
-    }
-  }, [isLoggedIn, navigate, status]);
-
- 
-
+  
   const dia = new Date();
   const data1 = dia.getDate() + 1;
   const data2 = dia.getDate() + 2;
-  const data3 = dia.getDate() + 3;
   const mes = dia.getMonth();
+  const ano = dia.getFullYear();
+  
+  // const inputName = document.querySelector(name);
+
+  // inputName.addEventListener("keypress", function (e) {
+  //   const keyCode = e.keyCode ? e.keyCode : e.wich;
+
+  //   if (keyCode > 47 && keyCode < 58) {
+  //     e.preventDefault();
+  //   }
+  // });
+
+  // document.querySelector('input[tupe="number"]').forEach(input => {
+  //   input.oniput = () => {
+  //     if(input.value.lenght > input.maxLenght) input.value = input.value.slice(0, input.maxLenght)
+  //   }
+  // })
 
   return (
     <>
@@ -83,14 +129,19 @@ function Register() {
             <div style={{ marginRight: "20px" }}>
               <FloatingLabel
                 controlId="floatingInput"
+                id="name"
                 label="Nome"
                 className="mb-3"
               >
                 <Form.Control
                   type="text"
-                  placeholder="Nome"
+                  placeholder= "name"
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => {
+                    const input = e.target.value;
+                    const onlyLetters = input.replace(/[^a-zA-ZÀ-ÿ\s]/g, '');
+                    setName(onlyLetters); 
+                  }}
                   required
                 />
                 <Form.Control.Feedback type="invalid">
@@ -107,8 +158,13 @@ function Register() {
                 <Form.Control
                   type="text"
                   placeholder="Sobrenome"
+                  id="surname"
                   value={surname}
-                  onChange={(e) => setSurname(e.target.value)}
+                  onChange={(e) => {
+                    const input = e.target.value;
+                    const onlyLetters = input.replace(/[^a-zA-ZÀ-ÿ\s]/g, '');
+                    setSurname(onlyLetters); 
+                  }}
                   required
                 />
                 <Form.Control.Feedback type="invalid">
@@ -148,8 +204,8 @@ function Register() {
                     type="number"
                     min={1}
                     placeholder="Informe o número da sua casa"
-                    value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    value={houseNumber}
+                    onChange={(e) => setNumber(e.target.value)}
                     required
                   />
                   <Form.Control.Feedback type="invalid">
@@ -157,25 +213,30 @@ function Register() {
                   </Form.Control.Feedback>
                 </FloatingLabel>
               </div>
-              <FloatingLabel
+               <FloatingLabel
                 controlId="floatingInput"
                 label="CEP"
                 className="mb-3"
               >
                 <Form.Control
-                  type="number"
-                  maxLength={8}
+                  type="text"
                   id="cep"
                   placeholder="Informe o CEP"
                   value={cep}
-                  onChange={(e) => setCep(e.target.value)}
+                  onChange={(e) => {
+                    const input = e.target.value;
+                    const onlyNumbers = input.replace(/\D/g, '');
+                    setCep(onlyNumbers);
+                  }}
+                  pattern="[0-9]{8}"
+                  maxLength="8" 
                   required
                 />
                 <Form.Control.Feedback type="invalid">
                   Insira um CEP válido.
                 </Form.Control.Feedback>
               </FloatingLabel>
-            </Form.Group>
+            </Form.Group> 
             <div>
               <FloatingLabel
                 controlId="floatingInput"
@@ -186,7 +247,11 @@ function Register() {
                   type="text"
                   placeholder="Bairro"
                   value={bairro}
-                  onChange={(e) => setBairro(e.target.value)}
+                  onChange={(e) => {
+                    const input = e.target.value;
+                    const onlyLettersAndSpaces = input.replace(/[^a-zA-ZÀ-ÿ\s]/g, '');
+                    setBairro(onlyLettersAndSpaces); 
+                  }}
                   required
                 />
                 <Form.Control.Feedback type="invalid">
@@ -203,13 +268,13 @@ function Register() {
                     type="text"
                     placeholder="Complemento"
                     value={complemento}
-                    onChange={(e) => setComplemento(e.target.value)}
+                    onChange={(e) => setComplemento(e.target.value) && handleInput}
                   />
                 </FloatingLabel>
               </div>
             </div>
           </div>
-          <p>
+          {/* <p>
             Escolha entre os próximos 2 dias para sua entrega:
             <br />
             (Opcional)
@@ -221,8 +286,9 @@ function Register() {
             ) : (
               <Form.Check
                 type="checkbox"
-                label={data1 + "/" + mes}
+                label={data1 + "/" + mes + "/" + ano}
                 id="checkTomorrow"
+                name = "dia"
                 checked={today}
                 onClick={() => setToday(!today)}
               />
@@ -232,51 +298,68 @@ function Register() {
             ) : (
               <Form.Check
                 type="checkbox"
-                label={data2 + "/" + mes}
+                label={data2 + "/" + mes + "/" + ano}
+                name = "dia"
                 id="checkTomorrow"
-                checked={tomorrow}
+                checked={ tomorrow}
                 onClick={() => setTomorrow(!tomorrow)}
               />
             )}
-
             <Form.Control.Feedback type="invalid">
               É necessário escolher uma data de entrega!!
             </Form.Control.Feedback>
           </Form.Group>
 
           {today === true ? (
-            <Form.Control
-              className="mb-2"
-              type="time"
-              placeholder="Horário:"
-              value={hour}
-              onChange={(e) => setHour(e.target.value)}
-              required
-            />
+            <>
+              <Form.Control
+                className="mb-2"
+                type="time"
+                min={"14:00"}
+                max={"22:00"}
+                placeholder="Horário:"
+                value={hour}
+                onChange={(e) => setHour(e.target.value)}
+                required
+              />
+              <p>Horario de funcionamento de 14:00 as 22:00</p>
+            </>
           ) : (
             ""
-          )}
-
-          {tomorrow === true ? (
-            <Form.Control
-              className="mb-2"
-              type="time"
-              placeholder="Horário:"
-              value={hour}
-              onChange={(e) => setHour(e.target.value)}
-              required
-            />
-          ) : (
-            ""
-          )}
-
+          )}*/}
+          <div>
+              <FloatingLabel
+                    controlId="floatingInput"
+                    label="Data"
+                    className="mb-3"
+                  >
+                    <Form.Control
+                      type="Date"
+                      placeholder="data"
+                      name="data"
+                      value={data}
+                      onChange={(e) => setDate(e.target.value)}
+                      required
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Informe a data.
+                    </Form.Control.Feedback>
+              </FloatingLabel>
+              <Form.Control
+                type="time"
+                min={"14:00"}
+                max={"22:00"}
+                placeholder="Horário:"
+                value={hour}
+                onChange={(e) => setHour(e.target.value)}
+                required
+                />
+              <p>Hórario de funcionamento de 14:00 as 22:00</p>
+            
+         </div>
           <div className="text-center">
-            <Button
-              variant="primary"
-              type="submit"
-              className="btn-block mb-4"
-            >
-              Concluir
+            <Button variant="primary" type="submit" className="btn-block mb-4">
+              Confirmar
             </Button>
           </div>
         </Form>

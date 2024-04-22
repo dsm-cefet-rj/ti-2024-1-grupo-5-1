@@ -5,8 +5,8 @@ import { ToastContainer as Toast } from 'react-toastify';
 import Header from './components/Header';
 import Router from './components/Router';
 
-import "./App.css"
 import Agendamento from './components/Agendamento';
+import "./App.css"
 
 const App = () => {
     return (
