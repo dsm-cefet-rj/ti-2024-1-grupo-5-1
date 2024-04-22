@@ -1,5 +1,5 @@
 import { Chart, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
-import { Table, Modal, Button, Pagination } from "react-bootstrap";
+import { Table, Modal, Button, Pagination, Badge } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
 import { InfoCircleFill } from "react-bootstrap-icons";
 import { useState, useEffect } from "react";
@@ -10,7 +10,7 @@ import { fetchPedidos } from '../../../redux/reducers/reportSlice';
 import { getFormattedDateTime } from '../../../utils/unixDateConversion';
 
 const Cancelamentos = () => {
-    const [selectedOrder, setSelectedOrder] = useState({ order_info: {}, user_info:{}});
+    const [selectedOrder, setSelectedOrder] = useState({ order_info: {}, user_info: {} });
     const [showModal, setShowModal] = useState(false);
 
     const { pedidos } = useSelector((state) => state.reports);
@@ -26,7 +26,7 @@ const Cancelamentos = () => {
     const handleShowModal = async (item) => {
         try {
             const user_info = await AuthService.fetchOne(item.user_id);
-            setSelectedOrder({ order_info: item, user_info: user_info});
+            setSelectedOrder({ order_info: item, user_info: user_info });
             setShowModal(true);
         } catch (error) {
             console.error('Erro ao buscar informações do usuário:', error);
@@ -43,7 +43,7 @@ const Cancelamentos = () => {
     // Configuração do gráfico
 
     Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
-    
+
     const barData = {
         labels: ['Pedidos x Cancelamentos'],
         datasets: [
@@ -61,14 +61,14 @@ const Cancelamentos = () => {
             }
         ],
     };
-    
+
     const barOptions = {
         responsive: false,
         scales: {
             y: {
                 beginAtZero: true,
                 ticks: {
-                    callback: function(value) {
+                    callback: function (value) {
                         return value.toFixed(1);
                     }
                 }
@@ -80,9 +80,9 @@ const Cancelamentos = () => {
                 position: 'top',
                 labels: {
                     padding: 20,
-                        font: {
-                            size: 14,
-                        },
+                    font: {
+                        size: 14,
+                    },
                 },
             },
             title: {
@@ -95,7 +95,7 @@ const Cancelamentos = () => {
             },
             tooltip: {
                 callbacks: {
-                    label: function(context) {
+                    label: function (context) {
                         return `Quantidade: ${context.raw}`;
                     }
                 }
@@ -106,7 +106,7 @@ const Cancelamentos = () => {
             intersect: false,
         },
     };
-    
+
 
     // Configuração da tabela
 
@@ -126,7 +126,7 @@ const Cancelamentos = () => {
     const totalPages = Math.ceil(cancelados.length / itemsPerPage);
 
     const handlePageChange = (pageNumber) => {
-      setCurrentPage(pageNumber);
+        setCurrentPage(pageNumber);
     };
 
     if (data.length === 0) {
@@ -135,12 +135,12 @@ const Cancelamentos = () => {
 
     return (
         <>
-            <div style={{ maxWidth: '1000px', maxHeight: '800px', overflow: 'auto', margin: '0 auto' }}>
-                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px'}}>
+            <div style={{ maxWidth: '900px', maxHeight: '800px', overflow: 'auto', margin: '0 auto' }}>
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
                     <Bar data={barData} options={barOptions} width={250} height={300} />
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px'}}>
-                    <p><strong>Total de Cancelamentos:</strong> {cancelados.length}</p>
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px' }}>
+                    <p><strong>Total de Cancelamentos:</strong>{' '}<Badge bg="secondary">{cancelados.length}</Badge></p>
                 </div>
                 <div>
                     <Table style={{ width: '100%', tableLayout: 'fixed' }}>
@@ -176,31 +176,31 @@ const Cancelamentos = () => {
                             <Modal.Title>Informações do Pedido {selectedOrder && selectedOrder.order_info.id} (Cancelado)</Modal.Title>
                         </Modal.Header>
                         <Modal.Body style={{ padding: '10px' }}>
-                                {
-                                    selectedOrder && (
-                                        <>
-                                            <div>
-                                                <h5>Informações do Usuário</h5>
-                                                <p style={{ marginBottom: '10px'}}><strong>Nome:</strong> {selectedOrder.user_info.nome} {selectedOrder.user_info.sobrenome}</p>
-                                                <p style={{ marginBottom: '10px'}}><strong>Email:</strong> {selectedOrder.user_info.email}</p>
-                                                <p style={{ marginBottom: '10px'}}><strong>Telefone:</strong> {selectedOrder.user_info.telefone}</p>
-                                                <p style={{ marginBottom: '10px'}}><strong>Endereço:</strong> {selectedOrder.user_info.logradouro}, {selectedOrder.user_info.numero} - {selectedOrder.user_info.cep} - {selectedOrder.user_info.bairro}, {selectedOrder.user_info.cidade}</p>
-                                            </div>
-                                            <hr />
-                                            <div>
-                                                <h5>Informações do Pedido</h5>
-                                                <p style={{ marginBottom: '10px'}}><strong>Detalhes:</strong> {selectedOrder.order_info.detalhes}</p>
-                                                <p style={{ marginBottom: '10px'}}><strong>Pagamento:</strong> {selectedOrder.order_info.pagamento}</p>
-                                                <p style={{ marginBottom: '10px'}}><strong>Data do Pedido:</strong> {getFormattedDateTime(selectedOrder.order_info.date)}</p>
-                                                <p style={{ marginBottom: '10px'}}><strong>Total:</strong> {selectedOrder.order_info.total}</p>
-                                            </div>
-                                            <hr />
-                                            <div>
-                                                <p style={{ marginBottom: '10px'}}><strong>Motivo de Cancelamento:</strong> {selectedOrder.order_info.motivo_cancelamento ? selectedOrder.order_info.motivo_cancelamento : 'Não informado.'}</p>
-                                            </div>
-                                        </>
-                                    )
-                                }
+                            {
+                                selectedOrder && (
+                                    <>
+                                        <div>
+                                            <h5>Informações do Usuário</h5>
+                                            <p style={{ marginBottom: '10px' }}><strong>Nome:</strong> {selectedOrder.user_info.nome} {selectedOrder.user_info.sobrenome}</p>
+                                            <p style={{ marginBottom: '10px' }}><strong>Email:</strong> {selectedOrder.user_info.email}</p>
+                                            <p style={{ marginBottom: '10px' }}><strong>Telefone:</strong> {selectedOrder.user_info.telefone}</p>
+                                            <p style={{ marginBottom: '10px' }}><strong>Endereço:</strong> {selectedOrder.user_info.logradouro}, {selectedOrder.user_info.numero} - {selectedOrder.user_info.cep} - {selectedOrder.user_info.bairro}, {selectedOrder.user_info.cidade}</p>
+                                        </div>
+                                        <hr />
+                                        <div>
+                                            <h5>Informações do Pedido</h5>
+                                            <p style={{ marginBottom: '10px' }}><strong>Detalhes:</strong> {selectedOrder.order_info.detalhes}</p>
+                                            <p style={{ marginBottom: '10px' }}><strong>Pagamento:</strong> {selectedOrder.order_info.pagamento}</p>
+                                            <p style={{ marginBottom: '10px' }}><strong>Data do Pedido:</strong> {getFormattedDateTime(selectedOrder.order_info.date)}</p>
+                                            <p style={{ marginBottom: '10px' }}><strong>Total:</strong> {selectedOrder.order_info.total}</p>
+                                        </div>
+                                        <hr />
+                                        <div>
+                                            <p style={{ marginBottom: '10px' }}><strong>Motivo de Cancelamento:</strong> {selectedOrder.order_info.motivo_cancelamento ? selectedOrder.order_info.motivo_cancelamento : 'Não informado.'}</p>
+                                        </div>
+                                    </>
+                                )
+                            }
                         </Modal.Body>
                         <Modal.Footer>
                             <Button variant="primary" onClick={handleCloseModal}>Fechar</Button>

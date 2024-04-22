@@ -23,7 +23,7 @@ const Relatorios = () => {
         }
     }, [isLoggedIn, user, navigate]);
 
-    const [current, setCurrent] = useState('');
+    const [current, setCurrent] = useState('agendamentos');
     const renderReport = () => {
         switch (current) {
             case 'agendamentos':
@@ -38,8 +38,6 @@ const Relatorios = () => {
                 return <Fidelizados/>;
             case 'tempo':
                 return <VendasTempo/>;
-            default:
-                return <img src="https://chito.ge/4nHo2ZZ.png" alt="placeholder" />;
         }
     }
     

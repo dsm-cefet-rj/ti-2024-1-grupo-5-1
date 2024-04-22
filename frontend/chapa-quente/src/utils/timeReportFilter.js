@@ -33,7 +33,7 @@ export const ordenarVendas = (periodo, data) => {
         const dataPedido = new Date(pedido.date * 1000);
         switch (periodo) {
             case 'hora':
-                chave = `${dataPedido.toLocaleTimeString('pt-BR', { hour: 'numeric', minute: undefined, hour12: false })}:00`;
+                chave = `${dataPedido.toLocaleTimeString('pt-BR', { hour: 'numeric', minute: undefined, hour12: false })}:00 (${dataPedido.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })})`;
                 break;
             case 'dia':
                 chave = `${dataPedido.toLocaleDateString('pt-BR', { weekday: 'long' })} (${dataPedido.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })})`;

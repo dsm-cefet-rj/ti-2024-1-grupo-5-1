@@ -27,7 +27,9 @@ const Fidelizados = () => {
         const alignUsersWithData = async () => {
             const userFrequency = {};
 
-            data.forEach((pedido) => {
+            const filteredData = data.filter((pedido) => pedido.status.toLowerCase() === 'entregue');
+
+            filteredData.forEach((pedido) => {
                 const user_id = pedido.user_id;
                 if (userFrequency[user_id]) {
                     userFrequency[user_id] += 1;
@@ -41,7 +43,7 @@ const Fidelizados = () => {
                 const user_id = user.id;
                 const user_info = user;
                 const frequency = userFrequency[user_id] || 0;
-                const lastOrder = data.find((pedido) => pedido.user_id === user_id) || null;
+                const lastOrder = filteredData.find((pedido) => pedido.user_id === user_id) || null;
                 return { user_info, lastOrder, frequency };
             });
 
@@ -154,7 +156,7 @@ const Fidelizados = () => {
 
     return (
         <>
-            <div style={{ maxWidth: '1000px', maxHeight: '800px', overflow: 'auto', margin: '0 auto' }}>
+            <div style={{ maxWidth: '900px', maxHeight: '800px', overflow: 'auto', margin: '0 auto' }}>
                 <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
                     <Bar data={chartData} options={chartOptions} width={250} height={300} />
                 </div>
@@ -164,9 +166,6 @@ const Fidelizados = () => {
                     </p>
                     <p>
                         <strong>Total de Pedidos:</strong> <Badge bg="secondary">{totalPedidos}</Badge>
-                    </p>
-                    <p>
-                        <strong>Total de Usuários:</strong> <Badge bg="secondary">{totalUsers}</Badge>
                     </p>
                     <p>
                         <strong>Média para Fidelidade:</strong>{' '}

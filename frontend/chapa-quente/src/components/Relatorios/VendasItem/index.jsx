@@ -1,5 +1,5 @@
 import { Chart, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
-import { Table, Pagination } from 'react-bootstrap';
+import { Table, Pagination, Badge } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Line } from 'react-chartjs-2';
 import { useEffect, useState } from "react";
@@ -126,12 +126,12 @@ const VendasItem = () => {
 
     return (
         <>
-          <div style={{ maxWidth: '1000px', maxHeight: '800px', overflow: 'auto', margin: '0 auto' }}>
+          <div style={{ maxWidth: '900px', maxHeight: '800px', overflow: 'auto', margin: '0 auto' }}>
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px'}}>
               <Line data={chartData} options={chartOptions} width={400} height={300} />
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px'}}>
-              <p><strong>Total de Itens Vendidos:</strong> {totalItems}</p>
+              <p><strong>Total de Itens Vendidos:</strong>{' '}<Badge bg="secondary">{totalItems}</Badge></p>
             </div>
             <div>
              <Table style={{ width: '100%', tableLayout: 'fixed' }}>

@@ -104,7 +104,7 @@ const VendasTempo = () => {
 
     return (
         <>
-            <div style={{ maxWidth: '1000px', maxHeight: '800px', overflow: 'auto', margin: '0 auto' }}>
+            <div style={{ maxWidth: '900px', maxHeight: '800px', overflow: 'auto', margin: '0 auto' }}>
                 <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px' }}>
                     <Form.Select value={option.value} onChange={handleChangeOption} style={{ marginBottom: '20px' }}>
                         <option disabled value="x">Selecione uma data...</option>
