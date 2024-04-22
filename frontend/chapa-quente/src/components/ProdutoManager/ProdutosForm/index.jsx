@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify'
 
 import CardPreview from "../CardPreview"
-import { produtosSchema } from '../../../validations/produtosSchema';
+import { produtosSchema } from '../../../utils/produtosSchema';
 
 const ProdutosForm = ({ isEditing }) => {
     const dispatch = useDispatch()
