@@ -4,16 +4,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Line } from 'react-chartjs-2';
 import { useEffect, useState } from "react";
 
-import { fetchAvaliacoes } from '../../../redux/reducers/reportSlice';
+import { fetchPedidos } from '../../../redux/reducers/reportSlice';
 
 const Avaliacoes = () => {
-    const { avaliacoes } = useSelector((state) => state.reports);
-    const { data, status, fetched } = avaliacoes;
+    const { pedidos } = useSelector((state) => state.reports);
+    const { data, status, fetched } = pedidos;
 
     const dispatch = useDispatch();
     useEffect(() => {
         if (status === 'idle' && !fetched) {
-            dispatch(fetchAvaliacoes());
+            dispatch(fetchPedidos());
         }
     }, [dispatch, fetched, status]);
 
@@ -24,18 +24,18 @@ const Avaliacoes = () => {
     data.forEach((item) => {
         item.produtos.forEach((produto) => {
             if (itemAverage[produto.id]) {
-                itemAverage[produto.id].push(Number(item.rating));
+                itemAverage[produto.id].push(Number(item.avaliacao));
                 console.log(itemAverage[produto.id]);
             } else {
-                itemAverage[produto.id] = [Number(item.rating)];
+                itemAverage[produto.id] = [Number(item.avaliacao)];
             }
-            totalOverallRating += Number(produto.rating);
+            totalOverallRating += Number(produto.avaliacao);
             totalItems++;
         });
     });
     for (const key in itemAverage) {
-        const ratings = itemAverage[key];
-        const averageRating = ratings.reduce((acc, current) => acc + current, 0) / ratings.length;
+        const avaliacoes = itemAverage[key];
+        const averageRating = avaliacoes.reduce((acc, current) => acc + current, 0) / avaliacoes.length;
         itemAverage[key] = averageRating.toFixed(2);
     }
 

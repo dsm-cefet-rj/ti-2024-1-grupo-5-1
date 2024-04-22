@@ -162,9 +162,10 @@
       "total": "49.80",
       "status": "Entregue",
       "motivo_cancelamento": "",
+      "avaliacao": 2.5,
       "detalhes": "Retirar o picles, por favor!",
       "pagamento": "PIX",
-      "date": 1413417130
+      "date": 1713657600
     },
     {
       "id": "2",
@@ -180,8 +181,9 @@
       "status": "Entregue",
       "detalhes": "Sem cebola, por favor!",
       "motivo_cancelamento": "",
+      "avaliacao": 2.5,
       "pagamento": "Dinheiro",
-      "date": 1513417130
+      "date": 1713571200
     },
     {
       "id": "3",
@@ -196,9 +198,10 @@
       "total": "15.90",
       "status": "Cancelado",
       "motivo_cancelamento": "Cliente desistiu da compra.",
+      "avaliacao": 2.5,
       "detalhes": "Sem maionese, por favor!",
       "pagamento": "Cartão de crédito",
-      "date": 1613417130
+      "date": 1713484800
     },
     {
       "id": "4",
@@ -213,9 +216,10 @@
       "total": "17.90",
       "status": "Entregue",
       "motivo_cancelamento": "",
+      "avaliacao": 2.5,
       "detalhes": "Sem molho shoyu, por favor!",
       "pagamento": "PIX",
-      "date": 1713417130
+      "date": 1710460800
     },
     {
       "id": "5",
@@ -230,9 +234,10 @@
       "total": "29.90",
       "status": "Entregue",
       "motivo_cancelamento": "",
+      "avaliacao": 2.5,
       "detalhes": "Retirar o picles, por favor!",
       "pagamento": "PIX",
-      "date": 1413417130
+      "date": 1711497600
     },
     {
       "id": "6",
@@ -248,8 +253,9 @@
       "status": "Entregue",
       "detalhes": "Sem cebola, por favor!",
       "motivo_cancelamento": "",
+      "avaliacao": 2.5,
       "pagamento": "Dinheiro",
-      "date": 1513417130
+      "date": 1713484800
     },
     {
       "id": "7",
@@ -264,9 +270,10 @@
       "total": "15.90",
       "status": "Cancelado",
       "motivo_cancelamento": "Cliente desistiu da compra.",
+      "avaliacao": 2.5,
       "detalhes": "Sem maionese, por favor!",
       "pagamento": "Cartão de crédito",
-      "date": 1613417130
+      "date": 1713657600
     },
     {
       "id": "8",
@@ -281,9 +288,10 @@
       "total": "17.90",
       "status": "Cancelado",
       "motivo_cancelamento": "",
+      "avaliacao": 4.5,
       "detalhes": "Tempo limite de pagamento excedido.",
       "pagamento": "PIX",
-      "date": 1713417130
+      "date": 1713139200
     },
     {
       "id": "9",
@@ -298,9 +306,10 @@
       "total": "29.90",
       "status": "Em andamento",
       "motivo_cancelamento": "",
+      "avaliacao": 4.5,
       "detalhes": "Retirar o picles, por favor!",
       "pagamento": "PIX",
-      "date": 1413417130
+      "date": 1682101295
     },
     {
       "id": "10",
@@ -316,8 +325,9 @@
       "status": "Entregue",
       "detalhes": "Sem cebola, por favor!",
       "motivo_cancelamento": "",
+      "avaliacao": 4.5,
       "pagamento": "Dinheiro",
-      "date": 1513417130
+      "date": 1682101295
     },
     {
       "id": "11",
@@ -332,9 +342,10 @@
       "total": "15.90",
       "status": "Cancelado",
       "motivo_cancelamento": "Cliente desistiu da compra.",
+      "avaliacao": 4.5,
       "detalhes": "Sem maionese, por favor!",
       "pagamento": "Cartão de crédito",
-      "date": 1613417130
+      "date": 1682101295
     },
     {
       "id": "12",
@@ -349,6 +360,7 @@
       "total": "17.90",
       "status": "Em andamento",
       "motivo_cancelamento": "",
+      "avaliacao": 4.5,
       "detalhes": "Sem molho shoyu, por favor!",
       "pagamento": "PIX",
       "date": 1713417130
@@ -366,9 +378,10 @@
       "total": "29.90",
       "status": "Cancelado",
       "motivo_cancelamento": "",
+      "avaliacao": 4.5,
       "detalhes": "Retirar o picles, por favor!",
       "pagamento": "PIX",
-      "date": 1413417130
+      "date": 1713723695
     },
     {
       "id": "14",
@@ -384,6 +397,7 @@
       "status": "Cancelado",
       "detalhes": "Sem cebola, por favor!",
       "motivo_cancelamento": "",
+      "avaliacao": 4.5,
       "pagamento": "Dinheiro",
       "date": 1513417130
     },
@@ -400,6 +414,7 @@
       "total": "15.90",
       "status": "Cancelado",
       "motivo_cancelamento": "Cliente desistiu da compra.",
+      "avaliacao": 4.5,
       "detalhes": "Sem maionese, por favor!",
       "pagamento": "Cartão de crédito",
       "date": 1613417130
@@ -417,6 +432,7 @@
       "total": "17.90",
       "status": "Cancelado",
       "motivo_cancelamento": "",
+      "avaliacao": 4.5,
       "detalhes": "Sem molho shoyu, por favor!",
       "pagamento": "PIX",
       "date": 1713417130
@@ -434,6 +450,7 @@
       "total": "29.90",
       "status": "Entregue",
       "motivo_cancelamento": "",
+      "avaliacao": 4.5,
       "detalhes": "Retirar o picles, por favor!",
       "pagamento": "PIX",
       "date": 1413417130
@@ -452,8 +469,9 @@
       "status": "Entregue",
       "detalhes": "Sem cebola, por favor!",
       "motivo_cancelamento": "",
+      "avaliacao": 4.5,
       "pagamento": "Dinheiro",
-      "date": 1513417130
+      "date": 1713727295
     },
     {
       "id": "19",
@@ -468,26 +486,370 @@
       "total": "15.90",
       "status": "Cancelado",
       "motivo_cancelamento": "Cliente desistiu da compra.",
+      "avaliacao": 4.5,
       "detalhes": "Sem maionese, por favor!",
       "pagamento": "Cartão de crédito",
       "date": 1613417130
     },
     {
       "id": "20",
-      "user_id": "2",
+      "user_id": "20",
       "produtos": [
         {
-          "id": "4",
-          "qtd": "1",
-          "price": "17.90"
+          "id": "20",
+          "qtd": "2",
+          "price": "11.00"
         }
       ],
-      "total": "17.90",
+      "total": "94.00",
       "status": "Entregue",
       "motivo_cancelamento": "",
-      "detalhes": "Sem molho shoyu, por favor!",
+      "avaliacao": 4.5,
+      "detalhes": "Quaerat dolor molestiae repudiandae quis.",
       "pagamento": "PIX",
-      "date": 1713417130
+      "date": 1713431984
+    },
+    {
+      "id": "21",
+      "user_id": "21",
+      "produtos": [
+        {
+          "id": "21",
+          "qtd": "2",
+          "price": "31.00"
+        }
+      ],
+      "total": "45.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "",
+      "avaliacao": 4.9,
+      "detalhes": "Dolorem velit eos sed dolores excepturi enim.",
+      "pagamento": "Cartão de Crédito",
+      "date": 1713546259
+    },
+    {
+      "id": "22",
+      "user_id": "22",
+      "produtos": [
+        {
+          "id": "22",
+          "qtd": "0",
+          "price": "38.00"
+        }
+      ],
+      "total": "48.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "",
+      "avaliacao": 4.9,
+      "detalhes": "Qui enim enim qui vitae cum.",
+      "pagamento": "Boleto",
+      "date": 1713520261
+    },
+    {
+      "id": "23",
+      "user_id": "23",
+      "produtos": [
+        {
+          "id": "23",
+          "qtd": "2",
+          "price": "40.00"
+        }
+      ],
+      "total": "85.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "",
+      "avaliacao": 4.9,
+      "detalhes": "Sint deserunt sed enim et necessitatibus modi aut maiores.",
+      "pagamento": "Cartão de Crédito",
+      "date": 1713605057
+    },
+    {
+      "id": "24",
+      "user_id": "24",
+      "produtos": [
+        {
+          "id": "24",
+          "qtd": "3",
+          "price": "16.00"
+        }
+      ],
+      "total": "19.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "",
+      "avaliacao": 4.9,
+      "detalhes": "Id et sint cum.",
+      "pagamento": "Cartão de Crédito",
+      "date": 1713739595
+    },
+    {
+      "id": "25",
+      "user_id": "25",
+      "produtos": [
+        {
+          "id": "25",
+          "qtd": "3",
+          "price": "32.00"
+        }
+      ],
+      "total": "55.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "",
+      "avaliacao": 4.9,
+      "detalhes": "Voluptas assumenda non enim est quas consequatur.",
+      "pagamento": "PIX",
+      "date": 1713679559
+    },
+    {
+      "id": "26",
+      "user_id": "26",
+      "produtos": [
+        {
+          "id": "26",
+          "qtd": "3",
+          "price": "10.00"
+        }
+      ],
+      "total": "31.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "",
+      "avaliacao": 4.9,
+      "detalhes": "Nostrum dicta exercitationem.",
+      "pagamento": "PIX",
+      "date": 1713593853
+    },
+    {
+      "id": "27",
+      "user_id": "27",
+      "produtos": [
+        {
+          "id": "27",
+          "qtd": "3",
+          "price": "14.00"
+        }
+      ],
+      "total": "53.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "",
+      "avaliacao": 4.5,
+      "detalhes": "Sunt doloremque ipsum non dolorum et.",
+      "pagamento": "Cartão de Crédito",
+      "date": 1713528888
+    },
+    {
+      "id": "28",
+      "user_id": "28",
+      "produtos": [
+        {
+          "id": "28",
+          "qtd": "1",
+          "price": "20.00"
+        }
+      ],
+      "total": "28.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "",
+      "avaliacao": 4.5,
+      "detalhes": "Occaecati ea perspiciatis aut.",
+      "pagamento": "Boleto",
+      "date": 1713499903
+    },
+    {
+      "id": "29",
+      "user_id": "29",
+      "produtos": [
+        {
+          "id": "29",
+          "qtd": "0",
+          "price": "11.00"
+        }
+      ],
+      "total": "72.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "",
+      "avaliacao": 4.5,
+      "detalhes": "Saepe dolorum aut qui quo.",
+      "pagamento": "PIX",
+      "date": 1713616535
+    },
+    {
+      "id": "30",
+      "user_id": "30",
+      "produtos": [
+        {
+          "id": "30",
+          "qtd": "1",
+          "price": "45.00"
+        }
+      ],
+      "total": "55.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "",
+      "avaliacao": 4.5,
+      "detalhes": "Provident alias aut quas placeat cupiditate nostrum ex eligendi itaque.",
+      "pagamento": "Boleto",
+      "date": 1678654724
+    },
+    {
+      "id": "31",
+      "user_id": "31",
+      "produtos": [
+        {
+          "id": "31",
+          "qtd": "2",
+          "price": "19.00"
+        }
+      ],
+      "total": "66.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "",
+      "avaliacao": 4.5,
+      "detalhes": "Aspernatur nesciunt et odio reprehenderit dolore voluptatum voluptate.",
+      "pagamento": "PIX",
+      "date": 1681752799
+    },
+    {
+      "id": "32",
+      "user_id": "32",
+      "produtos": [
+        {
+          "id": "32",
+          "qtd": "3",
+          "price": "22.00"
+        }
+      ],
+      "total": "70.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "",
+      "avaliacao": 4.5,
+      "detalhes": "Non a rem et architecto dolor eligendi quaerat earum.",
+      "pagamento": "Cartão de Crédito",
+      "date": 1679757862
+    },
+    {
+      "id": "33",
+      "user_id": "33",
+      "produtos": [
+        {
+          "id": "33",
+          "qtd": "0",
+          "price": "33.00"
+        }
+      ],
+      "total": "54.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "",
+      "avaliacao": 4.5,
+      "detalhes": "Eos cumque eveniet adipisci optio.",
+      "pagamento": "Cartão de Crédito",
+      "date": 1682877822
+    },
+    {
+      "id": "34",
+      "user_id": "34",
+      "produtos": [
+        {
+          "id": "34",
+          "qtd": "3",
+          "price": "37.00"
+        }
+      ],
+      "total": "74.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "",
+      "avaliacao": 4.5,
+      "detalhes": "Laboriosam exercitationem aperiam placeat consequatur expedita animi.",
+      "pagamento": "PIX",
+      "date": 1677789380
+    },
+    {
+      "id": "35",
+      "user_id": "35",
+      "produtos": [
+        {
+          "id": "35",
+          "qtd": "0",
+          "price": "15.00"
+        }
+      ],
+      "total": "97.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "",
+      "avaliacao": 4.5,
+      "detalhes": "Modi ea soluta sit ea voluptas rem.",
+      "pagamento": "PIX",
+      "date": 1677720367
+    },
+    {
+      "id": "36",
+      "user_id": "36",
+      "produtos": [
+        {
+          "id": "36",
+          "qtd": "2",
+          "price": "28.00"
+        }
+      ],
+      "total": "34.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "",
+      "avaliacao": 4.5,
+      "detalhes": "Veniam ipsam nisi dignissimos quaerat architecto ipsam veniam.",
+      "pagamento": "Cartão de Crédito",
+      "date": 1679707813
+    },
+    {
+      "id": "37",
+      "user_id": "37",
+      "produtos": [
+        {
+          "id": "37",
+          "qtd": "1",
+          "price": "29.00"
+        }
+      ],
+      "total": "93.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "",
+      "avaliacao": 4.5,
+      "detalhes": "Temporibus commodi natus hic adipisci quo quibusdam.",
+      "pagamento": "PIX",
+      "date": 1677801377
+    },
+    {
+      "id": "38",
+      "user_id": "38",
+      "produtos": [
+        {
+          "id": "38",
+          "qtd": "0",
+          "price": "35.00"
+        }
+      ],
+      "total": "66.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "",
+      "avaliacao": 4.5,
+      "detalhes": "Laboriosam rem omnis dolorem consectetur est est tempore.",
+      "pagamento": "Cartão de Crédito",
+      "date": 1680963006
+    },
+    {
+      "id": "39",
+      "user_id": "39",
+      "produtos": [
+        {
+          "id": "39",
+          "qtd": "2",
+          "price": "46.00"
+        }
+      ],
+      "total": "93.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "",
+      "avaliacao": 4.5,
+      "detalhes": "Ut soluta praesentium molestiae consequatur adipisci velit maxime et.",
+      "pagamento": "PIX",
+      "date": 1680887060
     }
   ],
   "rating": [
@@ -503,7 +865,7 @@
           "id": "2"
         }
       ],
-      "date": 1413417130
+      "date": 1713741695
     },
     {
       "id": "2",
@@ -553,7 +915,7 @@
           "id": "2"
         }
       ],
-      "date": 1413417130
+      "date": 1713734495
     },
     {
       "id": "6",
@@ -567,7 +929,7 @@
           "id": "2"
         }
       ],
-      "date": 1513417130
+      "date": 1713727295
     },
     {
       "id": "7",

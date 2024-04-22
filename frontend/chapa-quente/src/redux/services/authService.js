@@ -36,9 +36,7 @@ const update = async (user) => {
 };
 
 const fetchOne = async (userId) => {
-    console.log(userId)
     const response = await axios.get(`${API_URL}/users/${userId}`);
-    console.log(response.data)
     return response.data;
 };
 
