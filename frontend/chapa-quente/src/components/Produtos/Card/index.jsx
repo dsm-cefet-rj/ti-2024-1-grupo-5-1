@@ -30,6 +30,11 @@ const Card = ({ item }) => {
         } else {
             handleShowModal();
         }   
+        if (isLoggedIn) {
+            dispatch(addItem(item))
+        } else {
+            handleShowModal();
+        }   
     }
     const handleRemoveItem = () => {
         dispatch(removeItem(item))

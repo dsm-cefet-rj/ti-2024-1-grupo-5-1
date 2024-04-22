@@ -1,8 +1,8 @@
 {
   "users": [
     {
-      "nome": "Teste",
-      "sobrenome": "da Silva",
+      "nome": "Porcelana",
+      "sobrenome": "Cinza",
       "email": "teste@teste.com",
       "senha": "senha123",
       "telefone": "1234567890",
@@ -21,7 +21,7 @@
       "sobrenome": "Jeeves",
       "email": "teste2@teste.com",
       "senha": "senha456",
-      "telefone": "1234567890",
+      "telefone": "9876543210",
       "logradouro": "Logradouro",
       "numero": "123",
       "complemento": "Complemento",
@@ -37,7 +37,7 @@
       "sobrenome": "Malaquias",
       "email": "teste3@teste.com",
       "senha": "senha123",
-      "telefone": "1234567890",
+      "telefone": "9999999999",
       "logradouro": "Logradouro",
       "numero": "123",
       "complemento": "Complemento",
@@ -53,7 +53,7 @@
       "sobrenome": "da Silva",
       "email": "teste4@teste.com",
       "senha": "senha123",
-      "telefone": "1234567890",
+      "telefone": "1111111111",
       "logradouro": "Logradouro",
       "numero": "123",
       "complemento": "Complemento",
@@ -63,6 +63,54 @@
       "role": "user",
       "id": "4",
       "date": 1513417130
+    },
+    {
+      "nome": "Rogerio",
+      "sobrenome": "Sampaio",
+      "email": "americano@teste.com",
+      "senha": "senha123",
+      "telefone": "02140028922",
+      "logradouro": "cuzudo",
+      "numero": "69",
+      "complemento": "Perto do Tupac",
+      "bairro": "AcreAAAAAAAAA",
+      "cidade": "banana",
+      "cep": "99999999",
+      "role": "user",
+      "date": 1713747168,
+      "id": "aP26SC5"
+    },
+    {
+      "nome": "Rogerio",
+      "sobrenome": "Sampaio",
+      "email": "gringo@teste.com",
+      "senha": "senha123",
+      "telefone": "02140028922",
+      "logradouro": "cuzudo",
+      "numero": "69",
+      "complemento": "Perto do Tupac",
+      "bairro": "AcreAAAAAAAAA",
+      "cidade": "banana",
+      "cep": "99999999",
+      "role": "user",
+      "date": 1713747194,
+      "id": "uGAsk65"
+    },
+    {
+      "nome": "Rogerio",
+      "sobrenome": "Sampaio",
+      "email": "porcelana@teste.com",
+      "senha": "senha123",
+      "telefone": "02140028922",
+      "logradouro": "cuzudo",
+      "numero": "69",
+      "complemento": "Perto do Tupac",
+      "bairro": "AcreAAAAAAAAA",
+      "cidade": "banana",
+      "cep": "99999999",
+      "role": "user",
+      "date": 1713747305,
+      "id": "t5CEomz"
     }
   ],
   "produtos": [
@@ -105,42 +153,41 @@
   "pedidos": [
     {
       "id": "1",
-      "user_id": "1",
-      "produtos": [
-        {
-          "id": "1",
-          "qtd": "1",
-          "price": "29.90"
-        },
-        {
-          "id": "2",
-          "qtd": "1",
-          "price": "19.90"
-        }
-      ],
-      "total": "49.80",
-      "status": "Entregue",
-      "motivo_cancelamento": "",
-      "detalhes": "Retirar o picles, por favor!",
-      "pagamento": "PIX",
-      "date": 1413417130
-    },
-    {
-      "id": "2",
       "user_id": "2",
       "produtos": [
         {
-          "id": "2",
-          "qtd": "1",
-          "price": "19.90"
+          "id": "0",
+          "qtd": "0",
+          "price": "37.00"
         }
       ],
-      "total": "19.90",
+      "total": "29.00",
       "status": "Entregue",
-      "detalhes": "Sem cebola, por favor!",
-      "motivo_cancelamento": "",
-      "pagamento": "Dinheiro",
-      "date": 1513417130
+      "motivo_cancelamento": "Aliquam blanditiis officia rerum non cupiditate quia nobis maxime explicabo.",
+      "date_agendada": 1713826095,
+      "avaliacao": "5.00",
+      "detalhes": "Maiores aut consectetur.",
+      "pagamento": "Boleto",
+      "date": 1707248369
+    },
+    {
+      "id": "2",
+      "user_id": "1",
+      "produtos": [
+        {
+          "id": "4",
+          "qtd": "1",
+          "price": "9.00"
+        }
+      ],
+      "total": "31.00",
+      "status": "Cancelado",
+      "motivo_cancelamento": "Et ea quo id eveniet dolores id.",
+      "date_agendada": 1713835205,
+      "avaliacao": "1.00",
+      "detalhes": "Hic aut dolor iure quis autem quis sint qui.",
+      "pagamento": "Cartão de Crédito",
+      "date": 1710744781
     },
     {
       "id": "3",
@@ -149,567 +196,1100 @@
         {
           "id": "3",
           "qtd": "1",
-          "price": "15.90"
+          "price": "44.00"
         }
       ],
-      "total": "15.90",
-      "status": "Cancelado",
-      "motivo_cancelamento": "Cliente desistiu da compra.",
-      "detalhes": "Sem maionese, por favor!",
-      "pagamento": "Cartão de crédito",
-      "date": 1613417130
+      "total": "66.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "Vero esse omnis aut dolores sunt itaque rerum.",
+      "date_agendada": 1713859428,
+      "avaliacao": "3.00",
+      "detalhes": "Et voluptatem accusantium velit ut quaerat modi consequatur.",
+      "pagamento": "PIX",
+      "date": 1706736549
     },
     {
       "id": "4",
-      "user_id": "2",
+      "user_id": "1",
       "produtos": [
         {
-          "id": "4",
-          "qtd": "1",
-          "price": "17.90"
+          "id": "0",
+          "qtd": "0",
+          "price": "11.00"
         }
       ],
-      "total": "17.90",
-      "status": "Entregue",
-      "motivo_cancelamento": "",
-      "detalhes": "Sem molho shoyu, por favor!",
-      "pagamento": "PIX",
-      "date": 1713417130
+      "total": "21.00",
+      "status": "Cancelado",
+      "motivo_cancelamento": "Atque dicta quas aspernatur pariatur ipsam impedit delectus.",
+      "date_agendada": 1713837330,
+      "avaliacao": "4.00",
+      "detalhes": "Omnis voluptate cum expedita voluptas omnis.",
+      "pagamento": "Boleto",
+      "date": 1708084905
     },
     {
       "id": "5",
-      "user_id": "1",
+      "user_id": "3",
       "produtos": [
         {
-          "id": "1",
-          "qtd": "1",
-          "price": "29.90"
+          "id": "5",
+          "qtd": "0",
+          "price": "39.00"
         }
       ],
-      "total": "29.90",
+      "total": "54.00",
       "status": "Entregue",
-      "motivo_cancelamento": "",
-      "detalhes": "Retirar o picles, por favor!",
-      "pagamento": "PIX",
-      "date": 1413417130
+      "motivo_cancelamento": "Sit tempora nulla molestiae enim excepturi.",
+      "date_agendada": 1713965698,
+      "avaliacao": "3.00",
+      "detalhes": "Eum molestias enim quia voluptatibus totam numquam eligendi nobis.",
+      "pagamento": "Boleto",
+      "date": 1705790835
     },
     {
       "id": "6",
-      "user_id": "2",
+      "user_id": "1",
       "produtos": [
         {
-          "id": "2",
-          "qtd": "1",
-          "price": "19.90"
+          "id": "5",
+          "qtd": "0",
+          "price": "7.00"
         }
       ],
-      "total": "19.90",
-      "status": "Entregue",
-      "detalhes": "Sem cebola, por favor!",
-      "motivo_cancelamento": "",
-      "pagamento": "Dinheiro",
-      "date": 1513417130
+      "total": "86.00",
+      "status": "Cancelado",
+      "motivo_cancelamento": "Nesciunt architecto quaerat.",
+      "date_agendada": 1713961513,
+      "avaliacao": "4.00",
+      "detalhes": "Atque doloremque doloremque aut.",
+      "pagamento": "Cartão de Crédito",
+      "date": 1708702319
     },
     {
       "id": "7",
-      "user_id": "1",
+      "user_id": "4",
+      "produtos": [
+        {
+          "id": "4",
+          "qtd": "0",
+          "price": "12.00"
+        }
+      ],
+      "total": "15.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "Qui quo velit repudiandae explicabo a consequatur eos dignissimos.",
+      "date_agendada": 1713974898,
+      "avaliacao": "5.00",
+      "detalhes": "Magni necessitatibus aut alias laboriosam tempora omnis deleniti.",
+      "pagamento": "PIX",
+      "date": 1711723964
+    },
+    {
+      "id": "8",
+      "user_id": "5",
+      "produtos": [
+        {
+          "id": "0",
+          "qtd": "1",
+          "price": "44.00"
+        }
+      ],
+      "total": "73.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "Officia laborum tempore unde numquam.",
+      "date_agendada": 1713794566,
+      "avaliacao": "1.00",
+      "detalhes": "Voluptas quam alias non officiis repellendus qui facilis.",
+      "pagamento": "Cartão de Débito",
+      "date": 1708422686
+    },
+    {
+      "id": "9",
+      "user_id": "5",
       "produtos": [
         {
           "id": "3",
           "qtd": "1",
-          "price": "15.90"
+          "price": "6.00"
         }
       ],
-      "total": "15.90",
-      "status": "Cancelado",
-      "motivo_cancelamento": "Cliente desistiu da compra.",
-      "detalhes": "Sem maionese, por favor!",
-      "pagamento": "Cartão de crédito",
-      "date": 1613417130
-    },
-    {
-      "id": "8",
-      "user_id": "2",
-      "produtos": [
-        {
-          "id": "4",
-          "qtd": "1",
-          "price": "17.90"
-        }
-      ],
-      "total": "17.90",
-      "status": "Cancelado",
-      "motivo_cancelamento": "",
-      "detalhes": "Tempo limite de pagamento excedido.",
-      "pagamento": "PIX",
-      "date": 1713417130
-    },
-    {
-      "id": "9",
-      "user_id": "1",
-      "produtos": [
-        {
-          "id": "1",
-          "qtd": "1",
-          "price": "29.90"
-        }
-      ],
-      "total": "29.90",
-      "status": "Em andamento",
-      "motivo_cancelamento": "",
-      "detalhes": "Retirar o picles, por favor!",
-      "pagamento": "PIX",
-      "date": 1413417130
+      "total": "23.00",
+      "status": "Agendado",
+      "motivo_cancelamento": "Dolorem harum molestiae doloribus placeat maiores autem maxime.",
+      "date_agendada": 1713903470,
+      "avaliacao": "3.00",
+      "detalhes": "Et dolore sed.",
+      "pagamento": "Cartão de Débito",
+      "date": 1712644898
     },
     {
       "id": "10",
-      "user_id": "2",
+      "user_id": "1",
       "produtos": [
         {
-          "id": "2",
-          "qtd": "1",
-          "price": "19.90"
+          "id": "4",
+          "qtd": "0",
+          "price": "9.00"
         }
       ],
-      "total": "19.90",
+      "total": "16.00",
       "status": "Entregue",
-      "detalhes": "Sem cebola, por favor!",
-      "motivo_cancelamento": "",
-      "pagamento": "Dinheiro",
-      "date": 1513417130
+      "motivo_cancelamento": "Tempore nisi non quae voluptatem.",
+      "date_agendada": 1713917470,
+      "avaliacao": "1.00",
+      "detalhes": "Dolor quia mollitia nemo nihil.",
+      "pagamento": "Boleto",
+      "date": 1712155996
     },
     {
       "id": "11",
       "user_id": "1",
       "produtos": [
         {
-          "id": "3",
-          "qtd": "1",
-          "price": "15.90"
+          "id": "1",
+          "qtd": "2",
+          "price": "32.00"
         }
       ],
-      "total": "15.90",
-      "status": "Cancelado",
-      "motivo_cancelamento": "Cliente desistiu da compra.",
-      "detalhes": "Sem maionese, por favor!",
-      "pagamento": "Cartão de crédito",
-      "date": 1613417130
+      "total": "19.00",
+      "status": "Agendado",
+      "motivo_cancelamento": "Autem harum in.",
+      "date_agendada": 1713855356,
+      "avaliacao": "3.00",
+      "detalhes": "Et minima maxime dolorum quam omnis ut et quae maiores.",
+      "pagamento": "Cartão de Crédito",
+      "date": 1710173592
     },
     {
       "id": "12",
       "user_id": "3",
       "produtos": [
         {
-          "id": "4",
-          "qtd": "1",
-          "price": "17.90"
+          "id": "2",
+          "qtd": "0",
+          "price": "6.00"
         }
       ],
-      "total": "17.90",
-      "status": "Em andamento",
-      "motivo_cancelamento": "",
-      "detalhes": "Sem molho shoyu, por favor!",
-      "pagamento": "PIX",
-      "date": 1713417130
+      "total": "15.00",
+      "status": "Cancelado",
+      "motivo_cancelamento": "Et tempora beatae est in nulla.",
+      "date_agendada": 1713936605,
+      "avaliacao": "1.00",
+      "detalhes": "Velit nemo esse est eos.",
+      "pagamento": "Cartão de Crédito",
+      "date": 1711168903
     },
     {
       "id": "13",
-      "user_id": "1",
-      "produtos": [
-        {
-          "id": "1",
-          "qtd": "1",
-          "price": "29.90"
-        }
-      ],
-      "total": "29.90",
-      "status": "Cancelado",
-      "motivo_cancelamento": "",
-      "detalhes": "Retirar o picles, por favor!",
-      "pagamento": "PIX",
-      "date": 1413417130
-    },
-    {
-      "id": "14",
       "user_id": "2",
       "produtos": [
         {
-          "id": "2",
+          "id": "4",
           "qtd": "1",
-          "price": "19.90"
+          "price": "12.00"
         }
       ],
-      "total": "19.90",
-      "status": "Cancelado",
-      "detalhes": "Sem cebola, por favor!",
-      "motivo_cancelamento": "",
-      "pagamento": "Dinheiro",
-      "date": 1513417130
+      "total": "76.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "Qui quos id praesentium et rerum quisquam.",
+      "date_agendada": 1713821115,
+      "avaliacao": "4.00",
+      "detalhes": "Explicabo autem ducimus.",
+      "pagamento": "Boleto",
+      "date": 1710108241
+    },
+    {
+      "id": "14",
+      "user_id": "0",
+      "produtos": [
+        {
+          "id": "0",
+          "qtd": "2",
+          "price": "29.00"
+        }
+      ],
+      "total": "88.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "Incidunt ipsa libero voluptatem beatae qui animi.",
+      "date_agendada": 1713911847,
+      "avaliacao": "3.00",
+      "detalhes": "Alias ut ex.",
+      "pagamento": "Cartão de Débito",
+      "date": 1707252162
     },
     {
       "id": "15",
       "user_id": "3",
       "produtos": [
         {
-          "id": "3",
-          "qtd": "1",
-          "price": "15.90"
+          "id": "1",
+          "qtd": "3",
+          "price": "37.00"
         }
       ],
-      "total": "15.90",
+      "total": "56.00",
       "status": "Cancelado",
-      "motivo_cancelamento": "Cliente desistiu da compra.",
-      "detalhes": "Sem maionese, por favor!",
-      "pagamento": "Cartão de crédito",
-      "date": 1613417130
+      "motivo_cancelamento": "Porro deleniti mollitia magnam omnis doloribus nesciunt animi distinctio omnis.",
+      "date_agendada": 1713823322,
+      "avaliacao": "1.00",
+      "detalhes": "Quaerat sit dicta ea.",
+      "pagamento": "Boleto",
+      "date": 1711326047
     },
     {
       "id": "16",
-      "user_id": "2",
+      "user_id": "5",
       "produtos": [
         {
           "id": "4",
           "qtd": "1",
-          "price": "17.90"
+          "price": "29.00"
         }
       ],
-      "total": "17.90",
-      "status": "Cancelado",
-      "motivo_cancelamento": "",
-      "detalhes": "Sem molho shoyu, por favor!",
-      "pagamento": "PIX",
-      "date": 1713417130
+      "total": "93.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "Similique quia quia consectetur.",
+      "date_agendada": 1713825824,
+      "avaliacao": "3.00",
+      "detalhes": "Molestiae laudantium dolorum voluptatem cumque.",
+      "pagamento": "Cartão de Débito",
+      "date": 1707793400
     },
     {
       "id": "17",
+      "user_id": "5",
+      "produtos": [
+        {
+          "id": "1",
+          "qtd": "3",
+          "price": "35.00"
+        }
+      ],
+      "total": "81.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "Ea sequi dolores error.",
+      "date_agendada": 1713925118,
+      "avaliacao": "2.00",
+      "detalhes": "Voluptates blanditiis nihil autem pariatur.",
+      "pagamento": "Cartão de Crédito",
+      "date": 1706450696
+    },
+    {
+      "id": "18",
+      "user_id": "1",
+      "produtos": [
+        {
+          "id": "3",
+          "qtd": "2",
+          "price": "41.00"
+        }
+      ],
+      "total": "59.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "Repellendus fuga tempora quam ratione quam voluptas a perferendis et.",
+      "date_agendada": 1713846062,
+      "avaliacao": "2.00",
+      "detalhes": "Veniam sunt at dolores amet.",
+      "pagamento": "PIX",
+      "date": 1705263919
+    },
+    {
+      "id": "19",
+      "user_id": "5",
+      "produtos": [
+        {
+          "id": "4",
+          "qtd": "1",
+          "price": "12.00"
+        }
+      ],
+      "total": "58.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "Est eos culpa veniam rem laudantium et molestiae commodi tenetur.",
+      "date_agendada": 1713851244,
+      "avaliacao": "4.00",
+      "detalhes": "Maiores labore est magni quia enim praesentium consequatur quia.",
+      "pagamento": "PIX",
+      "date": 1707960424
+    },
+    {
+      "id": "20",
+      "user_id": "3",
+      "produtos": [
+        {
+          "id": "4",
+          "qtd": "3",
+          "price": "41.00"
+        }
+      ],
+      "total": "43.00",
+      "status": "Cancelado",
+      "motivo_cancelamento": "Ipsa earum quia ut nesciunt molestias provident.",
+      "date_agendada": 1713937569,
+      "avaliacao": "1.00",
+      "detalhes": "Fuga tenetur dolorem suscipit.",
+      "pagamento": "Cartão de Débito",
+      "date": 1708336245
+    },
+    {
+      "id": "21",
+      "user_id": "1",
+      "produtos": [
+        {
+          "id": "1",
+          "qtd": "0",
+          "price": "9.00"
+        }
+      ],
+      "total": "93.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "Consequuntur ipsam omnis iste non velit similique.",
+      "date_agendada": 1713890032,
+      "avaliacao": "1.00",
+      "detalhes": "Totam voluptatem quos dicta maiores a.",
+      "pagamento": "PIX",
+      "date": 1706285726
+    },
+    {
+      "id": "22",
+      "user_id": "0",
+      "produtos": [
+        {
+          "id": "1",
+          "qtd": "1",
+          "price": "40.00"
+        }
+      ],
+      "total": "85.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "Eos animi consequatur.",
+      "date_agendada": 1713916890,
+      "avaliacao": "5.00",
+      "detalhes": "Recusandae voluptas totam fugit hic molestiae aspernatur iusto quia eligendi.",
+      "pagamento": "Boleto",
+      "date": 1706180544
+    },
+    {
+      "id": "23",
+      "user_id": "2",
+      "produtos": [
+        {
+          "id": "1",
+          "qtd": "1",
+          "price": "40.00"
+        }
+      ],
+      "total": "35.00",
+      "status": "Cancelado",
+      "motivo_cancelamento": "Maxime et est voluptatem aspernatur ullam cumque delectus.",
+      "date_agendada": 1713916554,
+      "avaliacao": "4.00",
+      "detalhes": "Quia sequi in quo illum.",
+      "pagamento": "PIX",
+      "date": 1705948316
+    },
+    {
+      "id": "24",
+      "user_id": "4",
+      "produtos": [
+        {
+          "id": "2",
+          "qtd": "3",
+          "price": "7.00"
+        }
+      ],
+      "total": "26.00",
+      "status": "Cancelado",
+      "motivo_cancelamento": "Et ut sequi id vitae ratione asperiores et.",
+      "date_agendada": 1713793619,
+      "avaliacao": "5.00",
+      "detalhes": "Nesciunt tenetur reprehenderit quas commodi quod maiores dolorem sit et.",
+      "pagamento": "Cartão de Débito",
+      "date": 1710125732
+    },
+    {
+      "id": "25",
       "user_id": "3",
       "produtos": [
         {
           "id": "1",
           "qtd": "1",
-          "price": "29.90"
+          "price": "40.00"
         }
       ],
-      "total": "29.90",
-      "status": "Entregue",
-      "motivo_cancelamento": "",
-      "detalhes": "Retirar o picles, por favor!",
-      "pagamento": "PIX",
-      "date": 1413417130
-    },
-    {
-      "id": "18",
-      "user_id": "2",
-      "produtos": [
-        {
-          "id": "2",
-          "qtd": "1",
-          "price": "19.90"
-        }
-      ],
-      "total": "19.90",
-      "status": "Entregue",
-      "detalhes": "Sem cebola, por favor!",
-      "motivo_cancelamento": "",
-      "pagamento": "Dinheiro",
-      "date": 1513417130
-    },
-    {
-      "id": "19",
-      "user_id": "1",
-      "produtos": [
-        {
-          "id": "3",
-          "qtd": "1",
-          "price": "15.90"
-        }
-      ],
-      "total": "15.90",
+      "total": "46.00",
       "status": "Cancelado",
-      "motivo_cancelamento": "Cliente desistiu da compra.",
-      "detalhes": "Sem maionese, por favor!",
-      "pagamento": "Cartão de crédito",
-      "date": 1613417130
+      "motivo_cancelamento": "Eos quasi aliquid illo non et laboriosam ex doloremque.",
+      "date_agendada": 1713818489,
+      "avaliacao": "5.00",
+      "detalhes": "Ducimus ipsum cumque omnis non velit id.",
+      "pagamento": "Cartão de Débito",
+      "date": 1710630595
     },
     {
-      "id": "20",
-      "user_id": "2",
+      "id": "26",
+      "user_id": "4",
       "produtos": [
         {
-          "id": "4",
-          "qtd": "1",
-          "price": "17.90"
+          "id": "0",
+          "qtd": "3",
+          "price": "32.00"
         }
       ],
-      "total": "17.90",
+      "total": "50.00",
       "status": "Entregue",
-      "motivo_cancelamento": "",
-      "detalhes": "Sem molho shoyu, por favor!",
-      "pagamento": "PIX",
-      "date": 1713417130
-    }
-  ],
-  "rating": [
-    {
-      "id": "1",
-      "order_id": "1",
-      "rating": "4.75",
-      "produtos": [
-        {
-          "id": "1"
-        },
-        {
-          "id": "2"
-        }
-      ],
-      "date": 1413417130
+      "motivo_cancelamento": "Deleniti autem praesentium veniam.",
+      "date_agendada": 1713963071,
+      "avaliacao": "4.00",
+      "detalhes": "Occaecati nihil ratione distinctio odit dicta.",
+      "pagamento": "Cartão de Débito",
+      "date": 1708994869
     },
     {
-      "id": "2",
-      "order_id": "2",
-      "rating": "4.0",
+      "id": "27",
+      "user_id": "3",
       "produtos": [
         {
-          "id": "1"
-        },
-        {
-          "id": "2"
+          "id": "0",
+          "qtd": "0",
+          "price": "8.00"
         }
       ],
-      "date": 1513417130
+      "total": "66.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "Eum sit saepe.",
+      "date_agendada": 1713863791,
+      "avaliacao": "4.00",
+      "detalhes": "Voluptatem minus pariatur consequatur quibusdam nobis.",
+      "pagamento": "Cartão de Débito",
+      "date": 1705459644
     },
     {
-      "id": "3",
-      "order_id": "3",
-      "rating": "3.0",
-      "produtos": [
-        {
-          "id": "3"
-        }
-      ],
-      "date": 1613417130
-    },
-    {
-      "id": "4",
-      "order_id": "4",
-      "rating": "4.0",
-      "produtos": [
-        {
-          "id": "4"
-        }
-      ],
-      "date": 1713417130
-    },
-    {
-      "id": "5",
-      "order_id": "1",
-      "rating": "4.75",
-      "produtos": [
-        {
-          "id": "1"
-        },
-        {
-          "id": "2"
-        }
-      ],
-      "date": 1413417130
-    },
-    {
-      "id": "6",
-      "order_id": "2",
-      "rating": "4.0",
-      "produtos": [
-        {
-          "id": "1"
-        },
-        {
-          "id": "2"
-        }
-      ],
-      "date": 1513417130
-    },
-    {
-      "id": "7",
-      "order_id": "3",
-      "rating": "3.0",
-      "produtos": [
-        {
-          "id": "3"
-        }
-      ],
-      "date": 1613417130
-    },
-    {
-      "id": "8",
-      "order_id": "4",
-      "rating": "4.0",
-      "produtos": [
-        {
-          "id": "4"
-        }
-      ],
-      "date": 1713417130
-    },
-    {
-      "id": "9",
-      "order_id": "1",
-      "rating": "4.75",
-      "produtos": [
-        {
-          "id": "1"
-        },
-        {
-          "id": "2"
-        }
-      ],
-      "date": 1413417130
-    },
-    {
-      "id": "10",
-      "order_id": "2",
-      "rating": "4.0",
-      "produtos": [
-        {
-          "id": "1"
-        },
-        {
-          "id": "2"
-        }
-      ],
-      "date": 1513417130
-    },
-    {
-      "id": "11",
-      "order_id": "3",
-      "rating": "3.0",
-      "produtos": [
-        {
-          "id": "3"
-        }
-      ],
-      "date": 1613417130
-    },
-    {
-      "id": "12",
-      "order_id": "4",
-      "rating": "4.0",
-      "produtos": [
-        {
-          "id": "4"
-        }
-      ],
-      "date": 1713417130
-    }
-  ],
-  "agendamentos": [
-    {
-      "id": "1",
-      "user_id": "1",
-      "produtos": [
-        {
-          "id": "1",
-          "qtd": "1"
-        }
-      ],
-      "total": "29.90",
-      "detalhes": "Comprar para o jantar de hoje!",
-      "pagamento": "PIX",
-      "date_pedido": 1413417130,
-      "date_agendada": 1513417130
-    },
-    {
-      "id": "2",
+      "id": "28",
       "user_id": "2",
       "produtos": [
         {
-          "id": "2",
-          "qtd": "1"
+          "id": "1",
+          "qtd": "2",
+          "price": "44.00"
         }
       ],
-      "total": "19.90",
-      "detalhes": "Comprar para o almoço de amanhã!",
-      "pagamento": "Dinheiro",
-      "date_pedido": 1513417130,
-      "date_agendada": 1613417130
+      "total": "48.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "Voluptatem voluptatum sint.",
+      "date_agendada": 1713906519,
+      "avaliacao": "2.00",
+      "detalhes": "Doloribus odit non tempora ab quo.",
+      "pagamento": "PIX",
+      "date": 1705861103
     },
     {
-      "id": "3",
+      "id": "29",
       "user_id": "1",
       "produtos": [
         {
           "id": "3",
-          "qtd": "1"
+          "qtd": "0",
+          "price": "16.00"
         }
       ],
-      "total": "15.90",
-      "detalhes": "Comprar para o lanche da tarde!",
-      "pagamento": "Cartão de crédito",
-      "date_pedido": 1613417130,
-      "date_agendada": 1713417130
+      "total": "95.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "Recusandae eligendi mollitia.",
+      "date_agendada": 1713917598,
+      "avaliacao": "2.00",
+      "detalhes": "Architecto alias et minima voluptatem nulla consequatur.",
+      "pagamento": "Cartão de Débito",
+      "date": 1705949895
     },
     {
-      "id": "4",
+      "id": "30",
+      "user_id": "1",
+      "produtos": [
+        {
+          "id": "5",
+          "qtd": "2",
+          "price": "17.00"
+        }
+      ],
+      "total": "84.00",
+      "status": "Cancelado",
+      "motivo_cancelamento": "Est ut sit aut id velit et in tempora.",
+      "date_agendada": 1713895239,
+      "avaliacao": "2.00",
+      "detalhes": "Totam recusandae fugit illo expedita culpa voluptate ipsam et aut.",
+      "pagamento": "Boleto",
+      "date": 1710503024
+    },
+    {
+      "id": "31",
+      "user_id": "5",
+      "produtos": [
+        {
+          "id": "2",
+          "qtd": "1",
+          "price": "14.00"
+        }
+      ],
+      "total": "61.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "Fugiat sequi quia assumenda.",
+      "date_agendada": 1713929413,
+      "avaliacao": "3.00",
+      "detalhes": "Nostrum inventore sapiente provident repellendus et rerum impedit quasi consequuntur.",
+      "pagamento": "PIX",
+      "date": 1711552727
+    },
+    {
+      "id": "32",
+      "user_id": "3",
+      "produtos": [
+        {
+          "id": "4",
+          "qtd": "2",
+          "price": "39.00"
+        }
+      ],
+      "total": "97.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "Error et in.",
+      "date_agendada": 1713840944,
+      "avaliacao": "3.00",
+      "detalhes": "Occaecati aut qui et ipsum voluptatem ullam itaque veniam eligendi.",
+      "pagamento": "Boleto",
+      "date": 1711900666
+    },
+    {
+      "id": "33",
+      "user_id": "2",
+      "produtos": [
+        {
+          "id": "0",
+          "qtd": "0",
+          "price": "25.00"
+        }
+      ],
+      "total": "64.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "Eveniet nemo reprehenderit quisquam sed fuga inventore quisquam tenetur laborum.",
+      "date_agendada": 1713808633,
+      "avaliacao": "5.00",
+      "detalhes": "Atque eum excepturi omnis quia sunt quo eveniet.",
+      "pagamento": "PIX",
+      "date": 1709372831
+    },
+    {
+      "id": "34",
+      "user_id": "0",
+      "produtos": [
+        {
+          "id": "0",
+          "qtd": "1",
+          "price": "14.00"
+        }
+      ],
+      "total": "87.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "Corrupti quaerat molestiae provident fugiat ratione.",
+      "date_agendada": 1713976167,
+      "avaliacao": "5.00",
+      "detalhes": "Amet id numquam.",
+      "pagamento": "Cartão de Crédito",
+      "date": 1707735872
+    },
+    {
+      "id": "35",
       "user_id": "2",
       "produtos": [
         {
           "id": "4",
-          "qtd": "1"
+          "qtd": "2",
+          "price": "14.00"
         }
       ],
-      "total": "17.90",
-      "detalhes": "Comprar para o jantar de hoje!",
-      "pagamento": "PIX",
-      "date_pedido": 1713417130,
-      "date_agendada": 1813417130
+      "total": "28.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "Eos id aliquid.",
+      "date_agendada": 1713893563,
+      "avaliacao": "1.00",
+      "detalhes": "Repellat consequatur sunt architecto ad dolor magnam quia autem.",
+      "pagamento": "Cartão de Débito",
+      "date": 1710300633
     },
     {
-      "id": "5",
-      "user_id": "1",
+      "id": "36",
+      "user_id": "5",
+      "produtos": [
+        {
+          "id": "0",
+          "qtd": "2",
+          "price": "42.00"
+        }
+      ],
+      "total": "86.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "Illum commodi dolor.",
+      "date_agendada": 1713890797,
+      "avaliacao": "1.00",
+      "detalhes": "Sit asperiores omnis.",
+      "pagamento": "Cartão de Débito",
+      "date": 1711645368
+    },
+    {
+      "id": "37",
+      "user_id": "4",
+      "produtos": [
+        {
+          "id": "3",
+          "qtd": "2",
+          "price": "15.00"
+        }
+      ],
+      "total": "64.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "Corporis magnam in.",
+      "date_agendada": 1713764796,
+      "avaliacao": "1.00",
+      "detalhes": "Assumenda assumenda saepe voluptate rerum et.",
+      "pagamento": "Cartão de Crédito",
+      "date": 1712164326
+    },
+    {
+      "id": "38",
+      "user_id": "4",
+      "produtos": [
+        {
+          "id": "5",
+          "qtd": "1",
+          "price": "42.00"
+        }
+      ],
+      "total": "100.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "Laudantium id asperiores eum est vitae.",
+      "date_agendada": 1713766380,
+      "avaliacao": "1.00",
+      "detalhes": "Adipisci ipsum sint eum voluptates ex.",
+      "pagamento": "Cartão de Crédito",
+      "date": 1706071644
+    },
+    {
+      "id": "39",
+      "user_id": "2",
+      "produtos": [
+        {
+          "id": "5",
+          "qtd": "1",
+          "price": "17.00"
+        }
+      ],
+      "total": "84.00",
+      "status": "Agendado",
+      "motivo_cancelamento": "Molestiae alias odit soluta expedita dolor ipsam neque laborum eligendi.",
+      "date_agendada": 1713934946,
+      "avaliacao": "1.00",
+      "detalhes": "Enim qui sequi quia est dolore quas ratione id accusamus.",
+      "pagamento": "Cartão de Crédito",
+      "date": 1707806559
+    },
+    {
+      "id": "40",
+      "user_id": "3",
+      "produtos": [
+        {
+          "id": "5",
+          "qtd": "0",
+          "price": "30.00"
+        }
+      ],
+      "total": "91.00",
+      "status": "Agendado",
+      "motivo_cancelamento": "Corporis ut blanditiis eos quasi nisi.",
+      "date_agendada": 1713918529,
+      "avaliacao": "4.00",
+      "detalhes": "Eum ut repudiandae rerum iste neque enim.",
+      "pagamento": "Cartão de Débito",
+      "date": 1711252400
+    },
+    {
+      "id": "41",
+      "user_id": "0",
       "produtos": [
         {
           "id": "1",
-          "qtd": "1"
+          "qtd": "3",
+          "price": "45.00"
         }
       ],
-      "total": "29.90",
-      "detalhes": "Comprar para o jantar de hoje!",
-      "pagamento": "PIX",
-      "date_pedido": 1413417130,
-      "date_agendada": 1513417130
+      "total": "89.00",
+      "status": "Cancelado",
+      "motivo_cancelamento": "Doloremque vel similique recusandae facilis sed placeat.",
+      "date_agendada": 1713973393,
+      "avaliacao": "5.00",
+      "detalhes": "Ducimus exercitationem omnis aut et.",
+      "pagamento": "Boleto",
+      "date": 1713700361
     },
     {
-      "id": "6",
+      "id": "42",
+      "user_id": "4",
+      "produtos": [
+        {
+          "id": "2",
+          "qtd": "1",
+          "price": "19.00"
+        }
+      ],
+      "total": "61.00",
+      "status": "Agendado",
+      "motivo_cancelamento": "Quos sapiente et qui magni sed nisi laudantium.",
+      "date_agendada": 1713849359,
+      "avaliacao": "4.00",
+      "detalhes": "Aperiam vel et rem alias voluptatibus quaerat laboriosam eum et.",
+      "pagamento": "Cartão de Crédito",
+      "date": 1713200749
+    },
+    {
+      "id": "43",
+      "user_id": "3",
+      "produtos": [
+        {
+          "id": "5",
+          "qtd": "2",
+          "price": "16.00"
+        }
+      ],
+      "total": "85.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "Sit ea error ipsam quia et.",
+      "date_agendada": 1713782584,
+      "avaliacao": "5.00",
+      "detalhes": "Nam sint minus eum.",
+      "pagamento": "Boleto",
+      "date": 1713675213
+    },
+    {
+      "id": "44",
+      "user_id": "0",
+      "produtos": [
+        {
+          "id": "2",
+          "qtd": "3",
+          "price": "34.00"
+        }
+      ],
+      "total": "16.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "Vitae in voluptas at et qui aliquam officiis cum et.",
+      "date_agendada": 1713766190,
+      "avaliacao": "5.00",
+      "detalhes": "Consequatur rerum omnis aut minima voluptas.",
+      "pagamento": "Boleto",
+      "date": 1713199235
+    },
+    {
+      "id": "45",
+      "user_id": "1",
+      "produtos": [
+        {
+          "id": "0",
+          "qtd": "0",
+          "price": "26.00"
+        }
+      ],
+      "total": "75.00",
+      "status": "Em andamento",
+      "motivo_cancelamento": "Molestiae nemo ea perspiciatis velit consequuntur quos dolores quibusdam aut.",
+      "date_agendada": 1713767442,
+      "avaliacao": "3.00",
+      "detalhes": "Quasi explicabo aut fuga.",
+      "pagamento": "Cartão de Débito",
+      "date": 1713729392
+    },
+    {
+      "id": "46",
+      "user_id": "4",
+      "produtos": [
+        {
+          "id": "5",
+          "qtd": "3",
+          "price": "10.00"
+        }
+      ],
+      "total": "51.00",
+      "status": "Em andamento",
+      "motivo_cancelamento": "Quidem error optio velit nihil voluptas ea libero quia in.",
+      "date_agendada": 1713974023,
+      "avaliacao": "5.00",
+      "detalhes": "Illum reiciendis atque ipsum.",
+      "pagamento": "Cartão de Crédito",
+      "date": 1713740006
+    },
+    {
+      "id": "47",
+      "user_id": "3",
+      "produtos": [
+        {
+          "id": "1",
+          "qtd": "1",
+          "price": "34.00"
+        }
+      ],
+      "total": "54.00",
+      "status": "Cancelado",
+      "motivo_cancelamento": "Sit a laudantium a asperiores quisquam.",
+      "date_agendada": 1713851824,
+      "avaliacao": "2.00",
+      "detalhes": "Voluptatem aut quibusdam dicta omnis consequatur non nulla omnis.",
+      "pagamento": "Cartão de Débito",
+      "date": 1713519897
+    },
+    {
+      "id": "48",
+      "user_id": "2",
+      "produtos": [
+        {
+          "id": "5",
+          "qtd": "2",
+          "price": "34.00"
+        }
+      ],
+      "total": "54.00",
+      "status": "Em andamento",
+      "motivo_cancelamento": "Pariatur ipsum quis maiores error minima.",
+      "date_agendada": 1713946447,
+      "avaliacao": "1.00",
+      "detalhes": "Sapiente cumque sit repellat beatae labore voluptate officiis placeat.",
+      "pagamento": "PIX",
+      "date": 1713723281
+    },
+    {
+      "id": "49",
       "user_id": "2",
       "produtos": [
         {
           "id": "2",
-          "qtd": "1"
+          "qtd": "3",
+          "price": "17.00"
         }
       ],
-      "total": "19.90",
-      "detalhes": "Comprar para o almoço de amanhã!",
-      "pagamento": "Dinheiro",
-      "date_pedido": 1513417130,
-      "date_agendada": 1613417130
+      "total": "12.00",
+      "status": "Agendado",
+      "motivo_cancelamento": "Qui quia praesentium doloremque eligendi est commodi sunt natus reprehenderit.",
+      "date_agendada": 1713970358,
+      "avaliacao": "4.00",
+      "detalhes": "Autem ipsam reprehenderit quaerat aut sunt a.",
+      "pagamento": "Cartão de Débito",
+      "date": 1713435323
     },
     {
-      "id": "7",
-      "user_id": "1",
+      "id": "50",
+      "user_id": "0",
+      "produtos": [
+        {
+          "id": "2",
+          "qtd": "0",
+          "price": "48.00"
+        }
+      ],
+      "total": "53.00",
+      "status": "Agendado",
+      "motivo_cancelamento": "Nisi perspiciatis ex fugit quidem pariatur.",
+      "date_agendada": 1713930209,
+      "avaliacao": "5.00",
+      "detalhes": "Provident quia repudiandae blanditiis dolores ut.",
+      "pagamento": "Cartão de Crédito",
+      "date": 1713492922
+    },
+    {
+      "id": "51",
+      "user_id": "4",
+      "produtos": [
+        {
+          "id": "1",
+          "qtd": "0",
+          "price": "6.00"
+        }
+      ],
+      "total": "50.00",
+      "status": "Em andamento",
+      "motivo_cancelamento": "Explicabo nihil molestiae nam sapiente aspernatur vitae repellendus fugit.",
+      "date_agendada": 1713830796,
+      "avaliacao": "4.00",
+      "detalhes": "Incidunt corporis temporibus et ducimus consequuntur qui nihil.",
+      "pagamento": "Cartão de Crédito",
+      "date": 1713765933
+    },
+    {
+      "id": "52",
+      "user_id": "0",
       "produtos": [
         {
           "id": "3",
-          "qtd": "1"
-        },
-        {
-          "id": "4",
-          "qtd": "1"
+          "qtd": "3",
+          "price": "9.00"
         }
       ],
-      "total": "15.90",
-      "detalhes": "Comprar para o lanche da tarde!",
-      "pagamento": "Cartão de crédito",
-      "date_pedido": 1613417130,
-      "date_agendada": 1713417130
+      "total": "98.00",
+      "status": "Cancelado",
+      "motivo_cancelamento": "A eum repellat quidem placeat et dolor sunt.",
+      "date_agendada": 1713973000,
+      "avaliacao": "1.00",
+      "detalhes": "Assumenda molestiae aut consequuntur et consectetur architecto enim animi facere.",
+      "pagamento": "Cartão de Crédito",
+      "date": 1713800956
+    },
+    {
+      "id": "53",
+      "user_id": "3",
+      "produtos": [
+        {
+          "id": "3",
+          "qtd": "3",
+          "price": "18.00"
+        }
+      ],
+      "total": "81.00",
+      "status": "Em andamento",
+      "motivo_cancelamento": "Et officia repudiandae dolor quos nulla aut sunt dolor.",
+      "date_agendada": 1713981775,
+      "avaliacao": "3.00",
+      "detalhes": "Sit asperiores soluta.",
+      "pagamento": "PIX",
+      "date": 1713773272
+    },
+    {
+      "id": "54",
+      "user_id": "4",
+      "produtos": [
+        {
+          "id": "0",
+          "qtd": "3",
+          "price": "22.00"
+        }
+      ],
+      "total": "72.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "Illum ea nobis qui.",
+      "date_agendada": 1713925885,
+      "avaliacao": "5.00",
+      "detalhes": "Cumque ea voluptatibus corporis cum qui dolores sunt.",
+      "pagamento": "Cartão de Débito",
+      "date": 1713799666
+    },
+    {
+      "id": "55",
+      "user_id": "2",
+      "produtos": [
+        {
+          "id": "4",
+          "qtd": "0",
+          "price": "41.00"
+        }
+      ],
+      "total": "71.00",
+      "status": "Em andamento",
+      "motivo_cancelamento": "Ipsa accusamus aut et repudiandae dicta voluptatem aut.",
+      "date_agendada": 1713934179,
+      "avaliacao": "3.00",
+      "detalhes": "Mollitia quae at distinctio ratione commodi.",
+      "pagamento": "Cartão de Crédito",
+      "date": 1713799099
+    },
+    {
+      "id": "56",
+      "user_id": "5",
+      "produtos": [
+        {
+          "id": "0",
+          "qtd": "1",
+          "price": "28.00"
+        }
+      ],
+      "total": "51.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "Illum culpa cumque eum officia.",
+      "date_agendada": 1713864521,
+      "avaliacao": "1.00",
+      "detalhes": "Necessitatibus non quasi quo qui nihil qui.",
+      "pagamento": "Cartão de Crédito",
+      "date": 1713745565
+    },
+    {
+      "id": "57",
+      "user_id": "3",
+      "produtos": [
+        {
+          "id": "4",
+          "qtd": "0",
+          "price": "49.00"
+        }
+      ],
+      "total": "87.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "Labore dolorum sit molestiae.",
+      "date_agendada": 1713877225,
+      "avaliacao": "3.00",
+      "detalhes": "Et quisquam doloremque perspiciatis.",
+      "pagamento": "Cartão de Crédito",
+      "date": 1713811094
+    },
+    {
+      "id": "58",
+      "user_id": "5",
+      "produtos": [
+        {
+          "id": "4",
+          "qtd": "0",
+          "price": "28.00"
+        }
+      ],
+      "total": "44.00",
+      "status": "Cancelado",
+      "motivo_cancelamento": "Blanditiis labore sequi fugit amet corrupti qui non.",
+      "date_agendada": 1713887813,
+      "avaliacao": "3.00",
+      "detalhes": "Dolores magnam minima aspernatur.",
+      "pagamento": "Cartão de Crédito",
+      "date": 1713828087
+    },
+    {
+      "id": "59",
+      "user_id": "0",
+      "produtos": [
+        {
+          "id": "1",
+          "qtd": "2",
+          "price": "30.00"
+        }
+      ],
+      "total": "54.00",
+      "status": "Cancelado",
+      "motivo_cancelamento": "Dolore vel sint.",
+      "date_agendada": 1713844200,
+      "avaliacao": "1.00",
+      "detalhes": "Sit perferendis ut.",
+      "pagamento": "Boleto",
+      "date": 1713769825
+    },
+    {
+      "id": "60",
+      "user_id": "2",
+      "produtos": [
+        {
+          "id": "1",
+          "qtd": "2",
+          "price": "18.00"
+        }
+      ],
+      "total": "32.00",
+      "status": "Entregue",
+      "motivo_cancelamento": "Doloribus alias officiis nam et voluptatem beatae sint est exercitationem.",
+      "date_agendada": 1713953460,
+      "avaliacao": "1.00",
+      "detalhes": "Voluptate ut voluptate est eos nesciunt repellat exercitationem architecto.",
+      "pagamento": "Boleto",
+      "date": 1713795579
     }
   ]
 }
