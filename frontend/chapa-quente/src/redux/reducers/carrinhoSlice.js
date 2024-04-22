@@ -14,6 +14,13 @@ export const slice = createSlice({
             } else {
                 state.itens.push({ ...action.payload, quantity: 1 });
             }
+            const { id } = action.payload;
+            const itemExistente = state.itens.find(item => item.id === id);
+            if (itemExistente) {
+                itemExistente.quantity += 1;
+            } else {
+                state.itens.push({ ...action.payload, quantity: 1 });
+            }
         },
         removeItem: (state, action) => {
             const { id } = action.payload;
@@ -30,6 +37,7 @@ export const slice = createSlice({
             state.itens = []
         }
     }
+});
 });
 
 export const { addItem, removeItem, clearCart } = slice.actions

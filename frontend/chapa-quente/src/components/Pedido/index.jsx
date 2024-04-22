@@ -21,6 +21,9 @@ const Pedidos = () => {
   const dispatch = useDispatch();
   const carrinho = useSelector(state => state.carrinho.itens);
   const produtos = useSelector(state => state.tabela.produtos);
+  const dispatch = useDispatch();
+  const carrinho = useSelector(state => state.carrinho.itens);
+  const produtos = useSelector(state => state.tabela.produtos);
   const [exibirCaixaDeTexto, setExibirCaixaDeTexto] = useState(false);
   const quantidadeTroco = useSelector(state => state.pedido.quantidadeTroco);
   const quantidades = useSelector(state => state.pedido.quantidades);
@@ -81,7 +84,13 @@ const Pedidos = () => {
     console.log("Pedidos mudaram:", carrinho);
   }, [carrinho]);
 
+    console.log("Pedidos mudaram:", carrinho);
+  }, [carrinho]);
 
+
+   const handleAddQuantity = (id) => {
+    dispatch(addItem({ id }));
+   };
    const handleAddQuantity = (id) => {
     dispatch(addItem({ id }));
    };
@@ -96,16 +105,21 @@ const Pedidos = () => {
   const handleChangeFormaPagamento = (event) => {
     console.log('Novo valor:', event.target.value);
     setFormaPagamento(event.target.value);
+    console.log('Novo valor:', event.target.value);
+    setFormaPagamento(event.target.value);
     if (event.target.value === 'Dinheiro') {
       setExibirCaixaDeTexto(true);
       dispatch(toggleCaixaTexto());
+      dispatch(toggleCaixaTexto());
     } else {
       setExibirCaixaDeTexto(false);
+      dispatch(setQuantidadeTroco(''));
       dispatch(setQuantidadeTroco(''));
     }
   };
 
   const handleChangeQuantidadeTroco = (event) => {
+    dispatch(setQuantidadeTroco(event.target.value));
     dispatch(setQuantidadeTroco(event.target.value));
   };
 
@@ -113,9 +127,12 @@ const Pedidos = () => {
     let total = 0;
     carrinho.forEach(produto => {
             total += parseFloat(produto.quantity) * parseFloat(produto.price);
+    carrinho.forEach(produto => {
+            total += parseFloat(produto.quantity) * parseFloat(produto.price);
     });
     return total.toFixed(2);
 };
+
 
   return (
     <div>
@@ -216,3 +233,4 @@ const Pedidos = () => {
 }
 
 export default Pedidos;
+

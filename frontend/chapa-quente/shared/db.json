@@ -69,6 +69,9 @@
     {
       "id": "1",
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 575fc4a0ad22e27dc18cf8812396b4d238e2dc65
       "nome": "Hamburguers",
       "src": "src/assets/img/hamburguer.png",
       "desc": "2 hamburgueres alface queijo molho especial",
@@ -832,6 +835,40 @@
       "detalhes": "",
       "qtdTroco": "",
       "avaliacao": ""
+    }
+  ],
+  "pedidos": [
+    {
+      "id": 3877347,
+      "produtos": [
+        {
+          "id": "1",
+          "nome": "Hamburguers",
+          "src": "src/assets/img/hamburguer.png",
+          "desc": "2 hamburgueres alface queijo molho especial",
+          "price": 88.88,
+          "quantity": 1
+        },
+        {
+          "id": "2",
+          "nome": "Hamburguers",
+          "src": "src/assets/img/hamburguer2.png",
+          "desc": "Hamburguer duplo com bacon, queijo cheddar e molho barbecue",
+          "price": "14.00",
+          "quantity": 1
+        },
+        {
+          "id": "3",
+          "nome": "Hamburguers",
+          "src": "src/assets/img/hamburguer3.png",
+          "desc": "Hamburguer vegetariano com hambúrguer de feijão preto, alface, tomate e maionese vegana",
+          "price": "24.00",
+          "quantity": 1
+        }
+      ],
+      "precoTotal": "126.88",
+      "formaPagamento": "Cartao",
+      "situacaoPedido": "Em andamento"
     }
   ]
 }
