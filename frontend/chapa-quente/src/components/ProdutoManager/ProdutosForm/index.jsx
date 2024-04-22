@@ -7,7 +7,8 @@ import Row from 'react-bootstrap/Row';
 import Stack from 'react-bootstrap/Stack';
 
 import { useParams } from 'react-router-dom';
-import { imgToBase64 } from '../../../util/imgToBase64'
+import { imgToBase64 } from '../../../utils/imgToBase64'
+
 import { alteraProduto, fetchProduto, selectProduto, addProduto } from '../../../redux/reducers/produtosSlice';
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from 'react';

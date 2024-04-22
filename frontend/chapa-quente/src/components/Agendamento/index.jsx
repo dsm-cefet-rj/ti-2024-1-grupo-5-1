@@ -2,287 +2,80 @@ import { Form, Button, FloatingLabel } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-/* import { toast } from "react-toastify"; /
+import { toast } from "react-toastify";
+import axios from "axios";
 
-/* import { register } from "../../redux/reducers/authSlice"; */
+import { register } from "../../redux/reducers/authSlice";
+import { validate } from "../../utils/scheduleFormValidation";
+import scheduleService from "../../redux/services/scheduleSlice";
 
-function Register() {
-  const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
-  const [today, setToday] = useState(false);
-  const [tomorrow, setTomorrow] = useState(false);
-  const [hour, setHour] = useState("");
-  const [password, setPassword] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [local, setLocal] = useState("");
-  const [cep, setCep] = useState("");
-  const [bairro, setBairro] = useState("");
-  const [complemento, setComplemento] = useState("");
+const Agendamentos = () => {
 
-  const [validated, setValidated] = useState(false);
+    const { user } = useSelector((state) => state.auth);
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+    const [formData, setFormData] = useState({
+        user_id: user.id,
+        produtos: [],
+        total: '',
+        detalhes: '',
+        pagamento: '',
+        date_pedido: '',
+        date_agendada: '',
+    });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+    const [dataMarcada, setDataMarcada] = useState({
+        hora: '',
+        data: '',
+    });
 
-    const form = e.currentTarget;
-    if (form.checkValidity() === false) {
-      e.stopPropagation();
-      setValidated(true);
-      return;
-    }
+    const [formErrors, setFormErrors] = useState({});
 
-    try {
-      dispatch(register({ name, surname, email, password, phoneNumber }));
-    } catch (error) {
-      console.error(error);
-    }
-  };
+    const handleChange = (e) => {
+        const { name, value } = e.currentTarget;
+        setDataMarcada({ ...dataMarcada, [name]: value });
+        setFormErrors({ ...formErrors, [name]: null });
+    };
 
-  const { isLoggedIn, status } = useSelector((state) => state.auth);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate("/produtos");
-    }
+        try {
+            const hora_marcada = validate(dataMarcada);
+            formData.date_agendada = hora_marcada;
+            formData.date_pedido = Math.floor(Date.now() / 1000);
+            await ScheduleService.schedule(formData)
+            .then(() => {
+                toast('Agendamento efetuado com sucesso!', { type: 'success' });
+            })
+        } catch (error) {
+            if (error.errors) {
+                setFormErrors(error.errors);
+            } else {
+                toast(`Erro ao agendar: ${error.message}`, { type: "error" });
+            }
+        }
+    };
 
-    if (status === "success" && isLoggedIn === false) {
-      toast("Usuário registrado com sucesso! Redirecionando para o Login...", {
-        type: "success",
-      });
-      setTimeout(() => {
-        navigate("/login");
-      }, 2000);
-    }
+    return (
+        <>
+            <div style={{ maxWidth: "400px", margin: "0 auto", marginTop: "90px" }}>
+                    <Form noValidate onSubmit={handleSubmit}>
+                        <FloatingLabel controlId="floatingInput" label="Data" className="mb-3">
+                            <Form.Control type="date" placeholder="data" name="data" value={dataMarcada.data} onChange={handleChange} isInvalid={!!formErrors.data} required/>
+                            <Form.Control.Feedback type="invalid">{formErrors.data}</Form.Control.Feedback>
+                        </FloatingLabel>
+                        
+                        <FloatingLabel controlId="floatingInput" label="Hora" className="mb-3">
+                            <Form.Control type="time" placeholder="hora" name="hora" value={dataMarcada.hora} onChange={handleChange} isInvalid={!!formErrors.hora} step="3600" pattern="(?:[01]\d|2[0123]):(?:[012345]\d)" required/>
+                            <Form.Control.Feedback type="invalid">{formErrors.hora}</Form.Control.Feedback>
+                        </FloatingLabel>
 
-    if (status === "failed") {
-      toast(
-        "Ocorreu um erro ao tentar registrar o usuário. Verifique suas credenciais e tente novamente."
-      );
-    }
-  }, [isLoggedIn, navigate, status]);
-
- 
-
-  const dia = new Date();
-  const data1 = dia.getDate() + 1;
-  const data2 = dia.getDate() + 2;
-  const data3 = dia.getDate() + 3;
-  const mes = dia.getMonth();
-
-  return (
-    <>
-      <div style={{ maxWidth: "400px", margin: "0 auto", marginTop: "90px" }}>
-        <h2 className="text-center mb-4" style={{ marginBottom: "20px" }}>
-          Endereço para a entrega
-        </h2>
-        <Form onSubmit={handleSubmit} noValidate validated={validated}>
-          <div className="d-flex">
-            <div style={{ marginRight: "20px" }}>
-              <FloatingLabel
-                controlId="floatingInput"
-                label="Nome"
-                className="mb-3"
-              >
-                <Form.Control
-                  type="text"
-                  placeholder="Nome"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                />
-                <Form.Control.Feedback type="invalid">
-                  Insira um nome.
-                </Form.Control.Feedback>
-              </FloatingLabel>
+                        
+                        
+                </Form>
             </div>
-            <div>
-              <FloatingLabel
-                controlId="floatingInput"
-                label="Sobrenome"
-                className="mb-3"
-              >
-                <Form.Control
-                  type="text"
-                  placeholder="Sobrenome"
-                  value={surname}
-                  onChange={(e) => setSurname(e.target.value)}
-                  required
-                />
-                <Form.Control.Feedback type="invalid">
-                  Informe o sobrenome.
-                </Form.Control.Feedback>
-              </FloatingLabel>
-            </div>
-          </div>
-
-          <div className="mb-2">
-            <div>
-              <FloatingLabel
-                controlId="floatingInput"
-                label="Logradouro"
-                className="mb-3"
-              >
-                <Form.Control
-                  type="text"
-                  placeholder="Logradouro"
-                  value={local}
-                  onChange={(e) => setLocal(e.target.value)}
-                  required
-                />
-                <Form.Control.Feedback type="invalid">
-                  Informe o logradouro.
-                </Form.Control.Feedback>
-              </FloatingLabel>
-            </div>
-            <Form.Group className="d-flex" controlId="formNumberHouse">
-              <div style={{ marginRight: "20px" }}>
-                <FloatingLabel
-                  controlId="floatingInput"
-                  label="Número"
-                  className="mb-3"
-                >
-                  <Form.Control
-                    type="number"
-                    min={1}
-                    placeholder="Informe o número da sua casa"
-                    value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
-                    required
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    Insira um número válido.
-                  </Form.Control.Feedback>
-                </FloatingLabel>
-              </div>
-              <FloatingLabel
-                controlId="floatingInput"
-                label="CEP"
-                className="mb-3"
-              >
-                <Form.Control
-                  type="number"
-                  maxLength={8}
-                  id="cep"
-                  placeholder="Informe o CEP"
-                  value={cep}
-                  onChange={(e) => setCep(e.target.value)}
-                  required
-                />
-                <Form.Control.Feedback type="invalid">
-                  Insira um CEP válido.
-                </Form.Control.Feedback>
-              </FloatingLabel>
-            </Form.Group>
-            <div>
-              <FloatingLabel
-                controlId="floatingInput"
-                label="Bairro"
-                className="mb-3"
-              >
-                <Form.Control
-                  type="text"
-                  placeholder="Bairro"
-                  value={bairro}
-                  onChange={(e) => setBairro(e.target.value)}
-                  required
-                />
-                <Form.Control.Feedback type="invalid">
-                  Informe o Bairro.
-                </Form.Control.Feedback>
-              </FloatingLabel>
-              <div>
-                <FloatingLabel
-                  controlId="floatingInput"
-                  label="Complemento"
-                  className="mb-3"
-                >
-                  <Form.Control
-                    type="text"
-                    placeholder="Complemento"
-                    value={complemento}
-                    onChange={(e) => setComplemento(e.target.value)}
-                  />
-                </FloatingLabel>
-              </div>
-            </div>
-          </div>
-          <p>
-            Escolha entre os próximos 2 dias para sua entrega:
-            <br />
-            (Opcional)
-          </p>
-
-          <Form.Group className="mb-2 d-flex gap-2" controlId="checkDates">
-            {tomorrow === true ? (
-              ""
-            ) : (
-              <Form.Check
-                type="checkbox"
-                label={data1 + "/" + mes}
-                id="checkTomorrow"
-                checked={today}
-                onClick={() => setToday(!today)}
-              />
-            )}
-            {today === true ? (
-              ""
-            ) : (
-              <Form.Check
-                type="checkbox"
-                label={data2 + "/" + mes}
-                id="checkTomorrow"
-                checked={tomorrow}
-                onClick={() => setTomorrow(!tomorrow)}
-              />
-            )}
-
-            <Form.Control.Feedback type="invalid">
-              É necessário escolher uma data de entrega!!
-            </Form.Control.Feedback>
-          </Form.Group>
-
-          {today === true ? (
-            <Form.Control
-              className="mb-2"
-              type="time"
-              placeholder="Horário:"
-              value={hour}
-              onChange={(e) => setHour(e.target.value)}
-              required
-            />
-          ) : (
-            ""
-          )}
-
-          {tomorrow === true ? (
-            <Form.Control
-              className="mb-2"
-              type="time"
-              placeholder="Horário:"
-              value={hour}
-              onChange={(e) => setHour(e.target.value)}
-              required
-            />
-          ) : (
-            ""
-          )}
-
-          <div className="text-center">
-            <Button
-              variant="primary"
-              type="submit"
-              className="btn-block mb-4"
-            >
-              Concluir
-            </Button>
-          </div>
-        </Form>
-      </div>
-    </>
-  );
+        </>
+    );
 }
 
-export default Register;
+export default Agendamentos;

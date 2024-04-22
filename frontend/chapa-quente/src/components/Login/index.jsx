@@ -33,7 +33,12 @@ const Login = () => {
         try {
             await formSchemaR.validate(formData, { abortEarly: false });
             const { email, senha } = formData;
-            dispatch(login({ email, senha }))
+            dispatch(login({ email, senha })).then(() => {
+                toast('Login efetuado com sucesso!', { type: 'success' });
+            })
+            .catch((error) => {
+                toast(`Erro ao efetuar login: ${error.message}` , { type: 'error' });
+            });
         } catch (error) {
             if (error.inner) {
                 const errors = error.inner.reduce((acc, current) => {

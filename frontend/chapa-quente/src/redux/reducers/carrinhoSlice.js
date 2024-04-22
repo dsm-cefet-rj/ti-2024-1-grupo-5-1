@@ -6,38 +6,31 @@ export const slice = createSlice({
         itens: []
     },
     reducers: {
-        addItem: (state, action) => {
-            const { id } = action.payload;
-            const itemExistente = state.itens.find(item => item.id === id);
-            if (itemExistente) {
-                itemExistente.quantity += 1;
-            } else {
-                state.itens.push({ ...action.payload, quantity: 1 });
-            }
-            const { id } = action.payload;
-            const itemExistente = state.itens.find(item => item.id === id);
-            if (itemExistente) {
-                itemExistente.quantity += 1;
+        addItem(state, action) {
+            console.log('Adicionando item ao carrinho.')
+            const existingItem = state.itens.findIndex(item => item.id === action.payload.id);
+            if (existingItem >= 0) {
+                state.itens[existingItem].quantity++;
             } else {
                 state.itens.push({ ...action.payload, quantity: 1 });
             }
         },
-        removeItem: (state, action) => {
-            const { id } = action.payload;
-            const index = state.itens.findIndex(item => item.id === id);
-            if (index !== -1) {
-                if (state.itens[index].quantity > 1) {
-                    state.itens[index].quantity -= 1;
+        removeItem(state, action) {
+            console.log('Removendo item do carrinho.');
+            const existingItem = state.itens.findIndex(item => item.id === action.payload.id);
+            if (existingItem >= 0) {
+                if (state.itens[existingItem].quantity === 1) {
+                    state.itens = state.itens.filter(item => item.id !== action.payload.id);
                 } else {
-                    state.itens.splice(index, 1);
+                    state.itens[existingItem].quantity--;
                 }
             }
         },
-        clearCart: (state) => {
-            state.itens = []
+        clearCart(state) {
+            console.log('Carrinho esvaziado.')
+            state.itens = [];
         }
     }
-});
 });
 
 export const { addItem, removeItem, clearCart } = slice.actions

@@ -13,7 +13,7 @@ const Conta = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const { user, isLoggedIn, status } = useSelector((state) => state.auth);
+    const { user, isLoggedIn } = useSelector((state) => state.auth);
 
     const [formData, setFormData] = useState({
         nome: user.nome,
@@ -27,6 +27,7 @@ const Conta = () => {
         bairro: user.bairro,
         cidade: user.cidade,
         cep: user.cep,
+        role: user.role,
         id: user.id,
         date: user.date
     });
@@ -43,7 +44,14 @@ const Conta = () => {
         e.preventDefault();
         try {
             await formSchemaU.validate(formData, { abortEarly: false });
-            dispatch(update(formData));
+            dispatch(update(formData))
+            .then(() => {
+                toast('Cadastro atualizado com sucesso!', { type: 'success' });
+                window.location.reload();
+            })
+            .catch((error) => {
+                toast(`Erro ao atualizar cadastro: ${error.message}`, { type: 'error' });
+            });
         } catch (error) {
             if (error.inner) {
                 const errors = error.inner.reduce((acc, current) => {
@@ -62,11 +70,7 @@ const Conta = () => {
             navigate('/login');
             toast('Você precisa estar logado para acessar essa página.', { type: 'error' });
         }
-
-        if (status === 'success') {
-            toast('Cadastro atualizado com sucesso!', { type: 'success' });
-        }
-    }, [isLoggedIn, navigate, status]);
+    }, [isLoggedIn, navigate]);
 
     return (
         <>

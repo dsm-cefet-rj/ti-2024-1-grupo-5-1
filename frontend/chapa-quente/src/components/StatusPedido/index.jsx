@@ -1,117 +1,95 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Table, Button, Alert} from 'react-bootstrap';
-import StarRating from './starRating';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
-
-
+import { Table, Alert, Button } from 'react-bootstrap';
+import StarRating from './starRating';
+import { Link } from 'react-router-dom';
 
 const StatusPedido = () => {
+  const { pedidoId } = useParams(); // Obtém o ID do pedido da URL
+  const [pedido, setPedido] = useState(null);
+  const [avaliacao, setAvaliacao] = useState(0);
+  const [mensagem, setMensagem] = useState('');
 
-    const [pedidoId, setPedidoId] = useState(null);
-    const [produtos, setProdutos] = useState([]);
-    const [pedidoPriceTotal, setPedidoPriceTotal] = useState(null);
-    const [pedidoFormaPagamento, setPedidoFormaPagamento] = useState(null);
-    const [pedidoSituacaoPedido, setPedidoSituacaoPedido] = useState(null);
-    const [avaliacao, setAvaliacao] = useState(0);
-    const [mensagem, setMensagem] = useState('');
-
-    
-    useEffect(() => {
-        const fetchPedido = async () => {
-          try {
-            const response = await fetch('http://localhost:3001/pedidos');
-    
-            if (!response.ok) {
-              throw new Error(`Erro ao buscar dados: ${response.statusText}`);
-            }
-    
-            const pedidos = await response.json();
-            if (pedidos.length > 0) {
-              const pedido = pedidos[0];
-              setPedidoId(pedido.id);
-              setPedidoPriceTotal(pedido.total);
-              setPedidoFormaPagamento(pedido.pagamento);
-              setPedidoSituacaoPedido(pedido.status);
-              setProdutos(pedido.produtos);
-            }
-          } catch (error) {
-            console.error("Erro ao buscar dados do servidor:", error);
-          }
-        };
-    
-        fetchPedido(); // Chamar para carregar dados
-      }, []); // Executar ao montar o componente
-    
-      const handleRatingChange = (newRating) => {
-        setAvaliacao(newRating);
-      };
-
-    
-      const handleEnviarAvaliacao = async () => {
-        if (pedidoId === null) {
-          setMensagem('Pedido ainda não foi carregado');
-          return;
-        }
-
-        console.log(avaliacao)
-    
-        try {
-          await axios.patch(`http://localhost:3001/pedidos/${pedidoId}`, { avaliacao } );
-          setMensagem('Avaliação enviada com sucesso!');
-        } catch (error) {
-          setMensagem('Erro ao enviar a avaliação.');
-          console.error('Erro ao atualizar a avaliação:', error);
-        }
-      };
-    
-      return (
-        <div style={{ margin: '0 auto', marginTop: '50px', textAlign: 'center' }}>
-          <h2>Status do Pedido: {pedidoSituacaoPedido ? pedidoSituacaoPedido : 'Carregando...'}</h2>
-          <h3>ID do Pedido: {pedidoId ? pedidoId : 'Carregando...'}</h3>
-          <h1>Produtos do Pedido</h1>
-          <Table striped bordered hover variant="dark">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Descrição</th>
-                <th>Preço</th>
-                <th>Quantidade</th>
-              </tr>
-            </thead>
-            <tbody>
-              {produtos.length === 0 ? (
-                <tr>
-                  <td colSpan="5">Carregando produtos...</td>
-                </tr>
-              ) : (
-                produtos.map((produto) => (
-                  <tr key={produto.id}>
-                    <td>{produto.id}</td>
-                    <td>{produto.nome}</td>
-                    <td>{produto.desc}</td>
-                    <td>{produto.price}</td>
-                    <td>{produto.qtd}</td>
-                  </tr>
-                ))
-              )}
-            </tbody>
-          </Table>
-          <h4>Preço total: {pedidoPriceTotal ? pedidoPriceTotal : 'Carregando...'}</h4>
-          <h4>Forma de Pagamento: {pedidoFormaPagamento ? pedidoFormaPagamento : 'Carregando...'}</h4>
-          <h5>Avaliação:</h5>
-          <StarRating totalStars={5} onRatingChange={handleRatingChange} />
-          <Button variant="primary" onClick={handleEnviarAvaliacao}>
-            Enviar Avaliação
-          </Button>
-          {mensagem && (
-            <Alert variant={mensagem.includes('sucesso') ? 'success' : 'danger'}>
-              {mensagem}
-            </Alert>
-          )}
-        </div>
-      );
+  useEffect(() => {
+    const fetchPedido = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3001/pedidos/${pedidoId}`);
+        const fetchedPedido = response.data;
+        setPedido(fetchedPedido); // Define o pedido
+        setAvaliacao(fetchedPedido.avaliacao || 0); // Avaliação inicial
+      } catch (error) {
+        console.error("Erro ao buscar pedido:", error);
+        setMensagem('Erro ao carregar pedido');
+      }
     };
-    
-    export default StatusPedido;
+
+    fetchPedido(); // Busca o pedido quando o componente monta ou pedidoId muda
+  }, [pedidoId]);
+
+
+  if (!pedido) {
+    return <div>Carregando...</div>; // Exibe enquanto os dados são buscados
+  }
+
+  const handleRatingChange = (newRating) => {
+    setAvaliacao(newRating);
+
+    axios
+      .patch(`http://localhost:3001/pedidos/${pedido.id}`, { avaliacao: newRating })
+      .then(() => {
+        setMensagem('Avaliação enviada com sucesso!');
+      })
+      .catch((error) => {
+        console.error('Erro ao enviar avaliação:', error);
+        setMensagem('Erro ao enviar avaliação.');
+      });
+  };
+
+  return (
+    <div style={{textAlign: 'center'}}>
+      <h2>Status do Pedido: {pedido.status}</h2>
+      <h5>ID do Pedido: {pedido.id}</h5>
+      <h5>Forma de Pagamento: {pedido.pagamento}</h5>
+      <Table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+          </tr>
+        </thead>
+        <tbody>
+          {pedido.produtos.map((produto) => (
+            <tr key={produto.id}>
+              <td>{produto.id}</td>
+              <td>{produto.name}</td>
+              <td>R$ {produto.price}</td>
+              <td>{produto.qtd}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+
+      <h5>Preço Total: {pedido.total} </h5>
+
+      <div>
+        <h4>Avaliação do Pedido:</h4>
+        <StarRating totalStars={5} initialRating={avaliacao} onRatingChange={handleRatingChange} />
+      </div>
+
+      <Link to="/pedidos/:usersid">
+        <Button variant="primary">Voltar para Pedidos</Button>
+      </Link>
+
+      {mensagem && (
+        <Alert variant={mensagem.includes('sucesso') ? 'success' : 'danger'}>
+          {mensagem}
+        </Alert>
+      )}
+    </div>
+  );
+};
+
+export default StatusPedido;

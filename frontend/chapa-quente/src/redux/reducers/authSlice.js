@@ -6,8 +6,7 @@ const user = localStorage.getItem("user");
 
 const initialState = userAdapter.getInitialState({
     isLoggedIn: user ? true : false,
-    user: user ? JSON.parse(user) : null,
-    status: null,
+    user: user ? JSON.parse(user) : null
 });
 
 export const register = createAsyncThunk('auth/register', async (user, { rejectWithValue }) => {
@@ -44,61 +43,43 @@ export const logout = createAsyncThunk('auth/logout', async () => {
     AuthService.logout();
 });
 
+export const selectCurrentUser = (state) => state.auth.user;
+
 const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {},
     extraReducers: (builder) => {
         (builder)
-        .addCase(register.pending, (state) => {
-            console.log('Cadastrando usuário...');
-            state.status = 'loading';
-        })
         .addCase(register.fulfilled, (state) => {
-            console.log('Usuário cadastrado.');
             state.isLoggedIn = false;
-            state.status = 'success';
             state.user = null;
         })
         .addCase(register.rejected, (state) => {
-            console.log('Falha no cadastro.');
             state.isLoggedIn = false;
-            state.status = 'failed';
             state.user = null;
-        })
-        .addCase(login.pending, (state) => {
-            console.log('Autenticando...');
-            state.status = 'loading';
+            throw new Error("Cadastro inválido.");
         })
         .addCase(login.fulfilled, (state, action) => {
-            console.log('Usuário logado.');
             state.isLoggedIn = true;
-            state.status = 'success';
             state.user = action.payload;
         })
         .addCase(login.rejected, (state) => {
-            console.log('Erro nas credenciais.');
-            state.status = 'failed';
             state.isLoggedIn = false;
             state.user = null;
+            throw new Error("Usuário ou senha inválidos.");
         })
         .addCase(logout.fulfilled, (state) => {
-            console.log('Usuário deslogado.');
             state.isLoggedIn = false;
             state.user = null;
         })
-        .addCase(update.pending, (state) => {
-            console.log('Atualizando dados...');
-            state.status = 'loading';
-        })
         .addCase(update.fulfilled, (state, action) => {
-            console.log('Usuário atualizado.');
-            state.status = 'success';
             state.user = action.payload;
         })
         .addCase(update.rejected, (state) => {
-            console.log('Falha ao atualizar dados.');
-            state.status = 'failed';
+            state.isLoggedIn = true;
+            state.user = null;
+            throw new Error();
         })
     },
 });
