@@ -4,12 +4,32 @@ import { Plus, Dash } from 'react-bootstrap-icons';
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 import { addItem, removeItem } from "../../../redux/reducers/carrinhoSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { Button, Modal } from 'react-bootstrap';
+import { useState } from 'react';
+import LoginAdvise from '../../LoginAdvise'
 
 const Card = ({ item }) => {
+    const { isLoggedIn } = useSelector((state) => state.auth);
     const dispatch = useDispatch()
+
+    const [showModal, setShowModal] = useState(false);
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+    }
+    
+    const handleShowModal = () => {
+        setShowModal(true);
+    }
+
     const handleAddItem = () => {
-        dispatch(addItem(item))
+        if (isLoggedIn) {
+            dispatch(addItem(item))
+        } else {
+            handleShowModal();
+        }   
     }
     const handleRemoveItem = () => {
         dispatch(removeItem(item))
@@ -31,6 +51,7 @@ const Card = ({ item }) => {
                     </Stack>
                 </div>
             </div>
+            <LoginAdvise showModal={showModal} handleClose={handleCloseModal}/>
         </>
     )
 }
