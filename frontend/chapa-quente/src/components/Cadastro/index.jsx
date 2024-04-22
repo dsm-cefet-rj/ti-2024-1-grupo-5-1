@@ -43,8 +43,16 @@ const Cadastro = () => {
             await formSchemaC.validate(formData, { abortEarly: false });
             const { termos, ...data } = formData;
             data.date = Math.floor(Date.now() / 1000);
-            console.log(data);
-            dispatch(register(data));
+            dispatch(register(data))
+            .then(() => {
+                toast('Cadastro efetuado com sucesso!', { type: 'success' });
+                setTimeout(() => {
+                    navigate('/login');
+                }, 2000);
+            })
+            .catch((error) => {
+                toast(`Erro ao efetuar cadastro: ${error.message}`, { type: 'error' });
+            });
         } catch (error) {
             if (error.inner) {
                 const errors = error.inner.reduce((acc, current) => {
@@ -64,11 +72,6 @@ const Cadastro = () => {
         if (isLoggedIn) {
             navigate('/produtos');
             toast('Você já está logado em nosso sistema.', { type: 'info'});
-        }
-
-        if (status === 'success') {
-            navigate('/login');
-            toast('Usuário cadastrado com sucesso!', { type: 'success' });
         }
     }, [isLoggedIn, navigate, status]);
 

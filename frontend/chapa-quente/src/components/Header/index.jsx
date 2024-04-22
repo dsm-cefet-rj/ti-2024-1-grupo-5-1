@@ -39,6 +39,7 @@ const Header = () => {
                                     <>
                                         <NavDropdown.Divider />
                                         <NavDropdown.Item href="/ativos">Pedidos Ativos</NavDropdown.Item>
+                                        <NavDropdown.Item href="/produtosmanager">Gerenciar Produtos</NavDropdown.Item>
                                         <NavDropdown.Item href="/relatorios">Relatórios</NavDropdown.Item>
                                     </>
                                 ) : null

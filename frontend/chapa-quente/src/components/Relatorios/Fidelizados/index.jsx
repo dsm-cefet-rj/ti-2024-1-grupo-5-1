@@ -1,5 +1,5 @@
 import { Chart, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
-import { Table, Modal, Button, Pagination } from "react-bootstrap";
+import { Table, Modal, Button, Stack, Badge } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
 import { InfoCircleFill } from "react-bootstrap-icons";
 import { useState, useEffect } from "react";
@@ -41,20 +41,20 @@ const Fidelizados = () => {
                 const user_id = user.id;
                 const user_info = user;
                 const frequency = userFrequency[user_id] || 0;
-                const lastOrder = data.find((pedido) => pedido.user_id === user_id);
+                const lastOrder = data.find((pedido) => pedido.user_id === user_id) || null;
                 return { user_info, lastOrder, frequency };
             });
 
-            const totalPedidos = alignedData.reduce((acc, curr) => acc + curr.frequency, 0);
-            const filteredData = alignedData.filter((user) => user.frequency >= totalPedidos / alignedData.length);
-
-            setAlignedData(filteredData);
+            setAlignedData(alignedData);
         };
 
         alignUsersWithData();
+
     }, [data]);
 
     const [alignedData, setAlignedData] = useState([]);
+    const totalPedidos = alignedData.reduce((acc, curr) => acc + curr.frequency, 0);
+    const totalUsers = alignedData.length;
 
     const sortedData = alignedData.sort((a, b) => b.frequency - a.frequency);
 
@@ -80,7 +80,7 @@ const Fidelizados = () => {
             y: {
                 beginAtZero: true,
                 ticks: {
-                    callback: function(value) {
+                    callback: function (value) {
                         return value;
                     }
                 }
@@ -92,9 +92,9 @@ const Fidelizados = () => {
                 position: 'top',
                 labels: {
                     padding: 20,
-                        font: {
-                            size: 14,
-                        },
+                    font: {
+                        size: 14,
+                    },
                 },
             },
             title: {
@@ -107,7 +107,7 @@ const Fidelizados = () => {
             },
             tooltip: {
                 callbacks: {
-                    label: function(context) {
+                    label: function (context) {
                         return `Pedidos: ${context.raw}`;
                     }
                 }
@@ -121,7 +121,7 @@ const Fidelizados = () => {
 
     const handleShowModal = async (item) => {
         try {
-            setSelectedUser({ user_info: item.user_info, frequency: item.frequency});
+            setSelectedUser({ user_info: item.user_info, frequency: item.frequency });
             setShowModal(true);
         } catch (error) {
             console.error('Erro ao buscar informações do usuário:', error);
@@ -140,17 +140,24 @@ const Fidelizados = () => {
     return (
         <>
             <div style={{ maxWidth: '1000px', maxHeight: '800px', overflow: 'auto', margin: '0 auto' }}>
-                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px'}}>
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
                     <Bar data={chartData} options={chartOptions} width={250} height={300} />
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px'}}>
-                    <h1>isso ta errado</h1>
-                    <p><strong>Total de Usuários:</strong> {sortedData.length}</p>
-                    <p style={{ marginLeft: '20px'}}><strong>Total de Pedidos:</strong> {sortedData.reduce((acc, curr) => acc + curr.frequency, 0)}</p>
-                    <p style={{ marginLeft: '20px'}}><strong>Total de Usuários Fidelizados:</strong> {alignedData.length}</p>
-                    <p style={{ marginLeft: '20px'}}><strong>Total de Pedidos Fidelizados:</strong> {alignedData.reduce((acc, curr) => acc + curr.frequency, 0)}</p>
-                    <p><strong>Média de Fidelidade:</strong> {sortedData.reduce((acc, curr) => acc + curr.frequency, 0) / sortedData.length}</p>
-                </div>
+                <Stack direction="horizontal" style={{ justifyContent: 'center', marginBottom: '10px' }} gap={3}>
+                    <p>
+                        <strong>Total de Usuários:</strong> <Badge bg="secondary">{sortedData.length}</Badge>
+                    </p>
+                    <p>
+                        <strong>Total de Pedidos:</strong> <Badge bg="secondary">{totalPedidos}</Badge>
+                    </p>
+                    <p>
+                        <strong>Total de Usuários:</strong> <Badge bg="secondary">{totalUsers}</Badge>
+                    </p>
+                    <p>
+                        <strong>Média para Fidelidade:</strong>{' '}
+                        <Badge bg="secondary">{(totalPedidos / totalUsers).toFixed(2)}</Badge>
+                    </p>
+                </Stack>
                 <div>
                     <Table style={{ width: '100%', tableLayout: 'fixed' }}>
                         <thead>
@@ -164,9 +171,9 @@ const Fidelizados = () => {
                         <tbody>
                             {sortedData.map((item, index) => (
                                 <tr key={index} onClick={() => handleShowModal(item)}>
-                                    <td>{item.user_info.nome} {item.user_info.sobrenome} ({item.user_info.id})</td>
-                                    <td>{item.frequency}</td>
-                                    <td>{item.lastOrder ? getFormattedDateTime(item.lastOrder.date) : 'Nenhum pedido feito'}</td>
+                                    {item.frequency > 5 ? <td style={{ color: 'blue' }}>{item.user_info.nome}</td> : <td>{item.user_info.nome}</td>}
+                                    {item.frequency > 5 ? <td style={{ color: 'blue' }}>{item.frequency}</td> : <td>{item.frequency}</td>}
+                                    {item.lastOrder ? <td>{getFormattedDateTime(item.lastOrder.date)}</td> : <td>Nenhum pedido feito</td>}
                                     <td>
                                         <Button variant="link" onClick={() => handleShowModal(item)}>
                                             <InfoCircleFill />
@@ -183,11 +190,13 @@ const Fidelizados = () => {
                         <Modal.Body>
                             {selectedUser && (
                                 <>
-                                    <p style={{ marginBottom: '10px'}}>Nome: {selectedUser.user_info.nome} {selectedUser.user_info.sobrenome}</p>
-                                    <p style={{ marginBottom: '10px'}}>Email: {selectedUser.user_info.email}</p>
-                                    <p style={{ marginBottom: '10px'}}>Telefone: {selectedUser.user_info.telefone}</p>
-                                    <p style={{ marginBottom: '10px' }}>Endereço: {selectedUser.user_info.logradouro}, {selectedUser.user_info.numero} - {selectedUser.user_info.cep} - {selectedUser.user_info.bairro}, {selectedUser.user_info.cidade}</p>
-                                    <p style={{ marginBottom: '10px' }}>Quantidade de Pedidos: {selectedUser.frequency}</p>
+                                    <div style={{ marginBottom: '10px' }}>
+                                        <p><strong>Nome:</strong> {selectedUser.user_info.nome} {selectedUser.user_info.sobrenome}</p>
+                                        <p><strong>Email:</strong> {selectedUser.user_info.email}</p>
+                                        <p><strong>Telefone:</strong> {selectedUser.user_info.telefone}</p>
+                                        <p><strong>Endereço:</strong> {selectedUser.user_info.logradouro}, {selectedUser.user_info.numero} - {selectedUser.user_info.cep} - {selectedUser.user_info.bairro}, {selectedUser.user_info.cidade}</p>
+                                        <p><strong>Quantidade de Pedidos:</strong> {selectedUser.frequency}</p>
+                                    </div>
                                 </>
                             )}
                         </Modal.Body>

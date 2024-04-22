@@ -4,12 +4,31 @@ import { Plus, Dash } from 'react-bootstrap-icons';
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 import { addItem, removeItem } from "../../../redux/reducers/carrinhoSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { Button, Modal } from 'react-bootstrap';
+import { useState } from 'react';
 
 const Card = ({ item }) => {
+    const { isLoggedIn } = useSelector((state) => state.auth);
     const dispatch = useDispatch()
+
+    const [showModal, setShowModal] = useState(false);
+
+    const handleShowModal = () => {
+        setShowModal(true);
+    }
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+    }
+
     const handleAddItem = () => {
-        dispatch(addItem(item))
+        if (isLoggedIn) {
+            dispatch(addItem(item))
+        } else {
+            handleShowModal();
+        }   
     }
     const handleRemoveItem = () => {
         dispatch(removeItem(item))
@@ -31,6 +50,23 @@ const Card = ({ item }) => {
                     </Stack>
                 </div>
             </div>
+
+            <Modal show={showModal} onHide={handleCloseModal}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Ainda não...</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <p>Interessado em algum de nossos produtos? Faça login e comece a adicionar itens ao seu carrinho!</p>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="success" onClick={handleCloseModal} href="/login">
+                                Fazer Login
+                            </Button>
+                            <Button variant="secondary" onClick={handleCloseModal}>
+                                Cancelar
+                            </Button>
+                        </Modal.Footer>
+                </Modal>
         </>
     )
 }

@@ -50,11 +50,10 @@
 		{
 			"id": "",
 			"order_id": "",
-			"overall_rating": "",
+			"rating": "",
 			"produtos": [
 				{
-					"id": "",
-					"rating": ""
+					"id": ""
 				}
 			],
 			"date": ""

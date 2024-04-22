@@ -2,36 +2,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 
-import { fetchVendasPorTempo } from '../../../redux/reducers/reportSlice';
+import { fetchPedidos } from '../../../redux/reducers/reportSlice';
 
 const VendasTempo = () => {
     const [option, setOption] = useState('hora');
-    const { vendasPorTempo } = useSelector((state) => state.reports);
-    const { data, status, error } = vendasPorTempo;
-    const dispatch = useDispatch();
 
+    const { pedidos } = useSelector((state) => state.reports);
+    const { data, status, fetched } = pedidos;
+
+    const dispatch = useDispatch();
     useEffect(() => {
-        const fetchVendas = async () => {
-            try {
-                dispatch(fetchVendasPorTempo());
-            } catch (error) {
-                console.error(error);
-            }
-        };
-        fetchVendas();
-    }, [dispatch, option]);
+        if (status === 'idle' && !fetched) {
+            dispatch(fetchPedidos());
+        }
+    }, [dispatch, fetched, status]);
 
     const handleChangeOption = (e) => {
         setOption(e.target.value);
     };
-
-    if (status === 'loading') {
-        return <h3 style={{ textAlign: 'center' }}>Carregando...</h3>;
-    }
-
-    if (status === 'failed') {
-        return <h3 style={{ textAlign: 'center' }}>Erro ao carregar os dados: {error}</h3>;
-    }
 
     if (!data || data.length === 0) {
         return <h3 style={{ textAlign: 'center' }}>Nenhuma venda encontrada!</h3>;
