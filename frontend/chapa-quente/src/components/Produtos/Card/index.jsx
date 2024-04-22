@@ -32,7 +32,11 @@ const Card = ({ item }) => {
         }   
     }
     const handleRemoveItem = () => {
-        dispatch(removeItem(item))
+        if (isLoggedIn) {
+            dispatch(removeItem(item))
+        } else {
+            handleShowModal();
+        } 
     }
 
     return (

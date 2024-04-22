@@ -142,7 +142,7 @@ const Carrinho = () => {
   };
 
   return (
-    <div>
+    <div className='container-sm'>
       <Table striped bordered hover variant='dark' className='tabela'>
         <thead>
           <tr>
