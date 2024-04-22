@@ -33,7 +33,7 @@ const Header = () => {
                     <Nav>
                         <NavDropdown title={`Olá, ${userData.nome}!`} id="basic-nav-dropdown">
                             <NavDropdown.Item href="/agendamentos">Agendamentos</NavDropdown.Item>
-                            <NavDropdown.Item href="/pedidos">Pedidos</NavDropdown.Item>
+                            <NavDropdown.Item href="/pedidos/usersid">Pedidos</NavDropdown.Item>
                             <NavDropdown.Item href="/conta">Conta</NavDropdown.Item>{
                                 userData.role === 'admin' ? (
                                     <>

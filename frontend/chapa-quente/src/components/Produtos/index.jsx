@@ -25,7 +25,6 @@ const Produtos = () => {
     return (
         <>
             <div className={`container ${style.topSpace}`}>
-                <div>Hamburguers</div>
                 <div className='row row-cols-auto justify-content-center'>
                     {
                         produtos.map(produto => (

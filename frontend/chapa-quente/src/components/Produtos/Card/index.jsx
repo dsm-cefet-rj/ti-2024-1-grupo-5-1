@@ -12,6 +12,7 @@ import LoginAdvise from '../../LoginAdvise'
 
 const Card = ({ item }) => {
     const { isLoggedIn } = useSelector((state) => state.auth);
+    const { isLoggedIn } = useSelector((state) => state.auth);
     const dispatch = useDispatch()
 
     const [showModal, setShowModal] = useState(false);

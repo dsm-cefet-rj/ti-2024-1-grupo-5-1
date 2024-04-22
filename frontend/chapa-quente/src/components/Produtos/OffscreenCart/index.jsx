@@ -3,6 +3,7 @@ import { Button, ListGroup, Offcanvas } from "react-bootstrap"
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from "react-toastify";
 import { useState } from 'react';
+import { Link } from "react-router-dom";
 
 
 import { removeItem, clearCart } from '../../../redux/reducers/carrinhoSlice';
@@ -63,9 +64,11 @@ const OffscreenCart = () => {
                                 Total: R$ {itens.reduce((acc, item) => acc + (item.price * item.quantity), 0).toFixed(2)}
                             </div>
                             <div style={{ alignItems: 'center', justifyContent: 'center', display: 'flex' }}>
-                                <Button variant="success" href="/carrinho" style={{ marginTop: '5px' }}>
+                                <Link to='/carrinho'>
+                                <Button variant="success" style={{ marginTop: '5px' }}>
                                         <CartFill style={{ fontSize: '20px'}}/> Efetuar Pagamento
                                 </Button>
+                                </Link>
                                 <Button variant="danger" onClick={handleEmptyCart} style={{ marginTop: '5px', marginLeft: '10px' }}>
                                         <TrashFill style={{ fontSize: '20px'}}/> Esvaziar Carrinho
                                 </Button>

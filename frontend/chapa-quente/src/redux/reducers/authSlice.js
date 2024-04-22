@@ -7,6 +7,7 @@ const user = localStorage.getItem("user");
 const initialState = userAdapter.getInitialState({
     isLoggedIn: user ? true : false,
     user: user ? JSON.parse(user) : null
+    user: user ? JSON.parse(user) : null
 });
 
 export const register = createAsyncThunk('auth/register', async (user, { rejectWithValue }) => {
@@ -42,6 +43,8 @@ export const update = createAsyncThunk('auth/update', async (user, { rejectWithV
 export const logout = createAsyncThunk('auth/logout', async () => {
     AuthService.logout();
 });
+
+export const selectCurrentUser = (state) => state.auth.user;
 
 const authSlice = createSlice({
     name: 'auth',
