@@ -1,4 +1,6 @@
+import Stack from 'react-bootstrap/Stack';
 import style from "./Card.module.css"
+import { Plus, Dash } from 'react-bootstrap-icons';
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 import { addItem, removeItem } from "../../../redux/reducers/carrinhoSlice";
@@ -22,9 +24,11 @@ const Card = ({ item }) => {
                     <p className={`card-text ${style.cropText}`}>{item.desc}</p>
                 </div>
                 <div className="card-footer d-flex justify-content-around">
-                    <button className="btn btn-primary" onClick={() => handleRemoveItem(item)}>-</button>
-                    <button className="btn btn-primary" onClick={() => handleAddItem(item)}>+</button>
-                    <div className="btn btn-primary">{`R$ ${item.price}`}</div>
+                    <Stack direction='horizontal' gap={3}>
+                        <button className="btn btn-primary" onClick={() => handleRemoveItem(item)}><Dash/></button>
+                        <div>{`R$ ${item.price}`}</div>
+                        <button className="btn btn-primary" onClick={() => handleAddItem(item)}><Plus/></button>
+                    </Stack>
                 </div>
             </div>
         </>

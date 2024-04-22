@@ -1,6 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit'
-import carrinhoReducer from './reducers/carrinhoSlice'
-import produtosSlice from './reducers/produtosSlice'
+import carrinhoReducer from './reducers/carrinhoSlice';
+import produtosSlice from './reducers/produtosSlice';
+import reportSlice from './reducers/reportSlice';
+import authSlice from './reducers/authSlice';
+
+import { configureStore } from '@reduxjs/toolkit';
+import managerSlice from './reducers/managerSlice'
 import pedidoSlice from './reducers/pedidoSlice'
 import tabelaSlice from './reducers/tabelaSlice'
 
@@ -9,6 +13,9 @@ export default configureStore({
         carrinho: carrinhoReducer,
         produtos: produtosSlice,
         pedido: pedidoSlice,
-        tabela: tabelaSlice
+        tabela: tabelaSlice,
+        reports: reportSlice,
+        auth: authSlice,
+        manager: managerSlice
     }
 })

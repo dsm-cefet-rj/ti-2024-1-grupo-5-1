@@ -25,10 +25,12 @@ export const slice = createSlice({
                     state.itens.splice(index, 1);
                 }
             }
-           
+        },
+        clearCart: (state) => {
+            state.itens = []
         }
     }
 });
 
-export const { addItem, removeItem } = slice.actions;
-export default slice.reducer;
+export const { addItem, removeItem, clearCart } = slice.actions
+export default slice.reducer

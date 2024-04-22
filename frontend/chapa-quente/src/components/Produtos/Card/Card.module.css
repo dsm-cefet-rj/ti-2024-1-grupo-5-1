@@ -13,22 +13,4 @@
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-  }
-
-.buttonTextSize {
-    font-size: 20px;
-    vertical-align: "center"
-}
-
-.priceTextSize {
-    font-size: 15px;
-}
-
-.flexColumnGap{
-    column-gap: 5px;
-}
-
-button {
-    height: 100%;
-    width: 20%;
 }

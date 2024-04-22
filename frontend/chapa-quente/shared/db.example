@@ -1,0 +1,80 @@
+
+{
+	"users": [
+		{
+			"id": "",
+			"nome": "",
+			"sobrenome": "",
+			"email": "",
+			"senha": "",
+			"telefone": "",
+			"logradouro": "",
+			"numero": "",
+			"complemento": "",
+			"bairro": "",
+			"cidade": "",
+			"cep": "",
+			"role": "",
+			"date": ""
+		}
+	],
+	"produtos": [
+		{
+			"id": "",
+			"nome": "",
+			"src": "",
+			"desc": "",
+			"price": ""
+		}
+	],
+	"pedidos": [
+		{
+			"id": "",
+			"user_id": "",
+			"produtos": [
+				{
+					"id": "",
+					"qtd": "",
+					"price": ""
+				}
+			],
+			"total": "",
+			"status": "",
+			"motivo_cancelamento": "",
+			"detalhes": "",
+			"pagamento": "",
+			"date": ""
+		}
+	],
+	"rating": [
+		{
+			"id": "",
+			"order_id": "",
+			"overall_rating": "",
+			"produtos": [
+				{
+					"id": "",
+					"rating": ""
+				}
+			],
+			"date": ""
+		}
+	],
+    "agendamentos": [
+	    {
+            "id": "",
+            "user_id": "",
+            "produtos": [
+                {
+                    "id": "",
+                    "qtd": ""
+                }
+            ],
+            "total": "",
+            "detalhes": "",
+            "pagamento": "",
+            "date_pedido": "",
+            "date_agendada": ""
+	    }
+    ]
+}

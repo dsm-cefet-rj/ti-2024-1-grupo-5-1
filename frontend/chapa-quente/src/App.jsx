@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
-import Header from './components/Header'
-import Footer from './components/Footer'
-import Router from './components/Router'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-toastify/dist/ReactToastify.css';
+
+import { ToastContainer as Toast } from 'react-toastify';
+import Header from './components/Header';
+import Router from './components/Router';
 
 import "./App.css"
 
 const App = () => {
     return (
         <>
-            <Header />
+            <Header/>
             <Router/>
-            <Footer />
+            <Toast
+                position="top-center"
+                autoClose={2000}
+            />
         </>
     )
 }
