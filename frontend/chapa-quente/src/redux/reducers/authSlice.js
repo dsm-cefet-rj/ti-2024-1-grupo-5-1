@@ -51,36 +51,36 @@ const authSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         (builder)
-        .addCase(register.fulfilled, (state) => {
-            state.isLoggedIn = false;
-            state.user = null;
-        })
-        .addCase(register.rejected, (state) => {
-            state.isLoggedIn = false;
-            state.user = null;
-            throw new Error("Cadastro inválido.");
-        })
-        .addCase(login.fulfilled, (state, action) => {
-            state.isLoggedIn = true;
-            state.user = action.payload;
-        })
-        .addCase(login.rejected, (state) => {
-            state.isLoggedIn = false;
-            state.user = null;
-            throw new Error("Usuário ou senha inválidos.");
-        })
-        .addCase(logout.fulfilled, (state) => {
-            state.isLoggedIn = false;
-            state.user = null;
-        })
-        .addCase(update.fulfilled, (state, action) => {
-            state.user = action.payload;
-        })
-        .addCase(update.rejected, (state) => {
-            state.isLoggedIn = true;
-            state.user = null;
-            throw new Error();
-        })
+            .addCase(register.fulfilled, (state) => {
+                state.isLoggedIn = false;
+                state.user = null;
+            })
+            .addCase(register.rejected, (state) => {
+                state.isLoggedIn = false;
+                state.user = null;
+                throw new Error("Cadastro inválido.");
+            })
+            .addCase(login.fulfilled, (state, action) => {
+                state.isLoggedIn = true;
+                state.user = action.payload;
+            })
+            .addCase(login.rejected, (state) => {
+                state.isLoggedIn = false;
+                state.user = null;
+                throw new Error("Usuário ou senha inválidos.");
+            })
+            .addCase(logout.fulfilled, (state) => {
+                state.isLoggedIn = false;
+                state.user = null;
+            })
+            .addCase(update.fulfilled, (state, action) => {
+                state.user = action.payload;
+            })
+            .addCase(update.rejected, (state) => {
+                state.isLoggedIn = true;
+                state.user = null;
+                throw new Error('Erro ao atualizar usuário.');
+            })
     },
 });
 

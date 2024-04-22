@@ -1,34 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux'; // Para acessar o Redux Store
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
 import { Table, Button } from 'react-bootstrap';
-import { selectCurrentUser } from '../../redux/reducers/authSlice'; // Importa o selector
+import { useNavigate, Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
+import { fetch } from '../../redux/reducers/pedidoSlice';
 
 const Pedidos = () => {
-  const currentUser = useSelector(selectCurrentUser); // Obtém o usuário do Redux Store
-  const [pedidos, setPedidos] = useState([]);
+  const { user, isLoggedIn } = useSelector((state) => state.auth);
+  const { pedido, status } = useSelector((state) => state.pedido);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchPedidos = async () => {
-      try {
-        if (currentUser) { // Verifica se há um usuário autenticado
-          const userId = currentUser.id; // Obtém o `user_id`
-          const response = await axios.get(`http://localhost:3001/pedidos?user_id=${userId}`);
-          setPedidos(response.data);
-        }
-      } catch (error) {
-        console.error("Erro ao buscar pedidos:", error);
-      }
-    };
-
-    fetchPedidos(); // Busca os pedidos do usuário autenticado
-  }, [currentUser]); // Reexecuta se `currentUser` mudar
+    if (!isLoggedIn) {
+      navigate('/login');
+      toast('Você precisa estar logado para poder fazer isso!', { type: 'error' });
+    } else {
+      dispatch(fetch(user.id));
+    }
+  }, [user, isLoggedIn, navigate, dispatch]);
 
   return (
-    <div style={{textAlign:'center'}}>
-      <h2>Pedidos do Usuário {currentUser ? currentUser.nome : "Desconhecido"}</h2>
-      <Table striped bordered hover>
+    <div style={{ textAlign: 'center' }}>
+      <h2>Pedidos do Usuário {user.nome}</h2>
+      <Table>
         <thead>
           <tr>
             <th>ID</th>
@@ -37,13 +34,18 @@ const Pedidos = () => {
           </tr>
         </thead>
         <tbody>
-          {pedidos.length > 0 ? (
-            pedidos.map((pedido) => (
-              <tr key={pedido.id}>
-                <td>{pedido.id}</td>
-                <td>{pedido.status}</td>
+          {status === 'loading' && (
+            <tr>
+              <td colSpan="3">Carregando...</td>
+            </tr>
+          )}
+          {status === 'success' && pedido.length > 0 ? (
+            pedido.map((pedidos) => (
+              <tr key={pedidos.id}>
+                <td>{pedidos.id}</td>
+                <td>{pedidos.status}</td>
                 <td>
-                  <Link to={`/statusPedido/${pedido.id}`}>
+                  <Link to={`/statusPedido/${pedidos.id}`}>
                     <Button variant="primary">Ver Detalhes</Button>
                   </Link>
                 </td>

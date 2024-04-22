@@ -1,52 +1,65 @@
-import React, { useState } from 'react';
-import StarIcon from '@mui/icons-material/Star';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
+import { Star, StarFill } from 'react-bootstrap-icons';
+import { Button } from 'react-bootstrap';
+import { useState } from 'react';
 
-const StarRating = ({ totalStars = 5, initialRating = 0, onRatingChange, starSize = '40px' }) => {
+const StarRating = ({ totalStars = 5, initialRating = 0, onSubmit, starSize = '40px' }) => {
   const [rating, setRating] = useState(initialRating);
+  const [selectedRating, setSelectedRating] = useState(initialRating);
 
   const handleStarClick = (index) => {
-    const newRating = index + 1;
-    setRating(newRating);
+    setSelectedRating(index + 1);
+  };
 
-    if (onRatingChange) {
-      onRatingChange(newRating);
+  const handleSubmit = () => {
+    setRating(selectedRating);
+    if (onSubmit) {
+      onSubmit(selectedRating);
     }
   };
 
   return (
     <div>
+      <h4>Avaliação do Pedido:</h4>
       {Array.from({ length: totalStars }, (_, index) => (
         <span
           key={index}
           style={{
             cursor: 'pointer',
             fontSize: starSize,
-            padding: '2px', // Para dar espaço para a borda
+            padding: '2px',
           }}
           onClick={() => handleStarClick(index)}
         >
-          {index < rating ? (
-            <StarIcon
+          {index < selectedRating ? (
+            <StarFill
               style={{
-                color: 'gold', 
+                color: 'gold',
                 fontSize: starSize,
-                stroke: 'black', // Borda preta
-                strokeWidth: '0.5px', // Largura da borda
+                stroke: 'black',
+                strokeWidth: '0.5px',
               }}
             />
           ) : (
-            <StarBorderIcon
+            <Star
               style={{
                 color: 'gray',
                 fontSize: starSize,
-                stroke: 'black', // Borda preta
-                strokeWidth: '0.5px', 
+                stroke: 'black',
+                strokeWidth: '0.5px',
               }}
             />
           )}
         </span>
       ))}
+      <div>
+        <Button
+          variant="primary"
+          style={{ marginTop: '10px', fontSize: '16px' }}
+          onClick={handleSubmit}
+        >
+          Enviar avaliação de {selectedRating} estrelas
+        </Button>
+      </div>
     </div>
   );
 };

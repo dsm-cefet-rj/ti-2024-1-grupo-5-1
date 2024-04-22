@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Table, Alert, Button } from 'react-bootstrap';
 import StarRating from './starRating';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const StatusPedido = () => {
   const { pedidoId } = useParams(); // Obtém o ID do pedido da URL
@@ -20,7 +21,7 @@ const StatusPedido = () => {
         setAvaliacao(fetchedPedido.avaliacao || 0); // Avaliação inicial
       } catch (error) {
         console.error("Erro ao buscar pedido:", error);
-        setMensagem('Erro ao carregar pedido');
+        toast('Erro ao carregar pedido', { type: 'error' });
       }
     };
 
@@ -38,16 +39,16 @@ const StatusPedido = () => {
     axios
       .patch(`http://localhost:3001/pedidos/${pedido.id}`, { avaliacao: newRating })
       .then(() => {
-        setMensagem('Avaliação enviada com sucesso!');
+        toast('Avaliação enviada com sucesso!', { type: 'success' });
       })
       .catch((error) => {
         console.error('Erro ao enviar avaliação:', error);
-        setMensagem('Erro ao enviar avaliação.');
+        toast('Erro ao enviar avaliação', { type: 'error' });
       });
   };
 
   return (
-    <div style={{textAlign: 'center'}}>
+    <div style={{ textAlign: 'center' }}>
       <h2>Status do Pedido: {pedido.status}</h2>
       <h5>ID do Pedido: {pedido.id}</h5>
       <h5>Forma de Pagamento: {pedido.pagamento}</h5>
@@ -64,7 +65,7 @@ const StatusPedido = () => {
           {pedido.produtos.map((produto) => (
             <tr key={produto.id}>
               <td>{produto.id}</td>
-              <td>{produto.name}</td>
+              <td>{produto.nome}</td>
               <td>R$ {produto.price}</td>
               <td>{produto.qtd}</td>
             </tr>
@@ -75,19 +76,13 @@ const StatusPedido = () => {
       <h5>Preço Total: {pedido.total} </h5>
 
       <div>
-        <h4>Avaliação do Pedido:</h4>
         <StarRating totalStars={5} initialRating={avaliacao} onRatingChange={handleRatingChange} />
       </div>
-
-      <Link to="/pedidos/:usersid">
-        <Button variant="primary">Voltar para Pedidos</Button>
-      </Link>
-
-      {mensagem && (
-        <Alert variant={mensagem.includes('sucesso') ? 'success' : 'danger'}>
-          {mensagem}
-        </Alert>
-      )}
+      <div>
+        <Link to="/pedidos/">
+          <Button variant="primary">Voltar para Pedidos</Button>
+        </Link>
+      </div>
     </div>
   );
 };

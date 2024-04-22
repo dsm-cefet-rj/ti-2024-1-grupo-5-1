@@ -1,11 +1,8 @@
 import { Form, Button, FloatingLabel } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import axios from "axios";
 
-import { register } from "../../redux/reducers/authSlice";
 import { validate } from "../../utils/scheduleFormValidation";
 import scheduleService from "../../redux/services/scheduleSlice";
 
@@ -70,8 +67,6 @@ const Agendamentos = () => {
                             <Form.Control.Feedback type="invalid">{formErrors.hora}</Form.Control.Feedback>
                         </FloatingLabel>
 
-                        
-                        
                 </Form>
             </div>
         </>

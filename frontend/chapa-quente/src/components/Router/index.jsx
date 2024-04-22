@@ -28,7 +28,7 @@ const Router = () => {
                     <Route path='/conta' element={<Conta/>} />
                     <Route path='/logout' element={<Logout/>} />
                     <Route path='/carrinho' element={<Carrinho/>} />
-                    <Route path='/pedidos/:usersid' element={<Pedidos/>} />
+                    <Route path='/pedidos/' element={<Pedidos/>} />
                     <Route path='/contato' element={<Contato/>} />
                     <Route path='/cadastro' element={<Cadastro/>} />
                     <Route path='/produtos' element={<Produtos/>} />
