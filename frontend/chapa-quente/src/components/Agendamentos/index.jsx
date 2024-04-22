@@ -1,12 +1,9 @@
 import { Form, Button, FloatingLabel } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import axios from "axios";
 
-import { register } from "../../redux/reducers/authSlice";
-import { validate } from "../../utils/scheduleFormValidation";
+import { validateSchedule, mustSchedule } from "../../utils/checkoutFormValidation";
 import ScheduleService from "../../redux/services/scheduleService";
 
 const Agendamentos = () => {
@@ -23,6 +20,8 @@ const Agendamentos = () => {
         date_agendada: '',
     });
 
+    const [displayAgendamento, setDisplayAgendamento] = useState(false);
+
     const [dataMarcada, setDataMarcada] = useState({
         hora: '',
         data: '',
@@ -36,11 +35,22 @@ const Agendamentos = () => {
         setFormErrors({ ...formErrors, [name]: null });
     };
 
+    useEffect(() => {
+        const mustAgendar = mustSchedule();
+        if (mustAgendar) {
+            const dataFormatada = mustAgendar.toISOString().split('T')[0];
+            const horaFormatada = mustAgendar.getHours().toString().padStart(2, '0') + ":00";
+            setDataMarcada({ hora: horaFormatada, data: dataFormatada });
+            setDisplayAgendamento(true);
+            toast('O restaurante está fechado, por favor agende seu pedido.', { type: 'info' });
+        }
+    }, []);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const hora_marcada = validate(dataMarcada);
+            const hora_marcada = validateSchedule(dataMarcada);
             formData.date_agendada = hora_marcada;
             formData.date_pedido = Math.floor(Date.now() / 1000);
             await ScheduleService.schedule(formData)
@@ -58,6 +68,7 @@ const Agendamentos = () => {
 
     return (
         <>
+            {displayAgendamento ? (
             <div style={{ maxWidth: "400px", margin: "0 auto", marginTop: "90px" }}>
                     <Form noValidate onSubmit={handleSubmit}>
                         <FloatingLabel controlId="floatingInput" label="Data" className="mb-3">
@@ -75,6 +86,16 @@ const Agendamentos = () => {
                         </Button>
                 </Form>
             </div>
+            ) : (
+                <div style={{ maxWidth: "400px", margin: "0 auto", marginTop: "90px" }}>
+                    <h1>tainha</h1>
+                    <h1>vinho</h1>
+                    <h1>jogo do palmeiras</h1>
+                    <Button variant="success" className="w-100" onClick={() => setDisplayAgendamento(true)}>
+                        Realizar Pedido!
+                    </Button>
+                </div>
+            )}
         </>
     );
 }

@@ -4,26 +4,24 @@ import { InfoCircleFill } from "react-bootstrap-icons";
 import { useState, useEffect } from "react";
 
 import AuthService from '../../../redux/services/authService';
-import { fetchAgendamentos } from '../../../redux/reducers/reportSlice';
+import { fetchPedidos } from '../../../redux/reducers/reportSlice';
 import { getFormattedDateTime } from '../../../utils/unixDateConversion';
 
 const Agendamentos = () => {
     const [selectedOrder, setSelectedOrder] = useState({ schedule_info: {}, user_info:{}});
     const [showModal, setShowModal] = useState(false);
 
-    const { agendamentos } = useSelector((state) => state.reports);
-    const { data, status, fetched } = agendamentos;
+    const { pedidos } = useSelector((state) => state.reports);
+    const { data, status, fetched } = pedidos;
 
     const dispatch = useDispatch();
     useEffect(() => {
         if (!fetched) {
-            dispatch(fetchAgendamentos());
+            dispatch(fetchPedidos());
         }
     }, [dispatch, fetched, status]);
 
-    if (data.length === 0) {
-        return <h3 style={{ textAlign: 'center' }}>Nenhum agendamento encontrado!</h3>;
-    }
+    const filter = data.filter((item) => item.status.toLowerCase() === "agendado");
 
     const handleShowModal = async (item) => {
         try {
@@ -40,7 +38,7 @@ const Agendamentos = () => {
         setSelectedOrder(null);
     }
 
-    if (data.length === 0) {
+    if (filter.length === 0) {
         return <h3 style={{ textAlign: 'center' }}>Nenhum agendamento encontrado!</h3>;
     }
 
@@ -48,7 +46,7 @@ const Agendamentos = () => {
         <>
             <div style={{ maxWidth: '1000px', maxHeight: '800px', overflow: 'auto', margin: '0 auto' }}>
                 <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px'}}>
-                <p><strong>Total de Agendamentos:</strong> {data.length}</p>
+                <p><strong>Total de Agendamentos:</strong> {filter.length}</p>
                 </div>
                 <Table style={{ width: '100%', tableLayout: 'fixed' }}>
                     <thead>
@@ -62,7 +60,7 @@ const Agendamentos = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {data.map((item) => (
+                        {filter.map((item) => (
                             <tr key={item.id}>
                                 <td>{item.id}</td>
                                 <td colSpan="2">{item.detalhes}</td>

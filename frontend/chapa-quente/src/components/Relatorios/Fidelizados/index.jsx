@@ -1,5 +1,5 @@
 import { Chart, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
-import { Table, Modal, Button, Stack, Badge } from "react-bootstrap";
+import { Table, Modal, Button, Stack, Badge, Pagination } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
 import { InfoCircleFill } from "react-bootstrap-icons";
 import { useState, useEffect } from "react";
@@ -57,17 +57,18 @@ const Fidelizados = () => {
     const totalUsers = alignedData.length;
 
     const sortedData = alignedData.sort((a, b) => b.frequency - a.frequency);
+    const removeZeros = sortedData.filter((item) => item.frequency > 0);
 
     // Construção do gráfico
 
     Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
     const chartData = {
-        labels: sortedData.map((item) => item.user_info.nome),
+        labels: removeZeros.map((item) => item.user_info.nome),
         datasets: [
             {
                 label: 'Clientes Fidelizados',
-                data: sortedData.map((item) => item.frequency),
+                data: removeZeros.map((item) => item.frequency),
                 backgroundColor: 'rgb(75, 192, 192)',
                 borderColor: 'rgba(75, 192, 192, 0.2)',
             },
@@ -133,6 +134,20 @@ const Fidelizados = () => {
         setSelectedUser(null);
     }
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 5;
+
+    const indexLastItem = currentPage * itemsPerPage;
+    const indexFirstItem = indexLastItem - itemsPerPage;
+    const currentItems = sortedData.slice(indexFirstItem, indexLastItem);
+
+    const totalPages = Math.ceil(sortedData.length / itemsPerPage);
+
+    const handlePageChange = (pageNumber) => {
+      setCurrentPage(pageNumber);
+    };
+
+
     if (data.length === 0) {
         return <h3 style={{ textAlign: 'center' }}>Nenhum cliente encontrado!</h3>;
     }
@@ -169,7 +184,7 @@ const Fidelizados = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {sortedData.map((item, index) => (
+                            {currentItems.map((item, index) => (
                                 <tr key={index} onClick={() => handleShowModal(item)}>
                                     {item.frequency > 5 ? <td style={{ color: 'blue' }}>{item.user_info.nome}</td> : <td>{item.user_info.nome}</td>}
                                     {item.frequency > 5 ? <td style={{ color: 'blue' }}>{item.frequency}</td> : <td>{item.frequency}</td>}
@@ -206,6 +221,15 @@ const Fidelizados = () => {
                             </Button>
                         </Modal.Footer>
                     </Modal>
+                    <Pagination className="d-flex justify-content-center">
+                        <Pagination.Prev onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1} />
+                        {[...Array(totalPages)].map((_, index) => (
+                        <Pagination.Item key={index + 1} active={index + 1 === currentPage} onClick={() => handlePageChange(index + 1)}>
+                            {index + 1}
+                        </Pagination.Item>
+                        ))}
+                        <Pagination.Next onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages} />
+                    </Pagination>
                 </div>
             </div>
         </>

@@ -45,7 +45,6 @@ const Login = () => {
                     acc[current.path] = current.message;
                     return acc;
                 }, {});
-                console.log(errors)
                 setFormErrors(errors);
             } else {
                 toast(`Erro ao efetuar Login: ${error.message}` , { type: 'error' })
