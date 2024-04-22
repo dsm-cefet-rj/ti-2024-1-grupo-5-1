@@ -12,19 +12,9 @@ const register = async (user) => {
                 return error.response;
             });
     }
-const register = async (user) => {
-    const validateEmail = await axios.get(`${API_URL}/users?email=${user.email}`);
-    if (validateEmail.data.length) {
-        throw new Error("E-mail já cadastrado.");
-    } else {
-        return await axios.post(`${API_URL}/users`, user)
-            .catch((error) => {
-                return error.response;
-            });
-    }
 };
 
-const login = async (email, senha) => {
+
 const login = async (email, senha) => {
     const response = await axios.get(`${API_URL}/users?email=${email}`);
     if (response.data.length) {
@@ -39,15 +29,11 @@ const login = async (email, senha) => {
 }
 
 const update = async (user) => {
-const update = async (user) => {
     localStorage.setItem("user", JSON.stringify(user));
     return await axios.put(`${API_URL}/users/${user.id}`, user)
         .catch((error) => {
             return error.response;
-        });
-        .catch((error) => {
-            return error.response;
-        });
+        })
 };
 
 const fetchOne = async (userId) => {
@@ -55,7 +41,6 @@ const fetchOne = async (userId) => {
     return response.data;
 };
 
-const fetchMany = async () => {
 const fetchMany = async () => {
     const response = await axios.get(`${API_URL}/users`);
     return response.data;

@@ -1,10 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect } from 'react';
-import { Table, Button } from 'react-bootstrap';
+import { Table, Button, Container, Stack } from 'react-bootstrap';
 import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { fetch } from '../../redux/reducers/pedidoSlice';
+import { fetchFromUser } from '../../redux/reducers/pedidoSlice';
 
 const Pedidos = () => {
   const { user, isLoggedIn } = useSelector((state) => state.auth);
@@ -18,12 +18,12 @@ const Pedidos = () => {
       navigate('/login');
       toast('Você precisa estar logado para poder fazer isso!', { type: 'error' });
     } else {
-      dispatch(fetch(user.id));
+      dispatch(fetchFromUser(user.id));
     }
   }, [user, isLoggedIn, navigate, dispatch]);
 
   return (
-    <div style={{ textAlign: 'center' }}>
+    <Stack className='container' style={{ textAlign: 'center' }}>
       <h2>Pedidos do Usuário {user.nome}</h2>
       <Table>
         <thead>
@@ -34,12 +34,11 @@ const Pedidos = () => {
           </tr>
         </thead>
         <tbody>
-          {status === 'loading' && (
+          {status === 'loading' ? (
             <tr>
               <td colSpan="3">Carregando...</td>
             </tr>
-          )}
-          {status === 'success' && pedido.length > 0 ? (
+          ) : status === 'success' && pedido.length > 0 ? (
             pedido.map((pedidos) => (
               <tr key={pedidos.id}>
                 <td>{pedidos.id}</td>
@@ -58,7 +57,7 @@ const Pedidos = () => {
           )}
         </tbody>
       </Table>
-    </div>
+    </Stack>
   );
 };
 

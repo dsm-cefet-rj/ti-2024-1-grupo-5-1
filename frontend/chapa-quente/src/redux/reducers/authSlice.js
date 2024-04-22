@@ -7,7 +7,6 @@ const user = localStorage.getItem("user");
 const initialState = userAdapter.getInitialState({
     isLoggedIn: user ? true : false,
     user: user ? JSON.parse(user) : null
-    user: user ? JSON.parse(user) : null
 });
 
 export const register = createAsyncThunk('auth/register', async (user, { rejectWithValue }) => {
@@ -80,7 +79,7 @@ const authSlice = createSlice({
         .addCase(update.rejected, (state) => {
             state.isLoggedIn = true;
             state.user = null;
-            throw new Error();
+            throw new Error('Erro ao atualizar usuário.');
         })
     },
 });

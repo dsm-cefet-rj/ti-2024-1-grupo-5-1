@@ -10,13 +10,14 @@ import { getFormattedDateTime } from '../../../utils/unixDateConversion';
 const Agendamentos = () => {
     const [selectedOrder, setSelectedOrder] = useState({ schedule_info: {}, user_info: {} });
     const [showModal, setShowModal] = useState(false);
-
+    const [currentPage, setCurrentPage] = useState(1);
+    
     const { pedidos } = useSelector((state) => state.reports);
     const { data, status, fetched } = pedidos;
 
     const dispatch = useDispatch();
     useEffect(() => {
-        if (!fetched) {
+        if (status === 'idle' && !fetched) {
             dispatch(fetchPedidos());
         }
     }, [dispatch, fetched, status]);
@@ -42,7 +43,6 @@ const Agendamentos = () => {
         return <h3 style={{ textAlign: 'center' }}>Nenhum agendamento encontrado!</h3>;
     }
 
-    const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
 
     const indexLastItem = currentPage * itemsPerPage;

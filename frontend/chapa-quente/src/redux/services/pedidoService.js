@@ -10,7 +10,7 @@ const register = async (pedido) => {
     );
 };
 
-const fetch = async (id) => {
+const fetchFromUser = async (id) => {
     return await axios.get(`${API_URL}/pedidos?user_id=${id}`)
         .catch((error) => {
             return error.response;
@@ -18,9 +18,27 @@ const fetch = async (id) => {
     );
 };
 
+const fetchFromOrder = async (id) => {
+    return await axios.get(`${API_URL}/pedidos/${id}`)
+        .catch((error) => {
+            return error.response;
+        }
+    );
+}
+
+const rate = async(id, rating) => {
+    return await axios.patch(`${API_URL}/pedidos/${id}`, { avaliacao: rating })
+        .catch((error) => {
+            return error.response;
+        }
+    );
+}
+
 const pedidoService = {
     register,
-    fetch
+    fetchFromUser,
+    fetchFromOrder,
+    rate
 };
 
 export default pedidoService;

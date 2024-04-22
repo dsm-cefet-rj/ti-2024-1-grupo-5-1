@@ -30,7 +30,7 @@ const ProdutoManager = () => {
         <>
             <Container>
                 <Row className="justify-content-end mb-3">
-                    <Button style={{maxWidth: '100px'}} onClick={handleCreateClick}>Novo +</Button>
+                    <Button variant="success" style={{maxWidth: '100px'}} onClick={handleCreateClick}>Novo +</Button>
                 </Row>
                 <Row>
                     <ProdutoTable produtos={produtos} />

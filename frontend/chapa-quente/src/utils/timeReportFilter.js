@@ -8,12 +8,12 @@ export const ordenarVendas = (periodo, data) => {
     const anoAtual = agora.getFullYear();
 
     let anoPrimeiroRegistro;
-    const datasConvertidas = data.map(pedido => new Date(pedido.date * 1000));
+    const datasConvertidas = data.map(pedido => new Date(pedido.date_pedido * 1000));
     const dataMaisAntiga = new Date(Math.min.apply(null, datasConvertidas));
     anoPrimeiroRegistro = dataMaisAntiga.getFullYear();
 
     const dataFiltradaParaPeriodo = data.filter(pedido => {
-        const dataPedido = new Date(pedido.date * 1000);
+        const dataPedido = new Date(pedido.date_pedido * 1000);
         switch (periodo) {
             case 'hora':
                 return dataPedido >= ultimaHora;
@@ -30,7 +30,7 @@ export const ordenarVendas = (periodo, data) => {
 
     const vendasPorPeriodo = dataFiltradaParaPeriodo.reduce((acc, pedido) => {
         let chave;
-        const dataPedido = new Date(pedido.date * 1000);
+        const dataPedido = new Date(pedido.date_pedido * 1000);
         switch (periodo) {
             case 'hora':
                 chave = `${dataPedido.toLocaleTimeString('pt-BR', { hour: 'numeric', minute: undefined, hour12: false })}:00 (${dataPedido.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })})`;

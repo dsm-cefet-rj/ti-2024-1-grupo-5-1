@@ -185,9 +185,9 @@ const Fidelizados = () => {
                         <tbody>
                             {currentItems.map((item, index) => (
                                 <tr key={index} onClick={() => handleShowModal(item)}>
-                                    {item.frequency > 5 ? <td style={{ color: 'blue' }}>{item.user_info.nome}</td> : <td>{item.user_info.nome}</td>}
-                                    {item.frequency > 5 ? <td style={{ color: 'blue' }}>{item.frequency}</td> : <td>{item.frequency}</td>}
-                                    {item.lastOrder ? <td>{getFormattedDateTime(item.lastOrder.date)}</td> : <td>Nenhum pedido feito</td>}
+                                    {item.frequency > totalPedidos / totalUsers ? <td style={{ color: 'blue' }}>{item.user_info.nome}</td> : <td>{item.user_info.nome}</td>}
+                                    {item.frequency > totalPedidos / totalUsers ? <td style={{ color: 'blue' }}>{item.frequency}</td> : <td>{item.frequency}</td>}
+                                    {item.lastOrder ? <td>{getFormattedDateTime(item.lastOrder.date_pedido)}</td> : <td>Nenhum pedido feito</td>}
                                     <td>
                                         <Button variant="link" onClick={() => handleShowModal(item)}>
                                             <InfoCircleFill />

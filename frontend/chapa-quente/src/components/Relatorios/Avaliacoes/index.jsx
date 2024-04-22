@@ -27,7 +27,6 @@ const Avaliacoes = () => {
         item.produtos.forEach((produto) => {
             if (itemAverage[produto.id]) {
                 itemAverage[produto.id].push(Number(item.avaliacao));
-                console.log(itemAverage[produto.id]);
             } else {
                 itemAverage[produto.id] = [Number(item.avaliacao)];
             }

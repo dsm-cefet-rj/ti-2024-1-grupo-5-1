@@ -3,7 +3,6 @@ import { Button } from 'react-bootstrap';
 import { useState } from 'react';
 
 const StarRating = ({ totalStars = 5, initialRating = 0, onSubmit, starSize = '40px' }) => {
-  const [rating, setRating] = useState(initialRating);
   const [selectedRating, setSelectedRating] = useState(initialRating);
 
   const handleStarClick = (index) => {
@@ -11,7 +10,6 @@ const StarRating = ({ totalStars = 5, initialRating = 0, onSubmit, starSize = '4
   };
 
   const handleSubmit = () => {
-    setRating(selectedRating);
     if (onSubmit) {
       onSubmit(selectedRating);
     }
@@ -19,7 +17,7 @@ const StarRating = ({ totalStars = 5, initialRating = 0, onSubmit, starSize = '4
 
   return (
     <div>
-      <h4>Avaliação do Pedido:</h4>
+      <h4 style={{marginBottom: '0px'}}>Avaliação do Pedido:</h4>
       {Array.from({ length: totalStars }, (_, index) => (
         <span
           key={index}

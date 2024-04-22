@@ -43,8 +43,8 @@ const ProdutoTable = ({ produtos }) => {
                         <td>{produto.price}</td>
                         <td>
                             <Stack gap={2} direction='horizontal'>
-                                <Button onClick={() => handleEdit(produto.id)}>Editar</Button>
-                                <Button onClick={() => handleDelete(produto.id)}>Deletar</Button>
+                                <Button variant='warning' onClick={() => handleEdit(produto.id)}>Editar</Button>
+                                <Button variant='danger' onClick={() => handleDelete(produto.id)}>Deletar</Button>
                             </Stack>
                         </td>
                     </tr>

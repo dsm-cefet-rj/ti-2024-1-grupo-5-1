@@ -1,15 +1,12 @@
-import { Chart, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import { Table, Modal, Button, Pagination, Badge } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
 import { InfoCircleFill } from "react-bootstrap-icons";
 import { useState, useEffect } from "react";
-import { Bar } from 'react-chartjs-2';
+import AuthService from '../../redux/services/authService';
+import { fetchPedidos } from '../../redux/reducers/reportSlice';
+import { getFormattedDateTime } from '../../utils/unixDateConversion';
 
-import AuthService from '../../../redux/services/authService';
-import { fetchPedidos } from '../../../redux/reducers/reportSlice';
-import { getFormattedDateTime } from '../../../utils/unixDateConversion';
-
-const Cancelamentos = () => {
+const PedidosAtivos = () => {
     const [selectedOrder, setSelectedOrder] = useState({ order_info: {}, user_info: {} });
     const [showModal, setShowModal] = useState(false);
 
@@ -38,77 +35,7 @@ const Cancelamentos = () => {
         setSelectedOrder(null);
     }
 
-    const cancelados = data.filter((pedido) => pedido.status.toLowerCase() === 'cancelado');
-
-    // Configuração do gráfico
-
-    Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
-
-    const barData = {
-        labels: ['Pedidos x Cancelamentos'],
-        datasets: [
-            {
-                label: 'Pedidos',
-                data: [data.length],
-                backgroundColor: 'rgb(75, 192, 192)',
-                borderColor: 'rgba(75, 192, 192, 0.2)',
-            },
-            {
-                label: 'Cancelamentos',
-                data: [cancelados.length],
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgba(255, 99, 132, 0.2)',
-            }
-        ],
-    };
-
-    const barOptions = {
-        responsive: false,
-        scales: {
-            y: {
-                beginAtZero: true,
-                ticks: {
-                    callback: function (value) {
-                        return value.toFixed(1);
-                    }
-                }
-            }
-        },
-        plugins: {
-            legend: {
-                display: true,
-                position: 'top',
-                labels: {
-                    padding: 20,
-                    font: {
-                        size: 14,
-                    },
-                },
-            },
-            title: {
-                display: true,
-                text: 'Pedidos x Cancelamentos',
-                font: {
-                    size: 18,
-                    color: 'black',
-                }
-            },
-            tooltip: {
-                callbacks: {
-                    label: function (context) {
-                        return `Quantidade: ${context.raw}`;
-                    }
-                }
-            },
-        },
-        interaction: {
-            mode: 'index',
-            intersect: false,
-        },
-    };
-
-
-    // Configuração da tabela
+    const emAndamento = data.filter((pedido) => pedido.status.toLowerCase() === 'em andamento');
 
     const sortData = (data) => {
         return data.sort((a, b) => {
@@ -121,9 +48,9 @@ const Cancelamentos = () => {
 
     const indexLastItem = currentPage * itemsPerPage;
     const indexFirstItem = indexLastItem - itemsPerPage;
-    const currentItems = cancelados.slice(indexFirstItem, indexLastItem);
+    const currentItems = emAndamento.slice(indexFirstItem, indexLastItem);
 
-    const totalPages = Math.ceil(cancelados.length / itemsPerPage);
+    const totalPages = Math.ceil(emAndamento.length / itemsPerPage);
 
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
@@ -135,12 +62,9 @@ const Cancelamentos = () => {
 
     return (
         <>
-            <div style={{ maxWidth: '900px', maxHeight: '800px', overflow: 'auto', margin: '0 auto' }}>
-                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-                    <Bar data={barData} options={barOptions} width={250} height={300} />
-                </div>
+            <div style={{ maxWidth: '900px', maxHeight: '800px', overflow: 'auto', margin: '0 auto', marginTop: '40px' }}>
                 <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px' }}>
-                    <p><strong>Total de Cancelamentos:</strong>{' '}<Badge bg="secondary">{cancelados.length}</Badge></p>
+                    <p><strong>Total de Pedidos Ativos:</strong>{' '}<Badge bg="secondary">{emAndamento.length}</Badge></p>
                 </div>
                 <div>
                     <Table style={{ width: '100%', tableLayout: 'fixed' }}>
@@ -173,7 +97,7 @@ const Cancelamentos = () => {
                     </Table>
                     <Modal show={showModal} onHide={handleCloseModal}>
                         <Modal.Header closeButton>
-                            <Modal.Title>Informações do Pedido {selectedOrder && selectedOrder.order_info.id} (Cancelado)</Modal.Title>
+                            <Modal.Title>Informações do Pedido {selectedOrder && selectedOrder.order_info.id}</Modal.Title>
                         </Modal.Header>
                         <Modal.Body style={{ padding: '10px' }}>
                             {
@@ -193,10 +117,6 @@ const Cancelamentos = () => {
                                             <p style={{ marginBottom: '10px' }}><strong>Pagamento:</strong> {selectedOrder.order_info.pagamento}</p>
                                             <p style={{ marginBottom: '10px' }}><strong>Data do Pedido:</strong> {getFormattedDateTime(selectedOrder.order_info.date_pedido)}</p>
                                             <p style={{ marginBottom: '10px' }}><strong>Total:</strong> {selectedOrder.order_info.total}</p>
-                                        </div>
-                                        <hr />
-                                        <div>
-                                            <p style={{ marginBottom: '10px' }}><strong>Motivo de Cancelamento:</strong> {selectedOrder.order_info.motivo_cancelamento ? selectedOrder.order_info.motivo_cancelamento : 'Não informado.'}</p>
                                         </div>
                                     </>
                                 )
@@ -221,4 +141,4 @@ const Cancelamentos = () => {
     );
 }
 
-export default Cancelamentos;
+export default PedidosAtivos;

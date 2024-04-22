@@ -1,9 +1,10 @@
 {
   "users": [
     {
-      "nome": "Teste",
-      "sobrenome": "da Silva",
-      "email": "teste@teste.com",
+      "id": 1,
+      "nome": "Usuário",
+      "sobrenome": "Teste",
+      "email": "user@teste.com",
       "senha": "senha123",
       "telefone": "1234567890",
       "logradouro": "Logradouro",
@@ -12,35 +13,34 @@
       "bairro": "Bairro",
       "cidade": "Cidade",
       "cep": "12345678",
-      "id": "1",
-      "data": 1513417130
+      "data": 1713747305
     },
     {
-      "nome": "Marcus",
-      "sobrenome": "Jeeves",
-      "email": "teste2@teste.com",
+      "id": 2,
+      "nome": "Administrador",
+      "sobrenome": "Teste",
+      "email": "admin@teste.com",
       "senha": "senha456",
       "telefone": "1234567890",
-      "logradouro": "Logradouro",
-      "numero": "123",
-      "complemento": "Complemento",
-      "bairro": "Bairro",
-      "cidade": "Cidade",
-      "cep": "12345678",
-      "id": "2",
-      "data": 1413417130
+      "logradouro": "Rua",
+      "numero": "098",
+      "complemento": "Árvore",
+      "bairro": "Rio de Janeiro",
+      "cidade": "Rio de Janeiro",
+      "cep": "87654321",
+      "data": 1713747305
     }
   ],
   "produtos": [
     {
-      "id": "1",
+      "id": 1,
       "nome": "Big Mac",
       "src": "https://cache-backend-mcd.mcdonaldscupones.com/media/image/product$kzXCTbnv/200/200/original?country=br",
       "desc": "Dois hambúrgueres (100% carne bovina), alface americana, queijo processado sabor cheddar, molho especial, cebola, picles e pão com gergelim.",
       "price": "29.90"
     },
     {
-      "id": "2",
+      "id": 2,
       "nome": "Big Tasty",
       "src": "https://cache-backend-mcd.mcdonaldscupones.com/media/image/product$kJX39JjK/200/200/original?country=br",
       "desc": "Um hambúrguer (carne 100% bovina), queijo processado sabor emental, tomate, alface americana, cebola, icônico molho Tasty e pão com gergelim.",
@@ -49,102 +49,48 @@
   ],
   "pedidos": [
     {
-      "id": "1",
-      "user_id": "1",
+      "id": 1,
+      "user_id": 1,
       "produtos": [
         {
-          "id": "1",
+          "id": 1,
+          "nome": "Big Mac",
           "qtd": "1",
           "price": "29.90"
         }
       ],
       "total": "29.90",
+      "avaliacao": 4.5
       "status": "Em andamento",
       "detalhes": "Retirar o picles, por favor!",
       "pagamento": "PIX",
-      "data": 1413417130
+      "qtdTroco": "",
+      "data": 1713747305
     },
     {
-      "id": "2",
-      "user_id": "2",
+      "id": 2,
+      "user_id": 2,
       "produtos": [
         {
-          "id": "2",
+          "id": 2,
+          "nome": "Big Tasty",
           "qtd": "1",
           "price": "19.90"
+        },
+        {
+          "id": 1,
+          "nome": "Big Mac",
+          "qtd": "2",
+          "price": "29.90"
         }
       ],
       "total": "19.90",
+      "avaliacao": 4.5
       "status": "Entregue",
       "detalhes": "Sem cebola, por favor!",
       "pagamento": "Dinheiro",
-      "data": 1513417130
-    }
-  ],
-  "rating": [
-    {
-      "id": "1",
-      "order_id": "1",
-      "overall_rating": "4.75",
-      "produtos": [
-        {
-          "id": "1",
-          "rating": "5.0"
-        },
-        {
-          "id": "2",
-          "rating": "4.5"
-        }
-      ],
-      "data": 1413417130
-    },
-    {
-      "id": "2",
-      "order_id": "2",
-      "overall_rating": "4.0",
-      "produtos": [
-        {
-          "id": "1",
-          "rating": "4.0"
-        },
-        {
-          "id": "2",
-          "rating": "4.0"
-        }
-      ],
-      "data": 1513417130
-    }
-  ],
-  "agendamentos": [
-    {
-      "id": "1",
-      "user_id": "1",
-      "produtos": [
-        {
-          "id": "1",
-          "qtd": "1"
-        }
-      ],
-      "total": "29.90",
-      "detalhes": "Comprar para o jantar de hoje!",
-      "pagamento": "PIX",
-      "data_pedido": 1413417130,
-      "data_agendada": 1513417130
-    },
-    {
-      "id": "2",
-      "user_id": "2",
-      "produtos": [
-        {
-          "id": "2",
-          "qtd": "1"
-        }
-      ],
-      "total": "19.90",
-      "detalhes": "Comprar para o almoço de amanhã!",
-      "pagamento": "Dinheiro",
-      "data_pedido": 1513417130,
-      "data_agendada": 1613417130
+      "qtdTroco": "100",
+      "data": 1713747305
     }
   ]
 }

@@ -23,7 +23,7 @@ const Relatorios = () => {
         }
     }, [isLoggedIn, user, navigate]);
 
-    const [current, setCurrent] = useState('agendamentos');
+    const [current, setCurrent] = useState('');
     const renderReport = () => {
         switch (current) {
             case 'agendamentos':
@@ -38,6 +38,10 @@ const Relatorios = () => {
                 return <Fidelizados/>;
             case 'tempo':
                 return <VendasTempo/>;
+            default:
+                return <>
+                    <h3>Selecione um relatório para visualizar</h3>
+                    </>;
         }
     }
     
@@ -61,3 +65,5 @@ const Relatorios = () => {
 };
 
 export default Relatorios;
+
+
