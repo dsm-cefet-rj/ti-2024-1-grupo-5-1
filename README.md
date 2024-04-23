@@ -12,11 +12,11 @@ O sistema Chapa Quente tem como propósito projetar, desenvolver e implementar u
 # Clonando o repositório
 git clone https://github.com/dsm-cefet-rj/ti-2024-1-grupo-5-1.git
 
-# Instalando as dependências
-npm install
-
 # Acessando a pasta do FrontEnd
 cd frontend/chapa-quente
+
+# Instalando as dependências
+npm install
 
 # Executando o Servidor
 npm run dev
