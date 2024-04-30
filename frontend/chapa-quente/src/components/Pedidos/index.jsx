@@ -44,9 +44,7 @@ const Pedidos = () => {
                 <td>{pedidos.id}</td>
                 <td>{pedidos.status}</td>
                 <td>
-                  <Link to={`/statusPedido/${pedidos.id}`}>
-                    <Button variant="primary">Ver Detalhes</Button>
-                  </Link>
+                    <Button variant="primary" href={`/statusPedido/${pedidos.id}`}>Ver Detalhes</Button>
                 </td>
               </tr>
             ))
