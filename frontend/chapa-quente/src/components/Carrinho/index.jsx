@@ -86,7 +86,8 @@ const Carrinho = () => {
       try {
         const hora_marcada = validateSchedule(dataMarcada);
         pedidoData.date_agendada = hora_marcada;
-        dispatch(register(pedidoData)).then(() => {
+        dispatch(register(pedidoData)).then((data) => {
+          navigate(`/statusPedido/${data.payload.id}`);
           toast('Agendamento efetuado com sucesso!', { type: 'success' });
         });
       } catch (error) {
@@ -99,8 +100,7 @@ const Carrinho = () => {
     } else {
       try {
         dispatch(register(pedidoData)).then((data) => {
-          console.log(data.payload.id)
-          navigate(`/pedidos/${data.payload.id}`);//aqui
+          navigate(`/statusPedido/${data.payload.id}`);
           toast('Pedido efetuado com sucesso!', { type: 'success' });
         });
       } catch (error) {
