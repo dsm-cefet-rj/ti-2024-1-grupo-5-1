@@ -13,7 +13,8 @@
       "bairro": "Bairro",
       "cidade": "Cidade",
       "cep": "12345678",
-      "date": 1713747305
+      "date": 1713747305,
+      "role": "user"
     },
     {
       "id": 2,
@@ -28,7 +29,8 @@
       "bairro": "Rio de Janeiro",
       "cidade": "Rio de Janeiro",
       "cep": "87654321",
-      "date": 1713747305
+      "date": 1713747305,
+      "role": "admin"
     },
     {
       "id": 3,
