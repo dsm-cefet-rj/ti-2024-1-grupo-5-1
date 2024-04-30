@@ -50,13 +50,25 @@ const StarRating = ({ totalStars = 5, initialRating = 0, onSubmit, starSize = '4
         </span>
       ))}
       <div>
-        <Button
-          variant="primary"
-          style={{ marginTop: '10px', fontSize: '16px' }}
-          onClick={handleSubmit}
-        >
-          Enviar avaliação de {selectedRating} estrelas
-        </Button>
+        {initialRating ?
+          (
+            <Button
+              variant="primary"
+              style={{ marginTop: '10px', fontSize: '16px' }}
+              disabled
+            >
+              Enviar avaliação de {selectedRating} estrelas
+            </Button>
+          ) : (
+            <Button
+              variant="primary"
+              style={{ marginTop: '10px', fontSize: '16px' }}
+              onClick={handleSubmit}
+            >
+              Enviar avaliação de {selectedRating} estrelas
+            </Button>
+          )
+        }
       </div>
     </div>
   );
