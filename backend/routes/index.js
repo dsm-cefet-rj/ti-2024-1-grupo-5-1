@@ -1,9 +1,19 @@
-var express = require('express');
-var router = express.Router();
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+// Rotas
 
-module.exports = router;
+const usuarios = require('./usuarios');
+
+module.exports = app => {
+  app.get('/', (req, res) => {
+    res.status(200).json({ msg: 'Chapa Quente API'});
+  })
+    .use(
+      bodyParser.json(),
+      cors(),
+    )
+    .use('/usuarios', usuarios);
+}
+
+

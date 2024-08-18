@@ -3,46 +3,38 @@ import axios from "axios";
 const API_URL = "http://localhost:3001";
 
 const register = async (user) => {
-    const validateEmail = await axios.get(`${API_URL}/users?email=${user.email}`);
-    if (validateEmail.data.length) {
-        throw new Error("E-mail já cadastrado.");
-    } else {
-        return await axios.post(`${API_URL}/users`, user)
-            .catch((error) => {
-                return error.response;
-            });
-    }
-};
-
-
-const login = async (email, senha) => {
-    const response = await axios.get(`${API_URL}/users?email=${email}`);
-    if (response.data.length) {
-        const user = response.data[0];
-        if (user.senha === senha) {
-            localStorage.setItem("user", JSON.stringify(user));
-            return user;
-        }
-    }
-
-    throw new Error("Usuário ou senha inválidos.");
-}
-
-const update = async (user) => {
-    localStorage.setItem("user", JSON.stringify(user));
-    return await axios.put(`${API_URL}/users/${user.id}`, user)
+    return await axios.post(`${API_URL}/usuarios/register`, user)
         .catch((error) => {
             return error.response;
         })
 };
 
+
+const login = async (email, senha) => {
+    return await axios.post(`${API_URL}/usuarios/login`, { email, senha })
+        .then((response) => {
+            console.log('found', response.data);
+            localStorage.setItem("user", response.data);
+            return response.data;
+        })
+        .catch((error) => {
+            return error.response;
+        })
+}
+
+
+const update = async (user) => {
+    const response = await axios.patch(`${API_URL}/usuarios/update/`, user);
+    return response.data;
+};
+
 const fetchOne = async (userId) => {
-    const response = await axios.get(`${API_URL}/users/${userId}`);
+    const response = await axios.get(`${API_URL}/usuarios/${userId}`);
     return response.data;
 };
 
 const fetchMany = async () => {
-    const response = await axios.get(`${API_URL}/users`);
+    const response = await axios.get(`${API_URL}/usuarios`);
     return response.data;
 }
 

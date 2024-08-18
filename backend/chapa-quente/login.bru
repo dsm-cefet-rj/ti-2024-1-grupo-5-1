@@ -1,0 +1,18 @@
+meta {
+  name: login
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:3001/usuarios/login
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email": "ronaldinhogaucho@gmail.com",
+    "senha": "senhaforte"
+  }
+}

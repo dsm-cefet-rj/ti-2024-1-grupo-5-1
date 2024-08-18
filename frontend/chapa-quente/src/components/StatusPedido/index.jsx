@@ -28,6 +28,7 @@ const StatusPedido = () => {
       console.log(pedidoId, newRating)
       dispatch(rate([pedidoId, newRating]));
       toast('Avaliação enviada com sucesso!', { type: 'success' });
+      window.location.reload();
     } catch (error) {
       console.error('Erro ao enviar avaliação:', error);
       toast('Erro ao enviar avaliação', { type: 'error' });

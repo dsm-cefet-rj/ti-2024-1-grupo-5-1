@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "chapa-quente",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

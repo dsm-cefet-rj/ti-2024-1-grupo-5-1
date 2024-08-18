@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 import { useState } from 'react';
 import { Link } from "react-router-dom";
 
-
 import { removeItem, clearCart } from '../../../redux/reducers/carrinhoSlice';
 
 const OffscreenCart = () => {

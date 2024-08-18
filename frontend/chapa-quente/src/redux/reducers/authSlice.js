@@ -6,7 +6,7 @@ const user = localStorage.getItem("user");
 
 const initialState = userAdapter.getInitialState({
     isLoggedIn: user ? true : false,
-    user: user ? JSON.parse(user) : null
+    user: user ? user : null
 });
 
 export const register = createAsyncThunk('auth/register', async (user, { rejectWithValue }) => {

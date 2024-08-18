@@ -159,14 +159,14 @@
       "nome": "Big Mac",
       "src": "https://cache-backend-mcd.mcdonaldscupones.com/media/image/product$kzXCTbnv/200/200/original?country=br",
       "desc": "Dois hambúrgueres (100% carne bovina), alface americana, queijo processado sabor cheddar, molho especial, cebola, picles e pão com gergelim.",
-      "price": 29.90
+      "price": 29.9
     },
     {
       "id": 2,
       "nome": "Big Tasty",
       "src": "https://cache-backend-mcd.mcdonaldscupones.com/media/image/product$kJX39JjK/200/200/original?country=br",
       "desc": "Um hambúrguer (carne 100% bovina), queijo processado sabor emental, tomate, alface americana, cebola, icônico molho Tasty e pão com gergelim.",
-      "price": 19.90
+      "price": 19.9
     }
   ],
   "pedidos": [
@@ -188,7 +188,7 @@
         }
       ],
       "total": "81.00",
-      "avaliacao": 3,
+      "avaliacao": "",
       "status": "Em andamento",
       "detalhes": "Dolores magni ea facilis aut fugiat quaerat labore esse.",
       "pagamento": "PIX",
@@ -226,7 +226,7 @@
         }
       ],
       "total": "718.00",
-      "avaliacao": 3.5,
+      "avaliacao": "",
       "status": "Em andamento",
       "detalhes": "Et aliquid qui.",
       "pagamento": "PIX",
@@ -252,7 +252,7 @@
         }
       ],
       "total": "378.00",
-      "avaliacao": 3.5,
+      "avaliacao": "",
       "status": "Cancelado",
       "detalhes": "Error quo voluptas.",
       "pagamento": "PIX",
@@ -284,7 +284,7 @@
         }
       ],
       "total": "478.00",
-      "avaliacao": 3.5,
+      "avaliacao": "",
       "status": "Agendado",
       "detalhes": "Error id est quaerat.",
       "pagamento": "Dinheiro",
@@ -328,7 +328,7 @@
         }
       ],
       "total": "578.00",
-      "avaliacao": 4.5,
+      "avaliacao": 3,
       "status": "Agendado",
       "detalhes": "Cumque odit harum nemo et.",
       "pagamento": "PIX",
@@ -372,7 +372,7 @@
         }
       ],
       "total": "942.00",
-      "avaliacao": 3,
+      "avaliacao": "",
       "status": "Em andamento",
       "detalhes": "Unde mollitia illum.",
       "pagamento": "PIX",
@@ -398,7 +398,7 @@
         }
       ],
       "total": "104.00",
-      "avaliacao": 5,
+      "avaliacao": "",
       "status": "Entregue",
       "detalhes": "Dicta nesciunt totam quaerat ipsam.",
       "pagamento": "Cartão",
@@ -430,7 +430,7 @@
         }
       ],
       "total": "384.00",
-      "avaliacao": 4,
+      "avaliacao": "",
       "status": "Em andamento",
       "detalhes": "Ut dolorem dignissimos voluptatibus reiciendis sit quos accusantium.",
       "pagamento": "Cartão",
@@ -468,7 +468,7 @@
         }
       ],
       "total": "826.00",
-      "avaliacao": 3.5,
+      "avaliacao": "",
       "status": "Entregue",
       "detalhes": "Fuga a et quo rerum dolore quia ut.",
       "pagamento": "PIX",
@@ -494,7 +494,7 @@
         }
       ],
       "total": "317.00",
-      "avaliacao": 4.5,
+      "avaliacao": "",
       "status": "Em andamento",
       "detalhes": "Ea optio autem sed odio voluptas placeat et.",
       "pagamento": "Cartão",
@@ -514,7 +514,7 @@
         }
       ],
       "total": "284.00",
-      "avaliacao": 4,
+      "avaliacao": "",
       "status": "Em andamento",
       "detalhes": "Id voluptatem dolor repellat repellendus et.",
       "pagamento": "Dinheiro",
@@ -546,7 +546,7 @@
         }
       ],
       "total": "553.00",
-      "avaliacao": 4.5,
+      "avaliacao": "",
       "status": "Cancelado",
       "detalhes": "Quasi odio dolor id.",
       "pagamento": "Dinheiro",
@@ -578,7 +578,7 @@
         }
       ],
       "total": "486.00",
-      "avaliacao": 4,
+      "avaliacao": "",
       "status": "Em andamento",
       "detalhes": "Fuga nisi fugit possimus pariatur maxime nostrum.",
       "pagamento": "Dinheiro",
@@ -622,7 +622,7 @@
         }
       ],
       "total": "888.00",
-      "avaliacao": 4.5,
+      "avaliacao": "",
       "status": "Cancelado",
       "detalhes": "Iure aut optio inventore unde officiis expedita.",
       "pagamento": "Cartão",
@@ -642,7 +642,7 @@
         }
       ],
       "total": "249.00",
-      "avaliacao": 4,
+      "avaliacao": "",
       "status": "Agendado",
       "detalhes": "Minima debitis rerum.",
       "pagamento": "Dinheiro",
@@ -668,7 +668,7 @@
         }
       ],
       "total": "359.00",
-      "avaliacao": 3,
+      "avaliacao": "",
       "status": "Cancelado",
       "detalhes": "Quas dolorem ipsam et magnam ut ducimus labore.",
       "pagamento": "PIX",
@@ -688,7 +688,7 @@
         }
       ],
       "total": "44.00",
-      "avaliacao": 3,
+      "avaliacao": "",
       "status": "Em andamento",
       "detalhes": "Dicta quasi animi sunt eius dolore et dolores corrupti rerum.",
       "pagamento": "Cartão",
@@ -714,7 +714,7 @@
         }
       ],
       "total": "360.00",
-      "avaliacao": 3.5,
+      "avaliacao": "",
       "status": "Entregue",
       "detalhes": "Sunt et qui.",
       "pagamento": "PIX",
@@ -758,7 +758,7 @@
         }
       ],
       "total": "660.00",
-      "avaliacao": 4.5,
+      "avaliacao": "",
       "status": "Cancelado",
       "detalhes": "Voluptatum est excepturi laudantium doloremque necessitatibus.",
       "pagamento": "Dinheiro",
@@ -778,7 +778,7 @@
         }
       ],
       "total": "470.00",
-      "avaliacao": 4,
+      "avaliacao": "",
       "status": "Em andamento",
       "detalhes": "Impedit cumque aperiam consectetur.",
       "pagamento": "PIX",
@@ -798,7 +798,7 @@
         }
       ],
       "total": "285.00",
-      "avaliacao": 4.5,
+      "avaliacao": "",
       "status": "Entregue",
       "detalhes": "Voluptates et quia est labore eum repellendus quia officia.",
       "pagamento": "PIX",
@@ -824,7 +824,7 @@
         }
       ],
       "total": "176.00",
-      "avaliacao": 4,
+      "avaliacao": "",
       "status": "Agendado",
       "detalhes": "Necessitatibus aut voluptatem.",
       "pagamento": "Dinheiro",
@@ -856,7 +856,7 @@
         }
       ],
       "total": "280.00",
-      "avaliacao": 3,
+      "avaliacao": "",
       "status": "Entregue",
       "detalhes": "Perspiciatis excepturi sed consequatur non vel sit.",
       "pagamento": "PIX",
@@ -876,7 +876,7 @@
         }
       ],
       "total": "245.00",
-      "avaliacao": 4.5,
+      "avaliacao": "",
       "status": "Agendado",
       "detalhes": "Aut excepturi dignissimos cum iure.",
       "pagamento": "PIX",
@@ -908,7 +908,7 @@
         }
       ],
       "total": "784.00",
-      "avaliacao": 4,
+      "avaliacao": "",
       "status": "Agendado",
       "detalhes": "Est dolorum et veniam nihil et occaecati et.",
       "pagamento": "PIX",
@@ -928,7 +928,7 @@
         }
       ],
       "total": "335.00",
-      "avaliacao": 4,
+      "avaliacao": "",
       "status": "Cancelado",
       "detalhes": "Facere nesciunt voluptatibus minima qui.",
       "pagamento": "Cartão",
@@ -960,7 +960,7 @@
         }
       ],
       "total": "600.00",
-      "avaliacao": 5,
+      "avaliacao": "",
       "status": "Cancelado",
       "detalhes": "Placeat nostrum neque autem distinctio.",
       "pagamento": "Dinheiro",
@@ -998,7 +998,7 @@
         }
       ],
       "total": "395.00",
-      "avaliacao": 3,
+      "avaliacao": "",
       "status": "Entregue",
       "detalhes": "Quia sapiente voluptatem impedit eaque.",
       "pagamento": "PIX",
@@ -1042,7 +1042,7 @@
         }
       ],
       "total": "1082.00",
-      "avaliacao": 4,
+      "avaliacao": "",
       "status": "Entregue",
       "detalhes": "Similique numquam quo voluptatem.",
       "pagamento": "PIX",
@@ -1068,7 +1068,7 @@
         }
       ],
       "total": "243.00",
-      "avaliacao": 5,
+      "avaliacao": "",
       "status": "Agendado",
       "detalhes": "In nisi beatae doloribus sit.",
       "pagamento": "Cartão",
@@ -1112,7 +1112,7 @@
         }
       ],
       "total": "927.00",
-      "avaliacao": 3,
+      "avaliacao": "",
       "status": "Cancelado",
       "detalhes": "Sit voluptatibus et ipsam eos voluptas et non aliquam.",
       "pagamento": "PIX",
@@ -1132,7 +1132,7 @@
         }
       ],
       "total": "78.00",
-      "avaliacao": 4.5,
+      "avaliacao": "",
       "status": "Agendado",
       "detalhes": "Suscipit nobis dolorum.",
       "pagamento": "Cartão",
@@ -1176,7 +1176,7 @@
         }
       ],
       "total": "1034.00",
-      "avaliacao": 5,
+      "avaliacao": "",
       "status": "Agendado",
       "detalhes": "Esse deleniti quia voluptas eveniet totam rerum tempora vitae delectus.",
       "pagamento": "PIX",
@@ -1202,7 +1202,7 @@
         }
       ],
       "total": "405.00",
-      "avaliacao": 5,
+      "avaliacao": "",
       "status": "Em andamento",
       "detalhes": "Numquam et iste est animi delectus doloremque.",
       "pagamento": "Dinheiro",
@@ -1240,7 +1240,7 @@
         }
       ],
       "total": "388.00",
-      "avaliacao": 4.5,
+      "avaliacao": "",
       "status": "Agendado",
       "detalhes": "Voluptate et ea.",
       "pagamento": "PIX",
@@ -1284,7 +1284,7 @@
         }
       ],
       "total": "591.00",
-      "avaliacao": 3,
+      "avaliacao": "",
       "status": "Em andamento",
       "detalhes": "Rerum qui ex alias.",
       "pagamento": "Cartão",
@@ -1328,7 +1328,7 @@
         }
       ],
       "total": "696.00",
-      "avaliacao": 5,
+      "avaliacao": "",
       "status": "Agendado",
       "detalhes": "Et omnis a.",
       "pagamento": "Dinheiro",
@@ -1348,7 +1348,7 @@
         }
       ],
       "total": "148.00",
-      "avaliacao": 4.5,
+      "avaliacao": "",
       "status": "Em andamento",
       "detalhes": "Fugit ea amet cumque.",
       "pagamento": "Dinheiro",
@@ -1386,7 +1386,7 @@
         }
       ],
       "total": "476.00",
-      "avaliacao": 3.5,
+      "avaliacao": "",
       "status": "Em andamento",
       "detalhes": "Est quis sit eos occaecati dolorum tempore inventore quasi.",
       "pagamento": "Cartão",
@@ -1412,7 +1412,7 @@
         }
       ],
       "total": "508.00",
-      "avaliacao": 3.5,
+      "avaliacao": "",
       "status": "Entregue",
       "detalhes": "Esse a consequuntur molestiae corporis.",
       "pagamento": "PIX",
@@ -1444,7 +1444,7 @@
         }
       ],
       "total": "427.00",
-      "avaliacao": 4,
+      "avaliacao": "",
       "status": "Entregue",
       "detalhes": "Eaque rerum tenetur similique et.",
       "pagamento": "Cartão",
@@ -1488,7 +1488,7 @@
         }
       ],
       "total": "442.00",
-      "avaliacao": 4,
+      "avaliacao": "",
       "status": "Cancelado",
       "detalhes": "Maxime eveniet ad adipisci voluptatum accusamus ratione et.",
       "pagamento": "PIX",
@@ -1526,7 +1526,7 @@
         }
       ],
       "total": "601.00",
-      "avaliacao": 4.5,
+      "avaliacao": "",
       "status": "Entregue",
       "detalhes": "Amet ipsa eveniet corrupti quisquam dolorum fugiat tenetur.",
       "pagamento": "Cartão",
@@ -1558,7 +1558,7 @@
         }
       ],
       "total": "628.00",
-      "avaliacao": 3,
+      "avaliacao": "",
       "status": "Entregue",
       "detalhes": "Reiciendis optio nisi ea nostrum.",
       "pagamento": "Dinheiro",
@@ -1596,7 +1596,7 @@
         }
       ],
       "total": "467.00",
-      "avaliacao": 4,
+      "avaliacao": "",
       "status": "Entregue",
       "detalhes": "Suscipit tempore beatae.",
       "pagamento": "Cartão",
@@ -1622,7 +1622,7 @@
         }
       ],
       "total": "140.00",
-      "avaliacao": 4.5,
+      "avaliacao": "",
       "status": "Agendado",
       "detalhes": "Alias autem eius quas autem voluptas voluptatibus voluptatibus voluptatem dolor.",
       "pagamento": "Cartão",
@@ -1660,7 +1660,7 @@
         }
       ],
       "total": "967.00",
-      "avaliacao": 5,
+      "avaliacao": "",
       "status": "Em andamento",
       "detalhes": "Quia facere incidunt molestiae iure delectus exercitationem optio impedit.",
       "pagamento": "Cartão",
@@ -1704,7 +1704,7 @@
         }
       ],
       "total": "1251.00",
-      "avaliacao": 3.5,
+      "avaliacao": "",
       "status": "Agendado",
       "detalhes": "Quam voluptatem error velit eos aut sed deleniti nihil.",
       "pagamento": "PIX",
@@ -1748,7 +1748,7 @@
         }
       ],
       "total": "1084.00",
-      "avaliacao": 5,
+      "avaliacao": "",
       "status": "Em andamento",
       "detalhes": "Eligendi distinctio nesciunt blanditiis illum culpa quo sed.",
       "pagamento": "Cartão",
@@ -1792,7 +1792,7 @@
         }
       ],
       "total": "534.00",
-      "avaliacao": 5,
+      "avaliacao": "",
       "status": "Cancelado",
       "detalhes": "Odio adipisci voluptatum sit sunt nobis error.",
       "pagamento": "Dinheiro",
