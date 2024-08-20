@@ -25,7 +25,7 @@ class AuthController {
             }
 
             const { _id, role } = user;
-            const token = jwt.sign({ id: _id, role: role }, process.env.SESSION_SECRET, { expiresIn: '24h' });
+            const token = jwt.sign({ id: _id }, process.env.SESSION_SECRET, { expiresIn: '24h' });
 
             return res.status(200).send({
                 token: token,
@@ -80,7 +80,7 @@ class AuthController {
                 cidade,
                 cep,
                 role: 'user',
-                date: new Date()
+                date
             });
 
             await newUser.save();
@@ -91,7 +91,7 @@ class AuthController {
     }
 
     static async update(req, res) {
-        const { id } = req.user_id; // Obtido do middleware de autenticação
+        const id = req.user_id;
         const { nome, sobrenome, email, old_senha, new_senha, telefone, logradouro, numero, complemento, bairro, cidade, cep } = req.body;
 
         try {
@@ -103,17 +103,20 @@ class AuthController {
                 return res.status(400).send({ error: 'Dados insuficientes' });
             }
 
-            const user = await Usuarios.findOne({_id: id});
+            const user = await Usuarios.findOne({ _id: id });
             if (!user) {
                 return res.status(404).send({ error: 'Usuário não encontrado' });
             }
 
-            if (new_senha) {
-                const pass_ok = await bcrypt.compare(old_senha, user.senha);
-                if (!pass_ok) {
-                    return res.status(401).send({ error: 'Erro ao autenticar usuário' });
+            const pass_ok = await bcrypt.compare(old_senha, user.senha);
+            if (!pass_ok) {
+                return res.status(401).send({ error: 'Senha incorreta' });
+            } else {
+                if (new_senha != '') {
+                    user.senha = await UserService.encryptPassword(new_senha);
+                } else {
+                    user.senha = user.senha;
                 }
-                user.senha = await UserService.encryptPassword(new_senha);
             }
 
             user.nome = nome;
@@ -128,7 +131,25 @@ class AuthController {
             user.cep = cep;
 
             await user.save();
-            return res.status(200).send({ message: 'Usuário atualizado com sucesso', status: true });
+            return res.status(200).send({ 
+                message: 'Usuário atualizado com sucesso', 
+                token: req.token,
+                user: {
+                    id: user._id,
+                    nome: user.nome,
+                    sobrenome: user.sobrenome,
+                    email: user.email,
+                    telefone: user.telefone,
+                    logradouro: user.logradouro,
+                    numero: user.numero,
+                    complemento: user.complemento,
+                    bairro: user.bairro,
+                    cidade: user.cidade,
+                    cep: user.cep,
+                    role: user.role,
+                    date: user.date
+                },
+                status: true });
         } catch (error) {
             return res.status(500).send({ error: 'Erro ao atualizar usuário', status: false });
         }
@@ -136,7 +157,7 @@ class AuthController {
 
     static async fetchMany(req, res) {
         try {
-            const users = await Usuarios.find(); 
+            const users = await Usuarios.find();
             return res.status(200).json(users);
         } catch (error) {
             return res.status(500).json({ error: 'Erro ao buscar usuários' });
@@ -147,7 +168,7 @@ class AuthController {
         const { id } = req.params;
 
         try {
-            const user = await Usuarios.findOne({_id: id});
+            const user = await Usuarios.findOne({ _id: id });
 
             if (!user) {
                 return res.status(404).send({ error: 'Usuário não encontrado' });
@@ -163,7 +184,7 @@ class AuthController {
         const { id } = req.user_id; // Obtido do middleware de autenticação
 
         try {
-            const user = await Usuarios.findOne({_id: id});
+            const user = await Usuarios.findOne({ _id: id });
 
             if (!user) {
                 return res.status(404).send({ error: 'Usuário não encontrado' });
@@ -173,7 +194,7 @@ class AuthController {
                 return res.status(401).send({ error: 'Usuário não pode ser deletado' });
             }
 
-            await Usuarios.deleteOne({_id: id});
+            await Usuarios.deleteOne({ _id: id });
             return res.status(200).send({ message: 'Usuário deletado com sucesso', status: true });
         } catch (error) {
             return res.status(500).send({ error: 'Erro ao deletar usuário', status: false });
@@ -184,6 +205,29 @@ class AuthController {
         sessionStorage.removeItem('token');
     };
 
+    // Método temporário para forçar a atualização de senha
+    static async forceUpdatePassword(req, res) {
+        const { id } = req.params;
+        const { senha } = req.body;
+
+        try {
+            const user = await Usuarios.findOne({ _id: id });
+
+            if (!user) {
+                return res.status(404).send({ error: 'Usuário não encontrado' });
+            }
+
+            user.senha = await UserService.encryptPassword(senha);
+
+            await user.save();
+
+            return res.status(200).send({ message: 'Senha atualizada com sucesso', status: true });
+
+        } catch (error) {
+            return res.status(500).send({ error: 'Erro ao atualizar senha', status: false });
+        }
+
+    }
 }
 
 module.exports = AuthController;

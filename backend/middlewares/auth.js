@@ -1,19 +1,20 @@
 const jwt = require('jsonwebtoken');
 
 function auth(req, res, next) {
-    const token_header = req.headers.auth;
+    const token_header = req.headers.authorization;
 
     if (!token_header) {
-        return res.status(401).send({ error: 'Token não enviado' });
+        return res.status(401).send({ error: 'Token não fornecido.' });
     }
 
     const [, token] = token_header.split(' ');
 
-    jwt.verify(token, process.env.SECRET, (error, data) => {
-        if (error) {
-            return res.status(401).send({ error: 'Falha na autenticação do token' });
+    jwt.verify(token, process.env.SESSION_SECRET, (err, decoded) => {
+        if (err) {
+            return res.status(401).send({ error: 'Token inválido.' });
         } else {
-            req.user_id = data.id;
+            req.user_id = decoded.id;
+            // req.user_role = decoded.role;
             req.token = token;
             return next();
         }
