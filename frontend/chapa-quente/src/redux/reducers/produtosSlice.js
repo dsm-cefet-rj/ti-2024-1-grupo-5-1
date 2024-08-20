@@ -39,9 +39,9 @@ export const removeProduto = createAsyncThunk('produtos/removeProduto', async (p
     }
 })
 
-export const alteraProduto = createAsyncThunk('produtos/alteraProduto', async (produtoData) => {
+export const alteraProduto = createAsyncThunk('produtos/alteraProduto', async ({produtoId, produtoData}) => {
     try {
-        const response = await axios.patch(`http://localhost:3001/produtos/${produtoData.id}`, produtoData);
+        const response = await axios.patch(`http://localhost:3001/produtos/${produtoId}`, produtoData);
         return response.data;
     } catch (error) {
         console.error('Error altering produto:', error);
@@ -49,7 +49,9 @@ export const alteraProduto = createAsyncThunk('produtos/alteraProduto', async (p
     }
 })
 
-const produtosAdapter = createEntityAdapter();
+const produtosAdapter = createEntityAdapter(
+    { selectId: (produto) => produto._id }
+);
 
 export const slice = createSlice({
     name: 'produtos',
