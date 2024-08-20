@@ -2,18 +2,20 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 // Rotas
-
 const usuarios = require('./usuarios');
+const produtos = require('./produtos');
 
 module.exports = app => {
-  app.get('/', (req, res) => {
-    res.status(200).json({ msg: 'Chapa Quente API'});
-  })
-    .use(
-      bodyParser.json(),
-      cors(),
-    )
-    .use('/usuarios', usuarios);
+    app
+        .use(bodyParser.json())
+        .use(cors({
+            origin: process.env.FRONTEND_URL,
+            methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+            credentials: true
+        }))
+        .use('/usuarios', usuarios)
+        .use('/produtos', produtos)
+        .get('/', (req, res) => {
+            res.status(200).json({ msg: 'Chapa Quente API' });
+        });
 }
-
-

@@ -3,25 +3,24 @@ import axios from "axios";
 const API_URL = "http://localhost:3001";
 
 const register = async (user) => {
-    return await axios.post(`${API_URL}/usuarios/register`, user)
-        .catch((error) => {
-            return error.response;
-        })
+    const response = await axios.post(`${API_URL}/usuarios/register`, user);
+    return response.data;
 };
 
 
-const login = async (email, senha) => {
-    return await axios.post(`${API_URL}/usuarios/login`, { email, senha })
-        .then((response) => {
-            console.log('found', response.data);
-            localStorage.setItem("user", response.data);
-            return response.data;
-        })
-        .catch((error) => {
-            return error.response;
-        })
-}
+const login = async (user) => {
+    const response = await axios.post(`${API_URL}/usuarios/login`, user)
 
+    if (response.data) {
+        const { token, user } = response.data;
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(user));
+
+        return response.data;
+    } else {
+        return null;
+    }
+}
 
 const update = async (user) => {
     const response = await axios.patch(`${API_URL}/usuarios/update/`, user);
@@ -40,6 +39,7 @@ const fetchMany = async () => {
 
 const logout = () => {
     localStorage.removeItem("user");
+    localStorage.removeItem("token");
 };
 
 const authService = {

@@ -4,35 +4,23 @@ const bcrypt = require('bcrypt');
 class UserService {
     static async findEmail(email) {
         const user = await Usuarios.findOne({ email });
-        if (user) {
-            return true;
-        } else {
-            return false;
-        }
+        return user ? true : false;
     }
 
-    static async validateEmail(email) {
+    static validateEmail(email) {
         const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-        const isValid = re.test(email);
-        if (isValid) {
-            return true;
-        } else {
-            return false;
-        }
+        return re.test(email);
     }
 
-    static async encryptPassword(password) {
-        if (!password) {
+    static async encryptPassword(senha) {
+        if (!senha) {
             return null;
         }
 
-        const salt = bcrypt.genSaltSync(10);
-        const hash = bcrypt.hashSync(password, salt);
+        const salt = await bcrypt.genSalt(10);
+        const hash = await bcrypt.hash(senha, salt);
         return hash;
     }
-
 }
 
 module.exports = UserService;
-
