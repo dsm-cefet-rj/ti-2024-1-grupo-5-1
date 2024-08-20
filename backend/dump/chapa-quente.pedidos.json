@@ -1,0 +1,1730 @@
+[{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bce"
+  },
+  "user_id": "66b977439fa92e56b72ba723",
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Ergonomic Plastic Hat",
+      "qtd": 1,
+      "price": 14
+    },
+    {
+      "id": 2,
+      "nome": "Gorgeous Steel Fish",
+      "qtd": 1,
+      "price": 67
+    }
+  ],
+  "total": "81.00",
+  "avaliacao": 3,
+  "status": "Em andamento",
+  "detalhes": "Dolores magni ea facilis aut fugiat quaerat labore esse.",
+  "pagamento": "PIX",
+  "qtdTroco": "",
+  "date_agendada": "",
+  "date_pedido": 1705018424
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bcf"
+  },
+  "user_id": "66b977439fa92e56b72ba724",
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Unbranded Concrete Towels",
+      "qtd": 5,
+      "price": 17
+    },
+    {
+      "id": 2,
+      "nome": "Practical Wooden Hat",
+      "qtd": 1,
+      "price": 98
+    },
+    {
+      "id": 3,
+      "nome": "Incredible Granite Chips",
+      "qtd": 5,
+      "price": 88
+    },
+    {
+      "id": 4,
+      "nome": "Gorgeous Fresh Bike",
+      "qtd": 5,
+      "price": 19
+    }
+  ],
+  "total": "718.00",
+  "avaliacao": 3.5,
+  "status": "Em andamento",
+  "detalhes": "Et aliquid qui.",
+  "pagamento": "PIX",
+  "qtdTroco": "",
+  "date_agendada": "",
+  "date_pedido": 1711306168
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bd0"
+  },
+  "user_id": "66b977439fa92e56b72ba725",
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Tasty Frozen Salad",
+      "qtd": 4,
+      "price": 87
+    },
+    {
+      "id": 2,
+      "nome": "Unbranded Frozen Bacon",
+      "qtd": 5,
+      "price": 6
+    }
+  ],
+  "total": "378.00",
+  "avaliacao": 3.5,
+  "status": "Cancelado",
+  "detalhes": "Error quo voluptas.",
+  "pagamento": "PIX",
+  "qtdTroco": "",
+  "date_agendada": "",
+  "date_pedido": 1710003000
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bd1"
+  },
+  "user_id": "66b977439fa92e56b72ba726",
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Small Cotton Car",
+      "qtd": 3,
+      "price": 57
+    },
+    {
+      "id": 2,
+      "nome": "Handcrafted Plastic Gloves",
+      "qtd": 3,
+      "price": 45
+    },
+    {
+      "id": 3,
+      "nome": "Rustic Cotton Chips",
+      "qtd": 2,
+      "price": 86
+    }
+  ],
+  "total": "478.00",
+  "avaliacao": 3.5,
+  "status": "Agendado",
+  "detalhes": "Error id est quaerat.",
+  "pagamento": "Dinheiro",
+  "qtdTroco": 169,
+  "date_agendada": 1712073326,
+  "date_pedido": 1712073326
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bd2"
+  },
+  "user_id": "66b977439fa92e56b72ba727",
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Ergonomic Fresh Car",
+      "qtd": 1,
+      "price": 26
+    },
+    {
+      "id": 2,
+      "nome": "Generic Metal Shirt",
+      "qtd": 2,
+      "price": 84
+    },
+    {
+      "id": 3,
+      "nome": "Ergonomic Granite Keyboard",
+      "qtd": 2,
+      "price": 98
+    },
+    {
+      "id": 4,
+      "nome": "Unbranded Soft Chair",
+      "qtd": 1,
+      "price": 28
+    },
+    {
+      "id": 5,
+      "nome": "Practical Cotton Bacon",
+      "qtd": 5,
+      "price": 32
+    }
+  ],
+  "total": "578.00",
+  "avaliacao": 4.5,
+  "status": "Agendado",
+  "detalhes": "Cumque odit harum nemo et.",
+  "pagamento": "PIX",
+  "qtdTroco": "",
+  "date_agendada": 1712073326,
+  "date_pedido": 1709534442
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bd3"
+  },
+  "user_id": "66b977439fa92e56b72ba728",
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Intelligent Wooden Tuna",
+      "qtd": 2,
+      "price": 92
+    },
+    {
+      "id": 2,
+      "nome": "Refined Soft Towels",
+      "qtd": 1,
+      "price": 60
+    },
+    {
+      "id": 3,
+      "nome": "Intelligent Concrete Keyboard",
+      "qtd": 4,
+      "price": 77
+    },
+    {
+      "id": 4,
+      "nome": "Awesome Soft Ball",
+      "qtd": 5,
+      "price": 56
+    },
+    {
+      "id": 5,
+      "nome": "Licensed Fresh Bike",
+      "qtd": 2,
+      "price": 55
+    }
+  ],
+  "total": "942.00",
+  "avaliacao": 3,
+  "status": "Em andamento",
+  "detalhes": "Unde mollitia illum.",
+  "pagamento": "PIX",
+  "qtdTroco": "",
+  "date_agendada": "",
+  "date_pedido": 1708348027
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bd4"
+  },
+  "user_id": "66b977439fa92e56b72ba729",
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Practical Soft Cheese",
+      "qtd": 1,
+      "price": 38
+    },
+    {
+      "id": 2,
+      "nome": "Sleek Soft Shoes",
+      "qtd": 3,
+      "price": 22
+    }
+  ],
+  "total": "104.00",
+  "avaliacao": 5,
+  "status": "Entregue",
+  "detalhes": "Dicta nesciunt totam quaerat ipsam.",
+  "pagamento": "CartÃ£o",
+  "qtdTroco": "",
+  "date_agendada": "",
+  "date_pedido": 1708158907
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bd5"
+  },
+  "user_id": "66b977439fa92e56b72ba72a",
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Practical Rubber Keyboard",
+      "qtd": 2,
+      "price": 65
+    },
+    {
+      "id": 2,
+      "nome": "Generic Wooden Mouse",
+      "qtd": 2,
+      "price": 88
+    },
+    {
+      "id": 3,
+      "nome": "Rustic Wooden Hat",
+      "qtd": 3,
+      "price": 26
+    }
+  ],
+  "total": "384.00",
+  "avaliacao": 4,
+  "status": "Em andamento",
+  "detalhes": "Ut dolorem dignissimos voluptatibus reiciendis sit quos accusantium.",
+  "pagamento": "CartÃ£o",
+  "qtdTroco": "",
+  "date_agendada": "",
+  "date_pedido": 1709830717
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bd6"
+  },
+  "user_id": "66b977439fa92e56b72ba72b",
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Gorgeous Soft Bike",
+      "qtd": 5,
+      "price": 26
+    },
+    {
+      "id": 2,
+      "nome": "Handmade Wooden Shirt",
+      "qtd": 4,
+      "price": 45
+    },
+    {
+      "id": 3,
+      "nome": "Tasty Granite Cheese",
+      "qtd": 3,
+      "price": 94
+    },
+    {
+      "id": 4,
+      "nome": "Ergonomic Rubber Shoes",
+      "qtd": 3,
+      "price": 78
+    }
+  ],
+  "total": "826.00",
+  "avaliacao": 3.5,
+  "status": "Entregue",
+  "detalhes": "Fuga a et quo rerum dolore quia ut.",
+  "pagamento": "PIX",
+  "qtdTroco": "",
+  "date_agendada": "",
+  "date_pedido": 1712852941
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bd7"
+  },
+  "user_id": "66b977439fa92e56b72ba72c",
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Awesome Cotton Bacon",
+      "qtd": 5,
+      "price": 29
+    },
+    {
+      "id": 2,
+      "nome": "Fantastic Wooden Gloves",
+      "qtd": 4,
+      "price": 43
+    }
+  ],
+  "total": "317.00",
+  "avaliacao": 4.5,
+  "status": "Em andamento",
+  "detalhes": "Ea optio autem sed odio voluptas placeat et.",
+  "pagamento": "CartÃ£o",
+  "qtdTroco": "",
+  "date_agendada": "",
+  "date_pedido": 1712919067
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bd8"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Fantastic Steel Chicken",
+      "qtd": 4,
+      "price": 71
+    }
+  ],
+  "total": "284.00",
+  "avaliacao": 4,
+  "status": "Em andamento",
+  "detalhes": "Id voluptatem dolor repellat repellendus et.",
+  "pagamento": "Dinheiro",
+  "qtdTroco": 12,
+  "date_agendada": "",
+  "date_pedido": 1706380481
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bd9"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Tasty Rubber Pizza",
+      "qtd": 4,
+      "price": 15
+    },
+    {
+      "id": 2,
+      "nome": "Generic Granite Bacon",
+      "qtd": 5,
+      "price": 25
+    },
+    {
+      "id": 3,
+      "nome": "Intelligent Cotton Pants",
+      "qtd": 4,
+      "price": 92
+    }
+  ],
+  "total": "553.00",
+  "avaliacao": 4.5,
+  "status": "Cancelado",
+  "detalhes": "Quasi odio dolor id.",
+  "pagamento": "Dinheiro",
+  "qtdTroco": 54,
+  "date_agendada": "",
+  "date_pedido": 1704719665
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bda"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Practical Cotton Pants",
+      "qtd": 5,
+      "price": 79
+    },
+    {
+      "id": 2,
+      "nome": "Handcrafted Wooden Towels",
+      "qtd": 1,
+      "price": 15
+    },
+    {
+      "id": 3,
+      "nome": "Generic Steel Keyboard",
+      "qtd": 2,
+      "price": 38
+    }
+  ],
+  "total": "486.00",
+  "avaliacao": 4,
+  "status": "Em andamento",
+  "detalhes": "Fuga nisi fugit possimus pariatur maxime nostrum.",
+  "pagamento": "Dinheiro",
+  "qtdTroco": 57,
+  "date_agendada": "",
+  "date_pedido": 1713628597
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bdb"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Intelligent Soft Shoes",
+      "qtd": 5,
+      "price": 8
+    },
+    {
+      "id": 2,
+      "nome": "Handcrafted Wooden Fish",
+      "qtd": 5,
+      "price": 81
+    },
+    {
+      "id": 3,
+      "nome": "Handmade Rubber Salad",
+      "qtd": 5,
+      "price": 36
+    },
+    {
+      "id": 4,
+      "nome": "Incredible Metal Fish",
+      "qtd": 2,
+      "price": 67
+    },
+    {
+      "id": 5,
+      "nome": "Generic Steel Bacon",
+      "qtd": 3,
+      "price": 43
+    }
+  ],
+  "total": "888.00",
+  "avaliacao": 4.5,
+  "status": "Cancelado",
+  "detalhes": "Iure aut optio inventore unde officiis expedita.",
+  "pagamento": "CartÃ£o",
+  "qtdTroco": "",
+  "date_agendada": "",
+  "date_pedido": 1704375834
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bdc"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Handmade Wooden Soap",
+      "qtd": 3,
+      "price": 83
+    }
+  ],
+  "total": "249.00",
+  "avaliacao": 4,
+  "status": "Agendado",
+  "detalhes": "Minima debitis rerum.",
+  "pagamento": "Dinheiro",
+  "qtdTroco": 148,
+  "date_agendada": 1712073326,
+  "date_pedido": 1710372658
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bdd"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Generic Granite Sausages",
+      "qtd": 3,
+      "price": 77
+    },
+    {
+      "id": 2,
+      "nome": "Licensed Granite Salad",
+      "qtd": 2,
+      "price": 64
+    }
+  ],
+  "total": "359.00",
+  "avaliacao": 3,
+  "status": "Cancelado",
+  "detalhes": "Quas dolorem ipsam et magnam ut ducimus labore.",
+  "pagamento": "PIX",
+  "qtdTroco": "",
+  "date_agendada": "",
+  "date_pedido": 1704431130
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bde"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Awesome Metal Cheese",
+      "qtd": 1,
+      "price": 44
+    }
+  ],
+  "total": "44.00",
+  "avaliacao": 3,
+  "status": "Em andamento",
+  "detalhes": "Dicta quasi animi sunt eius dolore et dolores corrupti rerum.",
+  "pagamento": "CartÃ£o",
+  "qtdTroco": "",
+  "date_agendada": "",
+  "date_pedido": 1710274295
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bdf"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Gorgeous Plastic Salad",
+      "qtd": 2,
+      "price": 14
+    },
+    {
+      "id": 2,
+      "nome": "Refined Plastic Tuna",
+      "qtd": 4,
+      "price": 83
+    }
+  ],
+  "total": "360.00",
+  "avaliacao": 3.5,
+  "status": "Entregue",
+  "detalhes": "Sunt et qui.",
+  "pagamento": "PIX",
+  "qtdTroco": "",
+  "date_agendada": "",
+  "date_pedido": 1705481074
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327be0"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Fantastic Cotton Towels",
+      "qtd": 2,
+      "price": 57
+    },
+    {
+      "id": 2,
+      "nome": "Generic Steel Soap",
+      "qtd": 4,
+      "price": 14
+    },
+    {
+      "id": 3,
+      "nome": "Gorgeous Fresh Cheese",
+      "qtd": 3,
+      "price": 75
+    },
+    {
+      "id": 4,
+      "nome": "Intelligent Cotton Chicken",
+      "qtd": 1,
+      "price": 55
+    },
+    {
+      "id": 5,
+      "nome": "Incredible Fresh Chicken",
+      "qtd": 5,
+      "price": 42
+    }
+  ],
+  "total": "660.00",
+  "avaliacao": 4.5,
+  "status": "Cancelado",
+  "detalhes": "Voluptatum est excepturi laudantium doloremque necessitatibus.",
+  "pagamento": "Dinheiro",
+  "qtdTroco": 15,
+  "date_agendada": "",
+  "date_pedido": 1713507701
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327be1"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Licensed Metal Shirt",
+      "qtd": 5,
+      "price": 94
+    }
+  ],
+  "total": "470.00",
+  "avaliacao": 4,
+  "status": "Em andamento",
+  "detalhes": "Impedit cumque aperiam consectetur.",
+  "pagamento": "PIX",
+  "qtdTroco": "",
+  "date_agendada": "",
+  "date_pedido": 1707782371
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327be2"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Gorgeous Plastic Fish",
+      "qtd": 5,
+      "price": 57
+    }
+  ],
+  "total": "285.00",
+  "avaliacao": 4.5,
+  "status": "Entregue",
+  "detalhes": "Voluptates et quia est labore eum repellendus quia officia.",
+  "pagamento": "PIX",
+  "qtdTroco": "",
+  "date_agendada": "",
+  "date_pedido": 1706406731
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327be3"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Practical Metal Sausages",
+      "qtd": 5,
+      "price": 19
+    },
+    {
+      "id": 2,
+      "nome": "Intelligent Rubber Ball",
+      "qtd": 3,
+      "price": 27
+    }
+  ],
+  "total": "176.00",
+  "avaliacao": 4,
+  "status": "Agendado",
+  "detalhes": "Necessitatibus aut voluptatem.",
+  "pagamento": "Dinheiro",
+  "qtdTroco": 149,
+  "date_agendada": 1710274295,
+  "date_pedido": 1704892778
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327be4"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Practical Soft Fish",
+      "qtd": 2,
+      "price": 65
+    },
+    {
+      "id": 2,
+      "nome": "Licensed Wooden Pants",
+      "qtd": 1,
+      "price": 94
+    },
+    {
+      "id": 3,
+      "nome": "Incredible Wooden Pizza",
+      "qtd": 4,
+      "price": 14
+    }
+  ],
+  "total": "280.00",
+  "avaliacao": 3,
+  "status": "Entregue",
+  "detalhes": "Perspiciatis excepturi sed consequatur non vel sit.",
+  "pagamento": "PIX",
+  "qtdTroco": "",
+  "date_agendada": "",
+  "date_pedido": 1710914952
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327be5"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Incredible Metal Ball",
+      "qtd": 5,
+      "price": 49
+    }
+  ],
+  "total": "245.00",
+  "avaliacao": 4.5,
+  "status": "Agendado",
+  "detalhes": "Aut excepturi dignissimos cum iure.",
+  "pagamento": "PIX",
+  "qtdTroco": "",
+  "date_agendada": 1710274295,
+  "date_pedido": 1712037527
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327be6"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Fantastic Granite Shoes",
+      "qtd": 5,
+      "price": 70
+    },
+    {
+      "id": 2,
+      "nome": "Tasty Rubber Shoes",
+      "qtd": 3,
+      "price": 73
+    },
+    {
+      "id": 3,
+      "nome": "Awesome Frozen Shoes",
+      "qtd": 5,
+      "price": 43
+    }
+  ],
+  "total": "784.00",
+  "avaliacao": 4,
+  "status": "Agendado",
+  "detalhes": "Est dolorum et veniam nihil et occaecati et.",
+  "pagamento": "PIX",
+  "qtdTroco": "",
+  "date_agendada": 1710274295,
+  "date_pedido": 1705182240
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327be7"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Licensed Fresh Hat",
+      "qtd": 5,
+      "price": 67
+    }
+  ],
+  "total": "335.00",
+  "avaliacao": 4,
+  "status": "Cancelado",
+  "detalhes": "Facere nesciunt voluptatibus minima qui.",
+  "pagamento": "CartÃ£o",
+  "qtdTroco": "",
+  "date_agendada": "",
+  "date_pedido": 1711553704
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327be8"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Intelligent Frozen Pants",
+      "qtd": 2,
+      "price": 62
+    },
+    {
+      "id": 2,
+      "nome": "Small Plastic Tuna",
+      "qtd": 4,
+      "price": 99
+    },
+    {
+      "id": 3,
+      "nome": "Licensed Steel Bacon",
+      "qtd": 5,
+      "price": 16
+    }
+  ],
+  "total": "600.00",
+  "avaliacao": 5,
+  "status": "Cancelado",
+  "detalhes": "Placeat nostrum neque autem distinctio.",
+  "pagamento": "Dinheiro",
+  "qtdTroco": 122,
+  "date_agendada": "",
+  "date_pedido": 1708805463
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327be9"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Unbranded Cotton Ball",
+      "qtd": 5,
+      "price": 38
+    },
+    {
+      "id": 2,
+      "nome": "Handmade Plastic Chips",
+      "qtd": 4,
+      "price": 17
+    },
+    {
+      "id": 3,
+      "nome": "Unbranded Steel Chair",
+      "qtd": 2,
+      "price": 37
+    },
+    {
+      "id": 4,
+      "nome": "Fantastic Metal Shirt",
+      "qtd": 3,
+      "price": 21
+    }
+  ],
+  "total": "395.00",
+  "avaliacao": 3,
+  "status": "Entregue",
+  "detalhes": "Quia sapiente voluptatem impedit eaque.",
+  "pagamento": "PIX",
+  "qtdTroco": "",
+  "date_agendada": "",
+  "date_pedido": 1707966449
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bea"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Awesome Wooden Hat",
+      "qtd": 3,
+      "price": 76
+    },
+    {
+      "id": 2,
+      "nome": "Awesome Rubber Pants",
+      "qtd": 1,
+      "price": 32
+    },
+    {
+      "id": 3,
+      "nome": "Handmade Steel Sausages",
+      "qtd": 5,
+      "price": 90
+    },
+    {
+      "id": 4,
+      "nome": "Small Soft Shoes",
+      "qtd": 5,
+      "price": 16
+    },
+    {
+      "id": 5,
+      "nome": "Handcrafted Frozen Table",
+      "qtd": 4,
+      "price": 73
+    }
+  ],
+  "total": "1082.00",
+  "avaliacao": 4,
+  "status": "Entregue",
+  "detalhes": "Similique numquam quo voluptatem.",
+  "pagamento": "PIX",
+  "qtdTroco": "",
+  "date_agendada": "",
+  "date_pedido": 1705197901
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327beb"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Licensed Granite Chicken",
+      "qtd": 1,
+      "price": 24
+    },
+    {
+      "id": 2,
+      "nome": "Small Concrete Towels",
+      "qtd": 3,
+      "price": 73
+    }
+  ],
+  "total": "243.00",
+  "avaliacao": 5,
+  "status": "Agendado",
+  "detalhes": "In nisi beatae doloribus sit.",
+  "pagamento": "CartÃ£o",
+  "qtdTroco": "",
+  "date_agendada": 1710274295,
+  "date_pedido": 1705961633
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bec"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Refined Rubber Shirt",
+      "qtd": 1,
+      "price": 18
+    },
+    {
+      "id": 2,
+      "nome": "Incredible Frozen Hat",
+      "qtd": 5,
+      "price": 88
+    },
+    {
+      "id": 3,
+      "nome": "Unbranded Fresh Chips",
+      "qtd": 5,
+      "price": 63
+    },
+    {
+      "id": 4,
+      "nome": "Tasty Concrete Pants",
+      "qtd": 3,
+      "price": 27
+    },
+    {
+      "id": 5,
+      "nome": "Practical Soft Computer",
+      "qtd": 1,
+      "price": 73
+    }
+  ],
+  "total": "927.00",
+  "avaliacao": 3,
+  "status": "Cancelado",
+  "detalhes": "Sit voluptatibus et ipsam eos voluptas et non aliquam.",
+  "pagamento": "PIX",
+  "qtdTroco": "",
+  "date_agendada": "",
+  "date_pedido": 1705958226
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bed"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Refined Granite Chicken",
+      "qtd": 3,
+      "price": 26
+    }
+  ],
+  "total": "78.00",
+  "avaliacao": 4.5,
+  "status": "Agendado",
+  "detalhes": "Suscipit nobis dolorum.",
+  "pagamento": "CartÃ£o",
+  "qtdTroco": "",
+  "date_agendada": 1712831786,
+  "date_pedido": 1708124445
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bee"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Tasty Frozen Salad",
+      "qtd": 5,
+      "price": 69
+    },
+    {
+      "id": 2,
+      "nome": "Handcrafted Metal Computer",
+      "qtd": 2,
+      "price": 13
+    },
+    {
+      "id": 3,
+      "nome": "Intelligent Rubber Towels",
+      "qtd": 4,
+      "price": 36
+    },
+    {
+      "id": 4,
+      "nome": "Rustic Soft Car",
+      "qtd": 4,
+      "price": 78
+    },
+    {
+      "id": 5,
+      "nome": "Fantastic Frozen Computer",
+      "qtd": 3,
+      "price": 69
+    }
+  ],
+  "total": "1034.00",
+  "avaliacao": 5,
+  "status": "Agendado",
+  "detalhes": "Esse deleniti quia voluptas eveniet totam rerum tempora vitae delectus.",
+  "pagamento": "PIX",
+  "qtdTroco": "",
+  "date_agendada": 1710274295,
+  "date_pedido": 1708800190
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bef"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Sleek Cotton Shirt",
+      "qtd": 5,
+      "price": 48
+    },
+    {
+      "id": 2,
+      "nome": "Unbranded Rubber Chair",
+      "qtd": 3,
+      "price": 55
+    }
+  ],
+  "total": "405.00",
+  "avaliacao": 5,
+  "status": "Em andamento",
+  "detalhes": "Numquam et iste est animi delectus doloremque.",
+  "pagamento": "Dinheiro",
+  "qtdTroco": 192,
+  "date_agendada": "",
+  "date_pedido": 1704448704
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bf0"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Handmade Frozen Shirt",
+      "qtd": 5,
+      "price": 12
+    },
+    {
+      "id": 2,
+      "nome": "Awesome Granite Sausages",
+      "qtd": 4,
+      "price": 42
+    },
+    {
+      "id": 3,
+      "nome": "Rustic Concrete Shoes",
+      "qtd": 1,
+      "price": 100
+    },
+    {
+      "id": 4,
+      "nome": "Fantastic Steel Cheese",
+      "qtd": 2,
+      "price": 30
+    }
+  ],
+  "total": "388.00",
+  "avaliacao": 4.5,
+  "status": "Agendado",
+  "detalhes": "Voluptate et ea.",
+  "pagamento": "PIX",
+  "qtdTroco": "",
+  "date_agendada": 1707211943,
+  "date_pedido": 1704448704
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bf1"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Gorgeous Cotton Soap",
+      "qtd": 5,
+      "price": 22
+    },
+    {
+      "id": 2,
+      "nome": "Awesome Fresh Computer",
+      "qtd": 5,
+      "price": 12
+    },
+    {
+      "id": 3,
+      "nome": "Handmade Rubber Bike",
+      "qtd": 3,
+      "price": 17
+    },
+    {
+      "id": 4,
+      "nome": "Handmade Wooden Cheese",
+      "qtd": 5,
+      "price": 38
+    },
+    {
+      "id": 5,
+      "nome": "Tasty Concrete Shoes",
+      "qtd": 5,
+      "price": 36
+    }
+  ],
+  "total": "591.00",
+  "avaliacao": 3,
+  "status": "Em andamento",
+  "detalhes": "Rerum qui ex alias.",
+  "pagamento": "CartÃ£o",
+  "qtdTroco": "",
+  "date_agendada": "",
+  "date_pedido": 1711670727
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bf2"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Handmade Concrete Bike",
+      "qtd": 5,
+      "price": 83
+    },
+    {
+      "id": 2,
+      "nome": "Gorgeous Wooden Table",
+      "qtd": 5,
+      "price": 13
+    },
+    {
+      "id": 3,
+      "nome": "Fantastic Steel Computer",
+      "qtd": 2,
+      "price": 64
+    },
+    {
+      "id": 4,
+      "nome": "Handmade Granite Chicken",
+      "qtd": 1,
+      "price": 68
+    },
+    {
+      "id": 5,
+      "nome": "Tasty Frozen Towels",
+      "qtd": 1,
+      "price": 20
+    }
+  ],
+  "total": "696.00",
+  "avaliacao": 5,
+  "status": "Agendado",
+  "detalhes": "Et omnis a.",
+  "pagamento": "Dinheiro",
+  "qtdTroco": 187,
+  "date_agendada": 1712831786,
+  "date_pedido": 1712831786
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bf3"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Handmade Fresh Mouse",
+      "qtd": 4,
+      "price": 37
+    }
+  ],
+  "total": "148.00",
+  "avaliacao": 4.5,
+  "status": "Em andamento",
+  "detalhes": "Fugit ea amet cumque.",
+  "pagamento": "Dinheiro",
+  "qtdTroco": 188,
+  "date_agendada": "",
+  "date_pedido": 1710835642
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bf4"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Practical Cotton Hat",
+      "qtd": 1,
+      "price": 18
+    },
+    {
+      "id": 2,
+      "nome": "Handmade Plastic Tuna",
+      "qtd": 1,
+      "price": 78
+    },
+    {
+      "id": 3,
+      "nome": "Sleek Plastic Mouse",
+      "qtd": 4,
+      "price": 74
+    },
+    {
+      "id": 4,
+      "nome": "Small Soft Keyboard",
+      "qtd": 2,
+      "price": 42
+    }
+  ],
+  "total": "476.00",
+  "avaliacao": 3.5,
+  "status": "Em andamento",
+  "detalhes": "Est quis sit eos occaecati dolorum tempore inventore quasi.",
+  "pagamento": "CartÃ£o",
+  "qtdTroco": "",
+  "date_agendada": "",
+  "date_pedido": 1705943276
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bf5"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Rustic Wooden Gloves",
+      "qtd": 5,
+      "price": 87
+    },
+    {
+      "id": 2,
+      "nome": "Handcrafted Concrete Chips",
+      "qtd": 1,
+      "price": 73
+    }
+  ],
+  "total": "508.00",
+  "avaliacao": 3.5,
+  "status": "Entregue",
+  "detalhes": "Esse a consequuntur molestiae corporis.",
+  "pagamento": "PIX",
+  "qtdTroco": "",
+  "date_agendada": "",
+  "date_pedido": 1711715378
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bf6"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Tasty Concrete Hat",
+      "qtd": 1,
+      "price": 5
+    },
+    {
+      "id": 2,
+      "nome": "Fantastic Soft Salad",
+      "qtd": 4,
+      "price": 88
+    },
+    {
+      "id": 3,
+      "nome": "Licensed Frozen Pants",
+      "qtd": 2,
+      "price": 35
+    }
+  ],
+  "total": "427.00",
+  "avaliacao": 4,
+  "status": "Entregue",
+  "detalhes": "Eaque rerum tenetur similique et.",
+  "pagamento": "CartÃ£o",
+  "qtdTroco": "",
+  "date_agendada": "",
+  "date_pedido": 1704392888
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bf7"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Fantastic Wooden Keyboard",
+      "qtd": 2,
+      "price": 15
+    },
+    {
+      "id": 2,
+      "nome": "Handmade Metal Tuna",
+      "qtd": 4,
+      "price": 11
+    },
+    {
+      "id": 3,
+      "nome": "Refined Plastic Shirt",
+      "qtd": 2,
+      "price": 84
+    },
+    {
+      "id": 4,
+      "nome": "Refined Cotton Hat",
+      "qtd": 3,
+      "price": 60
+    },
+    {
+      "id": 5,
+      "nome": "Intelligent Steel Shoes",
+      "qtd": 4,
+      "price": 5
+    }
+  ],
+  "total": "442.00",
+  "avaliacao": 4,
+  "status": "Cancelado",
+  "detalhes": "Maxime eveniet ad adipisci voluptatum accusamus ratione et.",
+  "pagamento": "PIX",
+  "qtdTroco": "",
+  "date_agendada": "",
+  "date_pedido": 1713731238
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bf8"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Unbranded Fresh Tuna",
+      "qtd": 5,
+      "price": 69
+    },
+    {
+      "id": 2,
+      "nome": "Practical Cotton Fish",
+      "qtd": 3,
+      "price": 70
+    },
+    {
+      "id": 3,
+      "nome": "Generic Wooden Ball",
+      "qtd": 1,
+      "price": 18
+    },
+    {
+      "id": 4,
+      "nome": "Small Concrete Towels",
+      "qtd": 4,
+      "price": 7
+    }
+  ],
+  "total": "601.00",
+  "avaliacao": 4.5,
+  "status": "Entregue",
+  "detalhes": "Amet ipsa eveniet corrupti quisquam dolorum fugiat tenetur.",
+  "pagamento": "CartÃ£o",
+  "qtdTroco": "",
+  "date_agendada": "",
+  "date_pedido": 1706136447
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bf9"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Intelligent Fresh Salad",
+      "qtd": 3,
+      "price": 52
+    },
+    {
+      "id": 2,
+      "nome": "Generic Wooden Keyboard",
+      "qtd": 2,
+      "price": 62
+    },
+    {
+      "id": 3,
+      "nome": "Handcrafted Concrete Soap",
+      "qtd": 4,
+      "price": 87
+    }
+  ],
+  "total": "628.00",
+  "avaliacao": 3,
+  "status": "Entregue",
+  "detalhes": "Reiciendis optio nisi ea nostrum.",
+  "pagamento": "Dinheiro",
+  "qtdTroco": 170,
+  "date_agendada": "",
+  "date_pedido": 1706406955
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bfa"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Awesome Steel Chair",
+      "qtd": 4,
+      "price": 6
+    },
+    {
+      "id": 2,
+      "nome": "Awesome Plastic Chicken",
+      "qtd": 4,
+      "price": 60
+    },
+    {
+      "id": 3,
+      "nome": "Generic Steel Salad",
+      "qtd": 2,
+      "price": 40
+    },
+    {
+      "id": 4,
+      "nome": "Handcrafted Steel Sausages",
+      "qtd": 3,
+      "price": 41
+    }
+  ],
+  "total": "467.00",
+  "avaliacao": 4,
+  "status": "Entregue",
+  "detalhes": "Suscipit tempore beatae.",
+  "pagamento": "CartÃ£o",
+  "qtdTroco": "",
+  "date_agendada": "",
+  "date_pedido": 1710157899
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bfb"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Awesome Wooden Cheese",
+      "qtd": 2,
+      "price": 40
+    },
+    {
+      "id": 2,
+      "nome": "Handmade Rubber Mouse",
+      "qtd": 2,
+      "price": 30
+    }
+  ],
+  "total": "140.00",
+  "avaliacao": 4.5,
+  "status": "Agendado",
+  "detalhes": "Alias autem eius quas autem voluptas voluptatibus voluptatibus voluptatem dolor.",
+  "pagamento": "CartÃ£o",
+  "qtdTroco": "",
+  "date_agendada": 1712831786,
+  "date_pedido": 1706620839
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bfc"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Incredible Plastic Table",
+      "qtd": 2,
+      "price": 57
+    },
+    {
+      "id": 2,
+      "nome": "Sleek Cotton Bike",
+      "qtd": 5,
+      "price": 17
+    },
+    {
+      "id": 3,
+      "nome": "Incredible Steel Cheese",
+      "qtd": 3,
+      "price": 96
+    },
+    {
+      "id": 4,
+      "nome": "Incredible Rubber Hat",
+      "qtd": 5,
+      "price": 96
+    }
+  ],
+  "total": "967.00",
+  "avaliacao": 5,
+  "status": "Em andamento",
+  "detalhes": "Quia facere incidunt molestiae iure delectus exercitationem optio impedit.",
+  "pagamento": "CartÃ£o",
+  "qtdTroco": "",
+  "date_agendada": "",
+  "date_pedido": 1705015970
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bfd"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Awesome Wooden Soap",
+      "qtd": 3,
+      "price": 38
+    },
+    {
+      "id": 2,
+      "nome": "Licensed Soft Tuna",
+      "qtd": 5,
+      "price": 93
+    },
+    {
+      "id": 3,
+      "nome": "Gorgeous Soft Fish",
+      "qtd": 4,
+      "price": 90
+    },
+    {
+      "id": 4,
+      "nome": "Incredible Plastic Soap",
+      "qtd": 5,
+      "price": 58
+    },
+    {
+      "id": 5,
+      "nome": "Licensed Granite Fish",
+      "qtd": 1,
+      "price": 22
+    }
+  ],
+  "total": "1251.00",
+  "avaliacao": 3.5,
+  "status": "Agendado",
+  "detalhes": "Quam voluptatem error velit eos aut sed deleniti nihil.",
+  "pagamento": "PIX",
+  "qtdTroco": "",
+  "date_agendada": 1712831786,
+  "date_pedido": 1709648313
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bfe"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Gorgeous Steel Hat",
+      "qtd": 5,
+      "price": 94
+    },
+    {
+      "id": 2,
+      "nome": "Handcrafted Wooden Sausages",
+      "qtd": 2,
+      "price": 61
+    },
+    {
+      "id": 3,
+      "nome": "Incredible Frozen Pizza",
+      "qtd": 2,
+      "price": 51
+    },
+    {
+      "id": 4,
+      "nome": "Fantastic Steel Soap",
+      "qtd": 2,
+      "price": 95
+    },
+    {
+      "id": 5,
+      "nome": "Generic Fresh Mouse",
+      "qtd": 5,
+      "price": 40
+    }
+  ],
+  "total": "1084.00",
+  "avaliacao": 5,
+  "status": "Em andamento",
+  "detalhes": "Eligendi distinctio nesciunt blanditiis illum culpa quo sed.",
+  "pagamento": "CartÃ£o",
+  "qtdTroco": "",
+  "date_agendada": "",
+  "date_pedido": 1710200201
+},
+{
+  "_id": {
+    "$oid": "66b97f8e80bcda5c21327bff"
+  },
+  "user_id": null,
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Refined Plastic Chips",
+      "qtd": 1,
+      "price": 57
+    },
+    {
+      "id": 2,
+      "nome": "Handcrafted Steel Tuna",
+      "qtd": 2,
+      "price": 54
+    },
+    {
+      "id": 3,
+      "nome": "Practical Concrete Salad",
+      "qtd": 4,
+      "price": 60
+    },
+    {
+      "id": 4,
+      "nome": "Refined Cotton Table",
+      "qtd": 1,
+      "price": 48
+    },
+    {
+      "id": 5,
+      "nome": "Handcrafted Cotton Shirt",
+      "qtd": 1,
+      "price": 81
+    }
+  ],
+  "total": "534.00",
+  "avaliacao": 5,
+  "status": "Cancelado",
+  "detalhes": "Odio adipisci voluptatum sit sunt nobis error.",
+  "pagamento": "Dinheiro",
+  "qtdTroco": 106,
+  "date_agendada": "",
+  "date_pedido": 1711157154
+}]
