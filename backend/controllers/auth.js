@@ -50,7 +50,7 @@ class AuthController {
     }
 
     static async register(req, res) {
-        const { nome, sobrenome, email, senha, telefone, logradouro, numero, complemento, bairro, cidade, cep } = req.body;
+        const { nome, sobrenome, email, senha, telefone, logradouro, numero, complemento, bairro, cidade, cep, role, date } = req.body;
 
         try {
             if (!UserService.validateEmail(email)) {
@@ -79,7 +79,7 @@ class AuthController {
                 bairro,
                 cidade,
                 cep,
-                role: 'user',
+                role,
                 date
             });
 
