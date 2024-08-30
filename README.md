@@ -21,8 +21,14 @@ npm install
 # Executando o Servidor
 npm run dev
 
-# Em outro terminal, acessando também a pasta do FrontEnd
-npm run server
+# Em outro terminal, acessando a pasta BackEnd
+cd backend
+
+# Instalando as dependências
+npm install
+
+# Executando o Servidor
+node app.js
 ```
 
 ## Equipe Responsável
