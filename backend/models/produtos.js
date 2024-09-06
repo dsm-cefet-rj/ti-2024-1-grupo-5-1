@@ -1,4 +1,4 @@
-const mongoose = require('mongoose'); // Erase if already required
+const mongoose = require('mongoose'); 
 
 var produtosSchema = new mongoose.Schema({
     _id : {

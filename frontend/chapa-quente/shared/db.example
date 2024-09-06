@@ -45,35 +45,5 @@
 			"pagamento": "",
 			"date": ""
 		}
-	],
-	"rating": [
-		{
-			"id": "",
-			"order_id": "",
-			"rating": "",
-			"produtos": [
-				{
-					"id": ""
-				}
-			],
-			"date": ""
-		}
-	],
-    "agendamentos": [
-	    {
-            "id": "",
-            "user_id": "",
-            "produtos": [
-                {
-                    "id": "",
-                    "qtd": ""
-                }
-            ],
-            "total": "",
-            "detalhes": "",
-            "pagamento": "",
-            "date_pedido": "",
-            "date_agendada": ""
-	    }
-    ]
+	]
 }

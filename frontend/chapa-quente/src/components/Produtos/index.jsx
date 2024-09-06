@@ -20,6 +20,8 @@ const Produtos = () => {
         }
     }, [produtosStatus, dispatch])
 
+    console.log(produtos)
+
     // console.log(useSelector(((state) => selectProduto(state, 1))))
 
     return (
@@ -28,7 +30,7 @@ const Produtos = () => {
                 <div className='row row-cols-auto justify-content-center'>
                     {
                         produtos.map(produto => (
-                            <div key={produto.id} className='col mb-3'>
+                            <div key={produto._id} className='col mb-3'>
                                 <Card item={produto}/>
                             </div>
                         ))

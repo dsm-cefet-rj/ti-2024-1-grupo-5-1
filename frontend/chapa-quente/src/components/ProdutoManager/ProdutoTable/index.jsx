@@ -36,15 +36,15 @@ const ProdutoTable = ({ produtos }) => {
             </thead>
             <tbody>
                 {produtos && produtos.map(produto => (
-                    <tr key={produto.id}>
-                        <td>{produto.id}</td>
+                    <tr key={produto._id}>
+                        <td>{produto._id}</td>
                         <td>{produto.nome}</td>
                         <td>{produto.desc}</td>
                         <td>{produto.price}</td>
                         <td>
                             <Stack gap={2} direction='horizontal'>
-                                <Button variant='warning' onClick={() => handleEdit(produto.id)}>Editar</Button>
-                                <Button variant='danger' onClick={() => handleDelete(produto.id)}>Deletar</Button>
+                                <Button variant='warning' onClick={() => handleEdit(produto._id)}>Editar</Button>
+                                <Button variant='danger' onClick={() => handleDelete(produto._id)}>Deletar</Button>
                             </Stack>
                         </td>
                     </tr>

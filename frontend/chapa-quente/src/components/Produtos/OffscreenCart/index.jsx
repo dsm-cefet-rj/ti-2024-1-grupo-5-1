@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 import { useState } from 'react';
 import { Link } from "react-router-dom";
 
-
 import { removeItem, clearCart } from '../../../redux/reducers/carrinhoSlice';
 
 const OffscreenCart = () => {
@@ -48,7 +47,7 @@ const OffscreenCart = () => {
                         <>
                             <ListGroup>
                                 {itens.map((item) => (
-                                <ListGroup.Item key={item.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                <ListGroup.Item key={item._id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                                         <h5 style={{ fontWeight: 'bold' }}>{item.nome}</h5>
                                         <p style={{ marginBottom: '0.5rem' }}>Quantidade: {item.quantity}</p>
