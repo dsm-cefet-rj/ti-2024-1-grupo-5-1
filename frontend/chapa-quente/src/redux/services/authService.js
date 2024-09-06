@@ -3,51 +3,81 @@ import axios from "axios";
 const API_URL = "http://localhost:3001";
 
 const register = async (user) => {
-    const validateEmail = await axios.get(`${API_URL}/users?email=${user.email}`);
-    if (validateEmail.data.length) {
-        throw new Error("E-mail já cadastrado.");
-    } else {
-        return await axios.post(`${API_URL}/users`, user)
-            .catch((error) => {
-                return error.response;
-            });
-    }
+    const response = await axios.post(`${API_URL}/usuarios/register`, user);
+    return response.data;
 };
 
 
-const login = async (email, senha) => {
-    const response = await axios.get(`${API_URL}/users?email=${email}`);
-    if (response.data.length) {
-        const user = response.data[0];
-        if (user.senha === senha) {
-            localStorage.setItem("user", JSON.stringify(user));
-            return user;
-        }
-    }
+const login = async (user) => {
+    const response = await axios.post(`${API_URL}/usuarios/login`, user)
 
-    throw new Error("Usuário ou senha inválidos.");
+    if (response.data) {
+        const { token, user } = response.data;
+        sessionStorage.setItem("token", token);
+        sessionStorage.setItem("user", JSON.stringify(user));
+
+        return response.data;
+    } else {
+        return null;
+    }
 }
 
 const update = async (user) => {
-    localStorage.setItem("user", JSON.stringify(user));
-    return await axios.put(`${API_URL}/users/${user.id}`, user)
-        .catch((error) => {
-            return error.response;
-        })
+    const response = await axios.patch(`${API_URL}/usuarios/update/`, user,
+        {
+            headers: {
+                Authorization: `Bearer ${sessionStorage.getItem("token")}`
+            }
+        }
+    );
+    
+    if (response.data) {
+        const { token, user } = response.data;
+        sessionStorage.setItem("token", token);
+        sessionStorage.setItem("user", JSON.stringify(user));
+
+        return response.data;
+    } else {
+        return null;
+    }
+};
+
+const remove = async (userId) => {
+    const response = await axios.post(`${API_URL}/usuarios/delete`, userId,
+        {
+            headers: {
+                Authorization: `Bearer ${sessionStorage.getItem("token")}`
+            }
+        }
+    );
+    return response.data;
 };
 
 const fetchOne = async (userId) => {
-    const response = await axios.get(`${API_URL}/users/${userId}`);
+    const response = await axios.get(`${API_URL}/usuarios/${userId}`,
+        {
+            headers: {
+                Authorization: `Bearer ${sessionStorage.getItem("token")}`
+            }
+        }
+    );
     return response.data;
 };
 
 const fetchMany = async () => {
-    const response = await axios.get(`${API_URL}/users`);
+    const response = await axios.get(`${API_URL}/usuarios`,
+        {
+            headers: {
+                Authorization: `Bearer ${sessionStorage.getItem("token")}`
+            }
+        }
+    );
     return response.data;
 }
 
 const logout = () => {
-    localStorage.removeItem("user");
+    sessionStorage.removeItem("user");
+    sessionStorage.removeItem("token");
 };
 
 const authService = {
@@ -56,7 +86,8 @@ const authService = {
     fetchOne,
     fetchMany,
     login,
-    logout
+    logout,
+    remove
 };
 
 export default authService;

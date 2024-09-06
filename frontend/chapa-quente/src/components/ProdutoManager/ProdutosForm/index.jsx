@@ -13,7 +13,6 @@ const ProdutosForm = ({ isEditing }) => {
     const dispatch = useDispatch()
     const { id } = useParams();
     const [formData, setFormData] = useState({
-        id: id,
         nome: '',
         desc: '',
         src: null,
@@ -38,7 +37,6 @@ const ProdutosForm = ({ isEditing }) => {
             });
         } else {
             setFormData({
-                id: produto.id,
                 nome: produto.nome,
                 desc: produto.desc,
                 src: produto.src,
@@ -56,7 +54,7 @@ const ProdutosForm = ({ isEditing }) => {
 
             if (isEditing) {
                 toast(`Alterando produto ${id}`, { type: 'info' })
-                dispatch(alteraProduto(formData)).then(() => {
+                dispatch(alteraProduto({produtoId: id, produtoData: formData})).then(() => {
                     toast(`Produto ${id} alterado`, { type: 'success' });
                 }).catch(error => {
                     toast(`Erro ao alterar produto ${id}: ${error}`, { type: 'error' });

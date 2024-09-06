@@ -20,6 +20,8 @@ const Produtos = () => {
         }
     }, [produtosStatus, dispatch])
 
+    console.log(produtos)
+
     // console.log(useSelector(((state) => selectProduto(state, 1))))
 
     return (

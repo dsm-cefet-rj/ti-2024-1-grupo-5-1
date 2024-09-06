@@ -1,0 +1,27 @@
+meta {
+  name: register
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:3001/usuarios/register
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nome": "silvio",
+    "sobrenome": "santos",
+    "email": "ronaldinhogaucho@gmail.com",
+    "senha": "senhaforte",
+    "telefone": "21999655689",
+    "logradouro": "rua do juninho",
+    "numero": "100",
+    "complemento": "casa do caralho",
+    "bairro": "marcos",
+    "cidade": "sfsdfdsw",
+    "cep": "21941240"
+  }
+}

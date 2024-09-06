@@ -25,15 +25,14 @@ const Login = () => {
         setFormErrors({ ...formErrors, [name]: null });
     };
 
-    
     const { isLoggedIn } = useSelector((state) => state.auth);
 
     const handleSubmit = async(e) => {
         e.preventDefault();
         try {
+            console.log(formData);
             await formSchemaR.validate(formData, { abortEarly: false });
-            const { email, senha } = formData;
-            dispatch(login({ email, senha })).then(() => {
+            dispatch(login(formData)).then(() => {
                 toast('Login efetuado com sucesso!', { type: 'success' });
             })
             .catch((error) => {
