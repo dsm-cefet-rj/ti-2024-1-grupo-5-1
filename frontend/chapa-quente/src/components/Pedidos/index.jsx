@@ -40,11 +40,11 @@ const Pedidos = () => {
             </tr>
           ) : status === 'success' && pedido.length > 0 ? (
             pedido.map((pedidos) => (
-              <tr key={pedidos.id}>
-                <td>{pedidos.id}</td>
+              <tr key={pedidos._id}>
+                <td>{pedidos._id}</td>
                 <td>{pedidos.status}</td>
                 <td>
-                    <Button variant="primary" href={`/statusPedido/${pedidos.id}`}>Ver Detalhes</Button>
+                    <Button variant="primary" href={`/statusPedido/${pedidos._id}`}>Ver Detalhes</Button>
                 </td>
               </tr>
             ))
