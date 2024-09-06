@@ -20,7 +20,6 @@ const e = require('express');
 // GET /produtos
 // Retorna todos os produtos
 router.get('/', function (req, res, next) {
-    console.log("Listando todos os produtos")
     Produtos.find({}).
         then((produtosData) => {
             res.json(produtosData)
