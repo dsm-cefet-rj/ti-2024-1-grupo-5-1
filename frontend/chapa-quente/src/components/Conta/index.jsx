@@ -8,18 +8,17 @@ import { getDateFromUnix } from '../../utils/unixDateConversion';
 import { formSchemaU } from '../../utils/userFormValidation';
 import { update } from '../../redux/reducers/authSlice';
 
-const Conta = () => {
+const Conta = ({ isLoggedIn, user }) => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
-    const { user, isLoggedIn } = useSelector((state) => state.auth);
 
     const [formData, setFormData] = useState({
         nome: user.nome,
         sobrenome: user.sobrenome,
         email: user.email,
-        senha: user.senha,
+        old_senha: '',
+        new_senha: '',
         telefone: user.telefone,
         logradouro: user.logradouro,
         numero: user.numero,
@@ -46,8 +45,7 @@ const Conta = () => {
             await formSchemaU.validate(formData, { abortEarly: false });
             dispatch(update(formData))
             .then(() => {
-                toast('Cadastro atualizado com sucesso!', { type: 'success' });
-                window.location.reload();
+                toast('Cadastro atualizado com sucesso!', { type: 'success', onClose: () => window.location.reload() });
             })
             .catch((error) => {
                 toast(`Erro ao atualizar cadastro: ${error.message}`, { type: 'error' });
@@ -100,10 +98,17 @@ const Conta = () => {
                         </FloatingLabel>
                     </Form.Group>
 
-                    <Form.Group className="mb-4" controlId="formPassword">
-                        <FloatingLabel controlId="floatingInput" label="Senha" className="mb-3">
-                            <Form.Control type="password" name="senha" placeholder="Insira sua senha" value={formData.senha} isInvalid={!!formErrors.senha} onChange={handleChange} required/>
-                            <Form.Control.Feedback type="invalid">{formErrors.senha}</Form.Control.Feedback>
+                    <Form.Group className="mb-4" controlId="formOldPassword">
+                        <FloatingLabel controlId="floatingInput" label="Senha atual" className="mb-3">
+                            <Form.Control type="password" name="old_senha" placeholder="Insira sua senha" value={formData.old_senha} isInvalid={!!formErrors.old_senha} onChange={handleChange} required/>
+                            <Form.Control.Feedback type="invalid">{formErrors.old_senha}</Form.Control.Feedback>
+                        </FloatingLabel>
+                    </Form.Group>
+
+                    <Form.Group className="mb-4" controlId="formNewPassword">
+                        <FloatingLabel controlId="floatingInput" label="Senha nova (opcional)" className="mb-3">
+                            <Form.Control type="password" name="new_senha" placeholder="Insira uma senha nova (opcional)" value={formData.new_senha} isInvalid={!!formErrors.new_senha} onChange={handleChange} required/>
+                            <Form.Control.Feedback type="invalid">{formErrors.new_senha}</Form.Control.Feedback>
                         </FloatingLabel>
                     </Form.Group>
 

@@ -2,27 +2,26 @@ import { createAsyncThunk, createSlice, createEntityAdapter } from '@reduxjs/too
 import AuthService from '../services/authService';
 
 const userAdapter = createEntityAdapter();
-const user = localStorage.getItem("user");
+const user = sessionStorage.getItem("user");
 
 const initialState = userAdapter.getInitialState({
     isLoggedIn: user ? true : false,
-    user: user ? JSON.parse(user) : null
+    user: user ? JSON.parse(user) : null,
+    token: null
 });
 
 export const register = createAsyncThunk('auth/register', async (user, { rejectWithValue }) => {
     try {
-        const response = await AuthService.register(user);
-        return response.data;
+        return await AuthService.register(user);
     } catch (error) {
         const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
         return rejectWithValue({ message });
     }
 });
 
-export const login = createAsyncThunk('auth/login', async ({ email, senha }, { rejectWithValue }) => {
+export const login = createAsyncThunk('auth/login', async (user, { rejectWithValue }) => {
     try {
-        const response = await AuthService.login(email, senha);
-        return response;
+        return await AuthService.login(user);
     } catch (error) {
         const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
         return rejectWithValue({ message });
@@ -31,8 +30,7 @@ export const login = createAsyncThunk('auth/login', async ({ email, senha }, { r
 
 export const update = createAsyncThunk('auth/update', async (user, { rejectWithValue }) => {
     try {
-        const response = await AuthService.update(user);
-        return response.data;
+        return await AuthService.update(user);
     } catch (error) {
         const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
         return rejectWithValue({ message });
@@ -43,6 +41,33 @@ export const logout = createAsyncThunk('auth/logout', async () => {
     AuthService.logout();
 });
 
+export const fetchOne = createAsyncThunk('auth/fetchOne', user, async ({ rejectWithValue }) => {
+    try {
+        return await AuthService.fetchOne(user);
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+        return rejectWithValue({ message });
+    }
+});
+
+export const fetchMany = createAsyncThunk('auth/fetchMany', async (_, { rejectWithValue }) => {
+    try {
+        return await AuthService.fetchMany();
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+        return rejectWithValue({ message });
+    }
+});
+
+export const remove = createAsyncThunk('auth/remove', async (userId, { rejectWithValue }) => {
+    try {
+        return await AuthService.remove(userId);
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+        return rejectWithValue({ message });
+    }
+});
+
 export const selectCurrentUser = (state) => state.auth.user;
 
 const authSlice = createSlice({
@@ -51,36 +76,39 @@ const authSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         (builder)
-        .addCase(register.fulfilled, (state) => {
-            state.isLoggedIn = false;
-            state.user = null;
-        })
-        .addCase(register.rejected, (state) => {
-            state.isLoggedIn = false;
-            state.user = null;
-            throw new Error("Cadastro inválido.");
-        })
-        .addCase(login.fulfilled, (state, action) => {
-            state.isLoggedIn = true;
-            state.user = action.payload;
-        })
-        .addCase(login.rejected, (state) => {
-            state.isLoggedIn = false;
-            state.user = null;
-            throw new Error("Usuário ou senha inválidos.");
-        })
-        .addCase(logout.fulfilled, (state) => {
-            state.isLoggedIn = false;
-            state.user = null;
-        })
-        .addCase(update.fulfilled, (state, action) => {
-            state.user = action.payload;
-        })
-        .addCase(update.rejected, (state) => {
-            state.isLoggedIn = true;
-            state.user = null;
-            throw new Error('Erro ao atualizar usuário.');
-        })
+            .addCase(register.fulfilled, (state) => {
+                state.isLoggedIn = false;
+                state.user = null;
+            })
+            .addCase(register.rejected, (state) => {
+                state.isLoggedIn = false;
+                state.user = null;
+                throw new Error("Cadastro inválido.");
+            })
+            .addCase(login.fulfilled, (state, action) => {
+                state.isLoggedIn = true;
+                state.token = action.payload.token;
+                state.user = action.payload.user;
+            })
+            .addCase(login.rejected, (state) => {
+                state.isLoggedIn = false;
+                state.user = null;
+                throw new Error("Usuário ou senha inválidos.");
+            })
+            .addCase(logout.fulfilled, (state) => {
+                state.isLoggedIn = false;
+                state.user = null;
+            })
+            .addCase(update.fulfilled, (state, action) => {
+                state.isLoggedIn = true;
+                state.token = action.payload.token;
+                state.user = action.payload.user;
+            })
+            .addCase(update.rejected, (state) => {
+                state.isLoggedIn = true;
+                state.user = null;
+                throw new Error('Erro ao atualizar usuário.');
+            })
     },
 });
 

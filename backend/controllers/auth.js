@@ -26,6 +26,7 @@ class AuthController {
 
             const { _id, role } = user;
             const token = jwt.sign({ id: _id }, process.env.SESSION_SECRET, { expiresIn: '24h' });
+
             return res.status(200).send({
                 token: token,
                 user: {
@@ -52,6 +53,9 @@ class AuthController {
         const { nome, sobrenome, email, senha, telefone, logradouro, numero, complemento, bairro, cidade, cep, role, date } = req.body;
 
         try {
+            if (!UserService.validateEmail(email)) {
+                return res.status(400).send({ error: 'E-mail inválido' });
+            }
 
             if (await UserService.findEmail(email)) {
                 return res.status(400).send({ error: 'E-mail já cadastrado' });
@@ -91,6 +95,9 @@ class AuthController {
         const { nome, sobrenome, email, old_senha, new_senha, telefone, logradouro, numero, complemento, bairro, cidade, cep } = req.body;
 
         try {
+            if (!UserService.validateEmail(email)) {
+                return res.status(400).send({ error: 'E-mail inválido' });
+            }
 
             if (!nome || !sobrenome || !email || !old_senha || !telefone || !logradouro || !numero || !bairro || !cidade || !cep) {
                 return res.status(400).send({ error: 'Dados insuficientes' });
@@ -124,8 +131,8 @@ class AuthController {
             user.cep = cep;
 
             await user.save();
-            return res.status(200).send({
-                message: 'Usuário atualizado com sucesso',
+            return res.status(200).send({ 
+                message: 'Usuário atualizado com sucesso', 
                 token: req.token,
                 user: {
                     id: user._id,
@@ -142,8 +149,7 @@ class AuthController {
                     role: user.role,
                     date: user.date
                 },
-                status: true
-            });
+                status: true });
         } catch (error) {
             return res.status(500).send({ error: 'Erro ao atualizar usuário', status: false });
         }

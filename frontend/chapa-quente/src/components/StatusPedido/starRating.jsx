@@ -6,7 +6,11 @@ const StarRating = ({ totalStars = 5, initialRating = 0, onSubmit, starSize = '4
   const [selectedRating, setSelectedRating] = useState(initialRating);
 
   const handleStarClick = (index) => {
-    setSelectedRating(index + 1);
+    if (initialRating) {
+      return;
+    } else {
+      setSelectedRating(index + 1);
+    }
   };
 
   const handleSubmit = () => {

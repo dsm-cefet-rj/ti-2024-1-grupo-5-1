@@ -1,0 +1,17 @@
+meta {
+  name: force update
+  type: http
+  seq: 6
+}
+
+post {
+  url: http://localhost:3001/usuarios/reset/66c28121ce4ca002ae3f51e9
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "senha": "abc"
+  }
+}
