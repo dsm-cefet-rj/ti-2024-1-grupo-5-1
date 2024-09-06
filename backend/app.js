@@ -3,31 +3,23 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
-const cors = require('cors');
+const express = require('express');
+const app = express();
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var produtosRouter = require('./routes/produtos');
+const routes = require("./routes")
+require('dotenv').config();
 
-const url ='mongodb://localhost:27017/chapa-quente';
-const connect = mongoose.connect(url);
-
-connect.then((db)=>{
-    console.log("Conectado")
-
-}, (err)=>{console.log(err)})
-
-var app = express();
-
-app.use(cors());
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/produtos', produtosRouter);
-
-module.exports = app;
+try {
+    mongoose.connect(process.env.MONGO_URL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    });
+    
+    routes(app);
+    
+    app.listen(process.env.PORT, () => {
+        console.log(`Servidor rodando na porta ${process.env.PORT}`);
+    });      
+} catch (error) {
+    console.log(error);
+}

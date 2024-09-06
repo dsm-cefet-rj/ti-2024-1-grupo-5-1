@@ -28,7 +28,7 @@ const Produtos = () => {
                 <div className='row row-cols-auto justify-content-center'>
                     {
                         produtos.map(produto => (
-                            <div key={produto.id} className='col mb-3'>
+                            <div key={produto._id} className='col mb-3'>
                                 <Card item={produto}/>
                             </div>
                         ))

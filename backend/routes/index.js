@@ -1,9 +1,22 @@
-var express = require('express');
-var router = express.Router();
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+// Rotas
+const usuarios = require('./usuarios');
+const produtos = require('./produtos');
+const pedidos = require('./pedidos');
 
-module.exports = router;
+module.exports = app => {
+    app
+        .use(bodyParser.json())
+        .use(cors({
+            methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+            credentials: true
+        }))
+        .use('/usuarios', usuarios)
+        .use('/produtos', produtos)
+        .use('/pedidos', pedidos)
+        .get('/', (req, res) => {
+            res.status(200).json({ msg: 'Chapa Quente API' });
+        });
+}
