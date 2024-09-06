@@ -12,7 +12,7 @@ const StatusPedido = () => {
   const { pedidoId } = useParams();
   const { pedido, status } = useSelector((state) => state.pedido);
   const dispatch = useDispatch();
-
+  console.log('predido: ', pedidoId)
   useEffect(() => {
     if (status === 'idle') {
       dispatch(fetchFromOrder(pedidoId));
@@ -37,7 +37,7 @@ const StatusPedido = () => {
   return (
     <Stack className='container' gap={1} style={{textAlign: 'center'}}>
         <h2>Status do Pedido: {pedido.status}</h2>
-        <h5>ID do Pedido: {pedido.id}</h5>
+        <h5>ID do Pedido: {pedido._id}</h5>
         <h5>Forma de Pagamento: {pedido.pagamento}</h5>
         <Table>
           <thead>
@@ -50,8 +50,8 @@ const StatusPedido = () => {
           </thead>
           <tbody>
             {pedido.produtos.map((produto) => (
-              <tr key={produto.id}>
-                <td>{produto.id}</td>
+              <tr key={produto._id}>
+                <td>{produto._id}</td>
                 <td>{produto.nome}</td>
                 <td>R$ {produto.price}</td>
                 <td>{produto.qtd}</td>
