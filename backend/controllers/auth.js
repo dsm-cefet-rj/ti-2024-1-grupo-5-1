@@ -25,7 +25,7 @@ class AuthController {
             }
 
             const { _id, role } = user;
-            const token = jwt.sign({ id: _id }, process.env.SESSION_SECRET, { expiresIn: '24h' });
+            const token = jwt.sign({ id: _id, role: role }, process.env.SESSION_SECRET, { expiresIn: '24h' });
 
             return res.status(200).send({
                 token: token,
