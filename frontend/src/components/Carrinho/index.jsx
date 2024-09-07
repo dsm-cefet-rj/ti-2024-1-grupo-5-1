@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 
 import './pedido.css';
 
-import { validateSchedule, mustSchedule } from "../../utils/checkoutFormValidation";
+import { validateSchedule, mustSchedule, validateChange } from "../../utils/checkoutFormValidation";
 import { addItem, removeItem } from '../../redux/reducers/carrinhoSlice';
 import { register } from '../../redux/reducers/pedidoSlice';
 
@@ -69,6 +69,14 @@ const Carrinho = () => {
     }
   }, []);
 
+  const calcularPrecoTotal = () => {
+    let total = 0;
+    itens.forEach(produto => {
+      total += parseFloat(produto.quantity) * parseFloat(produto.price);
+    });
+    return total.toFixed(2);
+  };
+
   const handleSubmitPedido = async (e) => {
     e.preventDefault();
 
@@ -79,43 +87,39 @@ const Carrinho = () => {
 
     const pedidoData = {
       ...formData,
-      date_pedido: Math.floor(Date.now() / 1000),
+      date_pedido: new Date().toISOString(),
     };
 
-    if (displayAgendamento) {
-      try {
-        const hora_marcada = validateSchedule(dataMarcada);
-        pedidoData.date_agendada = hora_marcada;
-        dispatch(register(pedidoData)).then((data) => {
-          navigate(`/statusPedido/${data.payload._id}`);
-          toast('Agendamento efetuado com sucesso!', { type: 'success' });
-        });
-      } catch (error) {
-        if (error.errors) {
-          setFormErrors(error.errors);
-        } else {
-          toast(`Erro ao agendar: ${error.message}`, { type: 'error' });
-        }
+    try {
+      if (formData.pagamento === 'Dinheiro') {
+        pedidoData.qtdTroco = validateChange(calcularPrecoTotal(), parseFloat(formData.qtdTroco));
       }
-    } else {
-      try {
-        dispatch(register(pedidoData)).then((data) => {
-          navigate(`/statusPedido/${data.payload._id}`);
-          toast('Pedido efetuado com sucesso!', { type: 'success' });
-        });
-      } catch (error) {
-        console.error('Erro ao confirmar o pedido:', error);
+
+      if (displayAgendamento) {
+        pedidoData.date_agendada = validateSchedule(dataMarcada);
+      }
+
+      dispatch(register(pedidoData)).then((data) => {
+        toast('Pedido efetuado com sucesso!', { type: 'success' });
+        setTimeout(() => navigate(`/statusPedido/${data.payload._id}`), 2000);
+      });
+
+    } catch (error) {
+      if (error.errors) {
+        setFormErrors(error.errors);
+      } else {
         toast(`Erro ao confirmar o pedido: ${error.message}`, { type: 'error' });
       }
     }
   };
 
-  const handleAddQuantity = (id) => {
-    dispatch(addItem({ id }));
+
+  const handleAddQuantity = (_id) => {
+    dispatch(addItem({ _id }));
   };
 
-  const handleRemoveQuantity = (id) => {
-    dispatch(removeItem({ id }));
+  const handleRemoveQuantity = (_id) => {
+    dispatch(removeItem({ _id }));
   };
 
   const handleChangeFormaPagamento = (e) => {
@@ -133,14 +137,6 @@ const Carrinho = () => {
     setFormData({ ...formData, detalhes: value });
   };
 
-  const calcularPrecoTotal = () => {
-    let total = 0;
-    itens.forEach(produto => {
-      total += parseFloat(produto.quantity) * parseFloat(produto.price);
-    });
-    return total.toFixed(2);
-  };
-
   return (
     <div className='container-sm'>
       <Table striped bordered hover variant='dark' className='tabela'>
@@ -156,18 +152,18 @@ const Carrinho = () => {
         </thead>
         <tbody>
           {itens.map((produto, index) => (
-            <tr key={produto.id}>
-              <td>{produto.id}</td>
+            <tr key={produto._id}>
+              <td>{produto._id}</td>
               <td>{produto.nome}</td>
               <td>{produto.quantity}</td>
               <td>R$ {parseFloat(produto.price).toFixed(2)}</td>
               <td>R$ {(parseFloat(produto.price * produto.quantity)).toFixed(2)}</td>
               <td>
                 <div className='button-container'>
-                  <Button variant="success" onClick={() => handleAddQuantity(produto.id)}>
+                  <Button variant="success" onClick={() => handleAddQuantity(produto._id)}>
                     <PlusCircleFill />
                   </Button>
-                  <Button variant="danger" onClick={() => handleRemoveQuantity(produto.id)}>
+                  <Button variant="danger" onClick={() => handleRemoveQuantity(produto._id)}>
                     <DashCircleFill />
                   </Button>
                 </div>
@@ -214,14 +210,17 @@ const Carrinho = () => {
         </Form.Group>
         {exibirCaixaDeTexto && (
           <Form.Group>
-            <Form.Label>Quantidade de troco necessária:</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Quantidade de troco"
-              value={formData.qtdTroco}
-              onChange={(e) => setFormData({ ...formData, qtdTroco: e.target.value })}
-              name="qtdTroco"
-            />
+            <FloatingLabel controlId="floatingInput" label="Quantidade (para o Troco)" className="mb-3">
+              <Form.Control
+                type="number"
+                placeholder="Quantidade de troco"
+                name="qtdTroco"
+                value={formData.qtdTroco}
+                onChange={(e) => setFormData({ ...formData, qtdTroco: e.target.value })}
+                isInvalid={!!formErrors.qtdTroco}
+              />
+              <Form.Control.Feedback type="invalid">{formErrors.qtdTroco}</Form.Control.Feedback>
+            </FloatingLabel>
           </Form.Group>
         )}
         {displayAgendamento && (

@@ -4,7 +4,7 @@ var Pedidos = require("../models/pedidos.js");
 var auth = require('../middlewares/auth.js')
 
 router.get("/ativos", auth, function (req, res, next) {
-  Pedidos.find({ status: "Em andamento" })
+  Pedidos.find({})
     .then((item) => {
       res.json(item);
     })
@@ -31,7 +31,8 @@ router.get("/:id", auth, function (req, res, next) {
   const pedidoId = req.params.id;
   Pedidos.findById(pedidoId)
     .then((item) => {
-      if (item.user_id !== req.user._id || req.user.role !== 'admin') {
+      console.log(item, req.user_id, req.user_role);
+      if ((item.user_id !== req.user_id) && (req.user_role !== 'admin')) {
         return res.status(403).json({ message: 'Você não tem permissão para acessar este pedido!' });
       } else {
         res.json(item);

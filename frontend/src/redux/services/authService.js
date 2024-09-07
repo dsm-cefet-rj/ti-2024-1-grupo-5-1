@@ -54,7 +54,7 @@ const remove = async (userId) => {
 };
 
 const fetchOne = async (userId) => {
-    const response = await axios.get(`${API_URL}/usuarios/${userId}`,
+    const response = await axios.get(`${API_URL}/usuarios/fetch/${userId}`,
         {
             headers: {
                 Authorization: `Bearer ${sessionStorage.getItem("token")}`
@@ -65,7 +65,7 @@ const fetchOne = async (userId) => {
 };
 
 const fetchMany = async () => {
-    const response = await axios.get(`${API_URL}/usuarios`,
+    const response = await axios.get(`${API_URL}/usuarios/fetch/`,
         {
             headers: {
                 Authorization: `Bearer ${sessionStorage.getItem("token")}`

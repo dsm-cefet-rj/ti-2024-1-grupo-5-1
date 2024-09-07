@@ -3,11 +3,12 @@ import AuthService from '../services/authService';
 
 const userAdapter = createEntityAdapter();
 const user = sessionStorage.getItem("user");
+const token = sessionStorage.getItem("token");
 
 const initialState = userAdapter.getInitialState({
     isLoggedIn: user ? true : false,
     user: user ? JSON.parse(user) : null,
-    token: null
+    token: token ? token : null,
 });
 
 export const register = createAsyncThunk('auth/register', async (user, { rejectWithValue }) => {
