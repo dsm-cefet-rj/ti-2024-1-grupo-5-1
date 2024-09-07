@@ -5,7 +5,7 @@ var auth = require('../middlewares/auth.js')
 const e = require("express");
 
 
-router.get("/",  function (req, res, next) {
+router.get("/", function (req, res, next) {
   const user_id = req.query.user_id;
 
   Pedidos.find({ user_id })
@@ -47,6 +47,7 @@ router.post("/", function (req, res, next) {
 });
 
 router.patch("/:id", function (req, res, next) {
+  console.log(req)
   const id = req.params.id;
   const avaliacao = req.body.avaliacao;
 
