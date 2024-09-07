@@ -15,8 +15,8 @@ export const getDateFromUnix = (date) => {
     return d.toLocaleDateString();
 };
 
-export const getFormattedDateTime = (date) => {
-    const formattedDate = new Date(date * 1000);
+export const getFormattedDateTime = (date) => { 
+    const formattedDate = new Date(date);
 
     const anos = formattedDate.getFullYear();
     const mes = formattedDate.getMonth() + 1;

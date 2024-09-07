@@ -59,10 +59,10 @@ export const validateSchedule = ({ data, hora }) => {
         throw { errors };
     }
 
-    const agendamentoUnix = agendamentoDate.getTime() / 1000;
+    const agendamentoISOString = agendamentoDate.toISOString();
 
-    return agendamentoUnix;
-}
+    return agendamentoISOString;
+};
 
 export const mustSchedule = () => {
     const currentDate = new Date();
@@ -92,4 +92,30 @@ export const mustSchedule = () => {
 
     // Caso contrário, não precisa agendar
     return null;
+}
+
+export const validateChange = (total, qtdTroco) => {
+    const errors = {};
+
+    if (isNaN(qtdTroco)) {
+        errors.qtdTroco = 'Quantidade inválida.';
+    }
+
+    const maxTroco = Math.ceil(total / 10) * 10;
+
+    if (qtdTroco < total) {
+        errors.qtdTroco = 'Quantidade não pode ser menor que o total.';
+    }
+
+    if (qtdTroco > maxTroco) {
+        errors.qtdTroco = `Quantidade não pode ser maior que o valor arredondado (R$ ${maxTroco.toFixed(2)}).`;
+    }
+
+    if (Object.keys(errors).length) {
+        console.log(errors);
+        throw { errors };
+    }
+
+    console.log('Sem erros');
+    return qtdTroco;
 }

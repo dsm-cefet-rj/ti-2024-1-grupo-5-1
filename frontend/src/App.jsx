@@ -18,7 +18,7 @@ const App = () => {
             <Router user={user} isLoggedIn={isLoggedIn}/>
             <Toast
                 position="top-center"
-                autoClose={3000}
+                autoClose={1500}
                 pauseOnHover={false}
             />
         </>

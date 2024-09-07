@@ -59,7 +59,7 @@ const PedidosAtivos = () => {
     return (
         <>
             <PedidoCard pedido={currentItems[0]}/>
-            <div style={{ maxWidth: '900px', maxHeight: '800px', overflow: 'auto', margin: '0 auto', marginTop: '40px' }}>
+            <div style={{ maxWidth: '1000px', maxHeight: '800px', overflow: 'auto', margin: '0 auto', marginTop: '40px' }}>
                 <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px' }}>
                     <p><strong>Total de Pedidos Ativos:</strong>{' '}<Badge bg="secondary">{emAndamento.length}</Badge></p>
                 </div>
@@ -77,8 +77,8 @@ const PedidosAtivos = () => {
                         </thead>
                         <tbody>
                             {currentItems.map((pedido, index) => (
-                                <tr key={pedido.id}>
-                                    <td>{index + 1}</td>
+                                <tr key={pedido._id}>
+                                    <td>{pedido._id}</td>
                                     <td>{pedido.status}</td>
                                     <td>{getFormattedDateTime(pedido.date_pedido)}</td>
                                     <td>{pedido.total}</td>

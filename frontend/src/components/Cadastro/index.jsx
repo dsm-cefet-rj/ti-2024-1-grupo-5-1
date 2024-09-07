@@ -42,7 +42,7 @@ const Cadastro = ({isLoggedIn}) => {
         try {
             await formSchemaC.validate(formData, { abortEarly: false });
             const { termos, ...data } = formData;
-            data.date = Math.floor(Date.now() / 1000);
+            data.date = new Date().toISOString();
             dispatch(register(data))
             .then(() => {
                 toast('Cadastro efetuado com sucesso!', { type: 'success' });
