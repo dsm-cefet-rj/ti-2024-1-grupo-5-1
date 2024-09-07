@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import AuthService from '../../redux/services/authService';
 import { fetchPedidos } from '../../redux/reducers/reportSlice';
 import { getFormattedDateTime } from '../../utils/unixDateConversion';
+import PedidoCard from "./PedidoCard";
+
 
 const PedidosAtivos = () => {
     const [selectedOrder, setSelectedOrder] = useState({ order_info: {}, user_info: {} });
@@ -56,6 +58,7 @@ const PedidosAtivos = () => {
 
     return (
         <>
+            <PedidoCard pedido={currentItems[0]}/>
             <div style={{ maxWidth: '900px', maxHeight: '800px', overflow: 'auto', margin: '0 auto', marginTop: '40px' }}>
                 <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px' }}>
                     <p><strong>Total de Pedidos Ativos:</strong>{' '}<Badge bg="secondary">{emAndamento.length}</Badge></p>
