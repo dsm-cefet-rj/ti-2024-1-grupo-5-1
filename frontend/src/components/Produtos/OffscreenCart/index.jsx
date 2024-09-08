@@ -51,7 +51,7 @@ const OffscreenCart = () => {
                                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                                         <h5 style={{ fontWeight: 'bold' }}>{item.nome}</h5>
                                         <p style={{ marginBottom: '0.5rem' }}>Quantidade: {item.quantity}</p>
-                                        <p style={{ marginBottom: '0.5rem' }}>Preço: R$ {item.price}</p>
+                                        <p style={{ marginBottom: '0.5rem' }}>Preço: R$ {(item.price).toFixed(2)}</p>
                                     </div>
                                     <Button variant="danger" onClick={() => handleRemoveFromCart(item)} style={{ marginLeft: '20px' }}>
                                     <DashCircleFill style={{ fontSize: '20px'}}/>

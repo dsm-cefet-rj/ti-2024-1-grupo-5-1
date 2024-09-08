@@ -42,7 +42,7 @@ const Card = ({ item }) => {
     return (
         <>
             <div className={`card h-100 ${style.cardSize}`}>
-                <img src={item.src} className={`card-img-top ${style.cardImgSize}`} alt="..." />
+                <img src={`http://localhost:3001/uploads/${item.src}`} className={`card-img-top ${style.cardImgSize}`} alt="..." />
                 <div className="card-body">
                     <h5 className={`card-title ${style.cardSize}`}>{item.nome}</h5>
                     <p className={`card-text ${style.cropText}`}>{item.desc}</p>
@@ -50,7 +50,7 @@ const Card = ({ item }) => {
                 <div className="card-footer d-flex justify-content-around">
                     <Stack direction='horizontal' gap={3}>
                         <button className="btn btn-primary" onClick={() => handleRemoveItem(item)}><Dash/></button>
-                        <div>{`R$ ${item.price}`}</div>
+                        <div>{`R$ ${(item.price).toFixed(2)}`}</div>
                         <button className="btn btn-primary" onClick={() => handleAddItem(item)}><Plus/></button>
                     </Stack>
                 </div>

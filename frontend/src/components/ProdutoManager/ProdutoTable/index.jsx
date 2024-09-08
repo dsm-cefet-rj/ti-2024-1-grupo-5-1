@@ -27,10 +27,10 @@ const ProdutoTable = ({ produtos }) => {
         <Table>
             <thead>
                 <tr>
-                    <th>id</th>
-                    <th>nome</th>
-                    <th>desc</th>
-                    <th>price</th>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Preço</th>
                     <th></th>
                 </tr>
             </thead>

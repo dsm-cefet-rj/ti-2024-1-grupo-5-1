@@ -1,6 +1,5 @@
 import { Form, FloatingLabel, FormLabel, Button, Col, Row, Stack } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import { imgToBase64 } from '../../../utils/imgToBase64'
 import { alteraProduto, fetchProduto, selectProduto, addProduto } from '../../../redux/reducers/produtosSlice';
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from 'react';
@@ -20,6 +19,7 @@ const ProdutosForm = ({ isEditing }) => {
     })
 
     const [formErrors, setFormErrors] = useState({});
+    const [imagePreview, setImagePreview] = useState(null);
 
     const produtosStatus = useSelector(state => state.produtos.status)
     const produto = useSelector((state) => selectProduto(state, id))
@@ -52,16 +52,24 @@ const ProdutosForm = ({ isEditing }) => {
         try {
             await produtosSchema.validate(formData, { abortEarly: false });
 
+            const productData = new FormData();
+            productData.append('nome', formData.nome);
+            productData.append('desc', formData.desc);
+            productData.append('price', formData.price);
+            if (formData.src instanceof File) {
+                productData.append('src', formData.src);
+            }
+
             if (isEditing) {
                 toast(`Alterando produto ${id}`, { type: 'info' })
-                dispatch(alteraProduto({produtoId: id, produtoData: formData})).then(() => {
+                dispatch(alteraProduto({produtoId: id, produtoData: productData})).then(() => {
                     toast(`Produto ${id} alterado`, { type: 'success' });
                 }).catch(error => {
                     toast(`Erro ao alterar produto ${id}: ${error}`, { type: 'error' });
                 });
             } else {
                 toast(`Adicionando produto`, { type: 'info' })
-                dispatch(addProduto(formData)).then(() => {
+                dispatch(addProduto(productData)).then(() => {
                     toast(`Produto Adicionado`, { type: 'success' });
                 }).catch(error => {
                     toast(`Erro ao adicionar ${id}: ${error}`, { type: 'error' });
@@ -76,29 +84,44 @@ const ProdutosForm = ({ isEditing }) => {
         }
     };
 
-    const handleInputChange = async (e) => {
+    const handleInputChange = (e) => {
         const { name, value, files } = e.target;
         if (files) {
-            setFormData({
-                ...formData,
-                [name]: await imgToBase64(files[0])
-            });
-
+            // Atualize o estado do preview da imagem
+            if (name === 'src') {
+                const file = files[0];
+                setFormData({
+                    ...formData,
+                    [name]: file
+                });
+                
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                    setImagePreview(reader.result);
+                };
+                reader.readAsDataURL(file);
+            } else {
+                setFormData({
+                    ...formData,
+                    [name]: files[0]
+                });
+            }
         } else {
             setFormData({
                 ...formData,
                 [name]: value
             });
         }
+    
         setFormErrors({ ...formErrors, [name]: null });
     };
 
     return (
         <>
-            <Stack className="justify-content-center" direction="horizontal" gap={3}>
-                <CardPreview formData={formData} />
+            <Stack className="container justify-content-center" direction="horizontal" gap={3} style={{marginTop: '30px', maxWidth: '50vw'}}>
+                <CardPreview formData={formData} imagePreview={imagePreview}/>
                 <Form noValidate onSubmit={handleSubmit}>
-                    <Row>
+                    <Row> 
                         <Col>
                             <Form.Group>
                                 <FloatingLabel label="Nome do Produto" className="mb-2">

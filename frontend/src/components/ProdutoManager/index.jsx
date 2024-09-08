@@ -27,7 +27,7 @@ const ProdutoManager = () => {
 
     return (
         <>
-            <Container>
+            <Container className="container justify-content-center" style={{marginTop: '30px', maxWidth: '50vw'}}>
                 <Row className="justify-content-end mb-3">
                     <Button variant="success" style={{maxWidth: '100px'}} onClick={handleCreateClick}>Novo +</Button>
                 </Row>

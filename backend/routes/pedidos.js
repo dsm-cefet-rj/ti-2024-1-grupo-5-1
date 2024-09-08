@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var Pedidos = require("../models/pedidos.js");
-var auth = require('../middlewares/auth.js')
+const auth = require('../middlewares/auth');
 
 router.get("/ativos", auth, function (req, res, next) {
   Pedidos.find({})

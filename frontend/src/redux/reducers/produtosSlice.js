@@ -1,57 +1,53 @@
 import { createSlice, createAsyncThunk, createEntityAdapter } from "@reduxjs/toolkit";
-import axios from 'axios';
+import ProductService from '../services/productService';
 
-export const fetchProdutos = createAsyncThunk('produtos/fetchProdutos', async () => {
+export const fetchProdutos = createAsyncThunk('produtos/fetchProdutos', async (_, { rejectWithValue }) => {
     try {
-        const response = await axios.get('http://localhost:3001/produtos');
-        return response.data;
+        return await ProductService.fetchProdutos();
     } catch (error) {
         console.error('Error fetching produtos:', error);
-        throw error;
+        return rejectWithValue(error.message);
     }
-})
+});
 
 export const fetchProduto = createAsyncThunk('produtos/fetchProduto', async (id, { rejectWithValue }) => {
     try {
-        const response = await axios.get(`http://localhost:3001/produtos/${id}`);
-        return response.data;
+        return await ProductService.fetchProduto(id);
     } catch (error) {
-        return rejectWithValue("Produto não existe na base")
+        return rejectWithValue("Produto não existe na base");
     }
-})
+});
 
-export const addProduto = createAsyncThunk('produtos/addProduto', async (produtoData) => {
+export const addProduto = createAsyncThunk('produtos/addProduto', async (produtoData, { rejectWithValue }) => {
     try {
-        const response = await axios.post('http://localhost:3001/produtos', produtoData);
-        return response.data;
+        return await ProductService.addProduto(produtoData);
     } catch (error) {
         console.error('Error adding produto:', error);
-        throw error;
+        return rejectWithValue(error.message);
+    }
+});
+
+export const alteraProduto = createAsyncThunk('produtos/alteraProduto', async ({ produtoId, produtoData }, { rejectWithValue }) => {
+    try {
+        return await ProductService.alteraProduto(produtoId, produtoData);
+    } catch (error) {
+        console.error('Error altering produto:', error);
+        return rejectWithValue(error.message);
     }
 });
 
 export const removeProduto = createAsyncThunk('produtos/removeProduto', async (produtoId, { rejectWithValue }) => {
     try {
-        const response = await axios.delete(`http://localhost:3001/produtos/${produtoId}`);
+        await ProductService.removeProduto(produtoId);
         return produtoId;
     } catch (error) {
         return rejectWithValue("Produto não existe na base");
     }
-})
+});
 
-export const alteraProduto = createAsyncThunk('produtos/alteraProduto', async ({produtoId, produtoData}) => {
-    try {
-        const response = await axios.patch(`http://localhost:3001/produtos/${produtoId}`, produtoData);
-        return response.data;
-    } catch (error) {
-        console.error('Error altering produto:', error);
-        throw error;
-    }
-})
-
-const produtosAdapter = createEntityAdapter(
-    { selectId: (produto) => produto._id }
-);
+const produtosAdapter = createEntityAdapter({
+    selectId: (produto) => produto._id,
+});
 
 export const slice = createSlice({
     name: 'produtos',
@@ -59,59 +55,43 @@ export const slice = createSlice({
         status: 'idle',
         error: null,
     }),
-    reducers: {
-
-    },
+    reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(fetchProdutos.pending, (state, actions) => {
-            console.log("Produtos pendente")
-            state.status = 'loading'
-        }).addCase(fetchProdutos.fulfilled, (state, actions) => {
-            console.log("Produtos carregados")
-            state.status = 'succeeded'
-            produtosAdapter.setAll(state, actions.payload)
-        }).addCase(addProduto.fulfilled, (state, actions) => {
-            console.log("Adicionando produto")
-            state.status = 'succeeded'
-            produtosAdapter.addOne(state, actions.payload)
-        }).addCase(fetchProduto.pending, (state, actions) => {
-            console.log("Produto pendente")
-            state.status = 'loading'
-        }).addCase(fetchProduto.fulfilled, (state, actions) => {
-            console.log("Produto pronto")
-            state.status = 'succeeded'
-            produtosAdapter.addOne(state, actions.payload);
-        }).addCase(fetchProduto.rejected, (state, action) => {
-            state.status = 'failed';
-            throw action.payload;
-        }).addCase(alteraProduto.pending, (state, actions) => {
-            console.log("Altera Produto pendente")
-            state.status = 'loading'
-        }).addCase(alteraProduto.fulfilled, (state, actions) => {
-            console.log("Altera Produto pronto")
-            state.status = 'succeeded'
-            produtosAdapter.upsertOne(state, actions.payload);
-        }).addCase(removeProduto.pending, (state, actions) => {
-            console.log("Removendo produto")
-            state.status = 'loading'
-        }).addCase(removeProduto.fulfilled, (state, actions) => {
-            console.log("Produto removido")
-            state.status = 'succeeded'
-            produtosAdapter.removeOne(state, actions.payload)
-        }).addCase(removeProduto.rejected, (state, action) => {
-            console.log("Erro ao remover produto:", action.payload);
-            state.status = 'failed';
-            throw action.payload;
-        })
-    }
-})
+        builder
+            .addCase(fetchProdutos.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(fetchProdutos.fulfilled, (state, action) => {
+                state.status = 'succeeded';
+                produtosAdapter.setAll(state, action.payload);
+            })
+            .addCase(addProduto.fulfilled, (state, action) => {
+                state.status = 'succeeded';
+                produtosAdapter.addOne(state, action.payload);
+            })
+            .addCase(fetchProduto.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(fetchProduto.fulfilled, (state, action) => {
+                state.status = 'succeeded';
+                produtosAdapter.addOne(state, action.payload);
+            })
+            .addCase(alteraProduto.fulfilled, (state, action) => {
+                produtosAdapter.upsertOne(state, action.payload);
+            })
+            .addCase(removeProduto.fulfilled, (state, action) => {
+                produtosAdapter.removeOne(state, action.payload);
+            })
+            .addCase(removeProduto.rejected, (state, action) => {
+                state.status = 'failed';
+                state.error = action.payload;
+            });
+    },
+});
 
-export const { } = slice.actions
-export default slice.reducer
+export default slice.reducer;
 
 export const {
     selectAll: selectAllProdutos,
     selectById: selectProduto,
-} = produtosAdapter.getSelectors(state => state.produtos)
-
-//'idle' | 'loading' | 'succeeded' | 'failed' | 'changed' 
+} = produtosAdapter.getSelectors(state => state.produtos);
