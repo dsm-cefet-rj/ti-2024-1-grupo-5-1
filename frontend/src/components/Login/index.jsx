@@ -51,7 +51,6 @@ const Login = ({isLoggedIn}) => {
 
     useEffect(() => {
         if (isLoggedIn) {
-            toast('Você já está logado!', { type: 'info' });
             navigate('/produtos');
         }
     }, [isLoggedIn, navigate]);

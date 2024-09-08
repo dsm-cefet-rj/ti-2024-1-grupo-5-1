@@ -79,7 +79,7 @@ const Agendamentos = () => {
                                 <td>{item.id}</td>
                                 <td colSpan="2">{item.detalhes}</td>
                                 <td>{item.pagamento}</td>
-                                <td>{getFormattedDateTime(item.date_agendada)}</td>
+                                <td>{getFormattedDateAndTime(item.date_agendada)}</td>
                                 <td>{item.total}</td>
                                 <td style={{ textAlign: 'center' }}>
                                     <Button variant="link" onClick={() => handleShowModal(item)}>
