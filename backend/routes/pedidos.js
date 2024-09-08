@@ -1,11 +1,19 @@
 var express = require("express");
 var router = express.Router();
 var Pedidos = require("../models/pedidos.js");
-var auth = require('../middlewares/auth.js')
-const e = require("express");
+const auth = require('../middlewares/auth');
 
+router.get("/ativos", auth, function (req, res, next) {
+  Pedidos.find({})
+    .then((item) => {
+      res.json(item);
+    })
+    .catch((error) => {
+      res.status(500).json({ message: error.message });
+    });
+});
 
-router.get("/", function (req, res, next) {
+router.get("/", auth, function (req, res, next) {
   const user_id = req.query.user_id;
 
   Pedidos.find({ user_id })
@@ -19,11 +27,15 @@ router.get("/", function (req, res, next) {
 
 // GET /pedidos/:id
 // Retorna um pedido específico
-router.get("/:id", function (req, res, next) {
+router.get("/:id", auth, function (req, res, next) {
   const pedidoId = req.params.id;
   Pedidos.findById(pedidoId)
     .then((item) => {
-      res.json(item);
+      if ((item.user_id !== req.user_id) && (req.user_role !== 'admin')) {
+        return res.status(403).json({ message: 'Você não tem permissão para acessar este pedido!' });
+      } else {
+        res.json(item);
+      }
     })
     .catch((error) => {
       res.status(500).json({ message: error.message });
@@ -32,32 +44,36 @@ router.get("/:id", function (req, res, next) {
 
 // POST /pedidos
 // Cria um novo pedido
-router.post("/", function (req, res, next) {
+router.post("/", auth, function (req, res, next) {
   const newPedido = req.body;
 
   Pedidos.create(newPedido)
     .then((newPedido) => {
-      console.log("Pedido Criado com sucesso ! ", newPedido);
       res.json(newPedido);
     })
     .catch((error) => {
-      console.log("Error! ", error);
+
       res.status(500).json({ message: error.message });
     });
 });
 
-router.patch("/:id", function (req, res, next) {
-  console.log(req)
+router.patch("/:id", auth, function (req, res, next) {
   const id = req.params.id;
-  const avaliacao = req.body.avaliacao;
+  const { avaliacao, status } = req.body;
 
-  Pedidos.findByIdAndUpdate(id, { avaliacao })
+  const updateFields = {};
+  if (avaliacao) {
+    updateFields.avaliacao = avaliacao;
+  }
+  if (status) {
+    updateFields.status = status;
+  }
+
+  Pedidos.findByIdAndUpdate(id, updateFields)
     .then((item) => {
-      console.log("Pedido Atualizado com sucesso ! ", item);
       res.json(item);
     })
     .catch((error) => {
-      console.log("Error! ", error);
       res.status(500).json({ message: error.message });
     });
 });

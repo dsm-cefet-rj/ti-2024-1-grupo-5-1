@@ -14,7 +14,7 @@ function auth(req, res, next) {
             return res.status(401).send({ error: 'Token inválido.' });
         } else {
             req.user_id = decoded.id;
-            // req.user_role = decoded.role;
+            req.user_role = decoded.role;
             req.token = token;
             return next();
         }

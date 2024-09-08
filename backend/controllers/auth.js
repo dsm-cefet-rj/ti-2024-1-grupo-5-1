@@ -25,7 +25,7 @@ class AuthController {
             }
 
             const { _id, role } = user;
-            const token = jwt.sign({ id: _id }, process.env.SESSION_SECRET, { expiresIn: '24h' });
+            const token = jwt.sign({ id: _id, role: role }, process.env.SESSION_SECRET, { expiresIn: '24h' });
 
             return res.status(200).send({
                 token: token,
@@ -41,7 +41,8 @@ class AuthController {
                     bairro: user.bairro,
                     cidade: user.cidade,
                     cep: user.cep,
-                    role: role,
+                    date: user.date,
+                    role: role
                 }
             });
         } catch (error) {
@@ -181,7 +182,7 @@ class AuthController {
     }
 
     static async delete(req, res) {
-        const { id } = req.user_id; // Obtido do middleware de autenticação
+        const { id } = req.user_id;
 
         try {
             const user = await Usuarios.findOne({ _id: id });
@@ -204,30 +205,6 @@ class AuthController {
     static async logout(req, res) {
         sessionStorage.removeItem('token');
     };
-
-    // Método temporário para forçar a atualização de senha
-    static async forceUpdatePassword(req, res) {
-        const { id } = req.params;
-        const { senha } = req.body;
-
-        try {
-            const user = await Usuarios.findOne({ _id: id });
-
-            if (!user) {
-                return res.status(404).send({ error: 'Usuário não encontrado' });
-            }
-
-            user.senha = await UserService.encryptPassword(senha);
-
-            await user.save();
-
-            return res.status(200).send({ message: 'Senha atualizada com sucesso', status: true });
-
-        } catch (error) {
-            return res.status(500).send({ error: 'Erro ao atualizar senha', status: false });
-        }
-
-    }
 }
 
 module.exports = AuthController;
