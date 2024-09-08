@@ -58,11 +58,26 @@ const rate = async (id, rating) => {
     );
 }
 
+const updateStatus = async (id, _status) => {
+    return await axios.patch(`${API_URL}/pedidos/${id}`, { status : _status },
+        {
+            headers: {
+                Authorization: `Bearer ${sessionStorage.getItem("token")}`
+            }
+        }
+    )
+        .catch((error) => {
+            return error.response;
+        }
+    );
+}
+
 const pedidoService = {
     register,
     fetchFromUser,
     fetchFromOrder,
-    rate
+    rate,
+    updateStatus
 };
 
 export default pedidoService;

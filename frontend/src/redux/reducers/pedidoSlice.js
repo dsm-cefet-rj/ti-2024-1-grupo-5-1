@@ -41,6 +41,15 @@ export const rate = createAsyncThunk('pedido/rate', async ([id, rate], { rejectW
   }
 });
 
+export const updateStatus = createAsyncThunk('pedido/updateStatus', async ([id, status], { rejectWithValue }) => {
+  try {
+    const response = await PedidoService.updateStatus(id, status);
+    return response.data;
+  } catch (error) {
+    const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+    return rejectWithValue({ message });
+  }
+});
 
 const pedidoSlice = createSlice({
   name: 'pedido',

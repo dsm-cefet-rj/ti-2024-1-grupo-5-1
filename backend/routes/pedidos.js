@@ -61,9 +61,17 @@ router.post("/", auth, function (req, res, next) {
 
 router.patch("/:id", auth, function (req, res, next) {
   const id = req.params.id;
-  const avaliacao = req.body.avaliacao;
+  const { avaliacao, status } = req.body;
 
-  Pedidos.findByIdAndUpdate(id, { avaliacao })
+  const updateFields = {};
+  if (avaliacao) {
+    updateFields.avaliacao = avaliacao;
+  }
+  if (status) {
+    updateFields.status = status;
+  }
+
+  Pedidos.findByIdAndUpdate(id, updateFields)
     .then((item) => {
       console.log("Pedido atualizado com sucesso! ", item);
       res.json(item);
