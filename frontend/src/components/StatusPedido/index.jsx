@@ -56,7 +56,7 @@ const StatusPedido = ({ user }) => {
         <h5>Status do Pedido: {pedido.status}</h5>
         <h5>Forma de Pagamento: {pedido.pagamento}</h5>
       </div>
-      <div>
+      <div style={{ overflowX: 'auto' }}>
         <Table>
           <thead>
             <tr>
@@ -82,7 +82,7 @@ const StatusPedido = ({ user }) => {
       </div>
       <div style={{ marginTop: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
         <StarRating totalStars={5} initialRating={pedido.avaliacao} pedidoStatus={pedido.status} onSubmit={handleRatingSubmit} />
-        <Button as={Link} to={`/pedidos/`} variant="primary">Voltar para Pedidos</Button>
+        <Button href='/pedidos/' variant="primary">Voltar para Pedidos</Button>
       </div>
     </Stack>
   );

@@ -21,7 +21,7 @@ const PedidoCard = ({ pedido }) => {
                         </Stack>
                     </Stack>
                     <Stack direction='horizontal' gap={2} style={{ justifyContent: 'space-between' }}>
-                        <Button href={`/statusPedido/${pedido._id}`} variant="primary">Detalhes</Button>
+                        <Button href={`/statusPedido/${pedido._id}`} variant="success">Detalhes</Button>
                     </Stack>
                 </div>
             </div>

@@ -15,11 +15,14 @@ const statusOrder = {
 const PedidosAtivos = () => {
     const [selectedOrder, setSelectedOrder] = useState({ order_info: {}, user_info: {} });
     const [showModal, setShowModal] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 5;
 
     const { pedidos } = useSelector((state) => state.reports);
     const { data, status, fetched } = pedidos;
 
     const dispatch = useDispatch();
+
     useEffect(() => {
         if (status === 'idle' && !fetched) {
             dispatch(fetchPedidos());
@@ -34,30 +37,18 @@ const PedidosAtivos = () => {
         } catch (error) {
             console.error('Erro ao buscar informações do usuário:', error);
         }
-    }
+    };
 
     const handleCloseModal = () => {
         setShowModal(false);
-    }
+    };
 
     if (!data) {
         return (
-            <>
-                <div style={{ maxWidth: '500px', margin: '0 auto', marginTop: '55px' }}>
-                    <h4 className="text-center mb-2">Não foi possivel carregar os pedidos ativos.</h4>
-                </div>
-            </>
+            <div style={{ maxWidth: '500px', margin: '0 auto', marginTop: '55px' }}>
+                <h4 className="text-center mb-2">Não foi possível carregar os pedidos ativos.</h4>
+            </div>
         );
-    }
-
-    if (data.length === 0) {
-        return (
-            <>
-                <div style={{ maxWidth: '500px', margin: '0 auto', marginTop: '55px' }}>
-                    <h4 className="text-center mb-2">Carregando pedidos, por favor aguarde...</h4>
-                </div>
-            </>
-        )
     }
 
     const pedidoAtivos = data.filter((pedido) =>
@@ -65,7 +56,6 @@ const PedidosAtivos = () => {
         pedido.status.toLowerCase() === 'pendente' ||
         pedido.status.toLowerCase() === 'agendado'
     );
-
 
     const sortedItems = pedidoAtivos.sort((a, b) => {
         const aStatusOrder = statusOrder[a.status.toLowerCase()] || 999;
@@ -76,9 +66,6 @@ const PedidosAtivos = () => {
 
         return new Date(b.data) - new Date(a.data);
     });
-
-    const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 5;
 
     const indexLastItem = currentPage * itemsPerPage;
     const indexFirstItem = indexLastItem - itemsPerPage;
@@ -92,30 +79,35 @@ const PedidosAtivos = () => {
 
     return (
         <>
-            {/* Remova o comentário para exibir o PedidoCard */}
-            {/* <PedidoCard pedido={sortedItems[1]} modalHandleClick={handleShowModal} /> */}
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px', alignItems: "center" }}>
-
-                <strong style={{ marginRight: '2px' }}>Total de Pedidos Ativos:</strong>
-                <Badge bg="secondary">{sortedItems.length}</Badge>
-            </div>
-            <Stack style={{ justifyContent: "center", alignItems: "center", paddingTop: 0 }} gap={1}>
-                {currentItems.map((pedido, index) => (
-                    <PedidoCard key={index} pedido={pedido} modalHandleClick={handleShowModal}/>
-                ))}
-                <PedidoModal showModal={showModal} handleCloseModal={handleCloseModal} selectedOrder={selectedOrder} />
-                <Pagination className="d-flex justify-content-center">
-                    <Pagination.Prev onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1} />
-                    {Array.from({ length: totalPages }).map((_, index) => (
-                        <Pagination.Item key={index + 1} active={index + 1 === currentPage} onClick={() => handlePageChange(index + 1)}>
-                            {index + 1}
-                        </Pagination.Item>
-                    ))}
-                    <Pagination.Next onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages} />
-                </Pagination>
-            </Stack>
+            {data.length === 0 ? (
+                <div style={{ maxWidth: '500px', margin: '0 auto', marginTop: '55px' }}>
+                    <h4 className="text-center mb-2">Carregando pedidos, por favor aguarde...</h4>
+                </div>
+            ) : (
+                <>
+                    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px', alignItems: 'center' }}>
+                        <strong style={{ marginRight: '2px' }}>Total de Pedidos Ativos:</strong>
+                        <Badge bg="secondary">{sortedItems.length}</Badge>
+                    </div>
+                    <Stack style={{ justifyContent: 'center', alignItems: 'center', paddingTop: 0 }} gap={1}>
+                        {currentItems.map((pedido, index) => (
+                            <PedidoCard key={index} pedido={pedido} modalHandleClick={handleShowModal} />
+                        ))}
+                        <PedidoModal showModal={showModal} handleCloseModal={handleCloseModal} selectedOrder={selectedOrder} />
+                        <Pagination className="d-flex justify-content-center">
+                            <Pagination.Prev onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1} />
+                            {Array.from({ length: totalPages }).map((_, index) => (
+                                <Pagination.Item key={index + 1} active={index + 1 === currentPage} onClick={() => handlePageChange(index + 1)}>
+                                    {index + 1}
+                                </Pagination.Item>
+                            ))}
+                            <Pagination.Next onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages} />
+                        </Pagination>
+                    </Stack>
+                </>
+            )}
         </>
     );
-}
+};
 
 export default PedidosAtivos;
