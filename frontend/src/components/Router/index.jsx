@@ -77,7 +77,7 @@ const Router = ({user, isLoggedIn}) => {
                     path='/pedidos/'
                     element={
                         <AuthenticatedRoute>
-                            <Pedidos />
+                            <Pedidos user={user}/>
                         </AuthenticatedRoute>
                     }
                 />

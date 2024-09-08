@@ -1,8 +1,5 @@
 import { Button, Stack } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
+import { useState } from 'react';
 
 import Cancelamentos from './Cancelamentos';
 import Agendamentos from './Agendamentos';
@@ -12,16 +9,6 @@ import Avaliacoes from './Avaliacoes';
 import VendasItem from './VendasItem';
 
 const Relatorios = () => {
-
-    const { user, isLoggedIn } = useSelector((state) => state.auth);
-
-    const navigate = useNavigate();
-    useEffect(() => {
-        if (!isLoggedIn || user.role !== 'admin') {
-            navigate('/');
-            toast('Você não tem permissão para acessar esta página!', { type: 'error' });
-        }
-    }, [isLoggedIn, user, navigate]);
 
     const [current, setCurrent] = useState('');
     const renderReport = () => {
@@ -40,7 +27,7 @@ const Relatorios = () => {
                 return <VendasTempo/>;
             default:
                 return <>
-                    <h3>Selecione um relatório para visualizar</h3>
+                    <h3>Selecione um relatório para visualizar!</h3>
                     </>;
         }
     }

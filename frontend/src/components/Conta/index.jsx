@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 
-import { getDateFromUnix } from '../../utils/unixDateConversion';
+import { getFormattedDateAndTime } from '../../utils/dateConversion';
 import { formSchemaU } from '../../utils/userFormValidation';
 import { update } from '../../redux/reducers/authSlice';
 
@@ -26,7 +26,7 @@ const Conta = ({ user }) => {
         cep: user.cep,
         role: user.role,
         id: user.id,
-        date: user.date
+        date: new Date(user.date).toLocaleDateString('pt-BR')
     });
 
     const [formErrors, setFormErrors] = useState({});
@@ -61,6 +61,8 @@ const Conta = ({ user }) => {
             }
         }
     }
+
+    console.log(formData);
 
     return (
         <>
@@ -153,7 +155,7 @@ const Conta = ({ user }) => {
                     </div>
 
                     <div>
-                        <p className="text-center mb-4">Data de Cadastro: {getDateFromUnix(formData.date)}</p>
+                        <p className="text-center mb-4">Data de Cadastro: {formData.date}</p>
                     </div>
 
                     <div className="text-center">

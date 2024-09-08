@@ -1,19 +1,15 @@
-import { Table, Modal, Button, Pagination, Badge, Stack } from "react-bootstrap";
+import { Pagination, Badge, Stack } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
-import { InfoCircleFill } from "react-bootstrap-icons";
 import { useState, useEffect } from "react";
 import AuthService from '../../redux/services/authService';
 import { fetchPedidos } from '../../redux/reducers/reportSlice';
-import { getFormattedDateTime } from '../../utils/unixDateConversion';
 import PedidoCard from "./PedidoCard";
 import PedidoModal from "./PedidoModal";
 
 const statusOrder = {
-    'Em Andamento': 1,
-    'Pendente': 2,
-    'Agendado': 3,
-    'Entregue': 4,
-    'Cancelado': 5
+    'em andamento': 1,
+    'pendente': 2,
+    'agendado': 3
 };
 
 const PedidosAtivos = () => {
@@ -44,55 +40,70 @@ const PedidosAtivos = () => {
         setShowModal(false);
     }
 
-    const pedidoAtivos = data.filter((pedido) => pedido.status.toLowerCase() === 'pendente' || pedido.status.toLowerCase() === 'em andamento');
+    const pedidoAtivos = data.filter((pedido) =>
+        pedido.status.toLowerCase() === 'em andamento' ||
+        pedido.status.toLowerCase() === 'pendente' ||
+        pedido.status.toLowerCase() === 'agendado'
+    );
+
+    console.log(pedidoAtivos);
+
+    const sortedItems = pedidoAtivos.sort((a, b) => {
+        const aStatusOrder = statusOrder[a.status.toLowerCase()] || 999;
+        const bStatusOrder = statusOrder[b.status.toLowerCase()] || 999;
+
+        if (aStatusOrder < bStatusOrder) return -1;
+        if (aStatusOrder > bStatusOrder) return 1;
+
+        return new Date(b.data) - new Date(a.data);
+    });
 
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
 
     const indexLastItem = currentPage * itemsPerPage;
     const indexFirstItem = indexLastItem - itemsPerPage;
-    const currentItems = pedidoAtivos.slice(indexFirstItem, indexLastItem);
+    const currentItems = sortedItems.slice(indexFirstItem, indexLastItem);
 
-    const sortedItems = currentItems.sort((a, b) => {
-        const aStatusOrder = statusOrder[a.status] || 999;
-        const bStatusOrder = statusOrder[b.status] || 999;
-
-        if (statusOrder[a.status] < statusOrder[b.status]) return -1;
-        if (statusOrder[a.status] > statusOrder[b.status]) return 1;
-
-        return new Date(b.data) - new Date(a.data);
-    });
-
-    const totalPages = Math.ceil(pedidoAtivos.length / itemsPerPage);
+    const totalPages = Math.ceil(sortedItems.length / itemsPerPage);
 
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
 
     if (data.length === 0) {
-        return <h3 style={{ textAlign: 'center' }}>Nenhum pedido cancelado encontrado!</h3>;
+        return (
+            <>
+                <div style={{ maxWidth: '500px', margin: '0 auto', marginTop: '55px' }}>
+                <h5 className="text-center mb-2">Carregando pedidos, por favor aguarde...</h5>
+                </div>
+            </>
+        )
     }
 
     return (
         <>
+            {/* Remova o comentário para exibir o PedidoCard */}
             {/* <PedidoCard pedido={sortedItems[1]} modalHandleClick={handleShowModal} /> */}
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px', alignItems: "center"}}>
-                <strong style={{marginRight: '2px'}}>Total de Pedidos Ativos:</strong><Badge bg="secondary">{pedidoAtivos.length}</Badge>
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px', alignItems: "center" }}>
+
+                <strong style={{ marginRight: '2px' }}>Total de Pedidos Ativos:</strong>
+                <Badge bg="secondary">{sortedItems.length}</Badge>
             </div>
-            <Stack style={{ justifyContent: "center", alignItems: "center" , paddingTop: 0}} gap={1}>
-                    {sortedItems.map((pedido, index) => (
-                        <PedidoCard key={index} pedido={pedido} modalHandleClick={handleShowModal} />
+            <Stack style={{ justifyContent: "center", alignItems: "center", paddingTop: 0 }} gap={1}>
+                {currentItems.map((pedido, index) => (
+                    <PedidoCard key={index} pedido={pedido} modalHandleClick={handleShowModal}/>
+                ))}
+                <PedidoModal showModal={showModal} handleCloseModal={handleCloseModal} selectedOrder={selectedOrder} />
+                <Pagination className="d-flex justify-content-center">
+                    <Pagination.Prev onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1} />
+                    {Array.from({ length: totalPages }).map((_, index) => (
+                        <Pagination.Item key={index + 1} active={index + 1 === currentPage} onClick={() => handlePageChange(index + 1)}>
+                            {index + 1}
+                        </Pagination.Item>
                     ))}
-                    <PedidoModal showModal={showModal} handleCloseModal={handleCloseModal} selectedOrder={selectedOrder} />
-                    <Pagination className="d-flex justify-content-center">
-                        <Pagination.Prev onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1} />
-                        {Array.from({ length: totalPages }).map((_, index) => (
-                            <Pagination.Item key={index + 1} active={index + 1 === currentPage} onClick={() => handlePageChange(index + 1)}>
-                                {index + 1}
-                            </Pagination.Item>
-                        ))}
-                        <Pagination.Next onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages} />
-                    </Pagination>
+                    <Pagination.Next onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages} />
+                </Pagination>
             </Stack>
         </>
     );

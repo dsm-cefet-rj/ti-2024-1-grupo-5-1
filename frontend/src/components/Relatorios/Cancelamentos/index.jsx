@@ -7,7 +7,7 @@ import { Bar } from 'react-chartjs-2';
 
 import AuthService from '../../../redux/services/authService';
 import { fetchPedidos } from '../../../redux/reducers/reportSlice';
-import { getFormattedDateTime } from '../../../utils/unixDateConversion';
+import { getFormattedDateAndTime } from '../../../utils/dateConversion';
 
 const Cancelamentos = () => {
     const [selectedOrder, setSelectedOrder] = useState({ order_info: {}, user_info: {} });
@@ -159,7 +159,7 @@ const Cancelamentos = () => {
                                 <tr key={pedido.id}>
                                     <td>{index + 1}</td>
                                     <td>{pedido.status}</td>
-                                    <td>{getFormattedDateTime(pedido.date_pedido)}</td>
+                                    <td>{getFormattedDateAndTime(pedido.date_pedido)}</td>
                                     <td>{pedido.total}</td>
                                     <td colSpan="2">{pedido.pagamento}</td>
                                     <td>
@@ -191,7 +191,7 @@ const Cancelamentos = () => {
                                             <h5>Informações do Pedido</h5>
                                             <p style={{ marginBottom: '10px' }}><strong>Detalhes:</strong> {selectedOrder.order_info.detalhes}</p>
                                             <p style={{ marginBottom: '10px' }}><strong>Pagamento:</strong> {selectedOrder.order_info.pagamento}</p>
-                                            <p style={{ marginBottom: '10px' }}><strong>Data do Pedido:</strong> {getFormattedDateTime(selectedOrder.order_info.date_pedido)}</p>
+                                            <p style={{ marginBottom: '10px' }}><strong>Data do Pedido:</strong> {getFormattedDateAndTime(selectedOrder.order_info.date_pedido)}</p>
                                             <p style={{ marginBottom: '10px' }}><strong>Total:</strong> {selectedOrder.order_info.total}</p>
                                         </div>
                                         <hr />

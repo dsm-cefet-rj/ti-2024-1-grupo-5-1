@@ -31,7 +31,7 @@ const Carrinho = () => {
     total: itens.reduce((acc, item) => acc + (item.price * item.quantity), 0).toFixed(2),
     detalhes: '',
     pagamento: 'Pix',
-    status: 'Em andamento',
+    status: 'Em Andamento',
     qtdTroco: '',
     avaliacao: '',
     date_pedido: '',
@@ -96,6 +96,7 @@ const Carrinho = () => {
       }
 
       if (displayAgendamento) {
+        pedidoData.status = 'Agendado';
         pedidoData.date_agendada = validateSchedule(dataMarcada);
       }
 

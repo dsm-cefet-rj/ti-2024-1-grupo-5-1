@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 import AuthService from '../../../redux/services/authService';
 import { fetchPedidos } from '../../../redux/reducers/reportSlice';
-import { getFormattedDateTime } from '../../../utils/unixDateConversion';
+import { getFormattedDateAndTime } from '../../../utils/dateConversion';
 
 const Agendamentos = () => {
     const [selectedOrder, setSelectedOrder] = useState({ schedule_info: {}, user_info: {} });
@@ -110,8 +110,8 @@ const Agendamentos = () => {
                                         <h5>Informações do Pedido</h5>
                                         <p style={{ marginBottom: '10px' }}><strong>Detalhes:</strong> {selectedOrder.schedule_info.detalhes}</p>
                                         <p style={{ marginBottom: '10px' }}><strong>Pagamento:</strong> {selectedOrder.schedule_info.pagamento}</p>
-                                        <p style={{ marginBottom: '10px' }}><strong>Data do Pedido:</strong> {getFormattedDateTime(selectedOrder.schedule_info.date_pedido)}</p>
-                                        <p style={{ marginBottom: '10px' }}><strong>Data Agendada:</strong> {getFormattedDateTime(selectedOrder.schedule_info.date_agendada)}</p>
+                                        <p style={{ marginBottom: '10px' }}><strong>Data do Pedido:</strong> {getFormattedDateAndTime(selectedOrder.schedule_info.date_pedido)}</p>
+                                        <p style={{ marginBottom: '10px' }}><strong>Data Agendada:</strong> {getFormattedDateAndTime(selectedOrder.schedule_info.date_agendada)}</p>
                                         <p style={{ marginBottom: '10px' }}><strong>Total:</strong> {selectedOrder.schedule_info.total}</p>
                                     </div>
                                 </>

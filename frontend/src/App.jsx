@@ -17,7 +17,7 @@ const App = () => {
             <Header user={user} isLoggedIn={isLoggedIn}/>
             <Router user={user} isLoggedIn={isLoggedIn}/>
             <Toast
-                position="top-center"
+                position="top-right"
                 autoClose={1500}
                 pauseOnHover={false}
             />

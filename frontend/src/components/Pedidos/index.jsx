@@ -1,60 +1,67 @@
 import { useSelector, useDispatch } from 'react-redux';
-import React, { useEffect } from 'react';
-import { Table, Button, Container, Stack } from 'react-bootstrap';
-import { useNavigate, Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import React, { useEffect, useState } from 'react';
+import { Stack, Pagination } from 'react-bootstrap';
 
 import { fetchFromUser } from '../../redux/reducers/pedidoSlice';
+import PedidoCard from './PedidoCard';
 
-const Pedidos = () => {
-  const { user, isLoggedIn } = useSelector((state) => state.auth);
-  const { pedido, status } = useSelector((state) => state.pedido);
-
-  const navigate = useNavigate();
+const Pedidos = ({ user }) => {
+  const { pedido } = useSelector((state) => state.pedido);
   const dispatch = useDispatch();
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+
   useEffect(() => {
-    if (!isLoggedIn) {
-      navigate('/login');
-      toast('Você precisa estar logado para poder fazer isso!', { type: 'error' });
-    } else {
+    if (user) {
       dispatch(fetchFromUser(user.id));
     }
-  }, [user, isLoggedIn, navigate, dispatch]);
+  }, [dispatch, user]);
+
+  if (!Array.isArray(pedido)) {
+    return (
+      <div style={{ maxWidth: '500px', margin: '0 auto', marginTop: '55px' }}>
+        <h4 className="text-center mb-2">Carregando seus pedidos, por favor aguarde...</h4>
+      </div>
+    );
+  }
+
+  if (pedido.length === 0) {
+    return (
+      <div style={{ maxWidth: '500px', margin: '0 auto', marginTop: '55px' }}>
+        <h4 className="text-center mb-2">Nenhum pedido encontrado! Que tal fazer um agora? :)</h4>
+      </div>
+    );
+  }
+
+  const orderedItems = [...pedido].sort((a, b) => {
+    return new Date(a.data_pedido) - new Date(b.data_pedido);
+  });
+
+  const indexLastItem = currentPage * itemsPerPage;
+  const indexFirstItem = indexLastItem - itemsPerPage;
+  const currentItems = orderedItems.slice(indexFirstItem, indexLastItem);
+
+  const totalPages = Math.ceil(orderedItems.length / itemsPerPage);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   return (
-    <Stack className='container' style={{ textAlign: 'center' }}>
-      <h2>Pedidos do Usuário {user.nome}</h2>
-      <Table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Status</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          {status === 'loading' ? (
-            <tr>
-              <td colSpan="3">Carregando...</td>
-            </tr>
-          ) : status === 'success' && pedido.length > 0 ? (
-            pedido.map((pedidos) => (
-              <tr key={pedidos._id}>
-                <td>{pedidos._id}</td>
-                <td>{pedidos.status}</td>
-                <td>
-                    <Button variant="primary" href={`/statusPedido/${pedidos._id}`}>Ver Detalhes</Button>
-                </td>
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan="3">Nenhum pedido encontrado</td>
-            </tr>
-          )}
-        </tbody>
-      </Table>
+    <Stack style={{ justifyContent: "center", alignItems: "center", paddingTop: 0 }} gap={1}>
+      {currentItems.map((pedido, index) => (
+        <PedidoCard key={index} pedido={pedido} />
+      ))}
+      <Pagination className="d-flex justify-content-center">
+        <Pagination.Prev onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1} />
+        {Array.from({ length: totalPages }).map((_, index) => (
+          <Pagination.Item key={index + 1} active={index + 1 === currentPage} onClick={() => handlePageChange(index + 1)}>
+            {index + 1}
+          </Pagination.Item>
+        ))}
+        <Pagination.Next onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages} />
+      </Pagination>
     </Stack>
   );
 };

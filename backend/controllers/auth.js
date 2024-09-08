@@ -41,7 +41,8 @@ class AuthController {
                     bairro: user.bairro,
                     cidade: user.cidade,
                     cep: user.cep,
-                    role: role,
+                    date: user.date,
+                    role: role
                 }
             });
         } catch (error) {

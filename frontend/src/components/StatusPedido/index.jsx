@@ -1,8 +1,7 @@
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Table, Button, Container, Stack } from 'react-bootstrap';
+import { Table, Button, Stack } from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { fetchFromOrder, rate } from '../../redux/reducers/pedidoSlice';
@@ -12,6 +11,7 @@ const StatusPedido = ({ user }) => {
   const { pedidoId } = useParams();
   const { pedido, status } = useSelector((state) => state.pedido);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (status === 'idle') {
@@ -27,7 +27,13 @@ const StatusPedido = ({ user }) => {
   }, [pedido, user]);
 
   if (!pedido) {
-    return <div>Carregando...</div>;
+    return (
+      <>
+          <div style={{ maxWidth: '500px', margin: '0 auto', marginTop: '55px' }}>
+          <h5 className="text-center mb-2">Carregando seu pedido, por favor aguarde...</h5>
+          </div>
+      </>
+  )
   }
 
   const handleRatingSubmit = async (newRating) => {
@@ -37,7 +43,7 @@ const StatusPedido = ({ user }) => {
       toast('Avaliação enviada com sucesso!', { type: 'success' });
       setTimeout(() => {
         window.location.reload();
-      }, 2000)
+      }, 1400)
     } catch (error) {
       console.error('Erro ao enviar avaliação:', error);
       toast('Erro ao enviar avaliação', { type: 'error' });
@@ -45,17 +51,20 @@ const StatusPedido = ({ user }) => {
   };
 
   return (
-    <Stack className='container' gap={1} style={{textAlign: 'center'}}>
-        <h2>Status do Pedido: {pedido.status}</h2>
-        <h5>ID do Pedido: {pedido._id}</h5>
+    <Stack className='container' gap={2} style={{ marginTop: '30px', textAlign: 'center', maxWidth: '40vw' }}>
+      <div>
+        <h3>Pedido {pedido._id}</h3>
+        <h5>Status do Pedido: {pedido.status}</h5>
         <h5>Forma de Pagamento: {pedido.pagamento}</h5>
+      </div>
+      <div>
         <Table>
           <thead>
             <tr>
               <th>ID</th>
               <th>Nome</th>
-              <th>Preço</th>
               <th>Quantidade</th>
+              <th>Preço</th>
             </tr>
           </thead>
           <tbody>
@@ -63,19 +72,19 @@ const StatusPedido = ({ user }) => {
               <tr key={produto._id}>
                 <td>{produto._id}</td>
                 <td>{produto.nome}</td>
-                <td>R$ {produto.price}</td>
                 <td>{produto.qtd}</td>
+                <td>R$ {(produto.price).toFixed(2)}</td>
               </tr>
             ))}
           </tbody>
         </Table>
-
-        <h5>Preço Total: {pedido.total} </h5>
-
+        <p>Descrição: {pedido.descricao ? pedido.descricao : 'Sem descrição'}</p>
+        <p>Total: R$ {(pedido.total).toFixed(2)} </p>
+      </div>
+      <div style={{ marginTop: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
         <StarRating totalStars={5} initialRating={pedido.avaliacao} onSubmit={handleRatingSubmit} />
-        <Link to="/pedidos/">
-          <Button variant="primary">Voltar para Pedidos</Button>
-        </Link>
+        <Button as={Link} to={`/pedidos/`} variant="primary">Voltar para Pedidos</Button>
+      </div>
     </Stack>
   );
 };

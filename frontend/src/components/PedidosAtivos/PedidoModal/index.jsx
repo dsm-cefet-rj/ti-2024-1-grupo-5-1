@@ -29,6 +29,15 @@ const PedidoModal = ({ showModal, handleCloseModal, selectedOrder }) => {
                                     <p style={{ marginBottom: '10px' }}><strong>Pagamento:</strong> {selectedOrder.order_info.pagamento}</p>
                                     <p style={{ marginBottom: '10px' }}><strong>Data do Pedido:</strong> {formattedDate}</p>
                                     <p style={{ marginBottom: '10px' }}><strong>Total:</strong> {selectedOrder.order_info.total}</p>
+                                    {selectedOrder.order_info.produtos && selectedOrder.order_info.produtos.length > 0 ? (
+                                        selectedOrder.order_info.produtos.map((produto) => (
+                                            <div key={produto._id}>
+                                                <p style={{ marginBottom: '10px' }}><strong>- </strong> {produto.nome}: {produto.qtd} unidade(s) (R$ {(produto.price * produto.qtd).toFixed(2)})</p>
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <p>Nenhum produto encontrado!</p>
+                                    )}
                                 </div>
                             </>
                         )

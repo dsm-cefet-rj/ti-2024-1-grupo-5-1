@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { fetchProdutos, selectAllProdutos, } from "../../redux/reducers/produtosSlice"
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import ProdutoTable from "./ProdutoTable";
 
 import { useSelector, useDispatch } from "react-redux";
