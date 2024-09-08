@@ -33,8 +33,6 @@ const PedidoCard = ({ pedido, modalHandleClick }) => {
         'Pendente'
     ];
 
-    console.log(orderStatus);
-
     return (
         <>
             <div className="card" style={{ minWidth: '50vw' }}>

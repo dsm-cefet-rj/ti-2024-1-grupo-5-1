@@ -66,7 +66,6 @@ const PedidosAtivos = () => {
         pedido.status.toLowerCase() === 'agendado'
     );
 
-    console.log(pedidoAtivos);
 
     const sortedItems = pedidoAtivos.sort((a, b) => {
         const aStatusOrder = statusOrder[a.status.toLowerCase()] || 999;

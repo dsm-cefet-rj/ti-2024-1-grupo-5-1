@@ -53,7 +53,7 @@ class ProductService {
       if (err) {
         console.error('Erro ao remover a imagem:', err);
       } else {
-        console.log('Imagem removida com sucesso.');
+        console.log(`Imagem ${filePath} removida com sucesso.`);
       }
     });
   }

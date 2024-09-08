@@ -90,7 +90,6 @@ export const mustSchedule = () => {
         return nextDay;
     }
 
-    // Caso contrário, não precisa agendar
     return null;
 }
 
@@ -112,10 +111,8 @@ export const validateChange = (total, qtdTroco) => {
     }
 
     if (Object.keys(errors).length) {
-        console.log(errors);
         throw { errors };
     }
-
-    console.log('Sem erros');
+    
     return qtdTroco;
 }

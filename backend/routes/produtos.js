@@ -4,20 +4,6 @@ var Produtos = require('../models/produtos.js');
 var auth = require('../middlewares/auth.js')
 const ProductService = require('../services/produtos.js');
 
-//Problema de CORS
-// router.use(function(req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "*"); // Permite todas as origens
-//     res.header("Access-Control-Allow-Methods", "DELETE, GET, PATCH, POST, PUT");
-//     res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-
-//     // Se a requisição for um preflight (OPTIONS), responda imediatamente
-//     if (req.method === "OPTIONS") {
-//         return res.status(200).end();
-//     }
-
-//     next();
-// });
-
 // GET /produtos - Retorna todos os produtos
 router.get('/', function (req, res, next) {
     Produtos.find({}).
@@ -32,7 +18,6 @@ router.get('/', function (req, res, next) {
 // GET /produtos/:id - Retorna um produto específico
 router.get('/:id', function (req, res, next) {
     const produtoId = req.params.id
-    console.log(produtoId)
     Produtos.findById(produtoId).
         then((produtosData) => {
             res.json(produtosData)

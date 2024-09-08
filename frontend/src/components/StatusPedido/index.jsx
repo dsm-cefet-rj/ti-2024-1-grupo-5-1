@@ -38,7 +38,6 @@ const StatusPedido = ({ user }) => {
 
   const handleRatingSubmit = async (newRating) => {
     try {
-      console.log(pedidoId, newRating)
       dispatch(rate([pedidoId, newRating]));
       toast('Avaliação enviada com sucesso!', { type: 'success' });
       setTimeout(() => {

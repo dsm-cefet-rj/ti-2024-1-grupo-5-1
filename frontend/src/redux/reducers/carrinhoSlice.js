@@ -7,7 +7,6 @@ export const slice = createSlice({
     },
     reducers: {
         addItem(state, action) {
-            console.log('Adicionando item ao carrinho.')
             const existingItem = state.itens.findIndex(item => item._id === action.payload._id);
             if (existingItem >= 0) {
                 state.itens[existingItem].quantity++;
@@ -16,7 +15,6 @@ export const slice = createSlice({
             }
         },
         removeItem(state, action) {
-            console.log('Removendo item do carrinho.');
             const existingItem = state.itens.findIndex(item => item._id === action.payload._id);
             if (existingItem >= 0) {
                 if (state.itens[existingItem].quantity === 1) {
@@ -27,7 +25,6 @@ export const slice = createSlice({
             }
         },
         clearCart(state) {
-            console.log('Carrinho esvaziado.')
             state.itens = [];
         }
     }

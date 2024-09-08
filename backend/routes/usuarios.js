@@ -12,6 +12,5 @@ router
     .post('/logout', auth, AuthController.logout)
     .get('/fetch/', auth, AuthController.fetchMany)
     .get('/fetch/:id', auth, AuthController.fetchOne)
-    .post('/reset/:id', AuthController.forceUpdatePassword);
 
 module.exports = router;

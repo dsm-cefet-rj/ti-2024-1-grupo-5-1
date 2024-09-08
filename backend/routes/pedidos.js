@@ -31,7 +31,6 @@ router.get("/:id", auth, function (req, res, next) {
   const pedidoId = req.params.id;
   Pedidos.findById(pedidoId)
     .then((item) => {
-      console.log(item, req.user_id, req.user_role);
       if ((item.user_id !== req.user_id) && (req.user_role !== 'admin')) {
         return res.status(403).json({ message: 'Você não tem permissão para acessar este pedido!' });
       } else {
@@ -50,11 +49,10 @@ router.post("/", auth, function (req, res, next) {
 
   Pedidos.create(newPedido)
     .then((newPedido) => {
-      console.log("Pedido criado com sucesso! ", newPedido);
       res.json(newPedido);
     })
     .catch((error) => {
-      console.log("Error! ", error);
+
       res.status(500).json({ message: error.message });
     });
 });
@@ -73,11 +71,9 @@ router.patch("/:id", auth, function (req, res, next) {
 
   Pedidos.findByIdAndUpdate(id, updateFields)
     .then((item) => {
-      console.log("Pedido atualizado com sucesso! ", item);
       res.json(item);
     })
     .catch((error) => {
-      console.log("Error! ", error);
       res.status(500).json({ message: error.message });
     });
 });

@@ -23,15 +23,12 @@ const VendasTempo = () => {
 
     const handleChangeOption = (e) => {
         const dadosOrdenados = ordenarVendas(e.target.value, pedidosFiltrados);
-        console.log(dadosOrdenados);
         setOption({ value: e.target.value, data: dadosOrdenados });
     };
 
     if (!data || data.length === 0) {
         return <h3 style={{ textAlign: 'center' }}>Nenhuma venda encontrada!</h3>;
     }
-
-    // Configuração do gráfico
 
     Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 

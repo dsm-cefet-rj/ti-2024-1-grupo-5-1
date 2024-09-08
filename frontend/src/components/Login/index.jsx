@@ -28,7 +28,6 @@ const Login = ({isLoggedIn}) => {
     const handleSubmit = async(e) => {
         e.preventDefault();
         try {
-            console.log(formData);
             await formSchemaR.validate(formData, { abortEarly: false });
             dispatch(login(formData)).then(() => {
                 toast('Login efetuado com sucesso!', { type: 'success' });

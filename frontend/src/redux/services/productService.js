@@ -13,7 +13,6 @@ const fetchProduto = async (id) => {
 };
 
 const addProduto = async (produtoData) => {
-    console.log(produtoData);
     const response = await axios.post(API_URL, produtoData,
         {
             headers: {

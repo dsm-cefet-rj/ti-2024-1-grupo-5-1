@@ -62,7 +62,6 @@ const Conta = ({ user }) => {
         }
     }
 
-    console.log(formData);
 
     return (
         <>
