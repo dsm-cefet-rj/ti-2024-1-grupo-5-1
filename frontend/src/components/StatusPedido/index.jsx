@@ -82,7 +82,7 @@ const StatusPedido = ({ user }) => {
         <p>Total: R$ {(pedido.total).toFixed(2)} </p>
       </div>
       <div style={{ marginTop: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
-        <StarRating totalStars={5} initialRating={pedido.avaliacao} onSubmit={handleRatingSubmit} />
+        <StarRating totalStars={5} initialRating={pedido.avaliacao} pedidoStatus={pedido.status} onSubmit={handleRatingSubmit} />
         <Button as={Link} to={`/pedidos/`} variant="primary">Voltar para Pedidos</Button>
       </div>
     </Stack>

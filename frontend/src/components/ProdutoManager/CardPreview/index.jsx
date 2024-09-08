@@ -1,9 +1,11 @@
 import style from "./CardPreview.module.css"
+import NotFound from "../../../assets/img/NotFound.png";
 
 const CardPreview = ({ formData, imagePreview }) => {
-    const imageSrc = imagePreview || formData.src
-        ? `http://localhost:3001/uploads/${imagePreview || formData.src}`
-        : 'http://localhost:3001/uploads/NotFound.png';
+    const imageSrc = imagePreview 
+    ? imagePreview : formData.src 
+        ? `http://localhost:3001/uploads/${formData.src}`
+        : NotFound;
 
     return (
         <>

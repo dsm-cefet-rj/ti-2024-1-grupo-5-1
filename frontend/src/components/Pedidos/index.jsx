@@ -18,10 +18,10 @@ const Pedidos = ({ user }) => {
     }
   }, [dispatch, user]);
 
-  if (!Array.isArray(pedido)) {
+  if (!pedido) {
     return (
       <div style={{ maxWidth: '500px', margin: '0 auto', marginTop: '55px' }}>
-        <h4 className="text-center mb-2">Carregando seus pedidos, por favor aguarde...</h4>
+        <h4 className="text-center mb-2">Não foi possível carregar seus pedidos.</h4>
       </div>
     );
   }

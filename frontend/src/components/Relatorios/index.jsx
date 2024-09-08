@@ -39,8 +39,8 @@ const Relatorios = () => {
                     <Button variant={current === 'agendamentos' ? 'primary' : 'secondary'} onClick={() => setCurrent('agendamentos')}>Agendamentos</Button>
                     <Button variant={current === 'avaliacoes' ? 'primary' : 'secondary'} onClick={() => setCurrent('avaliacoes')}>Avaliações</Button>       
                     <Button variant={current === 'cancelamentos' ? 'primary' : 'secondary'} onClick={() => setCurrent('cancelamentos')}>Cancelamentos</Button>
-                    <Button variant={current === 'item' ? 'primary' : 'secondary'} onClick={() => setCurrent('item')}>Vendas por Item</Button>
                     <Button variant={current === 'fidelizados' ? 'primary' : 'secondary'} onClick={() => setCurrent('fidelizados')}>Clientes Fidelizados</Button>
+                    <Button variant={current === 'item' ? 'primary' : 'secondary'} onClick={() => setCurrent('item')}>Vendas por Item</Button>
                     <Button variant={current === 'tempo' ? 'primary' : 'secondary'} onClick={() => setCurrent('tempo')}>Vendas por Tempo</Button>
                 </Stack>
                 <div style={{ marginTop: '45px' }}>

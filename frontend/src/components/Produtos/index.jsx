@@ -20,9 +20,13 @@ const Produtos = () => {
         }
     }, [produtosStatus, dispatch])
 
-    console.log(produtos)
-
-    // console.log(useSelector(((state) => selectProduto(state, 1))))
+    if (produtos.length === 0) {
+        return (
+          <div style={{ maxWidth: '500px', margin: '0 auto', marginTop: '55px' }}>
+            <h4 className="text-center mb-2">Nenhum produto encontrado!</h4>
+          </div>
+        );
+      }
 
     return (
         <>

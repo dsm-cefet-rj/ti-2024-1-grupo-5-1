@@ -87,7 +87,6 @@ const ProdutosForm = ({ isEditing }) => {
     const handleInputChange = (e) => {
         const { name, value, files } = e.target;
         if (files) {
-            // Atualize o estado do preview da imagem
             if (name === 'src') {
                 const file = files[0];
                 setFormData({

@@ -48,13 +48,13 @@ const Cancelamentos = () => {
         labels: ['Pedidos x Cancelamentos'],
         datasets: [
             {
-                label: 'Pedidos',
+                label: 'Pedidos Totais',
                 data: [data.length],
                 backgroundColor: 'rgb(75, 192, 192)',
                 borderColor: 'rgba(75, 192, 192, 0.2)',
             },
             {
-                label: 'Cancelamentos',
+                label: 'Pedidos Cancelados',
                 data: [cancelados.length],
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgba(255, 99, 132, 0.2)',
@@ -110,14 +110,8 @@ const Cancelamentos = () => {
 
     // Configuração da tabela
 
-    const sortData = (data) => {
-        return data.sort((a, b) => {
-            return new Date(b.date) - new Date(a.date);
-        });
-    }
-
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 5;
+    const itemsPerPage = 4;
 
     const indexLastItem = currentPage * itemsPerPage;
     const indexFirstItem = indexLastItem - itemsPerPage;
@@ -140,28 +134,26 @@ const Cancelamentos = () => {
                     <Bar data={barData} options={barOptions} width={250} height={300} />
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px' }}>
-                    <p><strong>Total de Cancelamentos:</strong>{' '}<Badge bg="secondary">{cancelados.length}</Badge></p>
+                    <p><strong>Total de Cancelamentos:</strong>{' '}<Badge bg="secondary">{cancelados.length} ({((cancelados.length / data.length) * 100).toFixed(2)}%)</Badge></p>
                 </div>
-                <div>
+                <div style={{ maxWidth: '80%', margin: '0 auto', overflowX: 'auto' }}>
                     <Table style={{ width: '100%', tableLayout: 'fixed' }}>
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Status</th>
-                                <th>Data</th>
-                                <th>Valor</th>
-                                <th colSpan="2">Método de Pagamento</th>
-                                <th>Informações</th>
+                                <th style={{ width: '20%' }}>ID</th>
+                                <th style={{ width: '20%' }}>Data</th>
+                                <th style={{ width: '15%' }}>Valor</th>
+                                <th style={{ width: '25%' }}>Pagamento</th>
+                                <th style={{ width: '15%' }}>Informações</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {currentItems.map((pedido, index) => (
-                                <tr key={pedido.id}>
-                                    <td>{index + 1}</td>
-                                    <td>{pedido.status}</td>
+                            {currentItems.map((pedido) => (
+                                <tr key={pedido._id}>
+                                    <td style={{ wordWrap: 'break-word' }}>{pedido._id}</td>
                                     <td>{getFormattedDateAndTime(pedido.date_pedido)}</td>
-                                    <td>{pedido.total}</td>
-                                    <td colSpan="2">{pedido.pagamento}</td>
+                                    <td>{'R$ ' + (pedido.total).toFixed(2)}</td>
+                                    <td>{pedido.pagamento}</td>
                                     <td>
                                         <Button variant="link" onClick={() => handleShowModal(pedido)}>
                                             <InfoCircleFill />
@@ -173,7 +165,7 @@ const Cancelamentos = () => {
                     </Table>
                     <Modal show={showModal} onHide={handleCloseModal}>
                         <Modal.Header closeButton>
-                            <Modal.Title>Informações do Pedido {selectedOrder && selectedOrder.order_info.id} (Cancelado)</Modal.Title>
+                            <Modal.Title>Informações do Pedido {selectedOrder && selectedOrder.order_info._id} (Cancelado)</Modal.Title>
                         </Modal.Header>
                         <Modal.Body style={{ padding: '10px' }}>
                             {
@@ -192,11 +184,16 @@ const Cancelamentos = () => {
                                             <p style={{ marginBottom: '10px' }}><strong>Detalhes:</strong> {selectedOrder.order_info.detalhes}</p>
                                             <p style={{ marginBottom: '10px' }}><strong>Pagamento:</strong> {selectedOrder.order_info.pagamento}</p>
                                             <p style={{ marginBottom: '10px' }}><strong>Data do Pedido:</strong> {getFormattedDateAndTime(selectedOrder.order_info.date_pedido)}</p>
-                                            <p style={{ marginBottom: '10px' }}><strong>Total:</strong> {selectedOrder.order_info.total}</p>
-                                        </div>
-                                        <hr />
-                                        <div>
-                                            <p style={{ marginBottom: '10px' }}><strong>Motivo de Cancelamento:</strong> {selectedOrder.order_info.motivo_cancelamento ? selectedOrder.order_info.motivo_cancelamento : 'Não informado.'}</p>
+                                            <p style={{ marginBottom: '10px' }}><strong>Total:</strong> R$ {parseFloat(selectedOrder.order_info.total).toFixed(2)}</p>
+                                            {selectedOrder.order_info.produtos && selectedOrder.order_info.produtos.length > 0 ? (
+                                                selectedOrder.order_info.produtos.map((produto) => (
+                                                    <div key={produto._id}>
+                                                        <p style={{ marginBottom: '10px' }}><strong>- </strong> {produto.nome}: {produto.qtd} unidade(s) (R$ {(produto.price * produto.qtd).toFixed(2)})</p>
+                                                    </div>
+                                                ))
+                                            ) : (
+                                                <p>Nenhum produto encontrado!</p>
+                                            )}
                                         </div>
                                     </>
                                 )

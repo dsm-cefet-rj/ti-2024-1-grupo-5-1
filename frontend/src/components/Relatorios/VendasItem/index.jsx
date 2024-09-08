@@ -28,7 +28,7 @@ const VendasItem = () => {
     );
   }
   
-  if (hasError || data.length === 0) {
+  if (hasError || !data) { 
     return (
       <div style={{ maxWidth: '450px', margin: '55px auto 0' }}>
         {hasError ? (
@@ -38,12 +38,12 @@ const VendasItem = () => {
           </>
         ) : (
           <>
-            <h4 className="text-center mb-2">Nenhuma avaliação foi encontrada para exibir!</h4>
+            <h4 className="text-center mb-2">Nenhum item foi encontrado!</h4>
           </>
         )}
       </div>
     );
-  }  
+  } 
 
   const itemFrequency = {};
   const produtoDetalhes = {};
@@ -53,9 +53,10 @@ const VendasItem = () => {
     if (item.status.toLowerCase() === "entregue") {
       item.produtos.forEach((produto) => {
         const produtoId = produto._id;
-
-        itemFrequency[produtoId] = (itemFrequency[produtoId] || 0) + 1;
-
+        const quantidadeVendida = produto.qtd || 1;
+  
+        itemFrequency[produtoId] = (itemFrequency[produtoId] || 0) + quantidadeVendida;
+  
         if (!produtoDetalhes[produtoId]) {
           produtoDetalhes[produtoId] = {
             _id: produto._id,
@@ -65,6 +66,14 @@ const VendasItem = () => {
       });
     }
   });
+  
+  if (Object.keys(itemFrequency).length === 0) {
+    return (
+      <div style={{ maxWidth: '450px', margin: '55px auto 0' }}>
+        <h4 className="text-center mb-2">Nenhuma venda foi encontrada!</h4>
+      </div>
+    );
+  }
 
   totalItems = Object.values(itemFrequency).reduce((sum, count) => sum + count, 0);
 

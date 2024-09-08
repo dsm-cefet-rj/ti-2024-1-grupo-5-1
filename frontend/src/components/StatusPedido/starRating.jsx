@@ -2,7 +2,7 @@ import { Star, StarFill } from 'react-bootstrap-icons';
 import { Button } from 'react-bootstrap';
 import { useState } from 'react';
 
-const StarRating = ({ totalStars = 5, initialRating = 0, onSubmit, starSize = '40px' }) => {
+const StarRating = ({ totalStars = 5, initialRating = 0, onSubmit, pedidoStatus, starSize = '40px' }) => {
   const [selectedRating, setSelectedRating] = useState(initialRating);
 
   const handleStarClick = (index) => {
@@ -58,7 +58,7 @@ const StarRating = ({ totalStars = 5, initialRating = 0, onSubmit, starSize = '4
           variant={initialRating ? 'secondary' : 'success'}
           style={{ marginTop: '10px', fontSize: '16px' }}
           onClick={!initialRating ? handleSubmit : null}
-          disabled={initialRating}
+          disabled={pedidoStatus !== 'Entregue' || initialRating}
         >
           {initialRating ? 'Pedido Avaliado!' : 'Enviar Avaliação'}
         </Button>

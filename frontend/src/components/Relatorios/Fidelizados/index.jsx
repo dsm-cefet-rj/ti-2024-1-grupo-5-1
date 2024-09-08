@@ -7,7 +7,7 @@ import { Bar } from 'react-chartjs-2';
 
 import AuthService from '../../../redux/services/authService';
 import { fetchPedidos } from '../../../redux/reducers/reportSlice';
-import { getFormattedDateAndTime } from '../../../utils/dateConversion';
+import { getFormattedDate } from '../../../utils/dateConversion';
 
 const Fidelizados = () => {
     const [selectedUser, setSelectedUser] = useState(null);
@@ -40,7 +40,7 @@ const Fidelizados = () => {
 
             const users = await AuthService.fetchMany();
             const alignedData = users.map((user) => {
-                const user_id = user.id;
+                const user_id = user._id;
                 const user_info = user;
                 const frequency = userFrequency[user_id] || 0;
                 const lastOrder = filteredData.find((pedido) => pedido.user_id === user_id) || null;
@@ -179,15 +179,17 @@ const Fidelizados = () => {
                                 <th>Nome</th>
                                 <th>Quantidade de Pedidos</th>
                                 <th>Último Pedido</th>
+                                <th>Data de Cadastro</th>
                                 <th>Detalhes</th>
                             </tr>
                         </thead>
                         <tbody>
                             {currentItems.map((item, index) => (
-                                <tr key={index} onClick={() => handleShowModal(item)}>
-                                    {item.frequency > totalPedidos / totalUsers ? <td style={{ color: 'blue' }}>{item.user_info.nome}</td> : <td>{item.user_info.nome}</td>}
+                                <tr key={index}>
+                                    {item.frequency > totalPedidos / totalUsers ? <td style={{ color: 'blue', wordWrap: 'break-word' }}>{item.user_info.nome} {item.user_info.sobrenome}</td> : <td style={{ wordWrap: 'break-word' }}>{item.user_info.nome} {item.user_info.sobrenome}</td>}
                                     {item.frequency > totalPedidos / totalUsers ? <td style={{ color: 'blue' }}>{item.frequency}</td> : <td>{item.frequency}</td>}
-                                    {item.lastOrder ? <td>{getFormattedDateAndTime(item.lastOrder.date_pedido)}</td> : <td>Nenhum pedido feito</td>}
+                                    {item.lastOrder ? <td>{getFormattedDate(item.lastOrder.date_pedido)}</td> : <td>Nenhum pedido feito</td>}
+                                    <td>{getFormattedDate(item.user_info.date)}</td>
                                     <td>
                                         <Button variant="link" onClick={() => handleShowModal(item)}>
                                             <InfoCircleFill />
@@ -205,11 +207,11 @@ const Fidelizados = () => {
                             {selectedUser && (
                                 <>
                                     <div style={{ marginBottom: '10px' }}>
+                                        <p><strong>ID:</strong> {selectedUser.user_info._id}</p>
                                         <p><strong>Nome:</strong> {selectedUser.user_info.nome} {selectedUser.user_info.sobrenome}</p>
                                         <p><strong>Email:</strong> {selectedUser.user_info.email}</p>
                                         <p><strong>Telefone:</strong> {selectedUser.user_info.telefone}</p>
                                         <p><strong>Endereço:</strong> {selectedUser.user_info.logradouro}, {selectedUser.user_info.numero} - {selectedUser.user_info.cep} - {selectedUser.user_info.bairro}, {selectedUser.user_info.cidade}</p>
-                                        <p><strong>Quantidade de Pedidos:</strong> {selectedUser.frequency}</p>
                                     </div>
                                 </>
                             )}

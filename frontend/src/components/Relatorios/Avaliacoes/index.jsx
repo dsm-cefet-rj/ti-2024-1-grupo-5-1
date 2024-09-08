@@ -30,10 +30,10 @@ const Avaliacoes = () => {
     );
   }
 
-  if (hasError || data.length === 0) {
+  if (hasError || !data) {
     return (
       <>
-        <div style={{ maxWidth: '450px', margin: '0 auto', marginTop: '55px' }}>
+        <div style={{ maxWidth: '500px', margin: '0 auto', marginTop: '55px' }}>
           {hasError ? (
             <>
               <h1 className="text-center mb-1" style={{ marginBottom: '20px' }}>Erro</h1>
@@ -41,9 +41,21 @@ const Avaliacoes = () => {
             </>
           ) : (
             <>
-              <h4 className="text-center mb-2">Nenhuma avaliação foi encontrada para exibir!</h4>
+              <h4 className="text-center mb-2">Nenhum pedido foi encontrado!</h4>
             </>
           )}
+        </div>
+      </>
+    );
+  }
+
+  const filtrados = data.filter((item) => item.status.toLowerCase() === "entregue");
+
+  if (filtrados.length === 0) {
+    return (
+      <>
+        <div style={{ maxWidth: '500px', margin: '0 auto', marginTop: '55px' }}>
+          <h4 className="text-center mb-2">Nenhuma avaliação foi encontrada para exibir!</h4>
         </div>
       </>
     );
@@ -53,8 +65,6 @@ const Avaliacoes = () => {
   const produtoDetalhes = {};
   let totalOverallRating = 0;
   let totalItems = 0;
-
-  const filtrados = data.filter((item) => item.status.toLowerCase() === "entregue");
 
   filtrados.forEach((item) => {
     item.produtos.forEach((produto) => {

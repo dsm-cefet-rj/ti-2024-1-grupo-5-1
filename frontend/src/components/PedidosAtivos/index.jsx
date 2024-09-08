@@ -40,6 +40,26 @@ const PedidosAtivos = () => {
         setShowModal(false);
     }
 
+    if (!data) {
+        return (
+            <>
+                <div style={{ maxWidth: '500px', margin: '0 auto', marginTop: '55px' }}>
+                    <h4 className="text-center mb-2">Não foi possivel carregar os pedidos ativos.</h4>
+                </div>
+            </>
+        );
+    }
+
+    if (data.length === 0) {
+        return (
+            <>
+                <div style={{ maxWidth: '500px', margin: '0 auto', marginTop: '55px' }}>
+                    <h4 className="text-center mb-2">Carregando pedidos, por favor aguarde...</h4>
+                </div>
+            </>
+        )
+    }
+
     const pedidoAtivos = data.filter((pedido) =>
         pedido.status.toLowerCase() === 'em andamento' ||
         pedido.status.toLowerCase() === 'pendente' ||
@@ -70,16 +90,6 @@ const PedidosAtivos = () => {
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
-
-    if (data.length === 0) {
-        return (
-            <>
-                <div style={{ maxWidth: '500px', margin: '0 auto', marginTop: '55px' }}>
-                <h5 className="text-center mb-2">Carregando pedidos, por favor aguarde...</h5>
-                </div>
-            </>
-        )
-    }
 
     return (
         <>
