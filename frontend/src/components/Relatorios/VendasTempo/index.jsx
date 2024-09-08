@@ -23,6 +23,7 @@ const VendasTempo = () => {
 
     const handleChangeOption = (e) => {
         const dadosOrdenados = ordenarVendas(e.target.value, pedidosFiltrados);
+        console.log(dadosOrdenados);
         setOption({ value: e.target.value, data: dadosOrdenados });
     };
 
