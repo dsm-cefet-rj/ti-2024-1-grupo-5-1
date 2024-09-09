@@ -31,11 +31,7 @@ router.get("/:id", auth, function (req, res, next) {
   const pedidoId = req.params.id;
   Pedidos.findById(pedidoId)
     .then((item) => {
-      if ((item.user_id !== req.user_id) && (req.user_role !== 'admin')) {
-        return res.status(403).json({ message: 'Você não tem permissão para acessar este pedido!' });
-      } else {
         res.json(item);
-      }
     })
     .catch((error) => {
       res.status(500).json({ message: error.message });

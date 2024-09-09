@@ -56,6 +56,7 @@ const pedidoSlice = createSlice({
   initialState: {
     pedido: null,
     status: 'idle',
+    pedidos: [],
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -75,7 +76,7 @@ const pedidoSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(fetchFromUser.fulfilled, (state, action) => {
-        state.pedido = action.payload;
+        state.pedidos = action.payload;
         state.status = 'success';
       })
       .addCase(fetchFromUser.rejected, (state, action) => {

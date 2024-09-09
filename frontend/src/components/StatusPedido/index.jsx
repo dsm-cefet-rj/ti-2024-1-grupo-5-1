@@ -77,7 +77,7 @@ const StatusPedido = ({ user }) => {
             ))}
           </tbody>
         </Table>
-        <p>Descrição: {pedido.descricao ? pedido.descricao : 'Sem descrição'}</p>
+        <p>Descrição: {pedido.detalhes ? pedido.detalhes : 'Sem descrição'}</p>
         <p>Total: R$ {(pedido.total).toFixed(2)} </p>
       </div>
       <div style={{ marginTop: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>

@@ -211,7 +211,7 @@ const Carrinho = () => {
         </Form.Group>
         {exibirCaixaDeTexto && (
           <Form.Group>
-            <FloatingLabel controlId="floatingInput" label="Quantidade (para o Troco)" className="mb-3">
+            <FloatingLabel controlId="floatingInput" label="Valor à pagar (para o Troco)" className="mb-3">
               <Form.Control
                 type="number"
                 placeholder="Quantidade de troco"

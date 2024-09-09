@@ -1,9 +1,10 @@
 export const ordenarVendas = (periodo, data) => {
     const agora = new Date();
-    const ultimaHora = new Date(agora.getTime() - (24 * 60 * 60 ));
+    const ultimaHora = new Date(agora.getTime() - (24 * 60 * 60 * 1000));
+    console.log(ultimaHora);
     ultimaHora.setMinutes(0, 0, 0);
 
-    const ultimos7Dias = new Date(agora.getTime() - 7 * 24 * 3600 );
+    const ultimos7Dias = new Date(agora.getTime() - 7 * 24 * 60 * 60 * 1000);
     const ultimoAno = new Date(agora.getFullYear() - 1, agora.getMonth(), agora.getDate());
     const anoAtual = agora.getFullYear();
 

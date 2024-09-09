@@ -6,7 +6,7 @@ import { fetchFromUser } from '../../redux/reducers/pedidoSlice';
 import PedidoCard from './PedidoCard';
 
 const Pedidos = ({ user }) => {
-  const { pedido } = useSelector((state) => state.pedido);
+  const { pedidos } = useSelector((state) => state.pedido);
   const dispatch = useDispatch();
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -18,7 +18,7 @@ const Pedidos = ({ user }) => {
     }
   }, [dispatch, user]);
 
-  if (!pedido) {
+  if (!pedidos) {
     return (
       <div style={{ maxWidth: '500px', margin: '0 auto', marginTop: '55px' }}>
         <h4 className="text-center mb-2">Não foi possível carregar seus pedidos.</h4>
@@ -26,7 +26,7 @@ const Pedidos = ({ user }) => {
     );
   }
 
-  if (pedido.length === 0) {
+  if (pedidos.length === 0) {
     return (
       <div style={{ maxWidth: '500px', margin: '0 auto', marginTop: '55px' }}>
         <h4 className="text-center mb-2">Nenhum pedido encontrado! Que tal fazer um agora? :)</h4>
@@ -34,7 +34,7 @@ const Pedidos = ({ user }) => {
     );
   }
 
-  const orderedItems = [...pedido].sort((a, b) => {
+  const orderedItems = [...pedidos].sort((a, b) => {
     return new Date(a.data_pedido) - new Date(b.data_pedido);
   });
 
