@@ -1,19 +1,18 @@
 import axios from 'axios';
-
-const API_URL = 'http://localhost:3001/produtos';
+import API_URL from "./APIUrl";
 
 const fetchProdutos = async () => {
-    const response = await axios.get(API_URL);
+    const response = await axios.get(`${API_URL}/produtos`);
     return response.data;
 };
 
 const fetchProduto = async (id) => {
-    const response = await axios.get(`${API_URL}/${id}`);
+    const response = await axios.get(`${API_URL}/produtos/${id}`);
     return response.data;
 };
 
 const addProduto = async (produtoData) => {
-    const response = await axios.post(API_URL, produtoData,
+    const response = await axios.post(`${API_URL}/produtos`, produtoData,
         {
             headers: {
                 'Content-Type': 'multipart/form-data',
@@ -25,7 +24,7 @@ const addProduto = async (produtoData) => {
 };
 
 const alteraProduto = async (produtoId, produtoData) => {
-    const response = await axios.patch(`${API_URL}/${produtoId}`, produtoData,
+    const response = await axios.patch(`${API_URL}/produtos/${produtoId}`, produtoData,
         {
             headers: {
                 'Content-Type': 'multipart/form-data',
@@ -37,7 +36,7 @@ const alteraProduto = async (produtoId, produtoData) => {
 };
 
 const removeProduto = async (produtoId) => {
-    const response = await axios.delete(`${API_URL}/${produtoId}`,
+    const response = await axios.delete(`${API_URL}/produtos/${produtoId}`,
         {
             headers: {
                 Authorization: `Bearer ${sessionStorage.getItem("token")}`,

@@ -1,6 +1,5 @@
 import axios from "axios";
-
-const API_URL = 'http://localhost:3001';
+import API_URL from "./APIUrl";
 
 const schedule = async (formData) => {
     const response = await axios.post(`${API_URL}/agendamentos`, formData);
