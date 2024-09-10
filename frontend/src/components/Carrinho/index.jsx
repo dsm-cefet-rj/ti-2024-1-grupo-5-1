@@ -31,7 +31,7 @@ const Carrinho = () => {
     total: itens.reduce((acc, item) => acc + (item.price * item.quantity), 0).toFixed(2),
     detalhes: '',
     pagamento: 'Pix',
-    status: 'Em Andamento',
+    status: 'Pendente',
     qtdTroco: '',
     avaliacao: '',
     date_pedido: '',

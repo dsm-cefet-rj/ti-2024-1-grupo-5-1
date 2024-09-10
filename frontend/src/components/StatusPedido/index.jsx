@@ -78,7 +78,7 @@ const StatusPedido = ({ user }) => {
           </tbody>
         </Table>
         <p>Descrição: {pedido.detalhes ? pedido.detalhes : 'Sem descrição'}</p>
-        <p>Total: R$ {(pedido.total).toFixed(2)} </p>
+        <p>Total: R$ {(pedido.total).toFixed(2)} {pedido.pagamento == "Dinheiro" ? ` - Troco para R$ ${(pedido.qtdTroco).toFixed(2)} (R$ ${(pedido.qtdTroco - pedido.total).toFixed(2)})` : ''} </p>
       </div>
       <div style={{ marginTop: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
         <StarRating totalStars={5} initialRating={pedido.avaliacao} pedidoStatus={pedido.status} onSubmit={handleRatingSubmit} />
